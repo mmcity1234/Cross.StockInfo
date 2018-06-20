@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cross.StockInfo.Views.MasterDetailPageMaster"            
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"
+             xmlns:local="clr-namespace:Cross.StockInfo.ViewModels.MasterDetail"     
+             xmlns:view="clr-namespace:Cross.StockInfo.Views"
+             xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
+             Title="Master">
+    <StackLayout>
+        <ListView SeparatorVisibility="None" HasUnevenRows="true">          
+
+            <ListView.Behaviors>
+                <b:EventHandlerBehavior EventName="ItemSelected">
+                    <b:InvokeCommandAction Command="{Binding ItemSelectedCommand}" />
+                </b:EventHandlerBehavior>
+            </ListView.Behaviors>
+
+
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MasterPageMenuItem}">
+                    <local:MasterPageMenuItem Title="Contacts" IconSource="contacts.png" TargetType="{x:Type productIndex:BDIIndex}" />
+                    <local:MasterPageMenuItem Title="TodoList" IconSource="todo.png" TargetType="{x:Type productIndex:OilIndex}" />
+                    <local:MasterPageMenuItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type productIndex:GoldIndex}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </StackLayout>
+</view:ViewPage>
