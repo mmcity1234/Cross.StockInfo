@@ -7,9 +7,25 @@
              xmlns:view="clr-namespace:Cross.StockInfo.Views"
              xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
              Title="Master">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="MenuItemTemplate">
+            <ViewCell>
+                <Grid Padding="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding IconSource}" />
+                    <Label Grid.Column="1" Text="{Binding Title}" />
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    
     <StackLayout>
-        <ListView SeparatorVisibility="None" HasUnevenRows="true">          
-
+        <ListView SeparatorVisibility="None" HasUnevenRows="true" 
+                  ItemTemplate="{StaticResource MenuItemTemplate}">
+          
             <ListView.Behaviors>
                 <b:EventHandlerBehavior EventName="ItemSelected">
                     <b:InvokeCommandAction Command="{Binding ItemSelectedCommand}" />
@@ -23,21 +39,7 @@
                     <local:MasterPageMenuItem Title="TodoList" IconSource="todo.png" TargetType="{x:Type productIndex:OilIndex}" />
                     <local:MasterPageMenuItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type productIndex:GoldIndex}" />
                 </x:Array>
-            </ListView.ItemsSource>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="5,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image Source="{Binding IconSource}" />
-                            <Label Grid.Column="1" Text="{Binding Title}" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemsSource>          
 
         </ListView>
     </StackLayout>
