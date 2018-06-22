@@ -1,5 +1,7 @@
-﻿using Cross.StockInfo.ViewModels;
+﻿using Cross.StockInfo.Common.IoC;
+using Cross.StockInfo.ViewModels;
 using Cross.StockInfo.Views;
+using Cross.StockInfo.Views.ProductIndex;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,12 @@ namespace Cross.StockInfo
 		public MainPage()
 		{
 			InitializeComponent();
-            BindingContext = new MainViewModel();
-		}
+            
+            var _viewModel = IocProvider.Instance.Container.Resolve<MainViewModel>();   
+            //_viewModel.Navigation = Application.Current.MainPage.Navigation;
+            //_viewModel.NavigateTo(typeof(OilIndexView));
+            BindingContext = _viewModel;
+          
+        }
 	}
 }

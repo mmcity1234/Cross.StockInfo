@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.ProductIndex
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OilIndex : ViewPage
-    {
-		public OilIndex ()
+	public partial class OilIndexView : ContentPage
+	{
+		public OilIndexView ()
 		{
-			InitializeComponent();
+			InitializeComponent ();
 		}
 	}
 }

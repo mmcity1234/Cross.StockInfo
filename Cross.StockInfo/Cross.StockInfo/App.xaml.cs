@@ -13,9 +13,7 @@ namespace Cross.StockInfo
 
             InitializeComponent();
 
-			MainPage = new MainPage();
-
-            
+            MainPage = new MainPage();
         }
 
         

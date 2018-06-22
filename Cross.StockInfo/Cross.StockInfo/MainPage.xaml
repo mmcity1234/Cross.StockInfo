@@ -1,19 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Cross.StockInfo"
-                   xmlns:pages="clr-namespace:Cross.StockInfo.Views"
-             x:Class="Cross.StockInfo.MainPage">
+             xmlns:model="clr-namespace:Cross.StockInfo.ViewModels.MasterDetail"
+             xmlns:pages="clr-namespace:Cross.StockInfo.Views"
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"              
+             xmlns:view="clr-namespace:Cross.StockInfo.Views"
+             xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
+             x:Class="Cross.StockInfo.MainPage"
+             IsPresented="{Binding IsShowMasterDetail}" >
 
+    <MasterDetailPage.Resources>
+        <DataTemplate x:Key="MenuItemTemplate">
+            <ViewCell>
+                <Grid Padding="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding IconSource}" />
+                    <Label Grid.Column="1" Text="{Binding Title}" />
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </MasterDetailPage.Resources>
+    
     <MasterDetailPage.Master>
-        <pages:MasterDetailPageMaster x:Name="MasterPage" />
+        <ContentPage Title="StockInfo">
+            <StackLayout>
+                <ListView SelectedItem="{Binding SelectedMenuItem}" SeparatorVisibility="None" HasUnevenRows="true" ItemTemplate="{StaticResource MenuItemTemplate}">
+
+                    <ListView.Behaviors>
+                        <b:EventHandlerBehavior EventName="ItemSelected">
+                            <b:InvokeCommandAction Command="{Binding MasterDetailItemSelectedCommand}" />
+                        </b:EventHandlerBehavior>
+                    </ListView.Behaviors>
+
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type model:MasterPageMenuItem}">
+                            <model:MasterPageMenuItem Title="Contacts" IconSource="contacts.png" TargetType="{x:Type productIndex:BDIIndexView}" />
+                            <model:MasterPageMenuItem Title="TodoList" IconSource="todo.png" TargetType="{x:Type productIndex:OilIndexView}" />
+                            <model:MasterPageMenuItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type productIndex:GoldIndexView}" />
+                        </x:Array>
+                    </ListView.ItemsSource>
+
+                </ListView>
+            </StackLayout>
+        </ContentPage>
     </MasterDetailPage.Master>
+
     <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <pages:MasterDetailPage1Detail />
-            </x:Arguments>
-        </NavigationPage>
+        <ContentPage>
+        </ContentPage>
     </MasterDetailPage.Detail>
 
 

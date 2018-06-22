@@ -17,6 +17,8 @@ namespace Cross.StockInfo.Views
             {
                 _viewModel = IocProvider.Instance.Container.Resolve<T>();
             }
+
+            _viewModel.Navigation = Application.Current.MainPage.Navigation;
             BindingContext = _viewModel;
         }
     }

@@ -1,36 +1,74 @@
 ﻿using Cross.StockInfo.Common;
 using Cross.StockInfo.Models.Mops;
 using Cross.StockInfo.Services;
+using Cross.StockInfo.ViewModels.MasterDetail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Cross.StockInfo.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private List<StockInfoModel> _suggestionItemsSource = null;
-        private string _searchStockText = null;
+        private MasterPageMenuItem _selectedMenuItem;     
+        private bool _isShowMasterDetail;
+        
 
         public IStockQueryService StockService { get; set; }
 
-        public INavigationService NavigationService { get; set; }
-
-        #region Model Binding
-     
+        #region Binding Property
+        public bool IsShowMasterDetail
+        {
+            get => _isShowMasterDetail;
+            set
+            {
+                _isShowMasterDetail = value;
+                OnPropertyChanged();
+            }
+        }
+        public MasterPageMenuItem SelectedMenuItem
+        {
+            get => _selectedMenuItem;
+            set
+            {
+                _selectedMenuItem = value;
+                OnPropertyChanged();
+            }
+        }      
+        #endregion
 
     
-        #endregion
+        public DelegateCommand<SelectedItemChangedEventArgs> MasterDetailItemSelectedCommand { get; set; }
 
         public MainViewModel()
         {
-      
+            MasterDetailItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(MasterDetailItemSelectedEvent);
         }
 
-      
-     
+        private void MasterDetailItemSelectedEvent(SelectedItemChangedEventArgs args)
+        {
+            var item = args.SelectedItem as MasterPageMenuItem;
+            if (item != null)
+            {
+                NavigateTo(item.TargetType);
+                SelectedMenuItem = null;
+                IsShowMasterDetail = false;
+            }
+        }
+
+        /// <summary>
+        /// Navigate to the content page
+        /// </summary>
+        /// <param name="pageType"></param>
+        public void NavigateTo(Type pageType)
+        {
+            (Application.Current.MainPage as MasterDetailPage).Detail =
+                new NavigationPage((Page)Activator.CreateInstance(pageType));
+        }
 
     }
+
 }

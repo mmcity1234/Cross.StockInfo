@@ -31,25 +31,19 @@
     <Compile Update="ViewModels\MasterDetail\MasterPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MasterDetailPageMaster.xaml.cs">
-      <DependentUpon>MasterDetailPageMaster.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Views\MasterDetailPage1Detail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MasterDetailPageMaster.xaml">
+    <EmbeddedResource Update="Views\ProductIndex\BDIIndexView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProductIndex\BDIIndex.xaml">
+    <EmbeddedResource Update="Views\ProductIndex\GoldIndexView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProductIndex\GoldIndex.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProductIndex\OilIndex.xaml">
+    <EmbeddedResource Update="Views\ProductIndex\OilIndexView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
