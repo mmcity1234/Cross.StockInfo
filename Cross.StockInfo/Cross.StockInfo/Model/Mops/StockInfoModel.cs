@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cross.StockInfo.Models.Mops
+namespace Cross.StockInfo.Model.Mops
 {
     public class StockInfoModel
     {

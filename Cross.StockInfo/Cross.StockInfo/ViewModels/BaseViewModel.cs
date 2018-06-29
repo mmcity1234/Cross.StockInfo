@@ -20,5 +20,15 @@ namespace Cross.StockInfo.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public virtual void OnPageLoading()
+        {
+            
+        }
+
+        public virtual void OnPageDisappearing()
+        {
+           
+        }
     }
 }

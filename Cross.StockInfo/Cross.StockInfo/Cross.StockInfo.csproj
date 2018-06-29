@@ -13,13 +13,13 @@
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Behaviors.XamarinForms" Version="3.0.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.8.4" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.41" />
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Common\Converter\" />
     <Folder Include="ViewModels\FinancialReport\" />
-    <Folder Include="ViewModels\ProductIndex\" />
     <Folder Include="Views\FinancialReport\" />
   </ItemGroup>
 

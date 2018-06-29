@@ -1,5 +1,5 @@
 ﻿using Cross.StockInfo.Common;
-using Cross.StockInfo.Models.Mops;
+using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.Services;
 using Cross.StockInfo.ViewModels.MasterDetail;
 using System;

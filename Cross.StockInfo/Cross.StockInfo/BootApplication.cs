@@ -31,6 +31,11 @@ namespace Cross.StockInfo
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
 
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.EndsWith("RestApi"))
+                .AsSelf()
+                .PropertiesAutowired();
+
             //builder.RegisterAssemblyTypes(assembly)
             //  .Where(t => t.Name.EndsWith("ViewModel"))
             //  .AsSelf();

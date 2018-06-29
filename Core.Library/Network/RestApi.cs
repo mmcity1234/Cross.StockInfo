@@ -11,7 +11,7 @@ namespace Core.Utility.Network
 {
     public static class RestApi
     {
-        public static async Task<string> GetTaskAsyncContent(string url)
+        public static async Task<string> GetContentTaskAsync(string url)
         {
             var request = new RestRequest(Method.GET);
 

@@ -1,6 +1,6 @@
 ﻿using Core.Utility.Network;
 using Cross.StockInfo.Helper;
-using Cross.StockInfo.Models.Mops;
+using Cross.StockInfo.Model.Mops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Cross.StockInfo.RestClient
         public async Task<List<StockInfoModel>> GetStockList(string stock)
         {
             string url = string.Format(StockAutoCompleteUrl, stock);
-            string html = await RestApi.GetTaskAsyncContent(url);
+            string html = await RestApi.GetContentTaskAsync(url);
 
             var stocks = HtmlHelper.DescendantsPath(html, "//div/ul/li/div/div", node =>
             {                

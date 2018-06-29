@@ -9,6 +9,8 @@ namespace Cross.StockInfo
 	{
 		public App ()
 		{
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjc0NUAzMTM2MmUzMjJlMzBVUGFIbFVKeWx5TTJkUnlCOGtwSi9GN1d3YndMa21PTlZIQi9kU0VyeURNPQ==");
+
             BootApplication.Initialize();
 
             InitializeComponent();

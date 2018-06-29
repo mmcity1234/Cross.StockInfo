@@ -1,4 +1,4 @@
-﻿using Cross.StockInfo.Models.Mops;
+﻿using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.RestClient;
 using System;
 using System.Collections.Generic;

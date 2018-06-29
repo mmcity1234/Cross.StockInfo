@@ -7,6 +7,16 @@ namespace Cross.StockInfo.ViewModels
 {
     public interface IViewModel
     {
-        INavigation Navigation { get; set; }
+        //INavigation Navigation { get; set; }
+
+        /// <summary>
+        /// When the page enter and start to load
+        /// </summary>
+        void OnPageLoading();
+
+        /// <summary>
+        /// When the page is start left
+        /// </summary>
+        void OnPageDisappearing();
     }
 }
