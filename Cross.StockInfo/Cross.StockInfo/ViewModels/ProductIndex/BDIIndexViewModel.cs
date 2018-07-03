@@ -4,19 +4,23 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Cross.StockInfo.Assets.Strings;
+using Xamarin.Forms;
+using System.Threading.Tasks;
+using Cross.StockInfo.Model.ProductIndex;
 
 namespace Cross.StockInfo.ViewModels.ProductIndex
 {
     public class BDIIndexViewModel : BaseViewModel
     {
-        private LineStockChartViewModel _lineChart;
+        private LineChartModel _lineChart;
         #region Injection
         public IProductQueryService ProductService { get; set; }
         #endregion
 
         #region Property
 
-        public LineStockChartViewModel LineChart
+        public LineChartModel LineChart
         {
             get => _lineChart;
             set
@@ -31,17 +35,22 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
         public BDIIndexViewModel()
         {
-            LineChart = new LineStockChartViewModel();
-
-
+            LineChart = new LineChartModel();
+            LineChart.Title = AppResources.BDIIndex_ChartTitle;
         }
         public override async void OnPageLoading()
         {
             var bdiIndexList = await ProductService.ListBDIIndexReport();
+            var bpiIndexList = await ProductService.ListBPIIndexReport();
 
-            var bdiPoints = bdiIndexList.Select(x => new DataPoint(x.Time, x.Value)).ToList();
-            LineChart.AddSeries("BDI指數", bdiPoints);
+            AddSeries(AppResources.BDIIndex_Label, bdiIndexList);
+            AddSeries(AppResources.BPIIndex_Label, bpiIndexList);
+        }
 
+        private void AddSeries(string title, List<ProductIndexData> dataList)
+        {
+            var dataPoints = dataList.Select(x => new DataPoint(x.Time, x.Value, x.ChangeRange, x.ChangeRangePercentage)).ToList();
+            LineChart.AddSeries(AppResources.BDIIndex_Label, dataPoints);
         }
     }
 }

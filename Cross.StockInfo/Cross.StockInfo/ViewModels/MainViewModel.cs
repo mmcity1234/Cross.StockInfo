@@ -2,6 +2,7 @@
 using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.Services;
 using Cross.StockInfo.ViewModels.MasterDetail;
+using Cross.StockInfo.Views.ProductIndex;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,13 @@ namespace Cross.StockInfo.ViewModels
             }
         }      
         #endregion
-
     
         public DelegateCommand<SelectedItemChangedEventArgs> MasterDetailItemSelectedCommand { get; set; }
 
         public MainViewModel()
-        {
+        {           
             MasterDetailItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(MasterDetailItemSelectedEvent);
+            // NavigateTo(typeof(GoldIndexView));
         }
 
         private void MasterDetailItemSelectedEvent(SelectedItemChangedEventArgs args)

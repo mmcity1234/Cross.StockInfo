@@ -1,4 +1,5 @@
-﻿using Cross.StockInfo.Model.ProductIndex;
+﻿using Cross.StockInfo.Assets.Strings;
+using Cross.StockInfo.Model.ProductIndex;
 using Cross.StockInfo.RestClient;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,28 @@ namespace Cross.StockInfo.Services
         public ProductIndexRestApi ProductRestApi { get; set; }
         public async Task<List<ProductIndexData>> ListBDIIndexReport()
         {
-            var results = await ProductRestApi.GetBDIIndexReportAsync();
-            return results;
+            try
+            {
+                var results = await ProductRestApi.GetBDIIndexReportAsync();
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(AppResources.Exception_QueryBdiRepotError, e.Message));
+            }
+        }
 
+        public async Task<List<ProductIndexData>> ListBPIIndexReport()
+        {
+            try
+            {
+                var results = await ProductRestApi.GetBPIIndexReportAsync();
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(AppResources.Exception_QueryBpiRepotError, e.Message));
+            }
         }
     }
 }

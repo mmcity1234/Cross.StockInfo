@@ -4,14 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Cross.StockInfo.ViewModels.Chart
 {
-    public class LineStockChartViewModel : BaseViewModel
+    public class LineChartModel : BaseViewModel
     {
         private string _title;
 
-        private int _interval;
+        private int _interval;     
 
         #region Property
         public ChartSeriesCollection SeriesCollection { get; set; }
@@ -24,7 +25,9 @@ namespace Cross.StockInfo.ViewModels.Chart
                 OnPropertyChanged();
             }
         }
-      
+
+    
+
 
         public int Interval
         {
@@ -37,7 +40,7 @@ namespace Cross.StockInfo.ViewModels.Chart
         }
         #endregion
 
-        public LineStockChartViewModel()
+        public LineChartModel()
         {
             SeriesCollection = new ChartSeriesCollection();
         }

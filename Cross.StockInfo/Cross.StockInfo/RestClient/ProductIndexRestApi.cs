@@ -11,12 +11,20 @@ namespace Cross.StockInfo.RestClient
     public class ProductIndexRestApi
     {
         /// <summary>
+        /// 散裝貨運BDI指數
         /// </summary>
         private const string BDIIndexUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400007";
-
+        /// <summary>
+        /// 散裝貨運巴拿馬指數
+        /// </summary>
+        private const string BPIIndexUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400008";
         public async Task<List<ProductIndexData>> GetBDIIndexReportAsync()
         {
             return await GetProductHistoricalReportAsync(BDIIndexUrl);
+        }
+        public async Task<List<ProductIndexData>> GetBPIIndexReportAsync()
+        {
+            return await GetProductHistoricalReportAsync(BPIIndexUrl);
         }
 
         private async Task<List<ProductIndexData>> GetProductHistoricalReportAsync(string url)
@@ -24,9 +32,9 @@ namespace Cross.StockInfo.RestClient
             List<ProductIndexData> productIndexList = new List<ProductIndexData>();
             string result = await RestApi.GetContentTaskAsync(BDIIndexUrl);
 
-            if (string.IsNullOrEmpty(result) && !result.Contains(" "))           
+            if (string.IsNullOrEmpty(result) && !result.Contains(" "))
                 return productIndexList;
-            
+
             // Split the data to get the date arry and point value array
             string[] rawData = result.Split(' ');
             string[] dateArray = rawData[0].Split(',');
@@ -47,7 +55,7 @@ namespace Cross.StockInfo.RestClient
                 previousData = currentIndexData;
                 productIndexList.Add(currentIndexData);
             }
-            
+
             return productIndexList;
         }
 

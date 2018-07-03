@@ -3,35 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
+             xmlns:lang="clr-namespace:Cross.StockInfo.Assets.Strings"
+             xmlns:styles="clr-namespace:Cross.StockInfo.Assets.Styles"
              x:Class="Cross.StockInfo.Views.ProductIndex.BDIIndexView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Occure an problem to used the merge dictionary resource-->
+            <ResourceDictionary.MergedDictionaries>
+                <styles:SyncfusionChartStyle/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <chart:SfChart Margin="0,0,15,0" BindingContext="{Binding LineChart}" Title="{Binding Title}" Series="{Binding SeriesCollection}">
-                
+            <chart:SfChart Margin="0,0,15,0" BindingContext="{Binding LineChart}"  
+                           Series="{Binding SeriesCollection}"  >
+                <chart:SfChart.Title>
+                    <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
+                </chart:SfChart.Title>
+                <!-- X Axis -->
                 <chart:SfChart.PrimaryAxis >
                     <chart:DateTimeAxis Interval="{Binding Interval}" IntervalType="Days"/>
                 </chart:SfChart.PrimaryAxis>
 
+                <!-- Y Axis -->
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis />
                 </chart:SfChart.SecondaryAxis>
+
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom"/>
+                </chart:SfChart.Legend>
 
                 <!-- Track ball-->
                 <chart:SfChart.ChartBehaviors>
                     <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True">
                         <chart:ChartTrackballBehavior.LineStyle>
-                            <chart:ChartLineStyle StrokeColor="Gray" StrokeWidth="2">
-                               
-                            </chart:ChartLineStyle>
-                        </chart:ChartTrackballBehavior.LineStyle>    
+                            <chart:ChartLineStyle StrokeColor="Gray" StrokeWidth="2" />
+                        </chart:ChartTrackballBehavior.LineStyle>
                     </chart:ChartTrackballBehavior>
                 </chart:SfChart.ChartBehaviors>
-
-            
             </chart:SfChart>
         </Grid>
     </ContentPage.Content>

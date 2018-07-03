@@ -147,6 +147,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Behaviors.XamarinForms">
+      <Version>3.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.2.0.41</Version>
     </PackageReference>

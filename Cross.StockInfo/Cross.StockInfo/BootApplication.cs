@@ -36,15 +36,16 @@ namespace Cross.StockInfo
                 .AsSelf()
                 .PropertiesAutowired();
 
-            //builder.RegisterAssemblyTypes(assembly)
-            //  .Where(t => t.Name.EndsWith("ViewModel"))
-            //  .AsSelf();
-
             builder.RegisterAssemblyTypes(assembly)
-                .AssignableTo<BaseViewModel>()
-                .As<IViewModel, BaseViewModel>()               
-                .AsSelf()
-                .PropertiesAutowired();
+              .Where(t => t.Name.EndsWith("ViewModel"))
+              .AsSelf()
+              .PropertiesAutowired();
+
+            //builder.RegisterAssemblyTypes(assembly)
+            //    .AssignableTo<BaseViewModel>()
+            //    .As<IViewModel, BaseViewModel>()               
+            //    .AsSelf()
+            //    .PropertiesAutowired();
 
             AutofacMvxIocProvider container = new AutofacMvxIocProvider(builder);
             IocProvider.Instance.InitializeContainer(container);

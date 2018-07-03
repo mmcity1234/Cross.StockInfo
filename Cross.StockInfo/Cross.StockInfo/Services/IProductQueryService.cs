@@ -9,5 +9,7 @@ namespace Cross.StockInfo.Services
     public interface IProductQueryService
     {
         Task<List<ProductIndexData>> ListBDIIndexReport();
+
+        Task<List<ProductIndexData>> ListBPIIndexReport();
     }
 }
