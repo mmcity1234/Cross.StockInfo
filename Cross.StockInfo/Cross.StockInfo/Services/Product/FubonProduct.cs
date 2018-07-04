@@ -1,37 +1,21 @@
-﻿using Core.Utility.Network;
-using Cross.StockInfo.Model.ProductIndex;
+﻿using Cross.StockInfo.Model.ProductIndex;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cross.StockInfo.RestClient
+namespace Cross.StockInfo.Services.Product
 {
-    public class ProductIndexRestApi
-    {
-        /// <summary>
-        /// 散裝貨運BDI指數
-        /// </summary>
-        private const string BDIIndexUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400007";
-        /// <summary>
-        /// 散裝貨運巴拿馬指數
-        /// </summary>
-        private const string BPIIndexUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400008";
-        public async Task<List<ProductIndexData>> GetBDIIndexReportAsync()
-        {
-            return await GetProductHistoricalReportAsync(BDIIndexUrl);
-        }
-        public async Task<List<ProductIndexData>> GetBPIIndexReportAsync()
-        {
-            return await GetProductHistoricalReportAsync(BPIIndexUrl);
-        }
+    /// <summary>
+    /// Processing the product index from fubon website
+    /// </summary>
+    public abstract class FubonProduct : BaseProduct
+    {     
 
-        private async Task<List<ProductIndexData>> GetProductHistoricalReportAsync(string url)
+        protected override List<ProductIndexData> ProcessData(string result)
         {
             List<ProductIndexData> productIndexList = new List<ProductIndexData>();
-            string result = await RestApi.GetContentTaskAsync(BDIIndexUrl);
-
             if (string.IsNullOrEmpty(result) && !result.Contains(" "))
                 return productIndexList;
 
@@ -58,6 +42,5 @@ namespace Cross.StockInfo.RestClient
 
             return productIndexList;
         }
-
     }
 }

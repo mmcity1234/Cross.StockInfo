@@ -1,6 +1,7 @@
 ﻿using Cross.StockInfo.Assets.Strings;
 using Cross.StockInfo.Model.ProductIndex;
 using Cross.StockInfo.RestClient;
+using Cross.StockInfo.Services.Product;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,30 +11,25 @@ namespace Cross.StockInfo.Services
 {
     public class ProductQueryService : IProductQueryService
     {
-        public ProductIndexRestApi ProductRestApi { get; set; }
-        public async Task<List<ProductIndexData>> ListBDIIndexReport()
+      
+        public async Task<List<ProductIndexData>> ListProductIndexTaskAsync(string productName)
         {
-            try
-            {
-                var results = await ProductRestApi.GetBDIIndexReportAsync();
-                return results;
-            }
-            catch (Exception e)
-            {
-                throw new Exception(string.Format(AppResources.Exception_QueryBdiRepotError, e.Message));
-            }
+            DateTime end = DateTime.Now;
+            DateTime start = end.AddYears(-5);
+            return await ListProductIndexTaskAsync(productName, start, end);
         }
 
-        public async Task<List<ProductIndexData>> ListBPIIndexReport()
+        public async Task<List<ProductIndexData>> ListProductIndexTaskAsync(string productName, DateTime start, DateTime end)
         {
             try
             {
-                var results = await ProductRestApi.GetBPIIndexReportAsync();
-                return results;
+                var productIndex = ProductFactory.GetProductIndex(productName);
+                var resultIndexList = await productIndex.GetHistoricalReportTaskAsync(start, end);
+                return resultIndexList;
             }
             catch (Exception e)
             {
-                throw new Exception(string.Format(AppResources.Exception_QueryBpiRepotError, e.Message));
+                throw new Exception(string.Format(AppResources.Exception_QueryProductRepotError, productName, e.Message));
             }
         }
     }

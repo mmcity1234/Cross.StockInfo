@@ -97,20 +97,20 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 查詢BDI指數發生錯誤 : {0} 的當地語系化字串。
+        ///   查詢類似 載入 {0} 失敗，尚未定義此套件。 的當地語系化字串。
         /// </summary>
-        public static string Exception_QueryBdiRepotError {
+        public static string Exception_ProductIndexTypeLoadError {
             get {
-                return ResourceManager.GetString("Exception_QueryBdiRepotError", resourceCulture);
+                return ResourceManager.GetString("Exception_ProductIndexTypeLoadError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查詢類似 查詢BPI指數發生錯誤 : {0} 的當地語系化字串。
+        ///   查詢類似 查詢 {0} 指數發生錯誤 : {1} 的當地語系化字串。
         /// </summary>
-        public static string Exception_QueryBpiRepotError {
+        public static string Exception_QueryProductRepotError {
             get {
-                return ResourceManager.GetString("Exception_QueryBpiRepotError", resourceCulture);
+                return ResourceManager.GetString("Exception_QueryProductRepotError", resourceCulture);
             }
         }
         

@@ -129,11 +129,11 @@
   <data name="BPIIndex_Label" xml:space="preserve">
     <value>巴拿馬型(BPI)</value>
   </data>
-  <data name="Exception_QueryBdiRepotError" xml:space="preserve">
-    <value>查詢BDI指數發生錯誤 : {0}</value>
+  <data name="Exception_ProductIndexTypeLoadError" xml:space="preserve">
+    <value>載入 {0} 失敗，尚未定義此套件。</value>
   </data>
-  <data name="Exception_QueryBpiRepotError" xml:space="preserve">
-    <value>查詢BPI指數發生錯誤 : {0}</value>
+  <data name="Exception_QueryProductRepotError" xml:space="preserve">
+    <value>查詢 {0} 指數發生錯誤 : {1}</value>
   </data>
   <data name="Stock_ChangePercentage" xml:space="preserve">
     <value>幅度</value>

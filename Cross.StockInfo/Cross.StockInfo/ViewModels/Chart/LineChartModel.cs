@@ -10,9 +10,7 @@ namespace Cross.StockInfo.ViewModels.Chart
 {
     public class LineChartModel : BaseViewModel
     {
-        private string _title;
-
-        private int _interval;     
+        private string _title = "Undefined";      
 
         #region Property
         public ChartSeriesCollection SeriesCollection { get; set; }
@@ -25,19 +23,7 @@ namespace Cross.StockInfo.ViewModels.Chart
                 OnPropertyChanged();
             }
         }
-
-    
-
-
-        public int Interval
-        {
-            get => _interval;
-            set
-            {
-                _interval = value;
-                OnPropertyChanged();
-            }
-        }
+             
         #endregion
 
         public LineChartModel()
@@ -47,7 +33,7 @@ namespace Cross.StockInfo.ViewModels.Chart
 
         public void AddSeries(string label, List<DataPoint> dataPoints)
         {
-            var lineSeries = new LineSeries() { ItemsSource = dataPoints, Label = label, XBindingPath = "Time", YBindingPath = "Value" };
+            var lineSeries = new FastLineSeries() { ItemsSource = dataPoints, Label = label, XBindingPath = "Time", YBindingPath = "Value" };
             SeriesCollection.Add(lineSeries);
         }
     }

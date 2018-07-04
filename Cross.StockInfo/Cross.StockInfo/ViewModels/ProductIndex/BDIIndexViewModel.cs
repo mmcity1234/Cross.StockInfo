@@ -40,8 +40,8 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         }
         public override async void OnPageLoading()
         {
-            var bdiIndexList = await ProductService.ListBDIIndexReport();
-            var bpiIndexList = await ProductService.ListBPIIndexReport();
+            var bdiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BdiIndex");
+            var bpiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BpiIndex");
 
             AddSeries(AppResources.BDIIndex_Label, bdiIndexList);
             AddSeries(AppResources.BPIIndex_Label, bpiIndexList);
@@ -50,7 +50,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         private void AddSeries(string title, List<ProductIndexData> dataList)
         {
             var dataPoints = dataList.Select(x => new DataPoint(x.Time, x.Value, x.ChangeRange, x.ChangeRangePercentage)).ToList();
-            LineChart.AddSeries(AppResources.BDIIndex_Label, dataPoints);
+            LineChart.AddSeries(title, dataPoints);
         }
     }
 }

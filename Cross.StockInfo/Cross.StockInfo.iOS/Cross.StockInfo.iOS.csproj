@@ -150,6 +150,12 @@
     <PackageReference Include="Behaviors.XamarinForms">
       <Version>3.0.1</Version>
     </PackageReference>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.8.4</Version>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>106.3.1</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.2.0.41</Version>
     </PackageReference>

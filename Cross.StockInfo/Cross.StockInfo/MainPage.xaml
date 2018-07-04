@@ -37,10 +37,10 @@
                     </ListView.Behaviors>
 
                     <ListView.ItemsSource>
-                        <x:Array Type="{x:Type model:MasterPageMenuItem}">
-                            <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}" IconSource="contacts.png" TargetType="{x:Type productIndex:BDIIndexView}" />
-                            <model:MasterPageMenuItem Title="TodoList" IconSource="todo.png" TargetType="{x:Type productIndex:OilIndexView}" />
-                            <model:MasterPageMenuItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type productIndex:GoldIndexView}" />
+                        <x:Array Type="{x:Type model:MasterPageMenuItem}">                            
+                            <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type productIndex:OilIndexView}" />
+                            <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
+                            <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
                         </x:Array>
                     </ListView.ItemsSource>
 

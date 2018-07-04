@@ -28,7 +28,11 @@
                 </chart:SfChart.Title>
                 <!-- X Axis -->
                 <chart:SfChart.PrimaryAxis >
-                    <chart:DateTimeAxis Interval="{Binding Interval}" IntervalType="Days"/>
+                    <chart:DateTimeAxis IntervalType="Days" EnableAutoIntervalOnZooming="True" >
+                        <chart:DateTimeAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="yyyy/MM"/>
+                        </chart:DateTimeAxis.LabelStyle>
+                    </chart:DateTimeAxis>
                 </chart:SfChart.PrimaryAxis>
 
                 <!-- Y Axis -->
@@ -40,8 +44,11 @@
                     <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom"/>
                 </chart:SfChart.Legend>
 
-                <!-- Track ball-->
+               
                 <chart:SfChart.ChartBehaviors>
+                    <!-- Zoom-->
+                    <chart:ChartZoomPanBehavior ZoomMode="X" EnableSelectionZooming="False" MaximumZoomLevel="200"/>
+                    <!-- Track ball-->
                     <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True">
                         <chart:ChartTrackballBehavior.LineStyle>
                             <chart:ChartLineStyle StrokeColor="Gray" StrokeWidth="2" />

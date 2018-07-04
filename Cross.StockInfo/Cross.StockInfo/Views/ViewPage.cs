@@ -14,20 +14,27 @@ namespace Cross.StockInfo.Views
 
         public void DataBinding<T>() where T : class, IViewModel
         {
-            // Binding view model
-            T _viewModel;
-            using (var scope = IocProvider.Instance.Container.BeginLifetimeScope())
+            try
             {
-                _viewModel = IocProvider.Instance.Container.Resolve<T>();
+                // Binding view model
+                T _viewModel;
+                using (var scope = IocProvider.Instance.Container.BeginLifetimeScope())
+                {
+                    _viewModel = IocProvider.Instance.Container.Resolve<T>();
+                }
+                BindingContext = _viewModel;
+                ViewModel = _viewModel;
+
+                //_viewModel.Navigation = Application.Current.MainPage.Navigation;
+
+                // Binding event
+                Appearing += ViewPageAppearing;
+                Disappearing += ViewPageDisappearing;
             }
-            BindingContext = _viewModel;
-            ViewModel = _viewModel;
+            catch (Exception e)
+            {
 
-            //_viewModel.Navigation = Application.Current.MainPage.Navigation;
-
-            // Binding event
-            Appearing += ViewPageAppearing;
-            Disappearing += ViewPageDisappearing;
+            }
         }
 
         private void ViewPageDisappearing(object sender, EventArgs e)
