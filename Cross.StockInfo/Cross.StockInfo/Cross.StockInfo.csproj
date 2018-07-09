@@ -14,11 +14,12 @@
     <PackageReference Include="Behaviors.XamarinForms" Version="3.0.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.8.4" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="16.2.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.2.0.42" />
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Converter\" />
     <Folder Include="ViewModels\FinancialReport\" />
     <Folder Include="Views\FinancialReport\" />
   </ItemGroup>
@@ -33,8 +34,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\MasterDetail\MasterPageMenuItem.cs">
+    <Compile Update="Assets\Styles\SyncfusionStyle.xaml.cs">
+      <DependentUpon>SyncfusionStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ViewModels\Control\MasterDetail\MasterPageMenuItem.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Control\LineChartControl.xaml.cs">
+      <DependentUpon>LineChartControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -43,7 +50,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Assets\Styles\SyncfusionChartStyle.xaml">
+    <EmbeddedResource Update="Assets\Styles\DefaultStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Assets\Styles\SyncfusionStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Control\DailyPriceControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Control\LineChartControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductIndex\BDIIndexView.xaml">

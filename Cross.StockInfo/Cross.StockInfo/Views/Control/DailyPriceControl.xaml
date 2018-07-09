@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:style="clr-namespace:Cross.StockInfo.ViewModels.Control.DataGrid"
+             xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
+             xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
+             x:Class="Cross.StockInfo.Views.Control.DailyPriceControl">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <style:DefaultGridStyle x:Key="lightGray" />
+            <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
+        </ResourceDictionary>
+        <Style TargetType="datagrid:GridCell">
+            <Setter Property="Foreground" Value="{Binding Value, Converter={StaticResource priceColorConverter}}" />
+        </Style>
+    </ContentView.Resources>
+
+
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <datagrid:SfDataGrid AutoGenerateColumns="False" ItemsSource="{Binding DataPoints}" GridStyle="{StaticResource lightGray}">
+                <datagrid:SfDataGrid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
+                        <Setter Property="VerticalTextAlignment" Value="Center"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    </Style>
+                </datagrid:SfDataGrid.Resources>
+            
+                <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <datagrid:GridTextColumn MappingName="Time" Format="yyyy/MM/dd" ColumnSizer="Star">
+                        <datagrid:GridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="{lang:Translate Global_Date}" />
+                            </DataTemplate>
+                        </datagrid:GridTextColumn.HeaderTemplate>
+                    </datagrid:GridTextColumn>
+                    <datagrid:GridTextColumn MappingName="Value" ColumnSizer="Star">
+                        <datagrid:GridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="{lang:Translate Global_Price}" />
+                            </DataTemplate>
+                        </datagrid:GridTextColumn.HeaderTemplate>
+                    </datagrid:GridTextColumn>
+                    <datagrid:GridTextColumn MappingName="ChangeValue"  ColumnSizer="Star">
+                        <datagrid:GridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="{lang:Translate Global_ChangePrice}" />
+                            </DataTemplate>
+                        </datagrid:GridTextColumn.HeaderTemplate>
+                    </datagrid:GridTextColumn>
+                    <datagrid:GridTextColumn MappingName="ChangeValuePercentage" ColumnSizer="Star">
+                        <datagrid:GridTextColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="{lang:Translate Global_ChangePricePercentage}" />
+                            </DataTemplate>
+                        </datagrid:GridTextColumn.HeaderTemplate>
+                    </datagrid:GridTextColumn>
+                </datagrid:SfDataGrid.Columns>
+            </datagrid:SfDataGrid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>   

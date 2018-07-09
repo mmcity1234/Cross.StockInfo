@@ -10,12 +10,14 @@ namespace Cross.StockInfo.ViewModels.Chart
         public double Value { get; set; }
 
         /// </summary>
-        public double ChangeRange { get; set; }
+        public double ChangeValue { get; set; }
 
         /// <summary>
         /// 漲跌百分比
         /// </summary>
-        public double ChangeRangePercentage { get; set; }
+        public double ChangeValuePercentage { get; set; }
+
+        public DataPoint() { }
 
         public DataPoint(DateTime time, double value)
         {
@@ -23,10 +25,10 @@ namespace Cross.StockInfo.ViewModels.Chart
             Value = value;
         }
 
-        public DataPoint(DateTime time, double value, double changeRange, double changeRangePercentage) : this(time, value)
+        public DataPoint(DateTime time, double value, double changeValue, double changeValuePercentage) : this(time, value)
         {
-            ChangeRange = changeRange;
-            ChangeRangePercentage = ChangeRangePercentage;
+            ChangeValue = changeValue;
+            ChangeValuePercentage = changeValuePercentage;
         }
     }
 }

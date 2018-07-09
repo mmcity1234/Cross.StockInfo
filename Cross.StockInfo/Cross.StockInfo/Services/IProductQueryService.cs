@@ -1,4 +1,4 @@
-﻿using Cross.StockInfo.Model.ProductIndex;
+﻿using Cross.StockInfo.ViewModels.Chart;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,12 +13,12 @@ namespace Cross.StockInfo.Services
         /// </summary>
         /// <param name="productName"></param>
         /// <returns></returns>
-        Task<List<ProductIndexData>> ListProductIndexTaskAsync(string productName);
+        Task<List<DataPoint>> ListProductIndexTaskAsync(string productName);
         /// <summary>
         /// Query the product index historical report with date time range
         /// </summary>
         /// <param name="productName"></param>
         /// <returns></returns>
-        Task<List<ProductIndexData>> ListProductIndexTaskAsync(string productName, DateTime start, DateTime end);
+        Task<List<DataPoint>> ListProductIndexTaskAsync(string productName, DateTime start, DateTime end);
     }
 }

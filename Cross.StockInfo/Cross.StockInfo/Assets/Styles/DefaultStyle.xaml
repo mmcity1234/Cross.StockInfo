@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                 
+                    x:Class="Cross.StockInfo.Assets.Styles.DefaultStyle">
+
+
+    <Color x:Key="LightGrayColor_ColumnAlternating">#F0F0F0</Color>
+    <Color x:Key="DarkGrayColor_ColumnHeader">#646464</Color>
+
+
+
+</ResourceDictionary>

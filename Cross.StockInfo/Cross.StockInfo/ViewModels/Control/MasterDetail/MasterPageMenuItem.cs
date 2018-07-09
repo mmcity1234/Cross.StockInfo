@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cross.StockInfo.ViewModels.MasterDetail
+namespace Cross.StockInfo.ViewModels.Control.MasterDetail
 {
 
     public class MasterPageMenuItem

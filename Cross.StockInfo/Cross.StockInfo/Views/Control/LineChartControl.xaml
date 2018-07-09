@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
+             x:Class="Cross.StockInfo.Views.Control.LineChartControl">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
+        </ResourceDictionary>
+        <Style x:Key="LatestPriceStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextColor" Value="{Binding Value, Converter={StaticResource priceColorConverter}}"/>
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>
+            </Grid>
+
+
+            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesCollection}"  >
+                <chart:SfChart.Title>
+                    <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
+                </chart:SfChart.Title>
+                <!-- X Axis -->
+                <chart:SfChart.PrimaryAxis >
+                    <chart:DateTimeAxis IntervalType="Days" EnableAutoIntervalOnZooming="True" >
+                        <chart:DateTimeAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="yyyy/MM"/>
+                        </chart:DateTimeAxis.LabelStyle>
+                    </chart:DateTimeAxis>
+                </chart:SfChart.PrimaryAxis>
+                <!-- Y Axis -->
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis />
+                </chart:SfChart.SecondaryAxis>
+                <!-- Legend -->
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom"/>
+                </chart:SfChart.Legend>
+                <chart:SfChart.ChartBehaviors>
+                    <!-- Zoom-->
+                    <chart:ChartZoomPanBehavior ZoomMode="X" EnableSelectionZooming="False" MaximumZoomLevel="200"/>
+                    <!-- Track ball-->
+                    <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True">
+                        <chart:ChartTrackballBehavior.LineStyle>
+                            <chart:ChartLineStyle StrokeColor="Gray" StrokeWidth="2" />
+                        </chart:ChartTrackballBehavior.LineStyle>
+                    </chart:ChartTrackballBehavior>
+                </chart:SfChart.ChartBehaviors>
+            </chart:SfChart>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

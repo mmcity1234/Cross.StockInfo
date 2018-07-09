@@ -126,8 +126,17 @@
   <data name="BDIIndex_Label" xml:space="preserve">
     <value>波羅的海綜合指數(BDI)</value>
   </data>
+  <data name="BDIIndex_TabHistoricalReport" xml:space="preserve">
+    <value>歷史資料</value>
+  </data>
+  <data name="BDIIndex_TabOverview" xml:space="preserve">
+    <value>總覽</value>
+  </data>
   <data name="BPIIndex_Label" xml:space="preserve">
     <value>巴拿馬型(BPI)</value>
+  </data>
+  <data name="Exception_LoadDataError" xml:space="preserve">
+    <value>資料載入錯誤，請在下滑嘗試：{0}</value>
   </data>
   <data name="Exception_ProductIndexTypeLoadError" xml:space="preserve">
     <value>載入 {0} 失敗，尚未定義此套件。</value>
@@ -135,13 +144,19 @@
   <data name="Exception_QueryProductRepotError" xml:space="preserve">
     <value>查詢 {0} 指數發生錯誤 : {1}</value>
   </data>
-  <data name="Stock_ChangePercentage" xml:space="preserve">
-    <value>幅度</value>
+  <data name="Exception_ResourceDictionaryKeyNotFound" xml:space="preserve">
+    <value>無法在資源字典(ResourceDicionary)找到此資源 [{0}]</value>
   </data>
-  <data name="Stock_ChangeRange" xml:space="preserve">
+  <data name="Global_ChangePrice" xml:space="preserve">
     <value>漲跌</value>
   </data>
-  <data name="Stock_Price" xml:space="preserve">
+  <data name="Global_ChangePricePercentage" xml:space="preserve">
+    <value>漲跌 (%)</value>
+  </data>
+  <data name="Global_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="Global_Price" xml:space="preserve">
     <value>價格</value>
   </data>
   <data name="SupermaxIndex_Label" xml:space="preserve">

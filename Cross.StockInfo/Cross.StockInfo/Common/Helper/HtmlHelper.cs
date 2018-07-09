@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cross.StockInfo.Helper
+namespace Cross.StockInfo.Common.Helper
 {
     public static class HtmlHelper
     {

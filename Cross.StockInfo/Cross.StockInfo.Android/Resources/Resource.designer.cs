@@ -66,6 +66,12 @@ namespace Cross.StockInfo.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_others_label = global::Cross.StockInfo.Droid.Resource.String.sfchart_others_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::Cross.StockInfo.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::Cross.StockInfo.Droid.Resource.String.week;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.Layout.ScrollViewer = global::Cross.StockInfo.Droid.Resource.Layout.ScrollViewer;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.String.cancel_drop = global::Cross.StockInfo.Droid.Resource.String.cancel_drop;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.String.drop_above = global::Cross.StockInfo.Droid.Resource.String.drop_above;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.String.drop_below = global::Cross.StockInfo.Droid.Resource.String.drop_below;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.String.library_name = global::Cross.StockInfo.Droid.Resource.String.library_name;
+			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.String.load_more_items = global::Cross.StockInfo.Droid.Resource.String.load_more_items;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Cross.StockInfo.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -4040,25 +4046,28 @@ namespace Cross.StockInfo.Droid
 			public const int range_navigator_layout = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int select_dialog_item_material = 2130968641;
+			public const int ScrollViewer = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int select_dialog_multichoice_material = 2130968642;
+			public const int select_dialog_item_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int select_dialog_singlechoice_material = 2130968643;
+			public const int select_dialog_multichoice_material = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int support_simple_spinner_dropdown_item = 2130968644;
+			public const int select_dialog_singlechoice_material = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int Tabbar = 2130968645;
+			public const int support_simple_spinner_dropdown_item = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int Toolbar = 2130968646;
+			public const int Tabbar = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int tooltip = 2130968647;
+			public const int Toolbar = 2130968647;
+			
+			// aapt resource value: 0x7f040048
+			public const int tooltip = 2130968648;
 			
 			static Layout()
 			{
@@ -4188,8 +4197,23 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a0034
 			public const int bottom_sheet_behavior = 2131361844;
 			
+			// aapt resource value: 0x7f0a003e
+			public const int cancel_drop = 2131361854;
+			
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int drop_above = 2131361855;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int drop_below = 2131361856;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int library_name = 2131361852;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int load_more_items = 2131361853;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
@@ -4269,38 +4293,38 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a003a
 			public const int path_password_strike_through = 2131361850;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int q = 2131361853;
+			// aapt resource value: 0x7f0a0042
+			public const int q = 2131361858;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int quarter = 2131361852;
+			// aapt resource value: 0x7f0a0041
+			public const int quarter = 2131361857;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int search_menu_title = 2131361830;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int sfchart_close_label = 2131361859;
+			// aapt resource value: 0x7f0a0048
+			public const int sfchart_close_label = 2131361864;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int sfchart_high_label = 2131361856;
+			// aapt resource value: 0x7f0a0045
+			public const int sfchart_high_label = 2131361861;
 			
-			// aapt resource value: 0x7f0a0041
-			public const int sfchart_low_label = 2131361857;
+			// aapt resource value: 0x7f0a0046
+			public const int sfchart_low_label = 2131361862;
 			
-			// aapt resource value: 0x7f0a0042
-			public const int sfchart_open_label = 2131361858;
+			// aapt resource value: 0x7f0a0047
+			public const int sfchart_open_label = 2131361863;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int sfchart_others_label = 2131361860;
+			// aapt resource value: 0x7f0a0049
+			public const int sfchart_others_label = 2131361865;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int status_bar_notification_info_overflow = 2131361851;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int w = 2131361855;
+			// aapt resource value: 0x7f0a0044
+			public const int w = 2131361860;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int week = 2131361854;
+			// aapt resource value: 0x7f0a0043
+			public const int week = 2131361859;
 			
 			static String()
 			{

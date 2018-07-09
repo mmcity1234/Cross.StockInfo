@@ -1,4 +1,4 @@
-﻿using Cross.StockInfo.Model.ProductIndex;
+﻿using Cross.StockInfo.ViewModels.Chart;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,9 +13,9 @@ namespace Cross.StockInfo.Services.Product
     public abstract class FubonProduct : BaseProduct
     {     
 
-        protected override List<ProductIndexData> ProcessData(string result)
+        protected override List<DataPoint> ProcessData(string result)
         {
-            List<ProductIndexData> productIndexList = new List<ProductIndexData>();
+            List<DataPoint> productIndexList = new List<DataPoint>();
             if (string.IsNullOrEmpty(result) && !result.Contains(" "))
                 return productIndexList;
 
@@ -24,16 +24,16 @@ namespace Cross.StockInfo.Services.Product
             string[] dateArray = rawData[0].Split(',');
             string[] valueArray = rawData[1].Split(',');
 
-            ProductIndexData previousData = null;
+            DataPoint previousData = null;
             for (int i = 0; i < dateArray.Length && i < valueArray.Length; i++)
             {
                 double currentValue = Convert.ToDouble(valueArray[i]);
-                ProductIndexData currentIndexData = new ProductIndexData
+                DataPoint currentIndexData = new DataPoint
                 {
                     Time = DateTime.ParseExact(dateArray[i], "yyyMMdd", CultureInfo.InvariantCulture).AddYears(1911),
                     Value = currentValue,
-                    ChangeRange = previousData == null ? 0 : currentValue - previousData.Value,
-                    ChangeRangePercentage = previousData == null ? 0 : Math.Round((currentValue - previousData.Value) / previousData.Value * 100, 2)
+                    ChangeValue = previousData == null ? 0 : currentValue - previousData.Value,
+                    ChangeValuePercentage = previousData == null ? 0 : Math.Round((currentValue - previousData.Value) / previousData.Value * 100, 2)
                 };
 
                 previousData = currentIndexData;

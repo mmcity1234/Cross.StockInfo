@@ -1,5 +1,5 @@
 ﻿using Core.Utility.Network;
-using Cross.StockInfo.Model.ProductIndex;
+using Cross.StockInfo.ViewModels.Chart;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,10 +20,10 @@ namespace Cross.StockInfo.Services.Product
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        protected abstract List<ProductIndexData> ProcessData(string result);
+        protected abstract List<DataPoint> ProcessData(string result);
       
 
-        public virtual async Task<List<ProductIndexData>> GetHistoricalReportTaskAsync(DateTime start, DateTime end)
+        public virtual async Task<List<DataPoint>> GetHistoricalReportTaskAsync(DateTime start, DateTime end)
         {
             string prodcutUrl = GetUrl();            
             string result = await RestApi.GetContentTaskAsync(GetUrl());

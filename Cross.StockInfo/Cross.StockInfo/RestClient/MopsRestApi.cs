@@ -1,5 +1,5 @@
 ﻿using Core.Utility.Network;
-using Cross.StockInfo.Helper;
+using Cross.StockInfo.Common.Helper;
 using Cross.StockInfo.Model.Mops;
 using System;
 using System.Collections.Generic;

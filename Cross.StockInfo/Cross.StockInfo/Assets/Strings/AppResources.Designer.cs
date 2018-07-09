@@ -88,11 +88,38 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 歷史資料 的當地語系化字串。
+        /// </summary>
+        public static string BDIIndex_TabHistoricalReport {
+            get {
+                return ResourceManager.GetString("BDIIndex_TabHistoricalReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 總覽 的當地語系化字串。
+        /// </summary>
+        public static string BDIIndex_TabOverview {
+            get {
+                return ResourceManager.GetString("BDIIndex_TabOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 巴拿馬型(BPI) 的當地語系化字串。
         /// </summary>
         public static string BPIIndex_Label {
             get {
                 return ResourceManager.GetString("BPIIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 資料載入錯誤，請在下滑嘗試：{0} 的當地語系化字串。
+        /// </summary>
+        public static string Exception_LoadDataError {
+            get {
+                return ResourceManager.GetString("Exception_LoadDataError", resourceCulture);
             }
         }
         
@@ -115,29 +142,47 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 幅度 的當地語系化字串。
+        ///   查詢類似 無法在資源字典(ResourceDicionary)找到此資源 [{0}] 的當地語系化字串。
         /// </summary>
-        public static string Stock_ChangePercentage {
+        public static string Exception_ResourceDictionaryKeyNotFound {
             get {
-                return ResourceManager.GetString("Stock_ChangePercentage", resourceCulture);
+                return ResourceManager.GetString("Exception_ResourceDictionaryKeyNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 漲跌 的當地語系化字串。
         /// </summary>
-        public static string Stock_ChangeRange {
+        public static string Global_ChangePrice {
             get {
-                return ResourceManager.GetString("Stock_ChangeRange", resourceCulture);
+                return ResourceManager.GetString("Global_ChangePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 漲跌 (%) 的當地語系化字串。
+        /// </summary>
+        public static string Global_ChangePricePercentage {
+            get {
+                return ResourceManager.GetString("Global_ChangePricePercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 日期 的當地語系化字串。
+        /// </summary>
+        public static string Global_Date {
+            get {
+                return ResourceManager.GetString("Global_Date", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查詢類似 價格 的當地語系化字串。
         /// </summary>
-        public static string Stock_Price {
+        public static string Global_Price {
             get {
-                return ResourceManager.GetString("Stock_Price", resourceCulture);
+                return ResourceManager.GetString("Global_Price", resourceCulture);
             }
         }
         

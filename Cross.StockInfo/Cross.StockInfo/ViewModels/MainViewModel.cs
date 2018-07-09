@@ -1,7 +1,7 @@
 ﻿using Cross.StockInfo.Common;
 using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.Services;
-using Cross.StockInfo.ViewModels.MasterDetail;
+using Cross.StockInfo.ViewModels.Control.MasterDetail;
 using Cross.StockInfo.Views.ProductIndex;
 using System;
 using System.Collections.Generic;

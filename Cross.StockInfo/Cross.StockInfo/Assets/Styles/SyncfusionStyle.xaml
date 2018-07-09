@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"      
+                    xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+                    x:Class="Cross.StockInfo.Assets.Styles.SyncfusionStyle">
+
+
+    <Color x:Key="LineChartTitleColor">#FF2F4F4F</Color>
+    <!-- Green -->
+    <Color x:Key="PriceUpColor">#009987</Color>
+    <!-- Red -->
+    <Color x:Key="PriceDownColor">#FF0000</Color>
+    <!-- Black-->
+    <Color x:Key="PriceUnchangedColor">#333333</Color>
+
+
+   
+
+
+
+</ResourceDictionary>
