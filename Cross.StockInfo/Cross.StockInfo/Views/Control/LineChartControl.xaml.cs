@@ -15,21 +15,47 @@ namespace Cross.StockInfo.Views.Control
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LineChartControl : UserControlView
     {
-        public static readonly BindableProperty ChartSeriesProperty = BindableProperty.Create(
-                "ChartSeries", 
+        public static readonly BindableProperty DataPointsProperty = BindableProperty.Create(
+                "DataPoints", 
                 typeof(ChartSeriesCollection),
                 typeof(LineChartControl),
                 defaultValue : new ChartSeriesCollection(),
                 defaultBindingMode: BindingMode.TwoWay,
-                propertyChanged: OnSeriesPropertyChanged);       
+                propertyChanged: OnDataPointsPropertyChanged);
 
-        public ChartSeriesCollection ChartSeries
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+              "Title",
+              typeof(string),
+              typeof(LineChartControl),
+              defaultValue: string.Empty,
+              defaultBindingMode: BindingMode.TwoWay,
+              propertyChanged: OnTitlePropertyChanged);
+
+
+        public ChartSeriesCollection DataPoints
         {
-            get => (ChartSeriesCollection)GetValue(ChartSeriesProperty);            
-            set => SetValue(ChartSeriesProperty, value);
+            get => (ChartSeriesCollection)GetValue(DataPointsProperty);            
+            set => SetValue(DataPointsProperty, value);
         }
-                     
-        public static void OnSeriesPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+
+        public string Title
+        {
+            get => (string)GetValue(TitleProperty);
+            set
+            {
+                SetValue(TitleProperty, value);     
+            }
+        }
+
+        public static void OnTitlePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = bindable as LineChartControl;
+            if (control == null)
+                return;
+           // control.chartLine.Series = newValue as ChartSeriesCollection;
+        }
+
+        public static void OnDataPointsPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = bindable as LineChartControl;
             if (control == null)

@@ -50,7 +50,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         public BDIIndexViewModel()
         {
             LineChart = new LineChartModel();
-            LineChart.Title = AppResources.BDIIndex_ChartTitle;      
+            //LineChart.Title = AppResources.BDIIndex_ChartTitle;      
 
         }
         public override async void OnPageLoading()

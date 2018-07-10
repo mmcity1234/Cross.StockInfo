@@ -25,7 +25,7 @@
                 <!--BDI Overview-->
                 <tabView:SfTabItem Title="{lang:Translate BDIIndex_TabOverview}">
                     <tabView:SfTabItem.Content>
-                        <control:LineChartControl ChartSeries = "{Binding LineChart.SeriesCollection}" />
+                        <control:LineChartControl DataPoints = "{Binding LineChart.SeriesCollection}" Title="{lang:Translate BDIIndex_ChartTitle}" />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Price History-->

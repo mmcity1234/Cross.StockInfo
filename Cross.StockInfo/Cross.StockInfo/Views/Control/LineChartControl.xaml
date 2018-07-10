@@ -31,10 +31,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{Binding ChartModel.LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>                
+                <Label Text="Binding LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>                
             </Grid>
 
-            <chart:SfChart Margin="0,0,15,0" Series="{Binding ChartSeries}" Grid.Row="1" x:Name="chartLine" >
+            <chart:SfChart Margin="0,0,15,0" Series="{Binding DataPoints}" Grid.Row="1" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
