@@ -66,8 +66,15 @@ namespace Cross.StockInfo.ViewModels
         /// <param name="pageType"></param>
         public void NavigateTo(Type pageType)
         {
-            (Application.Current.MainPage as MasterDetailPage).Detail =
-                new NavigationPage((Page)Activator.CreateInstance(pageType));
+            try
+            {
+                var page = new NavigationPage((Page)Activator.CreateInstance(pageType));
+                (Application.Current.MainPage as MasterDetailPage).Detail = page;
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
     }

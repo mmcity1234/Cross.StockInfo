@@ -19,24 +19,19 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <!--<control:LineChartControl BindingContext="{Binding LineChart}" />
-            <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" Grid.Row="1" />-->
+          
 
-            <tabView:SfTabView  DisplayMode="Text">
-                 <!--BDI Overview-->
+            <tabView:SfTabView DisplayMode="Text">
+                <!--BDI Overview-->
                 <tabView:SfTabItem Title="{lang:Translate BDIIndex_TabOverview}">
                     <tabView:SfTabItem.Content>
-                        <Grid BackgroundColor="Red"></Grid>
+                        <control:LineChartControl ChartSeries = "{Binding LineChart.SeriesCollection}" />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                 <!--Price History-->
+                <!--Price History-->
                 <tabView:SfTabItem Title="{lang:Translate BDIIndex_TabHistoricalReport}">
                     <tabView:SfTabItem.Content>
-                        <Grid>
-                            <!-- TabItem load事件要先呼叫 chart的load-->
-                            <control:LineChartControl BindingContext="{Binding LineChart}" />
-                            <!--<control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />-->
-                        </Grid>
+                        <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>

@@ -1,38 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<views:UserControlView xmlns:views="clr-namespace:Cross.StockInfo.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
-             x:Class="Cross.StockInfo.Views.Control.LineChartControl">
+             x:Class="Cross.StockInfo.Views.Control.LineChartControl"
+             >
     <ContentView.Resources>
         <ResourceDictionary>
             <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
         </ResourceDictionary>
         <Style x:Key="LatestPriceStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="30"/>           
             <Setter Property="TextColor" Value="{Binding Value, Converter={StaticResource priceColorConverter}}"/>
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+           
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{Binding LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>
+                <Label Text="{Binding ChartModel.LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>                
             </Grid>
 
-
-            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesCollection}"  >
+            <chart:SfChart Margin="0,0,15,0" Series="{Binding ChartSeries}" Grid.Row="1" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -65,4 +67,4 @@
             </chart:SfChart>
         </Grid>
     </ContentView.Content>
-</ContentView>
+</views:UserControlView>

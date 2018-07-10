@@ -48,10 +48,10 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
 
         public BDIIndexViewModel()
-        {         
+        {
             LineChart = new LineChartModel();
-            LineChart.Title = AppResources.BDIIndex_ChartTitle;
-            
+            LineChart.Title = AppResources.BDIIndex_ChartTitle;      
+
         }
         public override async void OnPageLoading()
         {
@@ -59,6 +59,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             {
                 try
                 {
+                 
                     var bdiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BdiIndex");
                     var bpiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BpiIndex");
 
@@ -67,7 +68,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                     var filterBdi = bdiIndexList.OrderByDescending(x => x.Time).Take(60);
 
                     PriceContorlModel = new DailyPriceControlModel { DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
-
+                    LineChart.LatestPrice = 122;
                     _isLoaded = true;
                 } 
                 catch(Exception e)

@@ -15,8 +15,9 @@ namespace Cross.StockInfo.Views.ProductIndex
 	{
 		public BDIIndexView ()
 		{
-			InitializeComponent ();
             DataBinding<BDIIndexViewModel>();
-		}
-	}
+            InitializeComponent ();
+          
+        }
+    }
 }

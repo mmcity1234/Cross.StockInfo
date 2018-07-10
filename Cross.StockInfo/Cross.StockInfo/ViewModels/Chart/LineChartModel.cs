@@ -12,21 +12,32 @@ namespace Cross.StockInfo.ViewModels.Chart
     {
         private string _title = "Undefined";
         private double _latestPrice;
+        private ChartSeriesCollection _seriesCollection;
 
         #region Property
 
         /// <summary>
         /// 目前最新的成交價
         /// </summary>
-        public double LatestPrice { get => _latestPrice;
+        public double LatestPrice
+        {
+            get => _latestPrice;
             set
             {
                 _latestPrice = value;
-                OnPropertyChanged();              
+                OnPropertyChanged();
             }
         }
 
-        public ChartSeriesCollection SeriesCollection { get; set; }
+        public ChartSeriesCollection SeriesCollection
+        {
+            get => _seriesCollection;
+            set
+            {
+                _seriesCollection = value;
+                OnPropertyChanged();
+            }
+        }
         public string Title
         {
             get => _title;
