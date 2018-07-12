@@ -12,7 +12,9 @@ namespace Cross.StockInfo.ViewModels.Chart
     {
         private string _title = "Undefined";
         private double _latestPrice;
-        private ChartSeriesCollection _seriesCollection;
+        private ChartSeriesCollection _seriesData;
+        private string _changedPrice;
+        private string _changedPricePercentage;
 
         #region Property
 
@@ -29,12 +31,12 @@ namespace Cross.StockInfo.ViewModels.Chart
             }
         }
 
-        public ChartSeriesCollection SeriesCollection
+        public ChartSeriesCollection SeriesData
         {
-            get => _seriesCollection;
+            get => _seriesData;
             set
             {
-                _seriesCollection = value;
+                _seriesData = value;
                 OnPropertyChanged();
             }
         }
@@ -48,15 +50,44 @@ namespace Cross.StockInfo.ViewModels.Chart
             }
         }
 
+        public string ChangedPrice
+        {
+            get => _changedPrice;
+            set
+            {
+                _changedPrice = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ChangedPricePercentage
+        {
+            get => _changedPricePercentage;
+            set
+            {
+                _changedPricePercentage = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         public LineChartModel()
         {
-            SeriesCollection = new ChartSeriesCollection();
+            SeriesData = new ChartSeriesCollection();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="dataPoints"></param>
+        /// <param name="isVisible"></param>
         public void AddSeries(string label, List<DataPoint> dataPoints, bool isVisible = true)
         {
+            if (dataPoints == null)
+                return;
+
             var lineSeries = new FastLineSeries()
             {
                 IsVisible = isVisible,
@@ -65,7 +96,27 @@ namespace Cross.StockInfo.ViewModels.Chart
                 XBindingPath = "Time",
                 YBindingPath = "Value"
             };
-            SeriesCollection.Add(lineSeries);
+            SeriesData.Add(lineSeries);
         }
+
+        /// <summary>
+        /// Add the primary line data to the chart and show the info on the char control
+        /// </summary>
+        public void AddPrimarySeries(string label, List<DataPoint> dataPoints)
+        {            
+            AddSeries(label, dataPoints, true);
+            if (dataPoints != null && dataPoints.Count > 0)
+            {
+               
+                var latestPoint = dataPoints[dataPoints.Count - 1];
+                string prefix = latestPoint.Value >= 0 ? "+" : "-"; 
+                LatestPrice = latestPoint.Value;
+                ChangedPrice = prefix + Convert.ToString(latestPoint.ChangeValue);
+                ChangedPricePercentage = prefix + Convert.ToString(latestPoint.ChangeValuePercentage) + "%";
+            }
+
+        }
+
+
     }
 }

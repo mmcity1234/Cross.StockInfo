@@ -1,4 +1,6 @@
-﻿using Cross.StockInfo.ViewModels.Chart;
+﻿using Cross.StockInfo.Assets.Styles;
+using Cross.StockInfo.Common.Helper;
+using Cross.StockInfo.ViewModels.Chart;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
@@ -12,60 +14,147 @@ using Xamarin.Forms.Xaml;
 
 namespace Cross.StockInfo.Views.Control
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LineChartControl : UserControlView
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LineChartControl : UserControlView
     {
-        public static readonly BindableProperty DataPointsProperty = BindableProperty.Create(
-                "DataPoints", 
+        /// <summary>
+        /// 歷史資料點
+        /// </summary>
+        public static readonly BindableProperty SeriesDataProperty = BindableProperty.Create(
+                "SeriesData",
                 typeof(ChartSeriesCollection),
                 typeof(LineChartControl),
-                defaultValue : new ChartSeriesCollection(),
+                defaultValue: new ChartSeriesCollection(),
                 defaultBindingMode: BindingMode.TwoWay,
-                propertyChanged: OnDataPointsPropertyChanged);
+                propertyChanged: OnSeriesDataPropertyChanged);
 
+
+        /// <summary>
+        /// 圖表標題
+        /// </summary>
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
-              "Title",
-              typeof(string),
-              typeof(LineChartControl),
-              defaultValue: string.Empty,
-              defaultBindingMode: BindingMode.TwoWay,
-              propertyChanged: OnTitlePropertyChanged);
+                "Title",
+                typeof(string),
+                typeof(LineChartControl),
+                defaultValue: string.Empty,
+                defaultBindingMode: BindingMode.OneWay);
+        /// <summary>
+        /// 最近成交價
+        /// </summary>
+        public static readonly BindableProperty LatestPriceProperty = BindableProperty.Create(
+               "LatestPrice",
+               typeof(string),
+               typeof(LineChartControl),
+               defaultValue: string.Empty,
+               defaultBindingMode: BindingMode.OneWay,
+               propertyChanged: OnLatestPricePropertyChanged);
 
+        /// <summary>
+        /// 漲跌價
+        /// </summary>
+        public static readonly BindableProperty ChangedPriceProperty = BindableProperty.Create(
+                "ChangedPrice",
+                typeof(string),
+                typeof(LineChartControl),
+                defaultValue: string.Empty,
+                defaultBindingMode: BindingMode.OneWay,
+                propertyChanged: OnChangedPricePropertyChanged);
+        /// <summary>
+        /// 漲跌幅
+        /// </summary>
+        public static readonly BindableProperty ChangedPricePercentageProperty = BindableProperty.Create(
+                "ChangedPricePercentage",
+                typeof(string),
+                typeof(LineChartControl),
+                defaultValue: string.Empty,
+                defaultBindingMode: BindingMode.OneWay,
+                propertyChanged: OnChangedPricePercentagePropertyChanged);
 
-        public ChartSeriesCollection DataPoints
+        public static readonly BindableProperty TimeFormatProperty = BindableProperty.Create(
+               "TimeFormat",
+               typeof(string),
+               typeof(LineChartControl),
+               defaultValue: "yyyy/MM/dd",
+               defaultBindingMode: BindingMode.OneWay);
+
+        public ChartSeriesCollection SeriesData
         {
-            get => (ChartSeriesCollection)GetValue(DataPointsProperty);            
-            set => SetValue(DataPointsProperty, value);
+            get => (ChartSeriesCollection)GetValue(SeriesDataProperty);
+            set => SetValue(SeriesDataProperty, value);
         }
 
         public string Title
         {
             get => (string)GetValue(TitleProperty);
-            set
+            set => SetValue(TitleProperty, value);
+        }
+
+        public string LatestPrice
+        {
+            get => (string)GetValue(LatestPriceProperty);
+            set => SetValue(LatestPriceProperty, value);
+        }
+
+        public string ChangedPrice
+        {
+            get => (string)GetValue(ChangedPriceProperty);
+            set => SetValue(ChangedPriceProperty, value);
+
+        }
+        public string ChangedPricePercentage
+        {
+            get => (string)GetValue(ChangedPricePercentageProperty);
+            set => SetValue(ChangedPricePercentageProperty, value);
+        }
+        public string TimeFormat
+        {
+            get => (string)GetValue(TimeFormatProperty);
+            set => SetValue(TimeFormatProperty, value);
+        }
+
+        public static void OnLatestPricePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x => x.latestPriceLabel.Text = newValue as string);
+        }
+
+        public static void OnSeriesDataPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x => x.chartLine.Series = newValue as ChartSeriesCollection);
+        }
+
+        private static void OnChangedPricePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x =>
             {
-                SetValue(TitleProperty, value);     
-            }
+                x.changedPriceLabel.Text = newValue as string;
+                double value;
+                if (newValue != null && double.TryParse((string)newValue, out value))
+                {
+                    x.changedPriceLabel.TextColor = value >= 0 ? ResourceDictionaryHelper.GetResource<Color>("PriceUpColor") :
+                       ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
+                }
+            });
+
+        }
+        private static void OnChangedPricePercentagePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x =>
+            {
+                x.changedPricePercentageLabel.Text = newValue as string;               
+                double value;               
+                if (newValue != null)
+                {
+                    string origValueString = ((string)newValue).Replace("%", string.Empty);
+                    double.TryParse(origValueString, out value);
+                    x.changedPricePercentageLabel.TextColor = value >= 0 ? ResourceDictionaryHelper.GetResource<Color>("PriceUpColor") :
+                       ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
+                }
+            });
         }
 
-        public static void OnTitlePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = bindable as LineChartControl;
-            if (control == null)
-                return;
-           // control.chartLine.Series = newValue as ChartSeriesCollection;
-        }
-
-        public static void OnDataPointsPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = bindable as LineChartControl;
-            if (control == null)
-                return;
-            control.chartLine.Series = newValue as ChartSeriesCollection;
-        }
-      
         public LineChartControl()
-		{       
-			InitializeComponent ();          
+        {
+            InitializeComponent();
         }
 
         protected override void OnChildAdded(Element child)

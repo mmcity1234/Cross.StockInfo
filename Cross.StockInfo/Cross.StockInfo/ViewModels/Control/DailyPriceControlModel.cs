@@ -9,7 +9,7 @@ namespace Cross.StockInfo.ViewModels.Control
     public class DailyPriceControlModel
     {
         public ObservableCollection<DataPoint> DataPoints { get; set; }
-      
 
+        public string Title { get; set; }
     }
 }

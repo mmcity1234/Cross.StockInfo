@@ -20,13 +20,16 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <datagrid:SfDataGrid AutoGenerateColumns="False" ItemsSource="{Binding DataPoints}" GridStyle="{StaticResource lightGray}">
+            <Label Text="{Binding Title}" HorizontalTextAlignment="Center" />
+
+
+            <datagrid:SfDataGrid AutoGenerateColumns="False" ItemsSource="{Binding DataPoints}" GridStyle="{StaticResource lightGray}" Grid.Row="1">
                 <datagrid:SfDataGrid.Resources>
                     <Style TargetType="Label">
                         <Setter Property="FontAttributes" Value="Bold"/>

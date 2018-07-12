@@ -25,13 +25,20 @@
                 <!--BDI Overview-->
                 <tabView:SfTabItem Title="{lang:Translate BDIIndex_TabOverview}">
                     <tabView:SfTabItem.Content>
-                        <control:LineChartControl DataPoints = "{Binding LineChart.SeriesCollection}" Title="{lang:Translate BDIIndex_ChartTitle}" />
+                        <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}" 
+                                                  LatestPrice="{Binding LineChart.LatestPrice}" 
+                                                  ChangedPrice="{Binding LineChart.ChangedPrice}"
+                                                  ChangedPricePercentage="{Binding LineChart.ChangedPricePercentage}" 
+                                                  Title="{lang:Translate BDIIndex_ChartTitle}"
+                                                />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Price History-->
                 <tabView:SfTabItem Title="{lang:Translate BDIIndex_TabHistoricalReport}">
                     <tabView:SfTabItem.Content>
+                        <Grid>
                         <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />
+                        </Grid>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>

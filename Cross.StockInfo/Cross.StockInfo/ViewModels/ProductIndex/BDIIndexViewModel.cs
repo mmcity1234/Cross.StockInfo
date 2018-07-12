@@ -64,11 +64,11 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                     var bpiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BpiIndex");
 
                     AddSeries(AppResources.BDIIndex_Label, bdiIndexList);
-                    AddSeries(AppResources.BPIIndex_Label, bpiIndexList, false);
+                    AddSeries(AppResources.BPIIndex_Label, bpiIndexList, isPrimary: false, isVisible: false);
                     var filterBdi = bdiIndexList.OrderByDescending(x => x.Time).Take(60);
 
-                    PriceContorlModel = new DailyPriceControlModel { DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
-                    LineChart.LatestPrice = 122;
+                    PriceContorlModel = new DailyPriceControlModel { Title = AppResources.BDIIndex_Label, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
+               
                     _isLoaded = true;
                 } 
                 catch(Exception e)
@@ -78,10 +78,13 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
 
-        private void AddSeries(string title, List<DataPoint> dataList, bool isVisible = true)
+        private void AddSeries(string title, List<DataPoint> dataList, bool isPrimary = true, bool isVisible = true)
         {
             var dataPoints = dataList.Select(x => new DataPoint(x.Time, x.Value, x.ChangeValue, x.ChangeValuePercentage)).ToList();
-            LineChart.AddSeries(title, dataPoints, isVisible);
-        }
+            if (isPrimary)
+                LineChart.AddPrimarySeries(title, dataPoints);
+            else
+                LineChart.AddSeries(title, dataPoints, isVisible);
+        }           
     }
 }

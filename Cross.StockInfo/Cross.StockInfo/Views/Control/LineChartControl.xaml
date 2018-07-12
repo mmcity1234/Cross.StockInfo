@@ -9,11 +9,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
-        </ResourceDictionary>
-        <Style x:Key="LatestPriceStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="30"/>           
-            <Setter Property="TextColor" Value="{Binding Value, Converter={StaticResource priceColorConverter}}"/>
-        </Style>
+        </ResourceDictionary>      
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
@@ -31,10 +27,15 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Binding LatestPrice}" Style="{StaticResource LatestPriceStyle}"/>                
+                <Label Text="{Binding LatestPrice}" x:Name="latestPriceLabel" FontSize="24" Grid.RowSpan="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="10,10,10,0"/>
+
+                <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" Grid.Row="1" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+
+                
             </Grid>
 
-            <chart:SfChart Margin="0,0,15,0" Series="{Binding DataPoints}" Grid.Row="1" x:Name="chartLine" >
+            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesData}" Grid.Row="1" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -42,7 +43,7 @@
                 <chart:SfChart.PrimaryAxis >
                     <chart:DateTimeAxis IntervalType="Days" EnableAutoIntervalOnZooming="True" >
                         <chart:DateTimeAxis.LabelStyle>
-                            <chart:ChartAxisLabelStyle LabelFormat="yyyy/MM"/>
+                            <chart:ChartAxisLabelStyle LabelFormat="{Binding TimeFormat}"/>
                         </chart:DateTimeAxis.LabelStyle>
                     </chart:DateTimeAxis>
                 </chart:SfChart.PrimaryAxis>
