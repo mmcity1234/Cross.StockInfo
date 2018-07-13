@@ -6,9 +6,9 @@
 
     <Color x:Key="LineChartTitleColor">#FF2F4F4F</Color>
     <!-- Green -->
-    <Color x:Key="PriceUpColor">#009987</Color>
+    <Color x:Key="PriceDownColor">#009987</Color>
     <!-- Red -->
-    <Color x:Key="PriceDownColor">#FF0000</Color>
+    <Color x:Key="PriceUpColor">#FF0000</Color>
     <!-- Black-->
     <Color x:Key="PriceUnchangedColor">#333333</Color>
 

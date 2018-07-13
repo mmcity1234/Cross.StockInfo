@@ -1,7 +1,7 @@
 ﻿using Cross.StockInfo.Assets.Strings;
 using Cross.StockInfo.RestClient;
 using Cross.StockInfo.Services.Product;
-using Cross.StockInfo.ViewModels.Chart;
+using Cross.StockInfo.ViewModels.Control.Chart;
 using System;
 using System.Collections.Generic;
 using System.Text;

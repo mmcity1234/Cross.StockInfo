@@ -1,4 +1,4 @@
-﻿using Cross.StockInfo.ViewModels.Chart;
+﻿using Cross.StockInfo.ViewModels.Control.Chart;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using System.Linq;
 using Cross.StockInfo.Common.Helper;
 
-namespace Cross.StockInfo.ViewModels.Control.DataGrid
+namespace Cross.StockInfo.Views.Control.DataGrid
 {
     public class DefaultGridStyle : DataGridStyle
     {

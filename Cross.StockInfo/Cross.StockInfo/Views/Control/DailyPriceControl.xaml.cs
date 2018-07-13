@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cross.StockInfo.Views.Control.DataGrid;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Cross.StockInfo.Views.Control
 		public DailyPriceControl ()
 		{
 			InitializeComponent ();
-		}
+         
+       
+        }
 	}
 }

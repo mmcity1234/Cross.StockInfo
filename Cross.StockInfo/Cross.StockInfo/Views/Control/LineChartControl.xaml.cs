@@ -1,6 +1,6 @@
 ﻿using Cross.StockInfo.Assets.Styles;
 using Cross.StockInfo.Common.Helper;
-using Cross.StockInfo.ViewModels.Chart;
+using Cross.StockInfo.ViewModels.Control.Chart;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;

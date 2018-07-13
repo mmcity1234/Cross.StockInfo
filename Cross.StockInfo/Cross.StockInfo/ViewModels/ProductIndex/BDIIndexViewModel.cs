@@ -1,5 +1,5 @@
 ﻿using Cross.StockInfo.Services;
-using Cross.StockInfo.ViewModels.Chart;
+using Cross.StockInfo.ViewModels.Control.Chart;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -46,7 +46,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
         #endregion
 
-
+         
         public BDIIndexViewModel()
         {
             LineChart = new LineChartModel();

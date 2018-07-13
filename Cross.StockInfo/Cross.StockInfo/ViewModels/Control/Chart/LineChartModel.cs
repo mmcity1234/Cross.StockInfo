@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Cross.StockInfo.ViewModels.Chart
+namespace Cross.StockInfo.ViewModels.Control.Chart
 {
     public class LineChartModel : BaseViewModel
     {
@@ -108,11 +108,10 @@ namespace Cross.StockInfo.ViewModels.Chart
             if (dataPoints != null && dataPoints.Count > 0)
             {
                
-                var latestPoint = dataPoints[dataPoints.Count - 1];
-                string prefix = latestPoint.Value >= 0 ? "+" : "-"; 
+                var latestPoint = dataPoints[dataPoints.Count - 1];            
                 LatestPrice = latestPoint.Value;
-                ChangedPrice = prefix + Convert.ToString(latestPoint.ChangeValue);
-                ChangedPricePercentage = prefix + Convert.ToString(latestPoint.ChangeValuePercentage) + "%";
+                ChangedPrice = latestPoint.ChangeValueLabel;
+                ChangedPricePercentage = latestPoint.ChangeValuePercentageLabel;
             }
 
         }
