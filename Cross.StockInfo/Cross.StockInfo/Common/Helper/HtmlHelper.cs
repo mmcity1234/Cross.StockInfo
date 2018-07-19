@@ -43,14 +43,19 @@ namespace Cross.StockInfo.Common.Helper
 
         public static List<T> DescendantsPath<T>(string html, string xpath, Func<HtmlNode, T> selector)
         {
+            return DescendantsPath(html, xpath, x => true, selector);
+        }
+
+        public static List<T> DescendantsPath<T>(string html, string xpath, Func<HtmlNode, bool> condition, Func<HtmlNode, T> selector)
+        {
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
 
-            var results = doc.DocumentNode.SelectNodes(xpath);             
-            
-            return results == null 
-                ? new List<T>() 
-                : results.Select(selector).ToList();
+            var results = doc.DocumentNode.SelectNodes(xpath);
+
+            return results == null
+                ? new List<T>()
+                : results.Where(condition).Select(selector).ToList();
         }
     }
 }
