@@ -1,14 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:TabViewPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.Views.News.NewsView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+    <ContentPage  Title="Tab 1" >
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Welcome to Gold"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</views:ViewPage>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Tab 2" >
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Welcome to HELLO2"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Tab 3" >
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="JSIJDGIJIHREOGIOHEGI"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</views:TabViewPage>

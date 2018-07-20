@@ -7,13 +7,13 @@ using Xamarin.Forms;
 
 namespace Cross.StockInfo.Views
 {
-    public class ViewPage : ContentPage
+    public class TabViewPage : TabbedPage
     {
         public IViewModel ViewModel { get; set; }
-        public ViewPage() : base() { }
+        public TabViewPage() : base() { }
 
         public void DataBinding<T>() where T : class, IViewModel
-        {          
+        {
             try
             {
                 // Binding view model

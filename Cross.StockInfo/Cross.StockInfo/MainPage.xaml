@@ -6,6 +6,7 @@
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"              
              xmlns:view="clr-namespace:Cross.StockInfo.Views"
              xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
+             xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.MainPage"
              IsPresented="{Binding IsShowMasterDetail}" >
@@ -38,7 +39,7 @@
 
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type model:MasterPageMenuItem}">                            
-                            <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type productIndex:OilIndexView}" />
+                            <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
                             <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
                             <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
                         </x:Array>

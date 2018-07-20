@@ -10,8 +10,8 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.News
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsView : ViewPage
-	{
+	public partial class NewsView : TabViewPage
+    {
 		public NewsView ()
 		{
 			InitializeComponent ();
