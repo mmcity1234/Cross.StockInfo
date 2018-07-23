@@ -187,6 +187,78 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 全部 的當地語系化字串。
+        /// </summary>
+        public static string News_All_TabTile {
+            get {
+                return ResourceManager.GetString("News_All_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 美股 的當地語系化字串。
+        /// </summary>
+        public static string News_AmericanStock_TabTile {
+            get {
+                return ResourceManager.GetString("News_AmericanStock_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 產業 的當地語系化字串。
+        /// </summary>
+        public static string News_Industry_TabTile {
+            get {
+                return ResourceManager.GetString("News_Industry_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 國際 的當地語系化字串。
+        /// </summary>
+        public static string News_International_TabTile {
+            get {
+                return ResourceManager.GetString("News_International_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 商品原物料 的當地語系化字串。
+        /// </summary>
+        public static string News_Product_TabTile {
+            get {
+                return ResourceManager.GetString("News_Product_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 研究報告 的當地語系化字串。
+        /// </summary>
+        public static string News_Research_TabTile {
+            get {
+                return ResourceManager.GetString("News_Research_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 台股 的當地語系化字串。
+        /// </summary>
+        public static string News_TaiwanStock_TabTile {
+            get {
+                return ResourceManager.GetString("News_TaiwanStock_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 即時 的當地語系化字串。
+        /// </summary>
+        public static string News_Topic_TabTile {
+            get {
+                return ResourceManager.GetString("News_Topic_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 輕便型(Supramax) 的當地語系化字串。
         /// </summary>
         public static string SupermaxIndex_Label {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Cross.StockInfo.Model.News
@@ -16,5 +17,10 @@ namespace Cross.StockInfo.Model.News
         /// </summary>
         public string Publish { get; set; }
         public DateTime Time { get; set; }
+
+        public string TimeLabel
+        {
+            get => Time.ToString(CultureInfo.InvariantCulture);
+        }
     }
 }

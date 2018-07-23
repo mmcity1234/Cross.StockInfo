@@ -3,32 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
-             x:Class="Cross.StockInfo.Views.News.NewsView">
-    <ContentPage  Title="Tab 1" >
-        <ContentPage.Content>
-            <StackLayout>
-                <Label Text="Welcome to Gold"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-    <ContentPage Title="Tab 2" >
-        <ContentPage.Content>
-            <StackLayout>
-                <Label Text="Welcome to HELLO2"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-    <ContentPage Title="Tab 3" >
-        <ContentPage.Content>
-            <StackLayout>
-                <Label Text="JSIJDGIJIHREOGIOHEGI"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
+             x:Class="Cross.StockInfo.Views.News.NewsView" ItemsSource="{Binding TabItemSources}">
+    <TabbedPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage Title="{Binding Title}" >
+                <ListView ItemsSource="{Binding NewsItemSources}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Atuo"/>
+                                    <ColumnDefinition Width="Atuo"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Title}" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding Publish}" Grid.Row="1"/>
+                                <Label Text="{Binding TimeLabel}" Grid.Row="1" Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ContentPage>
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
+
 </views:TabViewPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cross.StockInfo.ViewModels.News;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Cross.StockInfo.Views.News
 		public NewsView ()
 		{
 			InitializeComponent ();
+            DataBinding<NewsViewModel>();
 		}
 	}
 }

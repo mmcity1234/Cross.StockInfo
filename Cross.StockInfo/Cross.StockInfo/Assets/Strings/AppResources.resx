@@ -159,6 +159,30 @@
   <data name="Global_Price" xml:space="preserve">
     <value>價格</value>
   </data>
+  <data name="News_All_TabTile" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="News_AmericanStock_TabTile" xml:space="preserve">
+    <value>美股</value>
+  </data>
+  <data name="News_Industry_TabTile" xml:space="preserve">
+    <value>產業</value>
+  </data>
+  <data name="News_International_TabTile" xml:space="preserve">
+    <value>國際</value>
+  </data>
+  <data name="News_Product_TabTile" xml:space="preserve">
+    <value>商品原物料</value>
+  </data>
+  <data name="News_Research_TabTile" xml:space="preserve">
+    <value>研究報告</value>
+  </data>
+  <data name="News_TaiwanStock_TabTile" xml:space="preserve">
+    <value>台股</value>
+  </data>
+  <data name="News_Topic_TabTile" xml:space="preserve">
+    <value>即時</value>
+  </data>
   <data name="SupermaxIndex_Label" xml:space="preserve">
     <value>輕便型(Supramax)</value>
   </data>

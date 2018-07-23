@@ -53,6 +53,6 @@ namespace Cross.StockInfo.Model.News
         /// 研究報告
         /// </summary>
         [Description("MB090000")]
-        Reasearch
+        Research
     }
 }
