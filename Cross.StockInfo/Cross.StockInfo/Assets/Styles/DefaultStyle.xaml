@@ -7,5 +7,14 @@
     <Color x:Key="DarkGrayColor_ColumnHeader">#646464</Color>
 
 
+    <Style TargetType="Label" x:Key="DescriptionLabelStyle">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="LightGray"></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="MainLabelStyle">
+        <Setter Property="FontSize" Value="18"/>
+        <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+    </Style>
 
 </ResourceDictionary>

@@ -11,11 +11,20 @@ namespace Cross.StockInfo.ViewModels.News
 {
     public class NewsViewModel : BaseViewModel
     {
+        private NewsTabCollection _tabItemSources;
         #region Injection
         public INewsReaderService NewsService { get; set; }
         #endregion
 
-        public NewsTabCollection TabItemSources { get; set; }
+        public NewsTabCollection TabItemSources
+        {
+            get => _tabItemSources;
+            set
+            {
+                _tabItemSources = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public NewsViewModel()
@@ -41,7 +50,7 @@ namespace Cross.StockInfo.ViewModels.News
             var allNews = await NewsService.ListNewsTaskAsync(1, allTypeName);
 
             var tabItem = TabItemSources.FindTabItem(allTypeName);
-            if(tabItem != null)
+            if (tabItem != null)
             {
                 tabItem.AddNewsItems(allNews);
             }

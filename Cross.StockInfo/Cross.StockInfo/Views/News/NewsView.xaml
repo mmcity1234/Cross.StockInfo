@@ -4,27 +4,33 @@
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.Views.News.NewsView" ItemsSource="{Binding TabItemSources}">
+  
+    <TabbedPage.Resources>
+        <DataTemplate x:Key="newsListViewItemTemplate">
+            <ViewCell>
+                <ViewCell.View>
+                    <Grid  Margin="10,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Title}" Grid.ColumnSpan="2" Style="{StaticResource MainLabelStyle}"/>
+                        <Label Text="{Binding Publish}" Grid.Row="1" Style="{StaticResource DescriptionLabelStyle}"/>
+                        <Label Text="{Binding TimeLabel}" Grid.Row="1" Grid.Column="1" Style="{StaticResource DescriptionLabelStyle}"/>
+                    </Grid>
+                </ViewCell.View>
+            </ViewCell>
+        </DataTemplate>
+    </TabbedPage.Resources>
     <TabbedPage.ItemTemplate>
         <DataTemplate>
             <ContentPage Title="{Binding Title}" >
-                <ListView ItemsSource="{Binding NewsItemSources}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Atuo"/>
-                                    <ColumnDefinition Width="Atuo"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Title}" Grid.ColumnSpan="2"/>
-                                <Label Text="{Binding Publish}" Grid.Row="1"/>
-                                <Label Text="{Binding TimeLabel}" Grid.Row="1" Grid.Column="1"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                <ListView ItemsSource="{Binding NewsItemSources}" ItemTemplate="{StaticResource newsListViewItemTemplate}">
+                   
                 </ListView>
             </ContentPage>
         </DataTemplate>
