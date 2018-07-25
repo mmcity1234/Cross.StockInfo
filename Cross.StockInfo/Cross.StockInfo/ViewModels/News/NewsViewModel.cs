@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
+using Cross.StockInfo.Common;
+using Xamarin.Forms;
+
 namespace Cross.StockInfo.ViewModels.News
 {
     public class NewsViewModel : BaseViewModel
@@ -26,6 +29,8 @@ namespace Cross.StockInfo.ViewModels.News
             }
         }
 
+        public DelegateCommand<SelectedItemChangedEventArgs> NewsItemSelectedCommand { get; set; }
+
 
         public NewsViewModel()
         {
@@ -40,6 +45,13 @@ namespace Cross.StockInfo.ViewModels.News
                 new NewsTabItem{ Title = AppResources.News_Industry_TabTile, NewsType = EnumHelper.ParseToString(MoneyDJNewsType.Industry), PageIndex = 1 },
                 new NewsTabItem{ Title = AppResources.News_Research_TabTile, NewsType = EnumHelper.ParseToString(MoneyDJNewsType.Research), PageIndex = 1 },
             };
+            NewsItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(NewsItemSelectedEvent);
+        }
+
+
+        private void NewsItemSelectedEvent(SelectedItemChangedEventArgs obj)
+        {
+            
         }
 
         public override async void OnPageLoading()

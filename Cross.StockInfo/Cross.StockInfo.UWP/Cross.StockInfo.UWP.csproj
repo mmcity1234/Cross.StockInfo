@@ -147,13 +147,13 @@
       <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.8.4</Version>
+      <Version>1.8.5</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.3.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>16.2.0.41</Version>
+      <Version>16.2.0.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid">
       <Version>16.2.0.42</Version>
@@ -161,8 +161,8 @@
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>16.2.0.42</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cross.StockInfo\Cross.StockInfo.csproj">

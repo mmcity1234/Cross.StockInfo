@@ -17,6 +17,6 @@ namespace Cross.StockInfo.Views.News
 		{
 			InitializeComponent ();
             DataBinding<NewsViewModel>();
-		}
+        }
 	}
 }

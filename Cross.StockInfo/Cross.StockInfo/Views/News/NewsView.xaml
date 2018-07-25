@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
-             x:Class="Cross.StockInfo.Views.News.NewsView" ItemsSource="{Binding TabItemSources}">
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"           
+             x:Class="Cross.StockInfo.Views.News.NewsView" ItemsSource="{Binding TabItemSources}"
+             x:Name="newsViewPage">
   
     <TabbedPage.Resources>
         <DataTemplate x:Key="newsListViewItemTemplate">
@@ -29,8 +31,13 @@
     <TabbedPage.ItemTemplate>
         <DataTemplate>
             <ContentPage Title="{Binding Title}" >
-                <ListView ItemsSource="{Binding NewsItemSources}" ItemTemplate="{StaticResource newsListViewItemTemplate}">
-                   
+                <ListView ItemsSource="{Binding NewsItemSources}" 
+                          ItemTemplate="{StaticResource newsListViewItemTemplate}">
+                    <ListView.Behaviors>
+                        <b:EventHandlerBehavior EventName="ItemSelected">
+                            <b:InvokeCommandAction Command="{Binding NewsItemSelectedCommand, Source={x:Reference NewsView}}" />
+                        </b:EventHandlerBehavior>
+                    </ListView.Behaviors>
                 </ListView>
             </ContentPage>
         </DataTemplate>
