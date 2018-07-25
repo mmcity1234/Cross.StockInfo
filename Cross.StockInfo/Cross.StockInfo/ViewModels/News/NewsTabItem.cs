@@ -1,8 +1,10 @@
-﻿using Cross.StockInfo.Model.News;
+﻿using Cross.StockInfo.Common;
+using Cross.StockInfo.Model.News;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Cross.StockInfo.ViewModels.News
 {
@@ -32,6 +34,12 @@ namespace Cross.StockInfo.ViewModels.News
             }
         }
         #endregion
+     
+        public NewsTabItem()
+        {
+        }
+
+       
 
         /// <summary>
         /// 批次新增新聞訊息資料

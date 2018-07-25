@@ -14,11 +14,13 @@ namespace Cross.StockInfo.Services
     {
         
         private const string DomainUrl = "https://www.moneydj.com";
+        private const string MobileDomainUrl = "https://m.moneydj.com";
         /// <summary>
         /// 新聞網址
         /// </summary>
         private const string NewsPathUrl = "/KMDJ/News/NewsRealList.aspx?index1={0}&a={1}";
         private const string NewsViewerPath = "/KMDJ/News/NewsViewer.aspx";
+        private const string MobileNewsViewerPath = "/f1a.aspx";
 
 
         public async Task<List<NewsModel>> ListNewsTaskAsync(int pageIndex)
@@ -41,7 +43,9 @@ namespace Cross.StockInfo.Services
             { 
                 string time = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[1]").Replace("\r\n", string.Empty).Trim();
                 string title = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[2]/a", "title");
-                string newsUrl = DomainUrl + HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[2]/a", "href");
+                string mobileNewsPath = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[2]/a", "href").Replace(NewsViewerPath, MobileNewsViewerPath);
+                // e.g. https://m.moneydj.com/f1a.aspx?a={uuid}&c=MB010000
+                string newsUrl = MobileDomainUrl + mobileNewsPath;
                 NewsModel newsModel = new NewsModel
                 {
                     Title = title,

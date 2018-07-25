@@ -1,5 +1,4 @@
-﻿using Cross.StockInfo.ViewModels.News;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Cross.StockInfo.Views.News
+namespace Cross.StockInfo.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsView : TabViewPage
-    {
-		public NewsView ()
+	public partial class WebView : ContentPage
+	{
+		public WebView ()
 		{
 			InitializeComponent ();
-            DataBinding<NewsViewModel>();          
-        }
+		}
 	}
 }
