@@ -12,7 +12,7 @@ namespace Cross.StockInfo.Services
 {
     public class MoneyDjNewsReaderService : INewsReaderService
     {
-        
+
         private const string DomainUrl = "https://www.moneydj.com";
         private const string MobileDomainUrl = "https://m.moneydj.com";
         /// <summary>
@@ -40,7 +40,7 @@ namespace Cross.StockInfo.Services
                 return result.GetValueOrDefault(false);
             }
             , node =>
-            { 
+            {
                 string time = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[1]").Replace("\r\n", string.Empty).Trim();
                 string title = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[2]/a", "title");
                 string mobileNewsPath = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//td[2]/a", "href").Replace(NewsViewerPath, MobileNewsViewerPath);
@@ -55,6 +55,22 @@ namespace Cross.StockInfo.Services
                 return newsModel;
             });
             return resultList;
+        }
+
+        /// <summary>
+        /// 取得新聞Html標記語言的文件格式
+        /// </summary>
+        /// <param name="url">e.g. https://m.moneydj.com/f1a.aspx?a={uuid}&c=MB010000</param>
+        /// <returns></returns>
+        public async Task<string> GetNewsHtmlContentTaskAsync(string url)
+        {
+            string results = await RestApi.GetContentTaskAsync(url);
+            // f1a_newsData
+            var result = HtmlHelper.Descendants(results, "div"
+                , node => node.Attributes["id"]?.Value == "f1a_newsData"
+                , matchNode => matchNode.OuterHtml);
+
+            return result.Count != 0 ? result[0] : null;            
         }
     }
 }

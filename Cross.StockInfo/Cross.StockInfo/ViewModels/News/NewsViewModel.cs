@@ -9,6 +9,7 @@ using System.Text;
 using System.Linq;
 using Cross.StockInfo.Common;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Cross.StockInfo.ViewModels.News
 {
@@ -49,9 +50,23 @@ namespace Cross.StockInfo.ViewModels.News
         }
 
 
-        private void NewsItemSelectedEvent(SelectedItemChangedEventArgs obj)
+        private void NewsItemSelectedEvent(SelectedItemChangedEventArgs args)
         {
-            
+            try
+            {
+                var item = args.SelectedItem as NewsModel;
+                if (item != null)
+                {
+                    WebViewModel webModel = new WebViewModel { Url = item.Url };
+                    webModel.HtmlLoadingSourceEvent += HtmlSourceEvent;                   
+                    Navigation.Navigate(typeof(Cross.StockInfo.Views.WebView), webModel);
+                }
+            }
+            catch (Exception e)
+            {
+                /// exception
+            }
+
         }
 
         public override async void OnPageLoading()
@@ -66,6 +81,11 @@ namespace Cross.StockInfo.ViewModels.News
             {
                 tabItem.AddNewsItems(allNews);
             }
+        }
+
+        private async Task<string> HtmlSourceEvent(string url)
+        {
+            return await NewsService.GetNewsHtmlContentTaskAsync(url);
         }
     }
 }

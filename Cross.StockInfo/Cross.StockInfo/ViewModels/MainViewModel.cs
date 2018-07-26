@@ -69,7 +69,8 @@ namespace Cross.StockInfo.ViewModels
             try
             {
                 var page = new NavigationPage((Page)Activator.CreateInstance(pageType));
-                (Application.Current.MainPage as MasterDetailPage).Detail = page;
+                NavigationPage navPage = (Application.Current.MainPage as NavigationPage);
+                (navPage.CurrentPage as MainPage).Detail = page;
             }
             catch(Exception e)
             {

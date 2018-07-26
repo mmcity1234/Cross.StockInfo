@@ -29,7 +29,12 @@ namespace Cross.StockInfo.Common.Helper
         }
 
         public static List<T> Descendants<T>(string html, string name, Func<HtmlNode, T> selector)
-        {           
+        {
+            return Descendants(html, name, x => true, selector);
+        }
+
+        public static List<T> Descendants<T>(string html, string name, Func<HtmlNode, bool> condition, Func<HtmlNode, T> selector)
+        {
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
 
@@ -38,7 +43,7 @@ namespace Cross.StockInfo.Common.Helper
 
             return results == null
                ? new List<T>()
-               : results.Select(selector).ToList();
+               : results.Where(condition).Select(selector).ToList();
         }
 
         public static List<T> DescendantsPath<T>(string html, string xpath, Func<HtmlNode, T> selector)

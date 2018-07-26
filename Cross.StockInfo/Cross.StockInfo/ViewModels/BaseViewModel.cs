@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cross.StockInfo.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -11,16 +12,21 @@ namespace Cross.StockInfo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #region Inection
         /// <summary>
         /// Get or set the navigation service 
         /// </summary>
-        public INavigation Navigation { get; set; }
+        public INavigationService Navigation { get; set; }
+        #endregion
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// When page is start show and triger the method
+        /// </summary>
         public virtual void OnPageLoading()
         {
             

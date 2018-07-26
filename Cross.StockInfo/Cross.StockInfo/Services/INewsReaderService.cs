@@ -19,5 +19,12 @@ namespace Cross.StockInfo.Services
         /// <returns></returns>
         Task<List<NewsModel>> ListNewsTaskAsync(int pageIndex, string newsType);
 
+        /// <summary>
+        /// 取得新聞Html標記語言的文件格式
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        Task<string> GetNewsHtmlContentTaskAsync(string url);
+
     }
 }

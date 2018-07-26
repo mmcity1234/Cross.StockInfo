@@ -8,9 +8,9 @@ namespace Cross.StockInfo.Services
 {
     public interface INavigationService
     {
-        void Navigate(Type sourcePage);
+        Task Navigate(Type targetPage);
       
-        void Navigate(Type sourcePage, object parameter);
+        Task Navigate(Type targetPage, object bindingContext);
         
         void GoBack();
     }

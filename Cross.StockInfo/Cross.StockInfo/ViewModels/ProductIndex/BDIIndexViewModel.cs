@@ -58,8 +58,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             if (!_isLoaded)
             {
                 try
-                {
-                 
+                {                 
                     var bdiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BdiIndex");
                     var bpiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BpiIndex");
 

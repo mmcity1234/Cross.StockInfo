@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Cross.StockInfo.Services
@@ -12,15 +13,16 @@ namespace Cross.StockInfo.Services
             throw new NotImplementedException();
         }
 
-        public async void Navigate(Type targetPage)
+        public async Task Navigate(Type targetPage)
         {
-            Page page = (Page)Activator.CreateInstance(targetPage);
-            await Application.Current.MainPage.Navigation.PushAsync(page);
+            await Navigate(targetPage, null);
         }
 
-        public async void Navigate(Type sourcePage, object parameter)
+        public async Task Navigate(Type targetPage, object bindingContext)
         {
-            throw new NotImplementedException();
+            Page page = (Page)Activator.CreateInstance(targetPage);
+            page.BindingContext = bindingContext;
+            await Application.Current.MainPage.Navigation.PushAsync(page);
         }
     }
 }
