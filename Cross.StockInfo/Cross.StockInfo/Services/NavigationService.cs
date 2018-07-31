@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cross.StockInfo.ViewModels;
+using Cross.StockInfo.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,13 @@ namespace Cross.StockInfo.Services
         public async Task Navigate(Type targetPage)
         {
             await Navigate(targetPage, null);
+        }
+
+        public async Task Navigate(Type targetPage, IViewModel bindingContext)
+        {
+            IViewPage page = (IViewPage)Activator.CreateInstance(targetPage);
+            page.ViewModel = bindingContext;
+            await Application.Current.MainPage.Navigation.PushAsync((Page)page);
         }
 
         public async Task Navigate(Type targetPage, object bindingContext)

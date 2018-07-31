@@ -18,5 +18,10 @@ namespace Cross.StockInfo.Views.News
 			InitializeComponent ();
             DataBinding<NewsViewModel>();          
         }
-	}
+
+        private void newsViewPage_CurrentPageChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -50,8 +50,18 @@ namespace Cross.StockInfo.ViewModels.News
             foreach (var newItem in newsCollection)
             {
                 NewsItemSources.Add(newItem);
-            }
-            
+            }            
+        }
+
+        /// <summary>
+        /// 取得最後一筆清單項目
+        /// </summary>
+        /// <returns>若無資料則回傳null</returns>
+        public NewsModel FindLastItem()
+        {
+            if (NewsItemSources.Count == 0)
+                return null;
+            return NewsItemSources[NewsItemSources.Count - 1];
         }
     }
 }

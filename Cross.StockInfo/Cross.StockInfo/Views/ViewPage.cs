@@ -7,13 +7,22 @@ using Xamarin.Forms;
 
 namespace Cross.StockInfo.Views
 {
-    public class ViewPage : ContentPage
+    public class ViewPage : ContentPage, IViewPage
     {
-        public IViewModel ViewModel { get; set; }
+        private IViewModel _viewModel;
+        public IViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+                BindingContext = _viewModel;
+            }
+        }
         public ViewPage() : base() { }
 
         public void DataBinding<T>() where T : class, IViewModel
-        {          
+        {
             try
             {
                 // Binding view model
@@ -22,7 +31,6 @@ namespace Cross.StockInfo.Views
                 {
                     _viewModel = IocProvider.Instance.Container.Resolve<T>();
                 }
-                BindingContext = _viewModel;
                 ViewModel = _viewModel;
 
                 //_viewModel.Navigation = Application.Current.MainPage.Navigation;

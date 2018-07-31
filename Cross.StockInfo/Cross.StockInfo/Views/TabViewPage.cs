@@ -7,9 +7,18 @@ using Xamarin.Forms;
 
 namespace Cross.StockInfo.Views
 {
-    public class TabViewPage : TabbedPage
+    public class TabViewPage : TabbedPage, IViewPage
     {
-        public IViewModel ViewModel { get; set; }
+        private IViewModel _viewModel;
+        public IViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+                BindingContext = _viewModel;
+            }
+        }
         public TabViewPage() : base() { }
 
         public void DataBinding<T>() where T : class, IViewModel
@@ -21,8 +30,7 @@ namespace Cross.StockInfo.Views
                 using (var scope = IocProvider.Instance.Container.BeginLifetimeScope())
                 {
                     _viewModel = IocProvider.Instance.Container.Resolve<T>();
-                }
-                BindingContext = _viewModel;
+                }            
                 ViewModel = _viewModel;
 
                 //_viewModel.Navigation = Application.Current.MainPage.Navigation;

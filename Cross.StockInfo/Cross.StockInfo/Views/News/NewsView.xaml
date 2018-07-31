@@ -5,8 +5,8 @@
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"           
              x:Class="Cross.StockInfo.Views.News.NewsView" ItemsSource="{Binding TabItemSources}"
-             x:Name="newsViewPage">
-  
+             x:Name="newsViewPage" SelectedItem="{Binding SelectedTabItem, Mode=TwoWay}" >
+
     <TabbedPage.Resources>
         <DataTemplate x:Key="newsListViewItemTemplate">
             <ViewCell>
@@ -31,14 +31,30 @@
     <TabbedPage.ItemTemplate>
         <DataTemplate>
             <ContentPage Title="{Binding Title}" >
-                <ListView ItemsSource="{Binding NewsItemSources}" 
+                <StackLayout VerticalOptions="FillAndExpand" Spacing="0" Padding="5">
+                    <ActivityIndicator IsRunning="{Binding BindingContext.IsLoading, Source={x:Reference newsViewPage}}"
+                         IsVisible="{Binding BindingContext.IsLoading, Source={x:Reference newsViewPage}}" HeightRequest="40" VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="CenterAndExpand">
+                        <ActivityIndicator.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
+                        </ActivityIndicator.WidthRequest>
+                        <ActivityIndicator.Color>
+                            <OnPlatform x:TypeArguments="Color" iOS="#2499CE" WinPhone="#2499CE" />
+                        </ActivityIndicator.Color>
+                    </ActivityIndicator>
+
+                    <ListView ItemsSource="{Binding NewsItemSources}"
                           ItemTemplate="{StaticResource newsListViewItemTemplate}">
-                    <ListView.Behaviors>
-                        <b:EventHandlerBehavior EventName="ItemSelected">
-                            <b:InvokeCommandAction Command="{Binding BindingContext.NewsItemSelectedCommand, Source={x:Reference newsViewPage}}" />
-                        </b:EventHandlerBehavior>
-                    </ListView.Behaviors>
-                </ListView>
+                        <ListView.Behaviors>
+                            <b:EventHandlerBehavior EventName="ItemSelected">
+                                <b:InvokeCommandAction Command="{Binding BindingContext.NewsItemSelectedCommand, Source={x:Reference newsViewPage}}" />
+                            </b:EventHandlerBehavior>
+                            <b:EventHandlerBehavior EventName="ItemAppearing">
+                                <b:InvokeCommandAction Command="{Binding BindingContext.NewsItemAppreaingCommand, Source={x:Reference newsViewPage}}" />
+                            </b:EventHandlerBehavior>
+                        </ListView.Behaviors>
+                    </ListView>
+                </StackLayout>
             </ContentPage>
         </DataTemplate>
     </TabbedPage.ItemTemplate>
