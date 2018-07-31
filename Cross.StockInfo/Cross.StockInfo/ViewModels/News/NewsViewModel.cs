@@ -10,12 +10,14 @@ using System.Linq;
 using Cross.StockInfo.Common;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace Cross.StockInfo.ViewModels.News
 {
     public class NewsViewModel : BaseViewModel
     {
-        private bool _isLoading;
+        private bool _isPageLoading;
+        private bool _isNewsItemLoading;
         private NewsTabCollection _tabItemSources;
         private NewsTabItem _selectedTabItem;
 
@@ -33,12 +35,27 @@ namespace Cross.StockInfo.ViewModels.News
             }
         }
 
-        public bool IsLoading
+        /// <summary>
+        /// 載入更多新聞資訊的讀取狀態
+        /// </summary>
+        public bool IsNewsItemLoading
         {
-            get => _isLoading;
+            get => _isNewsItemLoading; set
+            {
+                _isNewsItemLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// For the news item list loading
+        /// </summary>
+        public bool IsPageLoading
+        {
+            get => _isPageLoading;
             set
             {
-                _isLoading = value;
+                _isPageLoading = value;
                 OnPropertyChanged();
             }
         }
@@ -55,6 +72,8 @@ namespace Cross.StockInfo.ViewModels.News
 
         public DelegateCommand<SelectedItemChangedEventArgs> NewsItemSelectedCommand { get; set; }
         public DelegateCommand<ItemVisibilityEventArgs> NewsItemAppreaingCommand { get; set; }
+        public DelegateCommand<EventArgs> NewsTabChangedCommand { get; set; }
+
 
         public NewsViewModel()
         {
@@ -71,10 +90,25 @@ namespace Cross.StockInfo.ViewModels.News
             };
             NewsItemAppreaingCommand = new DelegateCommand<ItemVisibilityEventArgs>(NewsItemAppearingEventHandler);
             NewsItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(NewsItemSelectedEventHandler);
+            NewsTabChangedCommand = new DelegateCommand<EventArgs>(NewsTabChangedEventHandler);
             // set the selected tab item in the first page
-            SelectedTabItem = TabItemSources[0]; 
+            SelectedTabItem = TabItemSources[0];
         }
 
+        private async void NewsTabChangedEventHandler(EventArgs args)
+        {
+            if (SelectedTabItem.NewsItemSources.Count == 0)
+            {
+                IsPageLoading = true;          
+                await LoadNewsData(1, SelectedTabItem.NewsType);
+                IsPageLoading = false;
+            }
+        }
+
+        /// <summary>
+        /// ListView 項目因捲動呈現所觸發的事件
+        /// </summary>
+        /// <param name="e"></param>
         private async void NewsItemAppearingEventHandler(ItemVisibilityEventArgs e)
         {
             var appearingNewsModel = e.Item as NewsModel;
@@ -82,20 +116,27 @@ namespace Cross.StockInfo.ViewModels.News
                 return;
             try
             {
-                if (!IsLoading && SelectedTabItem.FindLastItem().Url == appearingNewsModel.Url)
+                if (!IsNewsItemLoading && SelectedTabItem.FindLastItem().Url == appearingNewsModel.Url)
                 {
+                    IsNewsItemLoading = true;
                     SelectedTabItem.PageIndex++;
                     await LoadNewsData(SelectedTabItem.PageIndex, SelectedTabItem.NewsType);
+                    IsNewsItemLoading = false;
+                       
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
-                IsLoading = false;
+                IsPageLoading = false;
                 //hit bottom! or data error
             }
-         
+
         }
 
+        /// <summary>
+        /// 點選ListView項目所觸發的事件
+        /// </summary>
+        /// <param name="args"></param>
         private void NewsItemSelectedEventHandler(SelectedItemChangedEventArgs args)
         {
             try
@@ -109,7 +150,7 @@ namespace Cross.StockInfo.ViewModels.News
                 }
             }
             catch (Exception e)
-            {               
+            {
                 /// exception
             }
 
@@ -117,8 +158,10 @@ namespace Cross.StockInfo.ViewModels.News
 
         public override async void OnPageLoading()
         {
+            IsPageLoading = true;
             base.OnPageLoading();
             await LoadNewsData(1, EnumHelper.ParseToString(MoneyDJNewsType.All));
+            IsPageLoading = false;
         }
 
         private async Task<string> HtmlSourceEvent(string url)
@@ -128,9 +171,7 @@ namespace Cross.StockInfo.ViewModels.News
 
         private async Task LoadNewsData(int pageIndex, string newsType)
         {
-            IsLoading = true;
             var allNews = await NewsService.ListNewsTaskAsync(pageIndex, newsType);
-            IsLoading = false;
 
             var tabItem = TabItemSources.FindTabItem(newsType);
             if (tabItem != null)

@@ -10,7 +10,7 @@ namespace Cross.StockInfo.ViewModels
     {
         private string _htmlContext;
         private string _url;
-        private bool _isLoading;
+        private bool _isPageLoading;
         /// <summary>
         /// WebView元件的網頁內容載入來源事件
         /// </summary>
@@ -18,12 +18,12 @@ namespace Cross.StockInfo.ViewModels
 
         #region ViewModel
 
-        public bool IsLoading
+        public bool IsPageLoading
         {
-            get => _isLoading;
+            get => _isPageLoading;
             set
             {
-                _isLoading = value;
+                _isPageLoading = value;
                 OnPropertyChanged();
             }
         }
@@ -72,13 +72,21 @@ namespace Cross.StockInfo.ViewModels
 
         public override async void OnPageLoading()
         {
-            base.OnPageLoading();      
-            if(HtmlLoadingSourceEvent != null)
+            try
             {
-                IsLoading = true;
-                HtmlContent = await HtmlLoadingSourceEvent(Url);
-                IsLoading = false;
+                base.OnPageLoading();
+                if (HtmlLoadingSourceEvent != null)
+                {
+                    IsPageLoading = true;
+                    HtmlContent = await HtmlLoadingSourceEvent(Url);
+                    IsPageLoading = false;
+                }
             }
+            catch (Exception e)
+            {
+
+            }
+
         }
     }
 }
