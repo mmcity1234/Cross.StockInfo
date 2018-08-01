@@ -23,5 +23,15 @@ namespace Cross.StockInfo
             BindingContext = _viewModel;
           
         }
-	}
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Placeholder.Content = testStackLayout;
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            Placeholder.Content = productStackLayout;
+        }
+    }
 }

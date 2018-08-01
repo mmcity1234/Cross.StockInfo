@@ -46,7 +46,7 @@ namespace Cross.StockInfo.ViewModels
         public MainViewModel()
         {           
             MasterDetailItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(MasterDetailItemSelectedEvent);
-            // NavigateTo(typeof(GoldIndexView));
+            IsShowMasterDetail = true;
         }
 
         private void MasterDetailItemSelectedEvent(SelectedItemChangedEventArgs args)

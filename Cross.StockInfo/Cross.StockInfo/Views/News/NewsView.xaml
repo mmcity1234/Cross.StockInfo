@@ -16,7 +16,7 @@
         <DataTemplate x:Key="newsListViewItemTemplate">
             <ViewCell>
                 <ViewCell.View>
-                    <Grid  Margin="10,5,5,5">
+                    <Grid Margin="10,5,5,5" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -25,9 +25,9 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Title}" Grid.ColumnSpan="2" Style="{StaticResource MainLabelStyle}"/>
-                        <Label Text="{Binding Publish}" Grid.Row="1" Style="{StaticResource DescriptionLabelStyle}"/>
-                        <Label Text="{Binding TimeLabel}" Grid.Row="1" Grid.Column="1" Style="{StaticResource DescriptionLabelStyle}"/>
+                        <Label Text="{Binding Title}" LineBreakMode ="TailTruncation"  Grid.ColumnSpan="2" Style="{StaticResource MainLabelStyle}"/>
+                        <Label Text="{Binding Publish}" Grid.Row="1" Style="{StaticResource DescriptionLabelStyle}" Margin="0,7,0,0"/>
+                        <Label Text="{Binding TimeLabel}" Grid.Row="1" Grid.Column="1" Style="{StaticResource DescriptionLabelStyle}" Margin="0,7,0,0"/>
                     </Grid>
                 </ViewCell.View>
             </ViewCell>
@@ -52,7 +52,7 @@
                     </ActivityIndicator>
 
 
-                    <ListView ItemsSource="{Binding NewsItemSources}"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    <ListView ItemsSource="{Binding NewsItemSources}" HasUnevenRows="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
                           ItemTemplate="{StaticResource newsListViewItemTemplate}">
                         <ListView.Behaviors>
                             <b:EventHandlerBehavior EventName="ItemSelected">

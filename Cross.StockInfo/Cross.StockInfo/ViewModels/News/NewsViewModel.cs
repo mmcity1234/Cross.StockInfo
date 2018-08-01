@@ -99,7 +99,7 @@ namespace Cross.StockInfo.ViewModels.News
         {
             if (SelectedTabItem.NewsItemSources.Count == 0)
             {
-                IsPageLoading = true;          
+                IsPageLoading = true;
                 await LoadNewsData(1, SelectedTabItem.NewsType);
                 IsPageLoading = false;
             }
@@ -112,20 +112,21 @@ namespace Cross.StockInfo.ViewModels.News
         private async void NewsItemAppearingEventHandler(ItemVisibilityEventArgs e)
         {
             var appearingNewsModel = e.Item as NewsModel;
-            if (appearingNewsModel == null)
+            if (appearingNewsModel == null || SelectedTabItem.FindLastItem() == null)
                 return;
             try
             {
+              
                 if (!IsNewsItemLoading && SelectedTabItem.FindLastItem().Url == appearingNewsModel.Url)
                 {
                     IsNewsItemLoading = true;
                     SelectedTabItem.PageIndex++;
                     await LoadNewsData(SelectedTabItem.PageIndex, SelectedTabItem.NewsType);
                     IsNewsItemLoading = false;
-                       
+
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 IsPageLoading = false;
                 //hit bottom! or data error
@@ -169,15 +170,18 @@ namespace Cross.StockInfo.ViewModels.News
             return await NewsService.GetNewsHtmlContentTaskAsync(url);
         }
 
-        private async Task LoadNewsData(int pageIndex, string newsType)
+        private Task LoadNewsData(int pageIndex, string newsType)
         {
-            var allNews = await NewsService.ListNewsTaskAsync(pageIndex, newsType);
-
-            var tabItem = TabItemSources.FindTabItem(newsType);
-            if (tabItem != null)
+            return Task.Run(async() =>
             {
-                tabItem.AddNewsItems(allNews);
-            }
+                var allNews = await NewsService.ListNewsTaskAsync(pageIndex, newsType).ConfigureAwait(false) ;
+    
+                var tabItem = TabItemSources.FindTabItem(newsType);
+                if (tabItem != null)
+                {
+                    tabItem.AddNewsItems(allNews);
+                }
+            });
         }
     }
 }

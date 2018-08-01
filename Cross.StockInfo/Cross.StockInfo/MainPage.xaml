@@ -9,9 +9,10 @@
              xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.MainPage"
-             IsPresented="{Binding IsShowMasterDetail}" >
+             IsPresented="{Binding IsShowMasterDetail, Mode=TwoWay}" >
 
     <MasterDetailPage.Resources>
+
         <DataTemplate x:Key="MenuItemTemplate">
             <ViewCell>
                 <Grid Padding="5,10">
@@ -24,35 +25,89 @@
                 </Grid>
             </ViewCell>
         </DataTemplate>
+        
+        <!-- Product Stock Content Menu-->
+        <StackLayout x:Key="productStackLayout" x:Name="productStackLayout">
+            <!-- Product Stock Index -->
+            <ListView SelectedItem="{Binding SelectedMenuItem}" SeparatorVisibility="None" HasUnevenRows="true" ItemTemplate="{DynamicResource MenuItemTemplate}">
+                <ListView.Behaviors>
+                    <b:EventHandlerBehavior EventName="ItemSelected">
+                        <b:InvokeCommandAction Command="{Binding MasterDetailItemSelectedCommand}" />
+                    </b:EventHandlerBehavior>
+                </ListView.Behaviors>
+
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type model:MasterPageMenuItem}">
+                        <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
+                        <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+        </StackLayout>
+        <StackLayout x:Key="testStackLayout" x:Name="testStackLayout">
+            <Label Text="HELLOO" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+       
+       
     </MasterDetailPage.Resources>
-    
+
     <MasterDetailPage.Master>
         <ContentPage Title="StockInfo">
-            <StackLayout>
-                <ListView SelectedItem="{Binding SelectedMenuItem}" SeparatorVisibility="None" HasUnevenRows="true" ItemTemplate="{StaticResource MenuItemTemplate}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Category Menu -->
+                <StackLayout>
+                    <StackLayout>
+                        <Label Text="新聞"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="產品"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>                   
+                </StackLayout>
 
-                    <ListView.Behaviors>
-                        <b:EventHandlerBehavior EventName="ItemSelected">
-                            <b:InvokeCommandAction Command="{Binding MasterDetailItemSelectedCommand}" />
-                        </b:EventHandlerBehavior>
-                    </ListView.Behaviors>
+                <!-- Content Menu Place Holder-->
+                <ContentView x:Name="Placeholder" Grid.Column="1"/>
 
-                    <ListView.ItemsSource>
-                        <x:Array Type="{x:Type model:MasterPageMenuItem}">                            
-                            <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
-                            <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
-                            <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
-                        </x:Array>
-                    </ListView.ItemsSource>
+                <!--<StackLayout x:Name="productStackLayout">
+                    --><!-- Product Stock Index --><!--
+                    <ListView SelectedItem="{Binding SelectedMenuItem}" SeparatorVisibility="None" HasUnevenRows="true" ItemTemplate="{StaticResource MenuItemTemplate}">
 
-                </ListView>
-            </StackLayout>
+                        <ListView.Behaviors>
+                            <b:EventHandlerBehavior EventName="ItemSelected">
+                                <b:InvokeCommandAction Command="{Binding MasterDetailItemSelectedCommand}" />
+                            </b:EventHandlerBehavior>
+                        </ListView.Behaviors>
+
+                        <ListView.ItemsSource>
+                            <x:Array Type="{x:Type model:MasterPageMenuItem}">
+                                <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
+                                <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
+                                <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
+                            </x:Array>
+                        </ListView.ItemsSource>
+
+                    </ListView>
+                </StackLayout>-->
+            </Grid>
         </ContentPage>
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <ContentPage>
-        </ContentPage>
+        <NavigationPage>
+            <x:Arguments>
+                <productIndex:GoldIndexView/>
+            </x:Arguments>
+        </NavigationPage>
     </MasterDetailPage.Detail>
 
 
