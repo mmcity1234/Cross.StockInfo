@@ -126,14 +126,11 @@
   <data name="BDIIndex_Label" xml:space="preserve">
     <value>波羅的海綜合指數(BDI)</value>
   </data>
-  <data name="BDIIndex_TabHistoricalReport" xml:space="preserve">
-    <value>歷史資料</value>
-  </data>
-  <data name="BDIIndex_TabOverview" xml:space="preserve">
-    <value>總覽</value>
-  </data>
   <data name="BPIIndex_Label" xml:space="preserve">
     <value>巴拿馬型(BPI)</value>
+  </data>
+  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
+    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
   </data>
   <data name="Exception_LoadDataError" xml:space="preserve">
     <value>資料載入錯誤，請在下滑嘗試：{0}</value>
@@ -182,6 +179,12 @@
   </data>
   <data name="News_Topic_TabTile" xml:space="preserve">
     <value>即時</value>
+  </data>
+  <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
+    <value>歷史資料</value>
+  </data>
+  <data name="ProdcutIndex_TabOverview" xml:space="preserve">
+    <value>總覽</value>
   </data>
   <data name="SupermaxIndex_Label" xml:space="preserve">
     <value>輕便型(Supramax)</value>

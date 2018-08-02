@@ -43,6 +43,9 @@
     <Compile Update="Views\Control\LineChartControl.xaml.cs">
       <DependentUpon>LineChartControl.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ProductIndex\ProductIndexView.xaml.cs">
+      <DependentUpon>ProductIndexView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -65,7 +68,7 @@
     <EmbeddedResource Update="Views\News\NewsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProductIndex\BDIIndexView.xaml">
+    <EmbeddedResource Update="Views\ProductIndex\ProductIndexView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductIndex\GoldIndexView.xaml">

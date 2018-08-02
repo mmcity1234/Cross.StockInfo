@@ -9,14 +9,17 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Cross.StockInfo.ViewModels.Control;
 using System.Collections.ObjectModel;
+using Cross.StockInfo.ViewModels.ProductIndex.Config;
 
 namespace Cross.StockInfo.ViewModels.ProductIndex
 {
-    public class BDIIndexViewModel : BaseViewModel
+    public class ProductIndexViewModel : BaseViewModel
     {
         private LineChartModel _lineChart;
         private bool _isLoaded = false;
         private DailyPriceControlModel _priceContorlModel;
+        private string _chartTitle;
+        private ProductInfo _productItemInfo;
 
         #region Injection
         public IProductQueryService ProductService { get; set; }
@@ -24,6 +27,30 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
         #region Property
 
+        /// <summary>
+        /// 取得或設定商品指數頁面的資訊描述內容
+        /// </summary>
+        public ProductInfo ProductInfo
+        {
+            get => _productItemInfo;
+            set
+            {
+                _productItemInfo = value;
+                ChartTitle = _productItemInfo.ChartTitle;
+            }
+        }
+        #endregion
+
+        #region ViewModel
+        public string ChartTitle
+        {
+            get => _chartTitle;
+            set
+            {
+                _chartTitle = value;
+                OnPropertyChanged();
+            }
+        }
         public DailyPriceControlModel PriceContorlModel
         {
             get => _priceContorlModel;
@@ -46,11 +73,9 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
         #endregion
 
-         
-        public BDIIndexViewModel()
+        public ProductIndexViewModel()
         {
             LineChart = new LineChartModel();
-            //LineChart.Title = AppResources.BDIIndex_ChartTitle;      
 
         }
         public override async void OnPageLoading()
@@ -58,19 +83,28 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             if (!_isLoaded)
             {
                 try
-                {                 
-                    var bdiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BdiIndex");
-                    var bpiIndexList = await ProductService.ListProductIndexTaskAsync("Product.BpiIndex");
+                {
+                    int count = 1;
+                    List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
+                    foreach (var series in ProductInfo.SeriesInfoCollection)
+                    {
+                        var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey);
+                        if (count++ == 1) // primary series
+                        {
+                            filterSeriesForDailyPrice = indexList;
+                            AddSeries(series.Name, indexList, true, series.Visible);
+                        }
+                        else   // sub series                         
+                            AddSeries(series.Name, indexList, false, series.Visible);
+                    }
 
-                    AddSeries(AppResources.BDIIndex_Label, bdiIndexList);
-                    AddSeries(AppResources.BPIIndex_Label, bpiIndexList, isPrimary: false, isVisible: false);
-                    var filterBdi = bdiIndexList.OrderByDescending(x => x.Time).Take(60);
+                    var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
 
-                    PriceContorlModel = new DailyPriceControlModel { Title = AppResources.BDIIndex_Label, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
-               
+                    PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
+
                     _isLoaded = true;
-                } 
-                catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     throw new Exception(string.Format(AppResources.Exception_LoadDataError, e.Message));
                 }
@@ -84,6 +118,6 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                 LineChart.AddPrimarySeries(title, dataPoints);
             else
                 LineChart.AddSeries(title, dataPoints, isVisible);
-        }           
+        }
     }
 }

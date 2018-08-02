@@ -88,29 +88,20 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 歷史資料 的當地語系化字串。
-        /// </summary>
-        public static string BDIIndex_TabHistoricalReport {
-            get {
-                return ResourceManager.GetString("BDIIndex_TabHistoricalReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 總覽 的當地語系化字串。
-        /// </summary>
-        public static string BDIIndex_TabOverview {
-            get {
-                return ResourceManager.GetString("BDIIndex_TabOverview", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 巴拿馬型(BPI) 的當地語系化字串。
         /// </summary>
         public static string BPIIndex_Label {
             get {
                 return ResourceManager.GetString("BPIIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 內部錯誤：商品資訊頁面並未設定ProductInfo型別。 的當地語系化字串。
+        /// </summary>
+        public static string Exception_Internal_ProductInfoNotAssigned {
+            get {
+                return ResourceManager.GetString("Exception_Internal_ProductInfoNotAssigned", resourceCulture);
             }
         }
         
@@ -255,6 +246,24 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string News_Topic_TabTile {
             get {
                 return ResourceManager.GetString("News_Topic_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 歷史資料 的當地語系化字串。
+        /// </summary>
+        public static string ProdcutIndex_TabHistoricalReport {
+            get {
+                return ResourceManager.GetString("ProdcutIndex_TabHistoricalReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 總覽 的當地語系化字串。
+        /// </summary>
+        public static string ProdcutIndex_TabOverview {
+            get {
+                return ResourceManager.GetString("ProdcutIndex_TabOverview", resourceCulture);
             }
         }
         

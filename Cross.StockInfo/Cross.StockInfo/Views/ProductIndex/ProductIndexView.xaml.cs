@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.ProductIndex
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BDIIndexView : ViewPage
+	public partial class ProductIndexView : ViewPage
 	{
-		public BDIIndexView ()
+		public ProductIndexView()
 		{
-            DataBinding<BDIIndexViewModel>();
+            DataBinding< ProductIndexViewModel >();
             InitializeComponent ();
           
         }

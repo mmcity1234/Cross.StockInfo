@@ -1,7 +1,10 @@
-﻿using Cross.StockInfo.Common;
+﻿using Cross.StockInfo.Assets.Strings;
+using Cross.StockInfo.Common;
 using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.Services;
 using Cross.StockInfo.ViewModels.Control.MasterDetail;
+using Cross.StockInfo.ViewModels.ProductIndex;
+using Cross.StockInfo.ViewModels.ProductIndex.Config;
 using Cross.StockInfo.Views.ProductIndex;
 using System;
 using System.Collections.Generic;
@@ -14,9 +17,9 @@ namespace Cross.StockInfo.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private MasterPageMenuItem _selectedMenuItem;     
+        private MasterPageMenuItem _selectedMenuItem;
         private bool _isShowMasterDetail;
-        
+
 
         public IStockQueryService StockService { get; set; }
 
@@ -38,13 +41,13 @@ namespace Cross.StockInfo.ViewModels
                 _selectedMenuItem = value;
                 OnPropertyChanged();
             }
-        }      
+        }
         #endregion
-    
+
         public DelegateCommand<SelectedItemChangedEventArgs> MasterDetailItemSelectedCommand { get; set; }
 
         public MainViewModel()
-        {           
+        {
             MasterDetailItemSelectedCommand = new DelegateCommand<SelectedItemChangedEventArgs>(MasterDetailItemSelectedEvent);
             IsShowMasterDetail = true;
         }
@@ -54,25 +57,34 @@ namespace Cross.StockInfo.ViewModels
             var item = args.SelectedItem as MasterPageMenuItem;
             if (item != null)
             {
-                NavigateTo(item.TargetType);
+                NavigateTo(item.TargetType, item.ConfigsType);
                 SelectedMenuItem = null;
                 IsShowMasterDetail = false;
             }
+
         }
 
         /// <summary>
         /// Navigate to the content page
         /// </summary>
         /// <param name="pageType"></param>
-        public void NavigateTo(Type pageType)
+        /// <param name="configType">頁面內容資訊設定</param>
+        public void NavigateTo(Type pageType, Type configType)
         {
             try
             {
-                var page = new NavigationPage((Page)Activator.CreateInstance(pageType));
+                Page currentPage = (Page)Activator.CreateInstance(pageType);   
+                if(currentPage.BindingContext is ProductIndexViewModel)
+                {
+                    if (configType == null)
+                        throw new Exception(AppResources.Exception_Internal_ProductInfoNotAssigned);
+                    ((ProductIndexViewModel)currentPage.BindingContext).ProductInfo = (ProductInfo)Activator.CreateInstance(configType);
+                }
+
                 NavigationPage navPage = (Application.Current.MainPage as NavigationPage);
-                (navPage.CurrentPage as MainPage).Detail = page;
+                (navPage.CurrentPage as MainPage).Detail = new NavigationPage(currentPage);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }

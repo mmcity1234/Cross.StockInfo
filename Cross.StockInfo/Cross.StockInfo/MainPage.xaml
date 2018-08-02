@@ -6,6 +6,7 @@
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"              
              xmlns:view="clr-namespace:Cross.StockInfo.Views"
              xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
+             xmlns:productIndexInfo="clr-namespace:Cross.StockInfo.ViewModels.ProductIndex.Config"
              xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.MainPage"
@@ -38,9 +39,10 @@
 
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
-                        <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
-                        <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
-                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
+                        <model:MasterPageMenuItem Title="TodoList" TargetType="{x:Type news:NewsView}" />
+                        <model:MasterPageMenuItem Title="Reminders" TargetType="{x:Type productIndex:GoldIndexView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
+                        <model:MasterPageMenuItem Title="TEST" TargetType="{x:Type productIndex:GoldIndexView}" />
                     </x:Array>
                 </ListView.ItemsSource>
             </ListView>
@@ -56,19 +58,19 @@
         <ContentPage Title="StockInfo">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Category Menu -->
                 <StackLayout>
-                    <StackLayout>
+                    <StackLayout HeightRequest="100">
                         <Label Text="新聞"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <StackLayout>
-                        <Label Text="產品"/>
+                    <StackLayout HeightRequest="100">
+                        <Label Text="指數"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                         </StackLayout.GestureRecognizers>
@@ -76,28 +78,7 @@
                 </StackLayout>
 
                 <!-- Content Menu Place Holder-->
-                <ContentView x:Name="Placeholder" Grid.Column="1"/>
-
-                <!--<StackLayout x:Name="productStackLayout">
-                    --><!-- Product Stock Index --><!--
-                    <ListView SelectedItem="{Binding SelectedMenuItem}" SeparatorVisibility="None" HasUnevenRows="true" ItemTemplate="{StaticResource MenuItemTemplate}">
-
-                        <ListView.Behaviors>
-                            <b:EventHandlerBehavior EventName="ItemSelected">
-                                <b:InvokeCommandAction Command="{Binding MasterDetailItemSelectedCommand}" />
-                            </b:EventHandlerBehavior>
-                        </ListView.Behaviors>
-
-                        <ListView.ItemsSource>
-                            <x:Array Type="{x:Type model:MasterPageMenuItem}">
-                                <model:MasterPageMenuItem Title="TodoList"  TargetType="{x:Type news:NewsView}" />
-                                <model:MasterPageMenuItem Title="Reminders"  TargetType="{x:Type productIndex:GoldIndexView}" />
-                                <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}"  TargetType="{x:Type productIndex:BDIIndexView}" />
-                            </x:Array>
-                        </ListView.ItemsSource>
-
-                    </ListView>
-                </StackLayout>-->
+                <ContentView x:Name="Placeholder" Grid.Column="1"/>             
             </Grid>
         </ContentPage>
     </MasterDetailPage.Master>

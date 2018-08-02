@@ -8,14 +8,15 @@ namespace Cross.StockInfo.ViewModels.Control.MasterDetail
 {
 
     public class MasterPageMenuItem
-    {
-        public MasterPageMenuItem()
-        {
-           
-        }
+    {       
         public string IconSource { get; set; }
         public string Title { get; set; }
 
         public Type TargetType { get; set; }
+
+        /// <summary>
+        /// 頁面資訊設定的型別
+        /// </summary>
+        public Type ConfigsType { get; set; }
     }
 }

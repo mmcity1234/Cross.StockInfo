@@ -120,85 +120,40 @@
   <data name="BCIIndex_Label" xml:space="preserve">
     <value>海岬型(BCI)</value>
   </data>
-  <data name="BCIIndex_Label1" xml:space="preserve">
-    <value>海岬型(BCI)</value>
-  </data>
   <data name="BDIIndex_ChartTitle" xml:space="preserve">
-    <value>散裝船航運運價指標</value>
-  </data>
-  <data name="BDIIndex_ChartTitle1" xml:space="preserve">
     <value>散裝船航運運價指標</value>
   </data>
   <data name="BDIIndex_Label" xml:space="preserve">
     <value>波羅的海綜合指數(BDI)</value>
   </data>
-  <data name="BDIIndex_Label1" xml:space="preserve">
-    <value>波羅的海綜合指數(BDI)</value>
-  </data>
-  <data name="BDIIndex_TabHistoricalReport" xml:space="preserve">
-    <value>歷史資料</value>
-  </data>
-  <data name="BDIIndex_TabHistoricalReport1" xml:space="preserve">
-    <value>歷史資料</value>
-  </data>
-  <data name="BDIIndex_TabOverview" xml:space="preserve">
-    <value>總覽</value>
-  </data>
-  <data name="BDIIndex_TabOverview1" xml:space="preserve">
-    <value>總覽</value>
-  </data>
   <data name="BPIIndex_Label" xml:space="preserve">
     <value>巴拿馬型(BPI)</value>
   </data>
-  <data name="BPIIndex_Label1" xml:space="preserve">
-    <value>巴拿馬型(BPI)</value>
+  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
+    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
   </data>
   <data name="Exception_LoadDataError" xml:space="preserve">
-    <value>資料載入錯誤，請在下滑嘗試：{0}</value>
-  </data>
-  <data name="Exception_LoadDataError1" xml:space="preserve">
     <value>資料載入錯誤，請在下滑嘗試：{0}</value>
   </data>
   <data name="Exception_ProductIndexTypeLoadError" xml:space="preserve">
     <value>載入 {0} 失敗，尚未定義此套件。</value>
   </data>
-  <data name="Exception_ProductIndexTypeLoadError1" xml:space="preserve">
-    <value>載入 {0} 失敗，尚未定義此套件。</value>
-  </data>
   <data name="Exception_QueryProductRepotError" xml:space="preserve">
-    <value>查詢 {0} 指數發生錯誤 : {1}</value>
-  </data>
-  <data name="Exception_QueryProductRepotError1" xml:space="preserve">
     <value>查詢 {0} 指數發生錯誤 : {1}</value>
   </data>
   <data name="Exception_ResourceDictionaryKeyNotFound" xml:space="preserve">
     <value>無法在資源字典(ResourceDicionary)找到此資源 [{0}]</value>
   </data>
-  <data name="Exception_ResourceDictionaryKeyNotFound1" xml:space="preserve">
-    <value>無法在資源字典(ResourceDicionary)找到此資源 [{0}]</value>
-  </data>
   <data name="Global_ChangePrice" xml:space="preserve">
-    <value>漲跌</value>
-  </data>
-  <data name="Global_ChangePrice1" xml:space="preserve">
     <value>漲跌</value>
   </data>
   <data name="Global_ChangePricePercentage" xml:space="preserve">
     <value>漲跌 (%)</value>
   </data>
-  <data name="Global_ChangePricePercentage1" xml:space="preserve">
-    <value>漲跌 (%)</value>
-  </data>
   <data name="Global_Date" xml:space="preserve">
     <value>日期</value>
   </data>
-  <data name="Global_Date1" xml:space="preserve">
-    <value>日期</value>
-  </data>
   <data name="Global_Price" xml:space="preserve">
-    <value>價格</value>
-  </data>
-  <data name="Global_Price1" xml:space="preserve">
     <value>價格</value>
   </data>
   <data name="News_All_TabTile" xml:space="preserve">
@@ -225,10 +180,13 @@
   <data name="News_Topic_TabTile" xml:space="preserve">
     <value>即時</value>
   </data>
-  <data name="SupermaxIndex_Label" xml:space="preserve">
-    <value>輕便型(Supramax)</value>
+  <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
+    <value>歷史資料</value>
   </data>
-  <data name="SupermaxIndex_Label1" xml:space="preserve">
+  <data name="ProdcutIndex_TabOverview" xml:space="preserve">
+    <value>總覽</value>
+  </data>
+  <data name="SupermaxIndex_Label" xml:space="preserve">
     <value>輕便型(Supramax)</value>
   </data>
 </root>
