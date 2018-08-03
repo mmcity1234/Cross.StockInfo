@@ -11,7 +11,7 @@ namespace Cross.StockInfo.Services.Product
     /// Processing the product index from fubon website
     /// </summary>
     public abstract class FubonProduct : BaseProduct
-    {     
+    {
 
         protected override List<DataPoint> ProcessData(string result)
         {
@@ -29,10 +29,10 @@ namespace Cross.StockInfo.Services.Product
             {
                 double currentValue = Convert.ToDouble(valueArray[i]);
                 DataPoint currentIndexData = new DataPoint
-                {
-                    Time = DateTime.ParseExact(dateArray[i], "yyyMMdd", CultureInfo.InvariantCulture).AddYears(1911),
+                {                    
+                    Time = ParseDateTime(dateArray[i]),
                     Value = currentValue,
-                    ChangeValue = previousData == null ? 0 : currentValue - previousData.Value,
+                    ChangeValue = previousData == null ? 0 : Math.Round(currentValue - previousData.Value, 2), // float誤差需透過Math.Round去除多餘的小數點
                     ChangeValuePercentage = previousData == null ? 0 : Math.Round((currentValue - previousData.Value) / previousData.Value * 100, 2)
                 };
 
@@ -41,6 +41,16 @@ namespace Cross.StockInfo.Services.Product
             }
 
             return productIndexList;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        protected virtual DateTime ParseDateTime(string dateTime)
+        {
+            return DateTime.Parse(dateTime, CultureInfo.InvariantCulture);
         }
     }
 }

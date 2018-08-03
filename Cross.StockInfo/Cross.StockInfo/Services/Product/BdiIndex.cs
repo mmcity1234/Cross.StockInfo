@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Cross.StockInfo.Services.Product
@@ -13,6 +14,10 @@ namespace Cross.StockInfo.Services.Product
         protected override string GetUrl()
         {
             return BdiIndexUrl;
+        }
+        protected override DateTime ParseDateTime(string dateTime)
+        {
+            return DateTime.ParseExact(dateTime, "yyyMMdd", CultureInfo.InvariantCulture).AddYears(1911);
         }
     }
 }

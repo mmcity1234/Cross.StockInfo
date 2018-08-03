@@ -88,11 +88,38 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 散裝航運 的當地語系化字串。
+        /// </summary>
+        public static string BDIIndex_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("BDIIndex_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 巴拿馬型(BPI) 的當地語系化字串。
         /// </summary>
         public static string BPIIndex_Label {
             get {
                 return ResourceManager.GetString("BPIIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 布蘭特原油 的當地語系化字串。
+        /// </summary>
+        public static string BrentCrudeOilIndex_Label {
+            get {
+                return ResourceManager.GetString("BrentCrudeOilIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 杜拜輕原油 的當地語系化字串。
+        /// </summary>
+        public static string DubaiOilIndex_Label {
+            get {
+                return ResourceManager.GetString("DubaiOilIndex_Label", resourceCulture);
             }
         }
         
@@ -246,6 +273,24 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string News_Topic_TabTile {
             get {
                 return ResourceManager.GetString("News_Topic_TabTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 原油指數 的當地語系化字串。
+        /// </summary>
+        public static string OilIndex_ChartTitle {
+            get {
+                return ResourceManager.GetString("OilIndex_ChartTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 原油 的當地語系化字串。
+        /// </summary>
+        public static string OilIndex_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("OilIndex_MenuItemLabel", resourceCulture);
             }
         }
         

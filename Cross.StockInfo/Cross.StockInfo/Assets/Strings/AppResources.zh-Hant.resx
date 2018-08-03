@@ -126,8 +126,17 @@
   <data name="BDIIndex_Label" xml:space="preserve">
     <value>波羅的海綜合指數(BDI)</value>
   </data>
+  <data name="BDIIndex_MenuItemLabel" xml:space="preserve">
+    <value>散裝航運</value>
+  </data>
   <data name="BPIIndex_Label" xml:space="preserve">
     <value>巴拿馬型(BPI)</value>
+  </data>
+  <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
+    <value>布蘭特原油</value>
+  </data>
+  <data name="DubaiOilIndex_Label" xml:space="preserve">
+    <value>杜拜輕原油</value>
   </data>
   <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
     <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
@@ -179,6 +188,12 @@
   </data>
   <data name="News_Topic_TabTile" xml:space="preserve">
     <value>即時</value>
+  </data>
+  <data name="OilIndex_ChartTitle" xml:space="preserve">
+    <value>原油指數</value>
+  </data>
+  <data name="OilIndex_MenuItemLabel" xml:space="preserve">
+    <value>原油</value>
   </data>
   <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
     <value>歷史資料</value>

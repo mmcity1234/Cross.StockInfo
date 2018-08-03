@@ -41,8 +41,9 @@
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
                         <model:MasterPageMenuItem Title="TodoList" TargetType="{x:Type news:NewsView}" />
                         <model:MasterPageMenuItem Title="Reminders" TargetType="{x:Type productIndex:GoldIndexView}" />
-                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_Label}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
-                        <model:MasterPageMenuItem Title="TEST" TargetType="{x:Type productIndex:GoldIndexView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:OilProductInfo}" />
+
                     </x:Array>
                 </ListView.ItemsSource>
             </ListView>
@@ -58,18 +59,18 @@
         <ContentPage Title="StockInfo">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Category Menu -->
                 <StackLayout>
-                    <StackLayout HeightRequest="100">
+                    <StackLayout HeightRequest="50">
                         <Label Text="新聞"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <StackLayout HeightRequest="100">
+                    <StackLayout HeightRequest="50">
                         <Label Text="指數"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>

@@ -23,7 +23,7 @@ namespace Cross.StockInfo.Services
         {
             try
             {
-                var productIndex = ProductFactory.GetProductIndex(productName);
+                var productIndex = await ProductFactory.GetProductIndexTaskAsync(productName);
                 var resultIndexList = await productIndex.GetHistoricalReportTaskAsync(start, end);
                 return resultIndexList;
             }
