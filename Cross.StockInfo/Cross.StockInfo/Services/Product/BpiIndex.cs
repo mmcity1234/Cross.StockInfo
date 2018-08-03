@@ -11,16 +11,15 @@ namespace Cross.StockInfo.Services.Product
         /// <summary>
         /// 散裝貨運巴拿馬指數
         /// </summary>
-        private const string BpiIndexUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400008";
+        private const string DayUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM400008";
+        private const string WeekUrl = "https://just2.entrust.com.tw/Z/ZH/ZHG/CZHG.djbcd?A=260020";
 
-        protected override string GetUrl()
+        protected override string GetUrl(AverageType averageType)
         {
-            return BpiIndexUrl;
-        }
-
-        protected override DateTime ParseDateTime(string dateTime)
-        {
-            return DateTime.ParseExact(dateTime, "yyyMMdd", CultureInfo.InvariantCulture).AddYears(1911);
+            if (averageType == AverageType.Week)
+                return WeekUrl;
+            else
+                return DayUrl;
         }
     }
 }

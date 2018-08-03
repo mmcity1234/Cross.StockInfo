@@ -116,6 +116,14 @@ namespace Cross.StockInfo.ViewModels.Control.Chart
 
         }
 
+        /// <summary>
+        /// 清除圖表的指數線圖
+        /// </summary>
+        public void ClearData()
+        {
+            SeriesData.Clear();
+        }
+
 
     }
 }

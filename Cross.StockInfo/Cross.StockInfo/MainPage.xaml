@@ -40,7 +40,7 @@
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
                         <model:MasterPageMenuItem Title="TodoList" TargetType="{x:Type news:NewsView}" />
-                        <model:MasterPageMenuItem Title="Reminders" TargetType="{x:Type productIndex:GoldIndexView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:AgriculturalProductInfo}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
                         <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:OilProductInfo}" />
 

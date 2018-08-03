@@ -1,5 +1,6 @@
 ﻿using Cross.StockInfo.Assets.Styles;
 using Cross.StockInfo.Common.Helper;
+using Cross.StockInfo.Services.Product;
 using Cross.StockInfo.ViewModels.Control.Chart;
 using Syncfusion.SfChart.XForms;
 using System;
@@ -17,6 +18,11 @@ namespace Cross.StockInfo.Views.Control
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LineChartControl : UserControlView
     {
+        /// <summary>
+        /// 選擇圖表均線的事件
+        /// </summary>
+        public event EventHandler<AverageTimeEventArgs> AverageTimeSelected;
+     
         /// <summary>
         /// 歷史資料點
         /// </summary>
@@ -163,6 +169,23 @@ namespace Cross.StockInfo.Views.Control
             if (chartLine.Series == null)
                 chartLine.Series = new ChartSeriesCollection();
             base.OnChildAdded(child);
+        }
+
+        private void Day_Tapped(object sender, AverageTimeEventArgs e)
+        {
+            if(AverageTimeSelected != null)
+            {
+                AverageTimeSelected(sender, new AverageTimeEventArgs(AverageType.Day));
+            }
+
+        }
+
+        private void Week_Tapped(object sender, AverageTimeEventArgs e)
+        {
+            if (AverageTimeSelected != null)
+            {
+                AverageTimeSelected(sender, new AverageTimeEventArgs(AverageType.Week));
+            }
         }
     }
 }

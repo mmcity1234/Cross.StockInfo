@@ -49,8 +49,12 @@ namespace Cross.StockInfo.Services.Product
         /// <param name="dateTime"></param>
         /// <returns></returns>
         protected virtual DateTime ParseDateTime(string dateTime)
-        {
-            return DateTime.Parse(dateTime, CultureInfo.InvariantCulture);
+        {  
+            // e.g. 1060509
+            if (dateTime.Length == 7)
+                return DateTime.ParseExact(dateTime, "yyyMMdd", CultureInfo.InvariantCulture).AddYears(1911);
+            else
+                return DateTime.Parse(dateTime, CultureInfo.InvariantCulture);
         }
     }
 }

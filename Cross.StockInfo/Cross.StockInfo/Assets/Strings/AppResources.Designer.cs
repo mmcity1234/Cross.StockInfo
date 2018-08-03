@@ -61,6 +61,24 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 農產品指數 的當地語系化字串。
+        /// </summary>
+        public static string AgriculturalProducts_ChartTitle {
+            get {
+                return ResourceManager.GetString("AgriculturalProducts_ChartTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 農產品 的當地語系化字串。
+        /// </summary>
+        public static string AgriculturalProducts_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("AgriculturalProducts_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 海岬型(BCI) 的當地語系化字串。
         /// </summary>
         public static string BCIIndex_Label {
@@ -111,6 +129,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string BrentCrudeOilIndex_Label {
             get {
                 return ResourceManager.GetString("BrentCrudeOilIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 日 的當地語系化字串。
+        /// </summary>
+        public static string Day {
+            get {
+                return ResourceManager.GetString("Day", resourceCulture);
             }
         }
         
@@ -277,6 +304,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 紐約輕原油 的當地語系化字串。
+        /// </summary>
+        public static string NewYorkOilIndex_Label {
+            get {
+                return ResourceManager.GetString("NewYorkOilIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 原油指數 的當地語系化字串。
         /// </summary>
         public static string OilIndex_ChartTitle {
@@ -313,11 +349,38 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 黃豆近期期貨 的當地語系化字串。
+        /// </summary>
+        public static string SoyIndex_Label {
+            get {
+                return ResourceManager.GetString("SoyIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 輕便型(Supramax) 的當地語系化字串。
         /// </summary>
         public static string SupermaxIndex_Label {
             get {
                 return ResourceManager.GetString("SupermaxIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 週 的當地語系化字串。
+        /// </summary>
+        public static string Week {
+            get {
+                return ResourceManager.GetString("Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 小麥近期期貨 的當地語系化字串。
+        /// </summary>
+        public static string WheatIndex_Label {
+            get {
+                return ResourceManager.GetString("WheatIndex_Label", resourceCulture);
             }
         }
     }

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using Cross.StockInfo.ViewModels.Control;
 using System.Collections.ObjectModel;
 using Cross.StockInfo.ViewModels.ProductIndex.Config;
+using Cross.StockInfo.Common;
+using Cross.StockInfo.Views.Control;
+using Cross.StockInfo.Services.Product;
 
 namespace Cross.StockInfo.ViewModels.ProductIndex
 {
@@ -70,12 +73,17 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                 OnPropertyChanged();
             }
         }
+        public  DelegateCommand<AverageTimeEventArgs> AverageSelectedCommand { get; set; }
+   
+
 
         #endregion
 
         public ProductIndexViewModel()
         {
             LineChart = new LineChartModel();
+            AverageSelectedCommand = new DelegateCommand<AverageTimeEventArgs>(AverageSelectedEventHandler);
+          
 
         }
         public override async void OnPageLoading()
@@ -84,31 +92,38 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             {
                 try
                 {
-                    int count = 1;
-                    List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
-                    foreach (var series in ProductInfo.SeriesInfoCollection)
-                    {
-                        var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey);
-                        if (count++ == 1) // primary series
-                        {
-                            filterSeriesForDailyPrice = indexList;
-                            AddSeries(series.Name, indexList, true, series.Visible);
-                        }
-                        else   // sub series                         
-                            AddSeries(series.Name, indexList, false, series.Visible);
-                    }
-
-                    var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
-
-                    PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
-
-                    _isLoaded = true;
+                    await LoadChartData(AverageType.Day);
                 }
                 catch (Exception e)
                 {
                     throw new Exception(string.Format(AppResources.Exception_LoadDataError, e.Message));
                 }
             }
+        }
+
+        private async Task LoadChartData(AverageType averageType)
+        {
+            LineChart.ClearData();
+
+            int count = 1;
+            List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
+            foreach (var series in ProductInfo.SeriesInfoCollection)
+            {
+                var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey, averageType);
+                if (count++ == 1) // primary series
+                {
+                    filterSeriesForDailyPrice = indexList;
+                    AddSeries(series.Name, indexList, true, series.Visible);
+                }
+                else   // sub series                         
+                    AddSeries(series.Name, indexList, false, series.Visible);
+            }
+
+            var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
+
+            PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
+
+            _isLoaded = true;
         }
 
         private void AddSeries(string title, List<DataPoint> dataList, bool isPrimary = true, bool isVisible = true)
@@ -118,6 +133,14 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                 LineChart.AddPrimarySeries(title, dataPoints);
             else
                 LineChart.AddSeries(title, dataPoints, isVisible);
+        }
+
+        /// <summary>
+        /// 圖表選擇移動平均統計方式的事件
+        /// </summary>
+        private async void AverageSelectedEventHandler(AverageTimeEventArgs args)
+        {
+            await LoadChartData(args.Type);
         }
     }
 }

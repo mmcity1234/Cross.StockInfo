@@ -5,6 +5,7 @@
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:control="clr-namespace:Cross.StockInfo.Views.Control"
+              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"            
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="Cross.StockInfo.Views.ProductIndex.ProductIndexView">
     <ContentPage.Resources>
@@ -18,8 +19,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-          
+            </Grid.RowDefinitions>         
 
             <tabView:SfTabView DisplayMode="Text">
                 <!--BDI Overview-->
@@ -29,15 +29,20 @@
                                                   LatestPrice="{Binding LineChart.LatestPrice}" 
                                                   ChangedPrice="{Binding LineChart.ChangedPrice}"
                                                   ChangedPricePercentage="{Binding LineChart.ChangedPricePercentage}" 
-                                                  Title="{Binding ChartTitle}"
-                                                />
+                                                  Title="{Binding ChartTitle}">
+                            <control:LineChartControl.Behaviors>
+                                <b:EventHandlerBehavior EventName="AverageTimeSelected">
+                                    <b:InvokeCommandAction Command="{Binding AverageSelectedCommand}" />
+                                </b:EventHandlerBehavior>                               
+                            </control:LineChartControl.Behaviors>
+                        </control:LineChartControl>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Price History-->
                 <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabHistoricalReport}">
                     <tabView:SfTabItem.Content>
                         <Grid>
-                        <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />
+                             <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />
                         </Grid>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>

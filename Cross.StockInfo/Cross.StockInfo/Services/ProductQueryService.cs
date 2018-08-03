@@ -12,19 +12,19 @@ namespace Cross.StockInfo.Services
     public class ProductQueryService : IProductQueryService
     {
       
-        public async Task<List<DataPoint>> ListProductIndexTaskAsync(string productName)
+        public async Task<List<DataPoint>> ListProductIndexTaskAsync(string productName, AverageType averageType)
         {
             DateTime end = DateTime.Now;
             DateTime start = end.AddYears(-5);
-            return await ListProductIndexTaskAsync(productName, start, end);
+            return await ListProductIndexTaskAsync(productName, start, end, averageType);
         }
 
-        public async Task<List<DataPoint>> ListProductIndexTaskAsync(string productName, DateTime start, DateTime end)
+        public async Task<List<DataPoint>> ListProductIndexTaskAsync(string productName, DateTime start, DateTime end, AverageType averageType)
         {
             try
             {
                 var productIndex = await ProductFactory.GetProductIndexTaskAsync(productName);
-                var resultIndexList = await productIndex.GetHistoricalReportTaskAsync(start, end);
+                var resultIndexList = await productIndex.GetHistoricalReportTaskAsync(start, end, averageType);
                 return resultIndexList;
             }
             catch (Exception e)

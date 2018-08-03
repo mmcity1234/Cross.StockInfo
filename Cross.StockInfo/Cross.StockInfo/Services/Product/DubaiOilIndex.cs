@@ -10,11 +10,16 @@ namespace Cross.StockInfo.Services.Product
     [StockIndex("Product.DubaiOilIndex")]
     public class DubaiOilIndex : FubonProduct
     {
-        private const string Url = "https://just2.entrust.com.tw/Z/ZH/ZHG/CZHG.djbcd?A=131690";
+        private const string DayUrl = "https://fubon-ebrokerdj.fbs.com.tw/Z/ZN/ZNM/CZNM.djbcd?A=FM200049";
+        private const string WeekUrl = "https://just2.entrust.com.tw/Z/ZH/ZHG/CZHG.djbcd?A=131690";
+ 
 
-        protected override string GetUrl()
+        protected override string GetUrl(AverageType averageType)
         {
-            return Url;
+            if (averageType == AverageType.Week)
+                return WeekUrl;
+            else
+                return DayUrl;
         }
     }
 }

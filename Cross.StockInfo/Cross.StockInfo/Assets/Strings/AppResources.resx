@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AgriculturalProducts_ChartTitle" xml:space="preserve">
+    <value>農產品指數</value>
+  </data>
+  <data name="AgriculturalProducts_MenuItemLabel" xml:space="preserve">
+    <value>農產品</value>
+  </data>
   <data name="BCIIndex_Label" xml:space="preserve">
     <value>海岬型(BCI)</value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
     <value>布蘭特原油</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>日</value>
   </data>
   <data name="DubaiOilIndex_Label" xml:space="preserve">
     <value>杜拜輕原油</value>
@@ -189,6 +198,9 @@
   <data name="News_Topic_TabTile" xml:space="preserve">
     <value>即時</value>
   </data>
+  <data name="NewYorkOilIndex_Label" xml:space="preserve">
+    <value>紐約輕原油</value>
+  </data>
   <data name="OilIndex_ChartTitle" xml:space="preserve">
     <value>原油指數</value>
   </data>
@@ -201,7 +213,16 @@
   <data name="ProdcutIndex_TabOverview" xml:space="preserve">
     <value>總覽</value>
   </data>
+  <data name="SoyIndex_Label" xml:space="preserve">
+    <value>黃豆近期期貨</value>
+  </data>
   <data name="SupermaxIndex_Label" xml:space="preserve">
     <value>輕便型(Supramax)</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="WheatIndex_Label" xml:space="preserve">
+    <value>小麥近期期貨</value>
   </data>
 </root>
