@@ -10,14 +10,14 @@ using Xamarin.Forms.Xaml;
 
 namespace Cross.StockInfo.Views.ProductIndex
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProductIndexView : ViewPage
-	{
-		public ProductIndexView()
-		{
-            DataBinding< ProductIndexViewModel >();
-            InitializeComponent ();
-          
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProductIndexView : TabViewPage
+    {
+        public ProductIndexView()
+        {            
+            InitializeComponent();
+            DataBinding<ProductIndexViewModel>();
+
         }
     }
 }

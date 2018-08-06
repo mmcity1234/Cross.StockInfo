@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Cross.StockInfo.Views"
-             x:Class="Cross.StockInfo.Views.ProductIndex.GoldIndexView">
+             x:Class="Cross.StockInfo.Views.ProductIndex.Page1">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Gold"
+            <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
-</views:ViewPage>
+</ContentPage>

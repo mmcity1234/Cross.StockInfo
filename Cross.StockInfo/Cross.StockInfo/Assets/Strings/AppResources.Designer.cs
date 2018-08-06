@@ -232,6 +232,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 新聞 的當地語系化字串。
+        /// </summary>
+        public static string Main_NewsMenuItem {
+            get {
+                return ResourceManager.GetString("Main_NewsMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 全部 的當地語系化字串。
         /// </summary>
         public static string News_All_TabTile {

@@ -39,11 +39,10 @@
 
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
-                        <model:MasterPageMenuItem Title="TodoList" TargetType="{x:Type news:NewsView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate Main_NewsMenuItem}" TargetType="{x:Type news:NewsView}" />
                         <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:AgriculturalProductInfo}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
                         <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:OilProductInfo}" />
-
                     </x:Array>
                 </ListView.ItemsSource>
             </ListView>
@@ -64,13 +63,13 @@
                 </Grid.ColumnDefinitions>
                 <!-- Category Menu -->
                 <StackLayout>
-                    <StackLayout HeightRequest="50">
+                    <StackLayout HeightRequest="30">
                         <Label Text="新聞"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <StackLayout HeightRequest="50">
+                    <StackLayout HeightRequest="30">
                         <Label Text="指數"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
@@ -87,7 +86,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <productIndex:GoldIndexView/>
+                <productIndex:Page1/>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

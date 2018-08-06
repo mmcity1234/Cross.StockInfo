@@ -15,9 +15,9 @@
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>               
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
            
             <Grid>
@@ -26,18 +26,32 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>   
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="{Binding LatestPrice}" x:Name="latestPriceLabel" FontSize="24" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="10,10,10,0"/>
 
-                <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" Grid.Row="1" Grid.Column="1" Margin="5,10,0,0"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-
-                
+                <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="End" />
+                <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" Grid.Row="1" Grid.Column="1" Margin="5,10,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
 
-            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesData}" Grid.Row="1" x:Name="chartLine" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Row="1">
+                <StackLayout HeightRequest="50">
+                    <Label Text="{lang:Translate Day}" TextColor="Blue" FontSize="16"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Day_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout HeightRequest="50" Margin="10,0,0,0">
+                    <Label Text="{lang:Translate Week}" TextColor="Blue" FontSize="14"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Week_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+
+            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesData}" Grid.Row="2" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -68,20 +82,8 @@
                     </chart:ChartTrackballBehavior>
                 </chart:SfChart.ChartBehaviors>
             </chart:SfChart>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <StackLayout HeightRequest="50">
-                    <Label Text="{lang:Translate Day}" TextColor="Blue"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Day_Tapped"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <StackLayout HeightRequest="50">
-                    <Label Text="{lang:Translate Week}" TextColor="Blue"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Week_Tapped"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-            </StackLayout>
+           
+           
         </Grid>
     </ContentView.Content>
 </views:UserControlView>

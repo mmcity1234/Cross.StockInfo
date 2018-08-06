@@ -73,8 +73,8 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                 OnPropertyChanged();
             }
         }
-        public  DelegateCommand<AverageTimeEventArgs> AverageSelectedCommand { get; set; }
-   
+        public DelegateCommand<AverageTimeEventArgs> AverageSelectedCommand { get; set; }
+
 
 
         #endregion
@@ -83,7 +83,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         {
             LineChart = new LineChartModel();
             AverageSelectedCommand = new DelegateCommand<AverageTimeEventArgs>(AverageSelectedEventHandler);
-          
+
 
         }
         public override async void OnPageLoading()
@@ -101,29 +101,35 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
 
-        private async Task LoadChartData(AverageType averageType)
+        private Task LoadChartData(AverageType averageType)
         {
-            LineChart.ClearData();
-
-            int count = 1;
-            List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
-            foreach (var series in ProductInfo.SeriesInfoCollection)
+            return Task.Run(() =>
             {
-                var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey, averageType);
-                if (count++ == 1) // primary series
-                {
-                    filterSeriesForDailyPrice = indexList;
-                    AddSeries(series.Name, indexList, true, series.Visible);
-                }
-                else   // sub series                         
-                    AddSeries(series.Name, indexList, false, series.Visible);
-            }
+                Device.BeginInvokeOnMainThread(async() => {
+                    LineChart.ClearData();
 
-            var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
+                    int count = 1;
+                    List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
+                    foreach (var series in ProductInfo.SeriesInfoCollection)
+                    {
+                        var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey, averageType);
+                        if (count++ == 1) // primary series
+                        {
+                            filterSeriesForDailyPrice = indexList;
+                            AddSeries(series.Name, indexList, true, series.Visible);
+                        }
+                        else   // sub series                         
+                            AddSeries(series.Name, indexList, false, series.Visible);
+                    }
 
-            PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
+                    var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
 
-            _isLoaded = true;
+
+                    PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
+
+                    _isLoaded = true;
+                });
+            });
         }
 
         private void AddSeries(string title, List<DataPoint> dataList, bool isPrimary = true, bool isVisible = true)

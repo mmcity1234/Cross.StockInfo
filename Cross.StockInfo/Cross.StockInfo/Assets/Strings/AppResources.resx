@@ -225,4 +225,7 @@
   <data name="WheatIndex_Label" xml:space="preserve">
     <value>小麥近期期貨</value>
   </data>
+  <data name="Main_NewsMenuItem" xml:space="preserve">
+    <value>新聞</value>
+  </data>
 </root>
