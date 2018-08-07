@@ -76,6 +76,14 @@ namespace Cross.StockInfo.Views.Control
                 defaultBindingMode: BindingMode.OneWay,
                 propertyChanged: OnChangedPricePercentagePropertyChanged);
 
+        public static readonly BindableProperty PerformanceProperty = BindableProperty.Create(
+               "Performance",
+               typeof(PerformanceModel),
+               typeof(LineChartControl),
+               defaultValue: null,
+               defaultBindingMode: BindingMode.OneWay,
+               propertyChanged: OnPerformancePropertyChanged);
+
         public static readonly BindableProperty TimeFormatProperty = BindableProperty.Create(
                "TimeFormat",
                typeof(string),
@@ -112,6 +120,15 @@ namespace Cross.StockInfo.Views.Control
             get => (string)GetValue(ChangedPricePercentageProperty);
             set => SetValue(ChangedPricePercentageProperty, value);
         }
+
+        /// <summary>
+        /// 績效
+        /// </summary>
+        public PerformanceModel Performance
+        {
+            get => (PerformanceModel)GetValue(PerformanceProperty);
+            set => SetValue(PerformanceProperty, value);
+        }
         public string TimeFormat
         {
             get => (string)GetValue(TimeFormatProperty);
@@ -146,17 +163,46 @@ namespace Cross.StockInfo.Views.Control
         {
             BindablePropertyChanged<LineChartControl>(bindable, x =>
             {
-                x.changedPricePercentageLabel.Text = newValue as string;               
-                double value;               
-                if (newValue != null)
+                x.changedPricePercentageLabel.Text = newValue as string;
+                FillPercentageTextColor(x.changedPricePercentageLabel, newValue as string);
+            });
+        }
+        private static void OnPerformancePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x =>
+            {
+                var model = newValue as PerformanceModel;
+                if (model != null)
                 {
-                    string origValueString = ((string)newValue).Replace("%", string.Empty);
-                    double.TryParse(origValueString, out value);
-                    x.changedPricePercentageLabel.TextColor = value >= 0 ? ResourceDictionaryHelper.GetResource<Color>("PriceUpColor") :
-                       ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
+                    x.weekPerformanceLabel.Text = model.WeekPerformance;
+                    x.monthPerformanceLabel.Text = model.MonthPerformance;
+                    x.quarterPerformanceLabel.Text = model.QuarterPerformance;
+                    x.halfYearPerformanceLabel.Text = model.HalfYearPerformance;
+                    x.thisYearPerformanceLabel.Text = model.ThisYearPerformance;
+                    x.yearPerformanceLabel.Text = model.YearPerformance;
+
+                    FillPercentageTextColor(x.weekPerformanceLabel, model.WeekPerformance);
+                    FillPercentageTextColor(x.monthPerformanceLabel, model.MonthPerformance);
+                    FillPercentageTextColor(x.quarterPerformanceLabel, model.QuarterPerformance);
+                    FillPercentageTextColor(x.halfYearPerformanceLabel, model.HalfYearPerformance);
+                    FillPercentageTextColor(x.thisYearPerformanceLabel, model.ThisYearPerformance);
+                    FillPercentageTextColor(x.yearPerformanceLabel, model.YearPerformance);
                 }
             });
         }
+
+        private static void FillPercentageTextColor(Label targetLabel, string strValue)
+        {
+            if (strValue != null)
+            {
+                double value;
+                string origValueString = ((string)strValue).Replace("%", string.Empty);
+                double.TryParse(origValueString, out value);
+                targetLabel.TextColor = value >= 0 ? ResourceDictionaryHelper.GetResource<Color>("PriceUpColor") :
+                    ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
+            }
+        }
+        
 
         public LineChartControl()
         {

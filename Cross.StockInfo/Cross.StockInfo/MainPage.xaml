@@ -17,12 +17,11 @@
         <DataTemplate x:Key="MenuItemTemplate">
             <ViewCell>
                 <Grid Padding="5,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
+                    <Grid.ColumnDefinitions>                      
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding IconSource}" />
-                    <Label Grid.Column="1" Text="{Binding Title}" />
+                    <!--<Image Source="{Binding IconSource}" />-->
+                    <Label Text="{Binding Title}" HorizontalOptions="Start" HorizontalTextAlignment="Start" />
                 </Grid>
             </ViewCell>
         </DataTemplate>

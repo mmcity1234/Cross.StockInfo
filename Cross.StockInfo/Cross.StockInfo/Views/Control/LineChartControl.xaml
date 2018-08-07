@@ -2,6 +2,7 @@
 <views:UserControlView xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
@@ -10,33 +11,53 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
-        </ResourceDictionary>      
+
+            <Style x:Key="performanceTitle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="End"/> 
+             
+                <Setter Property="TextColor" Value="#606060"/>
+                <Setter Property="FontSize" Value="14"/>                
+            </Style>
+            <Style x:Key="performanceValue" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="FontSize" Value="22"/>               
+            </Style>
+            <Style x:Key="performanceStack" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+            </Style>
+
+        </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>               
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-           
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>   
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{Binding LatestPrice}" x:Name="latestPriceLabel" FontSize="24" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="10,10,10,0"/>
+                <Label Text="{Binding LatestPrice}" x:Name="latestPriceLabel" FontSize="30" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand"  VerticalOptions="StartAndExpand"  Margin="10,10,10,0"/>
 
-                <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="End" />
-                <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" Grid.Row="1" Grid.Column="1" Margin="5,10,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
+                <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" FontSize="14" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="End" />
+                <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" FontSize="14" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Row="1">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="0,0,20,0">
                 <StackLayout HeightRequest="50">
                     <Label Text="{lang:Translate Day}" TextColor="Blue" FontSize="16"/>
                     <StackLayout.GestureRecognizers>
@@ -51,7 +72,7 @@
                 </StackLayout>
             </StackLayout>
 
-            <chart:SfChart Margin="0,0,15,0" Series="{Binding SeriesData}" Grid.Row="2" x:Name="chartLine" >
+            <chart:SfChart Margin="0,0,0,0" Series="{Binding SeriesData}" Grid.Row="2" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -82,8 +103,41 @@
                     </chart:ChartTrackballBehavior>
                 </chart:SfChart.ChartBehaviors>
             </chart:SfChart>
-           
-           
+
+
+            <!-- 績效 -->
+            <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Center"  AlignItems="Start"  Grid.Row="3">
+                <StackLayout Style="{StaticResource performanceStack}" >
+                    <Label Text="{lang:Translate Week}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="weekPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource performanceStack}" >
+                    <Label Text="{lang:Translate Month}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="monthPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource performanceStack}" >
+                    <Label Text="{lang:Translate Quarter}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="quarterPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource performanceStack}">
+                    <Label Text="{lang:Translate HalfYear}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="halfYearPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource performanceStack}" >
+                    <Label Text="{lang:Translate ThisYear}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="thisYearPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+
+                <StackLayout Style="{StaticResource performanceStack}">
+                    <Label Text="{lang:Translate Year}" Style="{StaticResource performanceTitle}"/>
+                    <Label x:Name="yearPerformanceLabel" Style="{StaticResource performanceValue}"/>
+                </StackLayout>
+            </FlexLayout>
+
         </Grid>
     </ContentView.Content>
 </views:UserControlView>

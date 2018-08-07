@@ -232,11 +232,29 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 半年 的當地語系化字串。
+        /// </summary>
+        public static string HalfYear {
+            get {
+                return ResourceManager.GetString("HalfYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 新聞 的當地語系化字串。
         /// </summary>
         public static string Main_NewsMenuItem {
             get {
                 return ResourceManager.GetString("Main_NewsMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 月 的當地語系化字串。
+        /// </summary>
+        public static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
             }
         }
         
@@ -358,6 +376,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 季 的當地語系化字串。
+        /// </summary>
+        public static string Quarter {
+            get {
+                return ResourceManager.GetString("Quarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 黃豆近期期貨 的當地語系化字串。
         /// </summary>
         public static string SoyIndex_Label {
@@ -376,6 +403,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 今年 的當地語系化字串。
+        /// </summary>
+        public static string ThisYear {
+            get {
+                return ResourceManager.GetString("ThisYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 週 的當地語系化字串。
         /// </summary>
         public static string Week {
@@ -390,6 +426,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string WheatIndex_Label {
             get {
                 return ResourceManager.GetString("WheatIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 年 的當地語系化字串。
+        /// </summary>
+        public static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
     }

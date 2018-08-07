@@ -174,8 +174,14 @@
   <data name="Global_Price" xml:space="preserve">
     <value>價格</value>
   </data>
+  <data name="HalfYear" xml:space="preserve">
+    <value>半年</value>
+  </data>
   <data name="Main_NewsMenuItem" xml:space="preserve">
     <value>新聞</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>月</value>
   </data>
   <data name="News_All_TabTile" xml:space="preserve">
     <value>全部</value>
@@ -216,16 +222,25 @@
   <data name="ProdcutIndex_TabOverview" xml:space="preserve">
     <value>總覽</value>
   </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>季</value>
+  </data>
   <data name="SoyIndex_Label" xml:space="preserve">
     <value>黃豆近期期貨</value>
   </data>
   <data name="SupermaxIndex_Label" xml:space="preserve">
     <value>輕便型(Supramax)</value>
   </data>
+  <data name="ThisYear" xml:space="preserve">
+    <value>今年</value>
+  </data>
   <data name="Week" xml:space="preserve">
     <value>週</value>
   </data>
   <data name="WheatIndex_Label" xml:space="preserve">
     <value>小麥近期期貨</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>年</value>
   </data>
 </root>

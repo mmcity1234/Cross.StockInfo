@@ -228,4 +228,19 @@
   <data name="Main_NewsMenuItem" xml:space="preserve">
     <value>新聞</value>
   </data>
+  <data name="HalfYear" xml:space="preserve">
+    <value>半年</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>季</value>
+  </data>
+  <data name="ThisYear" xml:space="preserve">
+    <value>今年</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>年</value>
+  </data>
 </root>

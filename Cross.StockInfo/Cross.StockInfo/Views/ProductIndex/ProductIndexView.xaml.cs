@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.ProductIndex
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProductIndexView : TabViewPage
+    public partial class ProductIndexView : ViewPage
     {
         public ProductIndexView()
         {            

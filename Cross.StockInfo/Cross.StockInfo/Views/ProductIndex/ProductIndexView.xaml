@@ -1,37 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:TabViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"          
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:control="clr-namespace:Cross.StockInfo.Views.Control"
-             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"            
+              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"            
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="Cross.StockInfo.Views.ProductIndex.ProductIndexView">
-    <TabbedPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
 
         </ResourceDictionary>
-    </TabbedPage.Resources>
+    </ContentPage.Resources>
+    <ContentPage.Content>
 
-    <ContentPage Title="{lang:Translate ProdcutIndex_TabOverview}">
         <Grid>
-            <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}" 
-                                                  LatestPrice="{Binding BindingContext.LineChart.LatestPrice}" 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>         
+
+            <tabView:SfTabView DisplayMode="Text">
+                <!--BDI Overview-->
+                <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabOverview}">
+                    <tabView:SfTabItem.Content>
+                        <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}" 
+                                                  LatestPrice="{Binding LineChart.LatestPrice}" 
                                                   ChangedPrice="{Binding LineChart.ChangedPrice}"
                                                   ChangedPricePercentage="{Binding LineChart.ChangedPricePercentage}" 
+                                                  Performance="{Binding LineChart.IndexPerformance}"
                                                   Title="{Binding ChartTitle}">
-                <control:LineChartControl.Behaviors>
-                    <b:EventHandlerBehavior EventName="AverageTimeSelected">
-                        <b:InvokeCommandAction Command="{Binding AverageSelectedCommand}" />
-                    </b:EventHandlerBehavior>
-                </control:LineChartControl.Behaviors>
-            </control:LineChartControl>
+                            <control:LineChartControl.Behaviors>
+                                <b:EventHandlerBehavior EventName="AverageTimeSelected">
+                                    <b:InvokeCommandAction Command="{Binding AverageSelectedCommand}" />
+                                </b:EventHandlerBehavior>                               
+                            </control:LineChartControl.Behaviors>
+                        </control:LineChartControl>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <!--Price History-->
+                <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabHistoricalReport}">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                             <control:DailyPriceControl BindingContext="{Binding PriceContorlModel}" />
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
         </Grid>
-    </ContentPage>
-
-    <ContentPage Title="{lang:Translate ProdcutIndex_TabHistoricalReport}">
-        <Grid>
-            <control:DailyPriceControl BindingContext="{Binding BindingContext.PriceContorlModel}" />
-        </Grid>
-    </ContentPage >   
-</views:TabViewPage>
+    </ContentPage.Content>
+</views:ViewPage>
