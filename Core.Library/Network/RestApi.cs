@@ -11,14 +11,42 @@ namespace Core.Utility.Network
 {
     public static class RestApi
     {
-        public static async Task<string> GetContentTaskAsync(string url)
+        public static async Task<string> GetHtmlTaskAsync(string url)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>
+            {
+                { "Content-Type", "text/html; charset=utf-8"}
+            };
+ 
+            return await GetContentTaskAsync(url, headers);
+        }
+
+        public static async Task<string> GetJsonTaskAsync(string url)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>
+            {
+                {"Accept", "application/json" },
+                { "Content-Type", "application/json; charset=UTF-8"}
+            };
+            return await GetContentTaskAsync(url, headers);
+
+        }
+
+        public static async Task<string> GetContentTaskAsync(string url, Dictionary<string, string> headers)
         {
             var request = new RestRequest(Method.GET);
-
-            var client = new RestClient(url);          
+            if(headers != null)
+            {
+                foreach (var header in headers)
+                {
+                    request.AddHeader(header.Key, header.Value);
+                }
+            }
+            
+            var client = new RestClient(url);
 
             var response = await client.ExecuteTaskAsync(request);
-
+           
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 const string message = "Error retrieving response.  Check inner details for more info.";

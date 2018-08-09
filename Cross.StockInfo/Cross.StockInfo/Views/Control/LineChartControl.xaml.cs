@@ -217,7 +217,7 @@ namespace Cross.StockInfo.Views.Control
             base.OnChildAdded(child);
         }
 
-        private void Day_Tapped(object sender, AverageTimeEventArgs e)
+        private void Day_Tapped(object sender, EventArgs e)
         {
             if(AverageTimeSelected != null)
             {
@@ -226,12 +226,13 @@ namespace Cross.StockInfo.Views.Control
 
         }
 
-        private void Week_Tapped(object sender, AverageTimeEventArgs e)
+        private void Week_Tapped(object sender, EventArgs e)
         {
             if (AverageTimeSelected != null)
             {
                 AverageTimeSelected(sender, new AverageTimeEventArgs(AverageType.Week));
             }
         }
+     
     }
 }

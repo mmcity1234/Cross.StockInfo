@@ -41,7 +41,7 @@ namespace Cross.StockInfo.Services.Product
         public virtual async Task<List<DataPoint>> GetHistoricalReportTaskAsync(DateTime start, DateTime end, AverageType averageType = AverageType.Day)
         {
             string prodcutUrl = GetUrl(averageType);            
-            string result = await RestApi.GetContentTaskAsync(GetUrl(averageType));
+            string result = await RestApi.GetHtmlTaskAsync(GetUrl(averageType));
             return ProcessData(result);           
         }
     }

@@ -61,6 +61,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 累計營收百分比 的當地語系化字串。
+        /// </summary>
+        public static string AccumulatedRevenueComparePercentage_Label {
+            get {
+                return ResourceManager.GetString("AccumulatedRevenueComparePercentage_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 農產品指數 的當地語系化字串。
         /// </summary>
         public static string AgriculturalProducts_ChartTitle {
@@ -129,6 +138,24 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string BrentCrudeOilIndex_Label {
             get {
                 return ResourceManager.GetString("BrentCrudeOilIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 今年累計營收 的當地語系化字串。
+        /// </summary>
+        public static string CurrentAccumulatedRevenue_Label {
+            get {
+                return ResourceManager.GetString("CurrentAccumulatedRevenue_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 當月營收 的當地語系化字串。
+        /// </summary>
+        public static string CurrentRevenue_Label {
+            get {
+                return ResourceManager.GetString("CurrentRevenue_Label", resourceCulture);
             }
         }
         
@@ -241,6 +268,33 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 上月營收 的當地語系化字串。
+        /// </summary>
+        public static string LastMonthRevenue_Label {
+            get {
+                return ResourceManager.GetString("LastMonthRevenue_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 去年同期累計營收 的當地語系化字串。
+        /// </summary>
+        public static string LastYearAccumulatedRevenue_Label {
+            get {
+                return ResourceManager.GetString("LastYearAccumulatedRevenue_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 去年同期 的當地語系化字串。
+        /// </summary>
+        public static string LastYearRevenue_Label {
+            get {
+                return ResourceManager.GetString("LastYearRevenue_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 新聞 的當地語系化字串。
         /// </summary>
         public static string Main_NewsMenuItem {
@@ -255,6 +309,24 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 上月增減百分比 的當地語系化字串。
+        /// </summary>
+        public static string MonthOverMonthPercentage_Label {
+            get {
+                return ResourceManager.GetString("MonthOverMonthPercentage_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 名稱 的當地語系化字串。
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -385,6 +457,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 營收統計表 的當地語系化字串。
+        /// </summary>
+        public static string RevenueReport_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("RevenueReport_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 黃豆近期期貨 的當地語系化字串。
         /// </summary>
         public static string SoyIndex_Label {
@@ -435,6 +516,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 去年同期增減百分比 的當地語系化字串。
+        /// </summary>
+        public static string YearOnYearPercentage_Label {
+            get {
+                return ResourceManager.GetString("YearOnYearPercentage_Label", resourceCulture);
             }
         }
     }

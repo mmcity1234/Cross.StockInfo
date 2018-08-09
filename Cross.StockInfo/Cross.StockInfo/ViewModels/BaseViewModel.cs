@@ -12,6 +12,21 @@ namespace Cross.StockInfo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private bool _isPageLoading;
+
+        /// <summary>
+        /// For the news item list loading
+        /// </summary>
+        public bool IsPageLoading
+        {
+            get => _isPageLoading;
+            set
+            {
+                _isPageLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
         #region Inection
         /// <summary>
         /// Get or set the navigation service 

@@ -101,11 +101,11 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
 
-        private Task LoadChartData(AverageType averageType)
+        private async Task LoadChartData(AverageType averageType)
         {
-            return Task.Run(() =>
-            {
-                Device.BeginInvokeOnMainThread(async() => {
+            //return Task.Run(() =>
+            //{
+            //    Device.BeginInvokeOnMainThread(async() => {
                     LineChart.ClearData();
 
                     int count = 1;
@@ -123,13 +123,12 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                     }
 
                     var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
-
-
+                    
                     PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
 
                     _isLoaded = true;
-                });
-            });
+            //    });
+            //});
         }
 
         private void AddSeries(string title, List<DataPoint> dataList, bool isPrimary = true, bool isVisible = true)

@@ -16,7 +16,7 @@ namespace Cross.StockInfo.ViewModels.News
 {
     public class NewsViewModel : BaseViewModel
     {
-        private bool _isPageLoading;
+      
         private bool _isNewsItemLoading;
         private NewsTabCollection _tabItemSources;
         private NewsTabItem _selectedTabItem;
@@ -47,18 +47,7 @@ namespace Cross.StockInfo.ViewModels.News
             }
         }
 
-        /// <summary>
-        /// For the news item list loading
-        /// </summary>
-        public bool IsPageLoading
-        {
-            get => _isPageLoading;
-            set
-            {
-                _isPageLoading = value;
-                OnPropertyChanged();
-            }
-        }
+      
         public NewsTabItem SelectedTabItem
         {
             get => _selectedTabItem;

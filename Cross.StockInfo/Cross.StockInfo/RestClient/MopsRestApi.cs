@@ -1,6 +1,6 @@
 ﻿using Core.Utility.Network;
 using Cross.StockInfo.Common.Helper;
-using Cross.StockInfo.Model.Mops;
+using Cross.StockInfo.Model.Stock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +18,17 @@ namespace Cross.StockInfo.RestClient
         /// </summary>
         /// <param name="stock"></param>
         /// <returns></returns>
-        public async Task<List<StockInfoModel>> GetStockList(string stock)
+        public async Task<List<StockBase>> GetStockList(string stock)
         {
             string url = string.Format(StockAutoCompleteUrl, stock);
-            string html = await RestApi.GetContentTaskAsync(url);
+            string html = await RestApi.GetHtmlTaskAsync(url);
 
             var stocks = HtmlHelper.DescendantsPath(html, "//div/ul/li/div/div", node =>
             {                
                 string code = HtmlHelper.ReadDocumentValue(node.InnerHtml, "//input", "value");
                 string name = node.InnerText.Replace(code, string.Empty).Trim();
 
-                return new StockInfoModel { Name = name, Code = code};
+                return new StockBase { Name = name, Code = code};
             });
 
             return stocks;            

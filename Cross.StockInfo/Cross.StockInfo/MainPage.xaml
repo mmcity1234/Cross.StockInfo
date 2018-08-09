@@ -8,6 +8,7 @@
              xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
              xmlns:productIndexInfo="clr-namespace:Cross.StockInfo.ViewModels.ProductIndex.Config"
              xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
+             xmlns:stockReport="clr-namespace:Cross.StockInfo.Views.Stock.Report"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.MainPage"
              IsPresented="{Binding IsShowMasterDetail, Mode=TwoWay}" >
@@ -39,6 +40,7 @@
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
                         <model:MasterPageMenuItem Title="{lang:Translate Main_NewsMenuItem}" TargetType="{x:Type news:NewsView}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate RevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" />
                         <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:AgriculturalProductInfo}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
                         <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:OilProductInfo}" />

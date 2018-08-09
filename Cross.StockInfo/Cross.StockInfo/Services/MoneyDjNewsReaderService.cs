@@ -32,7 +32,7 @@ namespace Cross.StockInfo.Services
         {
 
             string url = DomainUrl + string.Format(NewsPathUrl, pageIndex, newsType);
-            string results = await RestApi.GetContentTaskAsync(url);
+            string results = await RestApi.GetHtmlTaskAsync(url);
             // fetch the news data list
             var resultList = HtmlHelper.DescendantsPath(results, "//table/tr", node =>
             {
@@ -64,7 +64,7 @@ namespace Cross.StockInfo.Services
         /// <returns></returns>
         public async Task<string> GetNewsHtmlContentTaskAsync(string url)
         {
-            string results = await RestApi.GetContentTaskAsync(url);
+            string results = await RestApi.GetHtmlTaskAsync(url);
             // f1a_newsData
             var result = HtmlHelper.Descendants(results, "div"
                 , node => node.Attributes["id"]?.Value == "f1a_newsData"

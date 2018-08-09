@@ -9,24 +9,13 @@ namespace Cross.StockInfo.ViewModels
     public class WebViewModel : BaseViewModel
     {
         private string _htmlContext;
-        private string _url;
-        private bool _isPageLoading;
+        private string _url;       
         /// <summary>
         /// WebView元件的網頁內容載入來源事件
         /// </summary>
         public event Func<string, Task<string>> HtmlLoadingSourceEvent;
 
         #region ViewModel
-
-        public bool IsPageLoading
-        {
-            get => _isPageLoading;
-            set
-            {
-                _isPageLoading = value;
-                OnPropertyChanged();
-            }
-        }
 
         /// <summary>
         /// 取得網頁顯示的URL路徑或是Html文件內文

@@ -1,4 +1,5 @@
-﻿using Cross.StockInfo.Model.Mops;
+﻿
+using Cross.StockInfo.Model.Stock;
 using Cross.StockInfo.RestClient;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,13 @@ namespace Cross.StockInfo.Services
     {
 
      
-        public async Task<List<StockInfoModel>> GetStockQueryList(string stock)
+        public async Task<List<StockBase>> GetStockQueryList(string stock)
         {
             MopsRestApi api = new MopsRestApi();
-            List<StockInfoModel> stockListTask = await api.GetStockList(stock);
+            List<StockBase> stockListTask = await api.GetStockList(stock);
             return stockListTask;
         }
+
 
 
          

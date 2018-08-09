@@ -13,33 +13,31 @@
             <converter:StockPriceColorConverter x:Key="priceColorConverter"/>
 
             <Style x:Key="performanceTitle" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="End"/> 
-             
+                <Setter Property="HorizontalOptions" Value="End"/>
                 <Setter Property="TextColor" Value="#606060"/>
-                <Setter Property="FontSize" Value="14"/>                
+                <Setter Property="FontSize" Value="14"/>
             </Style>
             <Style x:Key="performanceValue" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="End"/>
                 <Setter Property="VerticalOptions" Value="Start"/>
-                <Setter Property="FontSize" Value="22"/>               
+                <Setter Property="Margin" Value="0,0,0,15"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
             <Style x:Key="performanceStack" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Vertical"/>
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="WidthRequest" Value="150"/>
-                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="WidthRequest" Value="100"/>
+            </Style>
+
+            <Style x:Key="tableHeaderLine" TargetType="BoxView">
+                <Setter Property="HeightRequest"  Value="1"/>
+                <Setter Property="BackgroundColor" Value="#ffad5b"/>
             </Style>
 
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <StackLayout>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -57,7 +55,7 @@
                 <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" FontSize="14" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="0,0,20,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,20,10">
                 <StackLayout HeightRequest="50">
                     <Label Text="{lang:Translate Day}" TextColor="Blue" FontSize="16"/>
                     <StackLayout.GestureRecognizers>
@@ -65,14 +63,15 @@
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout HeightRequest="50" Margin="10,0,0,0">
-                    <Label Text="{lang:Translate Week}" TextColor="Blue" FontSize="14"/>
+                    <Label Text="{lang:Translate Week}" TextColor="Blue" FontSize="16"/>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Week_Tapped"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </StackLayout>
 
-            <chart:SfChart Margin="0,0,0,0" Series="{Binding SeriesData}" Grid.Row="2" x:Name="chartLine" >
+
+            <chart:SfChart  HeightRequest="400" Margin="0,0,0,0" Series="{Binding SeriesData}" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -106,38 +105,43 @@
 
 
             <!-- 績效 -->
-            <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Center"  AlignItems="Start"  Grid.Row="3">
+            <FlexLayout HorizontalOptions="CenterAndExpand" Direction="Row" Wrap="Wrap" AlignContent="Start" JustifyContent="Center"  AlignItems="Center"  >
                 <StackLayout Style="{StaticResource performanceStack}" >
                     <Label Text="{lang:Translate Week}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>                  
                     <Label x:Name="weekPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource performanceStack}" >
                     <Label Text="{lang:Translate Month}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="monthPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource performanceStack}" >
                     <Label Text="{lang:Translate Quarter}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="quarterPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource performanceStack}">
                     <Label Text="{lang:Translate HalfYear}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="halfYearPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource performanceStack}" >
                     <Label Text="{lang:Translate ThisYear}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="thisYearPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
                 <StackLayout Style="{StaticResource performanceStack}">
                     <Label Text="{lang:Translate Year}" Style="{StaticResource performanceTitle}"/>
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="yearPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
             </FlexLayout>
-
-        </Grid>
+        </StackLayout>
     </ContentView.Content>
 </views:UserControlView>

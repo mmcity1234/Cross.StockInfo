@@ -1,6 +1,5 @@
 ﻿using Cross.StockInfo.Assets.Strings;
 using Cross.StockInfo.Common;
-using Cross.StockInfo.Model.Mops;
 using Cross.StockInfo.Services;
 using Cross.StockInfo.ViewModels.Control.MasterDetail;
 using Cross.StockInfo.ViewModels.ProductIndex;

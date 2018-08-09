@@ -243,4 +243,34 @@
   <data name="Year" xml:space="preserve">
     <value>年</value>
   </data>
+  <data name="AccumulatedRevenueComparePercentage_Label" xml:space="preserve">
+    <value>累計營收百分比</value>
+  </data>
+  <data name="CurrentAccumulatedRevenue_Label" xml:space="preserve">
+    <value>今年累計營收</value>
+  </data>
+  <data name="CurrentRevenue_Label" xml:space="preserve">
+    <value>當月營收</value>
+  </data>
+  <data name="LastMonthRevenue_Label" xml:space="preserve">
+    <value>上月營收</value>
+  </data>
+  <data name="LastYearAccumulatedRevenue_Label" xml:space="preserve">
+    <value>去年同期累計營收</value>
+  </data>
+  <data name="LastYearRevenue_Label" xml:space="preserve">
+    <value>去年同期</value>
+  </data>
+  <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
+    <value>上月增減百分比</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="RevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>營收統計表</value>
+  </data>
+  <data name="YearOnYearPercentage_Label" xml:space="preserve">
+    <value>去年同期增減百分比</value>
+  </data>
 </root>

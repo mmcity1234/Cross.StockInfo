@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccumulatedRevenueComparePercentage_Label" xml:space="preserve">
+    <value>累計營收百分比</value>
+  </data>
   <data name="AgriculturalProducts_ChartTitle" xml:space="preserve">
     <value>農產品指數</value>
   </data>
@@ -140,6 +143,12 @@
   </data>
   <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
     <value>布蘭特原油</value>
+  </data>
+  <data name="CurrentAccumulatedRevenue_Label" xml:space="preserve">
+    <value>今年累計營收</value>
+  </data>
+  <data name="CurrentRevenue_Label" xml:space="preserve">
+    <value>當月營收</value>
   </data>
   <data name="Day" xml:space="preserve">
     <value>日</value>
@@ -177,11 +186,26 @@
   <data name="HalfYear" xml:space="preserve">
     <value>半年</value>
   </data>
+  <data name="LastMonthRevenue_Label" xml:space="preserve">
+    <value>上月營收</value>
+  </data>
+  <data name="LastYearAccumulatedRevenue_Label" xml:space="preserve">
+    <value>去年同期累計營收</value>
+  </data>
+  <data name="LastYearRevenue_Label" xml:space="preserve">
+    <value>去年同期</value>
+  </data>
   <data name="Main_NewsMenuItem" xml:space="preserve">
     <value>新聞</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>月</value>
+  </data>
+  <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
+    <value>上月增減百分比</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名稱</value>
   </data>
   <data name="News_All_TabTile" xml:space="preserve">
     <value>全部</value>
@@ -225,6 +249,9 @@
   <data name="Quarter" xml:space="preserve">
     <value>季</value>
   </data>
+  <data name="RevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>營收統計表</value>
+  </data>
   <data name="SoyIndex_Label" xml:space="preserve">
     <value>黃豆近期期貨</value>
   </data>
@@ -242,5 +269,8 @@
   </data>
   <data name="Year" xml:space="preserve">
     <value>年</value>
+  </data>
+  <data name="YearOnYearPercentage_Label" xml:space="preserve">
+    <value>去年同期增減百分比</value>
   </data>
 </root>

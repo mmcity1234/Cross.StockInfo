@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cross.StockInfo.Model.Mops
+namespace Cross.StockInfo.Model.Stock
 {
-    public class StockInfoModel
+   
+    public class StockBase
     {
         public string Name { get; set; }
 

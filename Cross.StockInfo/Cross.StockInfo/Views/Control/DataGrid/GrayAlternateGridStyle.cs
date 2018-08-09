@@ -9,7 +9,7 @@ using Cross.StockInfo.Common.Helper;
 
 namespace Cross.StockInfo.Views.Control.DataGrid
 {
-    public class DefaultGridStyle : DataGridStyle
+    public class GrayAlternateGridStyle : DataGridStyle
     {
         public override Color GetAlternatingRowBackgroundColor()
         {
