@@ -53,7 +53,9 @@ namespace Core.Utility.Network
                 var exception = new ApplicationException(message, response.ErrorException);
                 throw exception;
             }
-            return response.Content;
+
+            return Encoding.GetEncoding(950).GetString(response.RawBytes);
+          //  return response.Content;
         }
 
         /// <summary>

@@ -2,6 +2,7 @@ using Cross.StockInfo.Assets.Strings;
 using Cross.StockInfo.Common.Localization;
 using System;
 using System.Reflection;
+using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,8 +20,8 @@ namespace Cross.StockInfo
             // 多語系初始設定
             InitializeLocalization();
 
-            InitializeComponent();
-
+            InitializeComponent();            
+        
             MainPage = new NavigationPage(new MainPage());
         }
 
@@ -34,6 +35,9 @@ namespace Cross.StockInfo
                 AppResources.Culture = ci; // set the RESX for resource localization
                 DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
             }
+
+            // Enable CJK encoding
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
         

@@ -18,7 +18,8 @@
         <StackLayout>
             <datagrid:SfDataGrid x:Name="priceDataGrid" AutoGenerateColumns="False" 
                                  FrozenColumnsCount="1"
-                                 ItemsSource="{Binding StockRevenueList}" 
+                                 ItemsSource="{Binding StockRevenueList}"                                  
+                                 ScrollingMode="Pixel"
                                  GridStyle="{StaticResource flatGridStyle}" >
                 <datagrid:SfDataGrid.Resources>
                     <Style TargetType="Label">
