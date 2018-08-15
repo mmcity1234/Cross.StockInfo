@@ -7,5 +7,9 @@ namespace Cross.StockInfo.Views.Control.DataGrid
 {
     public class FlatGridStyle : DataGridStyle
     {
+        public override GridLinesVisibility GetGridLinesVisibility()
+        {
+            return GridLinesVisibility.None;
+        }        
     }
 }

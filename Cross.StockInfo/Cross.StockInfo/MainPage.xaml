@@ -6,7 +6,8 @@
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"              
              xmlns:view="clr-namespace:Cross.StockInfo.Views"
              xmlns:productIndex="clr-namespace:Cross.StockInfo.Views.ProductIndex"
-             xmlns:productIndexInfo="clr-namespace:Cross.StockInfo.ViewModels.ProductIndex.Config"
+             xmlns:productIndexConfig="clr-namespace:Cross.StockInfo.ViewModels.ProductIndex.Config"
+             xmlns:revenueConfig="clr-namespace:Cross.StockInfo.ViewModels.Stock.Report.Config"
              xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
              xmlns:stockReport="clr-namespace:Cross.StockInfo.Views.Stock.Report"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
@@ -40,10 +41,13 @@
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:MasterPageMenuItem}">
                         <model:MasterPageMenuItem Title="{lang:Translate Main_NewsMenuItem}" TargetType="{x:Type news:NewsView}" />
-                        <model:MasterPageMenuItem Title="{lang:Translate RevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" />
-                        <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:AgriculturalProductInfo}"/>
-                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:BdiProductInfo}" />
-                        <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexInfo:OilProductInfo}" />
+                        
+                        <model:MasterPageMenuItem Title="{lang:Translate CompanyRevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" ConfigsType="{x:Type revenueConfig:CompanyRevenueType}"/>
+                        <model:MasterPageMenuItem Title="{lang:Translate OtcRevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" ConfigsType="{x:Type revenueConfig:OtcRevenueType}"/>
+                        <!-- 歷史報表-->
+                        <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexConfig:AgriculturalProductInfo}"/>
+                        <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexConfig:BdiProductInfo}" />
+                        <model:MasterPageMenuItem Title="{lang:Translate OilIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexConfig:OilProductInfo}" />
                     </x:Array>
                 </ListView.ItemsSource>
             </ListView>

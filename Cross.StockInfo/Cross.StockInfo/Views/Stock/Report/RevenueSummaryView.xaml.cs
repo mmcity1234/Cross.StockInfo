@@ -16,7 +16,21 @@ namespace Cross.StockInfo.Views.Stock.Report
 		public RevenueSummaryView ()
 		{
 			InitializeComponent ();
-            DataBinding<RevenueSummaryViewModel>();
-		}
-	}
+            DataBinding<RevenueSummaryViewModel>();           
+
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            OnFilterChanged();
+        }
+        private void OnFilterChanged()
+        {
+            if (revenueDataGrid.View != null)
+            {
+                this.revenueDataGrid.View.Filter = ((RevenueSummaryViewModel)ViewModel).FilterRecordCondition;
+                this.revenueDataGrid.View.RefreshFilter();
+            }
+        }
+    }
 }

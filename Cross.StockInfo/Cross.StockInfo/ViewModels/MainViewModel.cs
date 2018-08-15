@@ -19,10 +19,10 @@ namespace Cross.StockInfo.ViewModels
         private MasterPageMenuItem _selectedMenuItem;
         private bool _isShowMasterDetail;
 
-
         public IStockQueryService StockService { get; set; }
 
-        #region Binding Property
+        #region Binding Property 
+      
         public bool IsShowMasterDetail
         {
             get => _isShowMasterDetail;
@@ -73,11 +73,11 @@ namespace Cross.StockInfo.ViewModels
             try
             {
                 Page currentPage = (Page)Activator.CreateInstance(pageType);   
-                if(currentPage.BindingContext is ProductIndexViewModel)
+                if(currentPage.BindingContext is IMenuItemData)
                 {
                     if (configType == null)
-                        throw new Exception(AppResources.Exception_Internal_ProductInfoNotAssigned);
-                    ((ProductIndexViewModel)currentPage.BindingContext).ProductInfo = (ProductInfo)Activator.CreateInstance(configType);
+                        throw new Exception(AppResources.Exception_Internal_ConfigTypeNotAssigned);
+                    ((IMenuItemData)currentPage.BindingContext).ConfigParameter =configType;
                 }
 
                 NavigationPage navPage = (Application.Current.MainPage as NavigationPage);

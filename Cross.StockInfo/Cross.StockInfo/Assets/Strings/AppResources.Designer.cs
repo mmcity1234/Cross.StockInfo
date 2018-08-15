@@ -142,6 +142,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 上市公司營收統計表 的當地語系化字串。
+        /// </summary>
+        public static string CompanyRevenueReport_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("CompanyRevenueReport_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 今年累計營收 的當地語系化字串。
         /// </summary>
         public static string CurrentAccumulatedRevenue_Label {
@@ -174,6 +183,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string DubaiOilIndex_Label {
             get {
                 return ResourceManager.GetString("DubaiOilIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 內部錯誤：資並未設定ConfigType參數。 的當地語系化字串。
+        /// </summary>
+        public static string Exception_Internal_ConfigTypeNotAssigned {
+            get {
+                return ResourceManager.GetString("Exception_Internal_ConfigTypeNotAssigned", resourceCulture);
             }
         }
         
@@ -430,6 +448,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 上櫃公司營收統計表 的當地語系化字串。
+        /// </summary>
+        public static string OtcRevenueReport_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("OtcRevenueReport_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 歷史資料 的當地語系化字串。
         /// </summary>
         public static string ProdcutIndex_TabHistoricalReport {
@@ -457,11 +484,11 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 營收統計表 的當地語系化字串。
+        ///   查詢類似 名稱或代號 的當地語系化字串。
         /// </summary>
-        public static string RevenueReport_MenuItemLabel {
+        public static string SearchBoxPlaceHolder_StockName {
             get {
-                return ResourceManager.GetString("RevenueReport_MenuItemLabel", resourceCulture);
+                return ResourceManager.GetString("SearchBoxPlaceHolder_StockName", resourceCulture);
             }
         }
         

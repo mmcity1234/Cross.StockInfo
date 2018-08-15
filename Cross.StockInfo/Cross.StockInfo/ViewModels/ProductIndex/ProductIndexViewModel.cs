@@ -16,7 +16,7 @@ using Cross.StockInfo.Services.Product;
 
 namespace Cross.StockInfo.ViewModels.ProductIndex
 {
-    public class ProductIndexViewModel : BaseViewModel
+    public class ProductIndexViewModel : BaseViewModel, IMenuItemData
     {
         private LineChartModel _lineChart;
         private bool _isLoaded = false;
@@ -28,7 +28,17 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         public IProductQueryService ProductService { get; set; }
         #endregion
 
+
         #region Property
+        public Type ConfigParameter
+        {
+            get => throw new NotImplementedException();
+            set {
+                if(!value.IsSubclassOf(typeof(ProductInfo)))
+                    throw new Exception(AppResources.Exception_Internal_ProductInfoNotAssigned);
+                ProductInfo = (ProductInfo)Activator.CreateInstance(value);
+            }
+        }
 
         /// <summary>
         /// 取得或設定商品指數頁面的資訊描述內容
@@ -74,7 +84,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
         public DelegateCommand<AverageTimeEventArgs> AverageSelectedCommand { get; set; }
-
+        
 
 
         #endregion

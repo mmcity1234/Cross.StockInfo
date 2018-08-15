@@ -147,8 +147,8 @@
   <data name="DubaiOilIndex_Label" xml:space="preserve">
     <value>杜拜輕原油</value>
   </data>
-  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
-    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
+  <data name="Exception_Internal_ConfigTypeNotAssigned" xml:space="preserve">
+    <value>內部錯誤：資並未設定ConfigType參數。</value>
   </data>
   <data name="Exception_LoadDataError" xml:space="preserve">
     <value>資料載入錯誤，請在下滑嘗試：{0}</value>
@@ -267,10 +267,19 @@
   <data name="Name" xml:space="preserve">
     <value>名稱</value>
   </data>
-  <data name="RevenueReport_MenuItemLabel" xml:space="preserve">
-    <value>營收統計表</value>
+  <data name="CompanyRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上市公司營收統計表</value>
   </data>
   <data name="YearOnYearPercentage_Label" xml:space="preserve">
     <value>去年同期增減百分比</value>
+  </data>
+  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
+    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
+  </data>
+  <data name="OtcRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上櫃公司營收統計表</value>
+  </data>
+  <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
+    <value>名稱或代號</value>
   </data>
 </root>

@@ -144,6 +144,9 @@
   <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
     <value>布蘭特原油</value>
   </data>
+  <data name="CompanyRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上市公司營收統計表</value>
+  </data>
   <data name="CurrentAccumulatedRevenue_Label" xml:space="preserve">
     <value>今年累計營收</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="DubaiOilIndex_Label" xml:space="preserve">
     <value>杜拜輕原油</value>
+  </data>
+  <data name="Exception_Internal_ConfigTypeNotAssigned" xml:space="preserve">
+    <value>內部錯誤：資並未設定ConfigType參數。</value>
   </data>
   <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
     <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
@@ -240,6 +246,9 @@
   <data name="OilIndex_MenuItemLabel" xml:space="preserve">
     <value>原油</value>
   </data>
+  <data name="OtcRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上櫃公司營收統計表</value>
+  </data>
   <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
     <value>歷史資料</value>
   </data>
@@ -249,8 +258,8 @@
   <data name="Quarter" xml:space="preserve">
     <value>季</value>
   </data>
-  <data name="RevenueReport_MenuItemLabel" xml:space="preserve">
-    <value>營收統計表</value>
+  <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
+    <value>名稱或代號</value>
   </data>
   <data name="SoyIndex_Label" xml:space="preserve">
     <value>黃豆近期期貨</value>

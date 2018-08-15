@@ -10,7 +10,23 @@ namespace Cross.StockInfo.Services
 {
     public class StockReportService : IStockReportService
     {
-        private const string RevenueUrl = "http://mops.twse.com.tw/nas/t21/otc/t21sc03_{0}_{1}_0.html";
+        private const string OtcRevenueUrl = "http://mops.twse.com.tw/nas/t21/otc/t21sc03_{0}_{1}_0.html";
+        private const string ListStockRevenueUrl = "http://mops.twse.com.tw/nas/t21/sii/t21sc03_{0}_{1}_0.html";
+        
+        
+        public Task<List<StockRevenue>> ListOtcRevenueTaskAsync(int year, int month)
+        {
+            string url = string.Format(OtcRevenueUrl, year, month);
+            return ListStockRevenueTaskAsync(url);
+        }
+
+        public Task<List<StockRevenue>> ListCompaynRevenueTaskAsync(int year, int month)
+        {
+            string url = string.Format(ListStockRevenueUrl, year, month);
+            return ListStockRevenueTaskAsync(url);
+
+        }
+
 
         /// <summary>
         /// List all of the revenue of stock
@@ -18,33 +34,33 @@ namespace Cross.StockInfo.Services
         /// <param name="year">民國</param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public Task<List<StockRevenue>> ListStockRevenueTaskAsync(int year, int month)
+        private Task<List<StockRevenue>> ListStockRevenueTaskAsync(string url)
         {
             return Task.Run(async () =>
-            {
-                string url = string.Format(RevenueUrl, year, month);
-                string html = await RestApi.GetHtmlTaskAsync(url);
+            {                
+                string html = await RestApi.GetHtmlTaskAsync(url, Encoding.GetEncoding(950));
                 var stockRevenueList = HtmlHelper.DescendantsPath(html, "//td/table/tr",
                     node =>
                     {
                         bool? result = node.Attributes["align"]?.Value?.Equals("right");
-                        return result.GetValueOrDefault(false);
+                        bool isSummaryRow = node.FirstChild.Attributes["class"] != null;
+                        return result.GetValueOrDefault(false) && !isSummaryRow;
                     },
                     node =>
                     {
                         string subHtml = node.InnerHtml.Replace("&nbsp;", string.Empty);
                         StockRevenue model = new StockRevenue
                         {
-                            Name = HtmlHelper.ReadDocumentValue(subHtml, "//td[2]"),
-                            Code = HtmlHelper.ReadDocumentValue(subHtml, "//td[1]"),
-                            CurrentRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[3]"),
-                            LastMonthRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[4]"),
-                            LastYearRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[5]"),
-                            MonthOverMonthPercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[6]"),
-                            YearOnYearPercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[7]"),
-                            CurrentAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[8]"),
-                            LastYearAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[9]"),
-                            AccumulatedRevenueComparePercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[10]")
+                            Name = HtmlHelper.ReadDocumentValue(subHtml, "//td[2]")?.Trim(),
+                            Code = HtmlHelper.ReadDocumentValue(subHtml, "//td[1]")?.Trim(),
+                            CurrentRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[3]")?.Trim(),
+                            LastMonthRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[4]")?.Trim(),
+                            LastYearRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[5]")?.Trim(),
+                            MonthOverMonthPercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[6]")?.Trim(),
+                            YearOnYearPercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[7]")?.Trim(),
+                            CurrentAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[8]")?.Trim(),
+                            LastYearAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[9]")?.Trim(),
+                            AccumulatedRevenueComparePercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[10]")?.Trim()
                         };
 
                         return model;

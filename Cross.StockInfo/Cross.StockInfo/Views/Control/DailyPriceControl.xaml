@@ -27,7 +27,7 @@
 
 
             <datagrid:SfDataGrid x:Name="priceDataGrid" AutoGenerateColumns="False"
-                                 ScrollingMode="Pixel" 
+                                 ScrollingMode="Pixel" VerticalOverScrollMode="None"
                                  ItemsSource="{Binding DataPoints}" 
                                  GridStyle="{StaticResource lightGray}" Grid.Row="1">
                 <datagrid:SfDataGrid.Resources>

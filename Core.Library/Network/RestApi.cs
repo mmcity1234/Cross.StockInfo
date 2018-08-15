@@ -13,12 +13,16 @@ namespace Core.Utility.Network
     {
         public static async Task<string> GetHtmlTaskAsync(string url)
         {
+          return await GetHtmlTaskAsync(url, Encoding.Default);
+        }
+        public static async Task<string> GetHtmlTaskAsync(string url, Encoding encoding)
+        {
             Dictionary<string, string> headers = new Dictionary<string, string>
             {
                 { "Content-Type", "text/html; charset=utf-8"}
             };
  
-            return await GetContentTaskAsync(url, headers);
+            return await GetContentTaskAsync(url, headers, encoding);
         }
 
         public static async Task<string> GetJsonTaskAsync(string url)
@@ -28,11 +32,11 @@ namespace Core.Utility.Network
                 {"Accept", "application/json" },
                 { "Content-Type", "application/json; charset=UTF-8"}
             };
-            return await GetContentTaskAsync(url, headers);
+            return await GetContentTaskAsync(url, headers, Encoding.Default);
 
         }
 
-        public static async Task<string> GetContentTaskAsync(string url, Dictionary<string, string> headers)
+        public static async Task<string> GetContentTaskAsync(string url, Dictionary<string, string> headers, Encoding encoding)
         {
             var request = new RestRequest(Method.GET);
             if(headers != null)
@@ -54,7 +58,7 @@ namespace Core.Utility.Network
                 throw exception;
             }
 
-            return Encoding.GetEncoding(950).GetString(response.RawBytes);
+            return encoding.GetString(response.RawBytes);
           //  return response.Content;
         }
 

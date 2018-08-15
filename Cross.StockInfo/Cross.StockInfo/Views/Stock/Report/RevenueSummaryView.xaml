@@ -2,6 +2,7 @@
 <views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"        
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
              xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"
@@ -15,9 +16,14 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+
         <StackLayout>
-            <datagrid:SfDataGrid x:Name="priceDataGrid" AutoGenerateColumns="False" 
+            <SearchBar Text="{Binding SearchText, Mode=TwoWay}" IsVisible="true"
+                   Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
+
+            <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="False" 
                                  FrozenColumnsCount="1"
+                                 VerticalOverScrollMode="None"
                                  ItemsSource="{Binding StockRevenueList}"                                  
                                  ScrollingMode="Pixel"
                                  GridStyle="{StaticResource flatGridStyle}" >
@@ -31,31 +37,33 @@
                 </datagrid:SfDataGrid.Resources>
 
                 <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                    <datagrid:GridTextColumn MappingName="DisplayLabel" HeaderText="{lang:Translate Name}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="YearOnYearPercentage" HeaderText="{lang:Translate YearOnYearPercentage_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="Star"/>
-
-
-                    <!--<datagrid:GridTextColumn MappingName="ChangeValueLabel" ColumnSizer="Star">
+                    <datagrid:GridTextColumn MappingName="DisplayLabel" HeaderText="{lang:Translate Name}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}" ColumnSizer="Auto">
                         <datagrid:GridTextColumn.CellStyle>
                             <Style TargetType="datagrid:GridCell">
-                                <Setter Property="Foreground" Value="{Binding ChangeValue, Converter={StaticResource priceColorConverter}}" />
+                                <Setter Property="Foreground" Value="{Binding MonthOverMonthPercentage, Converter={StaticResource priceColorConverter}}" />
                             </Style>
-                        </datagrid:GridTextColumn.CellStyle>                       
+                        </datagrid:GridTextColumn.CellStyle>
                     </datagrid:GridTextColumn>
-                    <datagrid:GridTextColumn MappingName="ChangeValuePercentageLabel" ColumnSizer="Star"/>
-                    <datagrid:GridTextColumn.CellStyle>
-                        <Style TargetType="datagrid:GridCell">
-                            <Setter Property="Foreground" Value="{Binding ChangeValuePercentage, Converter={StaticResource priceColorConverter}}" />
-                        </Style>
-                    </datagrid:GridTextColumn.CellStyle>-->
-
+                    <datagrid:GridTextColumn MappingName="YearOnYearPercentage" HeaderText="{lang:Translate YearOnYearPercentage_Label}" ColumnSizer="Auto">
+                        <datagrid:GridTextColumn.CellStyle>
+                            <Style TargetType="datagrid:GridCell">
+                                <Setter Property="Foreground" Value="{Binding YearOnYearPercentage, Converter={StaticResource priceColorConverter}}" />
+                            </Style>
+                        </datagrid:GridTextColumn.CellStyle>
+                    </datagrid:GridTextColumn>
+                    <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto"/>
+                    <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="LastColumnFill">
+                        <datagrid:GridTextColumn.CellStyle>
+                            <Style TargetType="datagrid:GridCell">
+                                <Setter Property="Foreground" Value="{Binding AccumulatedRevenueComparePercentage, Converter={StaticResource priceColorConverter}}" />
+                            </Style>
+                        </datagrid:GridTextColumn.CellStyle>
+                    </datagrid:GridTextColumn>
                 </datagrid:SfDataGrid.Columns>
             </datagrid:SfDataGrid>
         </StackLayout>
