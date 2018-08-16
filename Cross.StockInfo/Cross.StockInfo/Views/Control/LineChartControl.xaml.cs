@@ -22,7 +22,7 @@ namespace Cross.StockInfo.Views.Control
         /// 選擇圖表均線的事件
         /// </summary>
         public event EventHandler<AverageTimeEventArgs> AverageTimeSelected;
-     
+
         /// <summary>
         /// 歷史資料點
         /// </summary>
@@ -202,7 +202,7 @@ namespace Cross.StockInfo.Views.Control
                     ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
             }
         }
-        
+
 
         public LineChartControl()
         {
@@ -217,22 +217,12 @@ namespace Cross.StockInfo.Views.Control
             base.OnChildAdded(child);
         }
 
-        private void Day_Tapped(object sender, EventArgs e)
+        private void TimePeriodButton_SelectionChanged(object sender, Syncfusion.XForms.Buttons.SelectionChangedEventArgs e)
         {
-            if(AverageTimeSelected != null)
-            {
+            if (e.Index == 0)
                 AverageTimeSelected(sender, new AverageTimeEventArgs(AverageType.Day));
-            }
-
-        }
-
-        private void Week_Tapped(object sender, EventArgs e)
-        {
-            if (AverageTimeSelected != null)
-            {
+            else if (e.Index == 1)
                 AverageTimeSelected(sender, new AverageTimeEventArgs(AverageType.Week));
-            }
         }
-     
     }
 }

@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>         
 
             <tabView:SfTabView DisplayMode="Text">
-                <!--BDI Overview-->
+                <!-- Product Overview-->
                 <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabOverview}">
                     <tabView:SfTabItem.Content>
                         <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}" 

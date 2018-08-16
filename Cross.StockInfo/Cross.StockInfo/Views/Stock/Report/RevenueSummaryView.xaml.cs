@@ -32,5 +32,10 @@ namespace Cross.StockInfo.Views.Stock.Report
                 this.revenueDataGrid.View.RefreshFilter();
             }
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            filterSliderPanel.ToggleDrawer();
+        }
     }
 }

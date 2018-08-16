@@ -20,6 +20,8 @@ namespace Cross.StockInfo.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            // initialize Syncfusion control
+            Syncfusion.SfDataGrid.XForms.UWP.SfDataGridRenderer.Init();
 
             LoadApplication(new Cross.StockInfo.App());
         }
