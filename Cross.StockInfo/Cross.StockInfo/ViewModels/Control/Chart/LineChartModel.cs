@@ -38,12 +38,6 @@ namespace Cross.StockInfo.ViewModels.Control.Chart
         }
 
         /// <summary>
-        /// 圖表顯示K線週期的集合
-        /// </summary>
-        public ObservableCollection<SfSegmentItem> TimePeriodCollection { get; set; }
-
-
-        /// <summary>
         /// 目前最新的成交價
         /// </summary>
         public double LatestPrice
@@ -100,12 +94,6 @@ namespace Cross.StockInfo.ViewModels.Control.Chart
         public LineChartModel()
         {
             SeriesData = new ChartSeriesCollection();
-            TimePeriodCollection = new ObservableCollection<SfSegmentItem>
-            {
-                new SfSegmentItem { Text = AppResources.Day },
-                new SfSegmentItem { Text = AppResources.Week }
-            };
-
         }
 
         /// <summary>

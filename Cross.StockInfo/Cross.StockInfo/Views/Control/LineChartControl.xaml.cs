@@ -1,10 +1,13 @@
-﻿using Cross.StockInfo.Assets.Styles;
+﻿using Cross.StockInfo.Assets.Strings;
+using Cross.StockInfo.Assets.Styles;
 using Cross.StockInfo.Common.Helper;
 using Cross.StockInfo.Services.Product;
 using Cross.StockInfo.ViewModels.Control.Chart;
 using Syncfusion.SfChart.XForms;
+using Syncfusion.XForms.Buttons;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -134,6 +137,17 @@ namespace Cross.StockInfo.Views.Control
             get => (string)GetValue(TimeFormatProperty);
             set => SetValue(TimeFormatProperty, value);
         }
+       
+        public LineChartControl()
+        {
+            InitializeComponent();
+
+            timePeriodGroupButton.ItemsSource = new ObservableCollection<SfSegmentItem>
+            {
+                new SfSegmentItem { Text = AppResources.Day, FontSize = 16 },
+                new SfSegmentItem { Text = AppResources.Week, FontSize = 16 }
+            };
+        }
 
         public static void OnLatestPricePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -202,12 +216,7 @@ namespace Cross.StockInfo.Views.Control
                     ResourceDictionaryHelper.GetResource<Color>("PriceDownColor");
             }
         }
-
-
-        public LineChartControl()
-        {
-            InitializeComponent();
-        }
+    
 
         protected override void OnChildAdded(Element child)
         {

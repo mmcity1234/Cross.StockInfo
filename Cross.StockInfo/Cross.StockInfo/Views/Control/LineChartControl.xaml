@@ -56,29 +56,18 @@
                 <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" FontSize="14" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
 
-            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,20,10">
-                <StackLayout HeightRequest="50">
-                    <Label Text="{lang:Translate Day}" TextColor="Blue" FontSize="16"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Day_Tapped"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <StackLayout HeightRequest="50" Margin="10,0,0,0">
-                    <Label Text="{lang:Translate Week}" TextColor="Blue" FontSize="16"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Week_Tapped"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-            </StackLayout>-->
-            <buttons:SfSegmentedControl  CornerRadius="20" BorderColor="#2C7BBC" 
-                                         SelectionTextColor="White" Color="White"
-                                         FontColor="#3F3F3F"  VisibleSegmentsCount="5"
-                                         ItemsSource="{Binding TimePeriodCollection}" SelectionChanged="TimePeriodButton_SelectionChanged">
+            <buttons:SfSegmentedControl x:Name="timePeriodGroupButton" HorizontalOptions="End"  WidthRequest="90" BorderThickness="0"
+                                         FontColor="{StaticResource LabelColor}" SelectionTextColor="#02A0AE" BorderColor="#3F3F3F" Color="White"
+                                         SelectionChanged="TimePeriodButton_SelectionChanged" Margin="0,0,10,0">
+                <buttons:SfSegmentedControl.SelectionIndicatorSettings>
+                    <buttons:SelectionIndicatorSettings Position="Bottom">
+                    </buttons:SelectionIndicatorSettings>
+                </buttons:SfSegmentedControl.SelectionIndicatorSettings>
             </buttons:SfSegmentedControl>
 
 
 
-            <chart:SfChart  HeightRequest="400" Margin="0,0,0,0" Series="{Binding SeriesData}" x:Name="chartLine" >
+            <chart:SfChart  HeightRequest="320" Margin="0,0,0,0" Series="{Binding SeriesData}" x:Name="chartLine" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>
@@ -115,7 +104,7 @@
             <FlexLayout HorizontalOptions="CenterAndExpand" Direction="Row" Wrap="Wrap" AlignContent="Start" JustifyContent="Center"  AlignItems="Center"  >
                 <StackLayout Style="{StaticResource performanceStack}" >
                     <Label Text="{lang:Translate Week}" Style="{StaticResource performanceTitle}"/>
-                    <BoxView Style="{StaticResource tableHeaderLine}"/>                  
+                    <BoxView Style="{StaticResource tableHeaderLine}"/>
                     <Label x:Name="weekPerformanceLabel" Style="{StaticResource performanceValue}"/>
                 </StackLayout>
 
