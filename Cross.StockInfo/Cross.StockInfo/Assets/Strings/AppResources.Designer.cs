@@ -313,6 +313,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 小於 的當地語系化字串。
+        /// </summary>
+        public static string LessThan {
+            get {
+                return ResourceManager.GetString("LessThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 新聞 的當地語系化字串。
         /// </summary>
         public static string Main_NewsMenuItem {
@@ -336,6 +345,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string MonthOverMonthPercentage_Label {
             get {
                 return ResourceManager.GetString("MonthOverMonthPercentage_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 大於 的當地語系化字串。
+        /// </summary>
+        public static string MoreThan {
+            get {
+                return ResourceManager.GetString("MoreThan", resourceCulture);
             }
         }
         

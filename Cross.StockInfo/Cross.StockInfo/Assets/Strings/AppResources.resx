@@ -282,4 +282,10 @@
   <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
     <value>名稱或代號</value>
   </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>小於</value>
+  </data>
+  <data name="MoreThan" xml:space="preserve">
+    <value>大於</value>
+  </data>
 </root>

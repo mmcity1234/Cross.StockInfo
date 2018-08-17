@@ -6,6 +6,8 @@
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
              xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
              xmlns:sliderPanel="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="Cross.StockInfo.Views.Stock.Report.RevenueSummaryView">
@@ -17,67 +19,109 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" EnableSwipeGesture="True">
+            <!-- Main Content -->
+            <sliderPanel:SfNavigationDrawer.ContentView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" >
+                        <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
+                                   Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
+                        <Image Source="filter_48x48.png" WidthRequest="40" HeightRequest="40" IsVisible="True">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FilterButton_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>                      
+                    </StackLayout>
 
-        <StackLayout>
-            <Button Text="Show" Clicked="Button_Clicked"/>
-            <SearchBar Text="{Binding SearchText, Mode=TwoWay}" IsVisible="true"
-                   Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
-
-            <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="False" 
+                    <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="False" 
                                  FrozenColumnsCount="1"
                                  VerticalOverScrollMode="None"
                                  ItemsSource="{Binding StockRevenueList}"                                  
                                  ScrollingMode="Pixel"
                                  GridStyle="{StaticResource flatGridStyle}" >
-                <datagrid:SfDataGrid.Resources>
-                    <Style TargetType="Label">
-                        <Setter Property="FontAttributes" Value="Bold"/>
-                        <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
-                        <Setter Property="VerticalTextAlignment" Value="Center"/>
-                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                    </Style>
-                </datagrid:SfDataGrid.Resources>
+                        <datagrid:SfDataGrid.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="FontAttributes" Value="Bold"/>
+                                <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
+                                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                            </Style>
+                        </datagrid:SfDataGrid.Resources>
 
-                <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                    <datagrid:GridTextColumn MappingName="DisplayLabel" HeaderText="{lang:Translate Name}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
-                        <datagrid:GridTextColumn.CellStyle>
-                            <Style TargetType="datagrid:GridCell">
-                                <Setter Property="Foreground" Value="{Binding MonthOverMonthPercentage, Converter={StaticResource priceColorConverter}}" />
-                            </Style>
-                        </datagrid:GridTextColumn.CellStyle>
-                    </datagrid:GridTextColumn>
-                    <datagrid:GridTextColumn MappingName="YearOnYearPercentage" HeaderText="{lang:Translate YearOnYearPercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
-                        <datagrid:GridTextColumn.CellStyle>
-                            <Style TargetType="datagrid:GridCell">
-                                <Setter Property="Foreground" Value="{Binding YearOnYearPercentage, Converter={StaticResource priceColorConverter}}" />
-                            </Style>
-                        </datagrid:GridTextColumn.CellStyle>
-                    </datagrid:GridTextColumn>
-                    <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="LastColumnFill" TextAlignment="End">
-                        <datagrid:GridTextColumn.CellStyle>
-                            <Style TargetType="datagrid:GridCell">
-                                <Setter Property="Foreground" Value="{Binding AccumulatedRevenueComparePercentage, Converter={StaticResource priceColorConverter}}" />
-                            </Style>
-                        </datagrid:GridTextColumn.CellStyle>
-                    </datagrid:GridTextColumn>
-                </datagrid:SfDataGrid.Columns>
-            </datagrid:SfDataGrid>
+                        <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                            <datagrid:GridTextColumn MappingName="DisplayLabel" HeaderText="{lang:Translate Name}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
+                                <datagrid:GridTextColumn.CellStyle>
+                                    <Style TargetType="datagrid:GridCell">
+                                        <Setter Property="Foreground" Value="{Binding MonthOverMonthPercentage, Converter={StaticResource priceColorConverter}}" />
+                                    </Style>
+                                </datagrid:GridTextColumn.CellStyle>
+                            </datagrid:GridTextColumn>
+                            <datagrid:GridTextColumn MappingName="YearOnYearPercentage" HeaderText="{lang:Translate YearOnYearPercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
+                                <datagrid:GridTextColumn.CellStyle>
+                                    <Style TargetType="datagrid:GridCell">
+                                        <Setter Property="Foreground" Value="{Binding YearOnYearPercentage, Converter={StaticResource priceColorConverter}}" />
+                                    </Style>
+                                </datagrid:GridTextColumn.CellStyle>
+                            </datagrid:GridTextColumn>
+                            <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                            <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="LastColumnFill" TextAlignment="End">
+                                <datagrid:GridTextColumn.CellStyle>
+                                    <Style TargetType="datagrid:GridCell">
+                                        <Setter Property="Foreground" Value="{Binding AccumulatedRevenueComparePercentage, Converter={StaticResource priceColorConverter}}" />
+                                    </Style>
+                                </datagrid:GridTextColumn.CellStyle>
+                            </datagrid:GridTextColumn>
+                        </datagrid:SfDataGrid.Columns>
+                    </datagrid:SfDataGrid>
+                </StackLayout>
+            </sliderPanel:SfNavigationDrawer.ContentView>
 
-            <sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" DrawerHeight="40" EnableSwipeGesture="True">
-                <sliderPanel:SfNavigationDrawer.DrawerHeaderView>
-                    <Grid BackgroundColor="#1aa1d6" VerticalOptions="Center" HorizontalOptions="Center">
-                        <Label Text="Header view" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                    </Grid>
-                </sliderPanel:SfNavigationDrawer.DrawerHeaderView>
-            </sliderPanel:SfNavigationDrawer>
-        </StackLayout>
-        
-        
+            <!-- Slider Panel Header-->
+            <sliderPanel:SfNavigationDrawer.DrawerContentView>
+                <Grid BackgroundColor="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>                   
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>                       
+                    </Grid.RowDefinitions>
+                    <!-- MoM -->                    
+                    <Label Text="{lang:Translate MonthOverMonthPercentage_Label}"/>
+                    <Switch IsToggled="{Binding FilterData.IsEnableMonthOverMonthFilter}" Grid.Column="1"/>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedMonthOverMonthOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                        <numeric:SfNumericUpDown Value="{Binding FilterData.MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                    </StackLayout>
+
+                    <!-- YoY -->
+                    <Label Text="{lang:Translate YearOnYearPercentage_Label}" Grid.Row="2"/>
+                    <Switch IsToggled="{Binding FilterData.IsEnableYearOnYearFilter}" Grid.Row="2" Grid.Column="1" />
+                    <StackLayout Grid.Row="3" Orientation="Horizontal">
+                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedYearOnYearOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                        <numeric:SfNumericUpDown Value="{Binding FilterData.YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                    </StackLayout>
+
+                    <!-- 累計營收增減百分比 -->
+                    <Label Text="{lang:Translate AccumulatedRevenueComparePercentage_Label}" Grid.Row="4"/>
+                    <Switch IsToggled="{Binding FilterData.IsEnableAccumulatedRevenueFilter}" Grid.Row="4" Grid.Column="1" />
+                    <StackLayout Grid.Row="5" Orientation="Horizontal">
+                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedAccumulatedRevenueCompareOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                        <numeric:SfNumericUpDown Value="{Binding FilterData.AccumulatedRevenueComparePercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                    </StackLayout>
+
+                </Grid>
+            </sliderPanel:SfNavigationDrawer.DrawerContentView>
+        </sliderPanel:SfNavigationDrawer>
     </ContentPage.Content>
 </views:ViewPage>

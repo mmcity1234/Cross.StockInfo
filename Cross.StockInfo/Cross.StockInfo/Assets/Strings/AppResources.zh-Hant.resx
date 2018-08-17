@@ -201,6 +201,9 @@
   <data name="LastYearRevenue_Label" xml:space="preserve">
     <value>去年同期</value>
   </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>小於</value>
+  </data>
   <data name="Main_NewsMenuItem" xml:space="preserve">
     <value>新聞</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
     <value>上月增減百分比</value>
+  </data>
+  <data name="MoreThan" xml:space="preserve">
+    <value>大於</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名稱</value>

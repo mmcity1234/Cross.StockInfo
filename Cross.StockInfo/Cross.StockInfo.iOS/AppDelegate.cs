@@ -22,6 +22,7 @@ namespace Cross.StockInfo.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            new Syncfusion.XForms.iOS.ComboBox.SfComboBoxRenderer();
             new Syncfusion.SfNavigationDrawer.XForms.iOS.SfNavigationDrawerRenderer();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
 

@@ -33,7 +33,7 @@ namespace Cross.StockInfo.Views.Stock.Report
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void FilterButton_Clicked(object sender, EventArgs e)
         {
             filterSliderPanel.ToggleDrawer();
         }

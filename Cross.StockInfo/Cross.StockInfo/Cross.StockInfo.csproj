@@ -16,8 +16,10 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.8.5" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="16.2.0.46" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.46" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="16.2.0.46" />
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="16.2.0.46" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="16.2.0.46" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="16.2.0.46" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.2.0.46" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
