@@ -33,7 +33,7 @@
                         </Image>                      
                     </StackLayout>
 
-                    <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="False" 
+                    <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="True" 
                                  FrozenColumnsCount="1"
                                  VerticalOverScrollMode="None"
                                  ItemsSource="{Binding StockRevenueList}"                                  
@@ -69,7 +69,7 @@
                             </datagrid:GridTextColumn>
                             <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
                             <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                            <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="LastColumnFill" TextAlignment="End">
+                            <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
                                 <datagrid:GridTextColumn.CellStyle>
                                     <Style TargetType="datagrid:GridCell">
                                         <Setter Property="Foreground" Value="{Binding AccumulatedRevenueComparePercentage, Converter={StaticResource priceColorConverter}}" />
