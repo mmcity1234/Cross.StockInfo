@@ -144,6 +144,9 @@
   <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
     <value>布蘭特原油</value>
   </data>
+  <data name="Comment" xml:space="preserve">
+    <value>備註</value>
+  </data>
   <data name="CompanyRevenueReport_MenuItemLabel" xml:space="preserve">
     <value>上市公司營收統計表</value>
   </data>

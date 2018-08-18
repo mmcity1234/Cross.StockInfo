@@ -142,6 +142,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 備註 的當地語系化字串。
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 上市公司營收統計表 的當地語系化字串。
         /// </summary>
         public static string CompanyRevenueReport_MenuItemLabel {

@@ -60,7 +60,8 @@ namespace Cross.StockInfo.Services
                             YearOnYearPercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[7]")?.Trim(),
                             CurrentAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[8]")?.Trim(),
                             LastYearAccumulatedRevenue = HtmlHelper.ReadDocumentValue(subHtml, "//td[9]")?.Trim(),
-                            AccumulatedRevenueComparePercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[10]")?.Trim()
+                            AccumulatedRevenueComparePercentage = HtmlHelper.ReadDocumentValue(subHtml, "//td[10]")?.Trim(),
+                            Comment = HtmlHelper.ReadDocumentValue(subHtml, "//td[11]")?.Trim()
                         };
 
                         return model;

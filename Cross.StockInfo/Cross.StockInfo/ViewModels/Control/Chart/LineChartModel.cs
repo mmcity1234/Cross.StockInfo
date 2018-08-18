@@ -6,8 +6,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Xamarin.Forms;
 using System.Linq;
-using Syncfusion.XForms.Buttons;
-using Cross.StockInfo.Assets.Strings;
 
 namespace Cross.StockInfo.ViewModels.Control.Chart
 {
