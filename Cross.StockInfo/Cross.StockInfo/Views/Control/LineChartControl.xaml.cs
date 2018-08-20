@@ -94,6 +94,17 @@ namespace Cross.StockInfo.Views.Control
                defaultValue: "yyyy/MM/dd",
                defaultBindingMode: BindingMode.OneWay);
 
+        /// <summary>
+        /// 圖表讀取顯示
+        /// </summary>
+        public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
+               "s",
+               typeof(bool),
+               typeof(LineChartControl),
+               defaultValue: false,
+               defaultBindingMode: BindingMode.OneWay,
+               propertyChanged: OnIsLoadingPropertyChanged);
+
         public ChartSeriesCollection SeriesData
         {
             get => (ChartSeriesCollection)GetValue(SeriesDataProperty);
@@ -137,7 +148,13 @@ namespace Cross.StockInfo.Views.Control
             get => (string)GetValue(TimeFormatProperty);
             set => SetValue(TimeFormatProperty, value);
         }
-       
+
+        public bool IsLoading
+        {
+            get => (bool)GetValue(IsLoadingProperty);
+            set => SetValue(IsLoadingProperty, value);
+        }
+
         public LineChartControl()
         {
             InitializeComponent();
@@ -203,6 +220,16 @@ namespace Cross.StockInfo.Views.Control
                     FillPercentageTextColor(x.yearPerformanceLabel, model.YearPerformance);
                 }
             });
+        }
+
+        private static void OnIsLoadingPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BindablePropertyChanged<LineChartControl>(bindable, x =>
+            {
+                
+                x.busyindicator.IsBusy = (bool)newValue;               
+            });
+
         }
 
         private static void FillPercentageTextColor(Label targetLabel, string strValue)

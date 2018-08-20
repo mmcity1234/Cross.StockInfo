@@ -291,4 +291,7 @@
   <data name="Comment" xml:space="preserve">
     <value>備註</value>
   </data>
+  <data name="Page_Loading" xml:space="preserve">
+    <value>讀取中...</value>
+  </data>
 </root>

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"          
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                       
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:control="clr-namespace:Cross.StockInfo.Views.Control"
-              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"            
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"            
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="Cross.StockInfo.Views.ProductIndex.ProductIndexView">
     <ContentPage.Resources>
@@ -24,8 +24,9 @@
             <tabView:SfTabView DisplayMode="Text">
                 <!-- Product Overview-->
                 <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabOverview}">
-                    <tabView:SfTabItem.Content>
+                    <tabView:SfTabItem.Content>                       
                         <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}" 
+                                                  IsLoading="{Binding IsPageLoading}"
                                                   LatestPrice="{Binding LineChart.LatestPrice}" 
                                                   ChangedPrice="{Binding LineChart.ChangedPrice}"
                                                   ChangedPricePercentage="{Binding LineChart.ChangedPricePercentage}" 

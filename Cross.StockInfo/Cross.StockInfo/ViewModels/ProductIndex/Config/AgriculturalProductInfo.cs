@@ -24,7 +24,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex.Config
         {
             return new List<SeriesInfo>
             {
-                new SeriesInfo { QueryKey = "Product.SoyIndex", Name = AppResources.SoyIndex_Label, Visible = true },
+                new SeriesInfo { QueryKey = "Product.SoyIndex", Name = AppResources.SoyIndex_Label, Visible = true, IsPrimary = true },
                 new SeriesInfo { QueryKey = "Product.WheatIndex", Name = AppResources.WheatIndex_Label, Visible = false },
           
             };

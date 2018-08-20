@@ -484,6 +484,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 讀取中... 的當地語系化字串。
+        /// </summary>
+        public static string Page_Loading {
+            get {
+                return ResourceManager.GetString("Page_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 歷史資料 的當地語系化字串。
         /// </summary>
         public static string ProdcutIndex_TabHistoricalReport {

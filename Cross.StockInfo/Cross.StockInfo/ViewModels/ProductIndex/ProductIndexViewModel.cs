@@ -13,6 +13,7 @@ using Cross.StockInfo.ViewModels.ProductIndex.Config;
 using Cross.StockInfo.Common;
 using Cross.StockInfo.Views.Control;
 using Cross.StockInfo.Services.Product;
+using System.Threading;
 
 namespace Cross.StockInfo.ViewModels.ProductIndex
 {
@@ -23,6 +24,8 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         private DailyPriceControlModel _priceContorlModel;
         private string _chartTitle;
         private ProductInfo _productItemInfo;
+        // Cancel token for line chart loading
+        CancellationTokenSource _tokenSource = null;
 
         #region Injection
         public IProductQueryService ProductService { get; set; }
@@ -33,8 +36,9 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         public Type ConfigParameter
         {
             get => throw new NotImplementedException();
-            set {
-                if(!value.IsSubclassOf(typeof(ProductInfo)))
+            set
+            {
+                if (!value.IsSubclassOf(typeof(ProductInfo)))
                     throw new Exception(AppResources.Exception_Internal_ProductInfoNotAssigned);
                 ProductInfo = (ProductInfo)Activator.CreateInstance(value);
             }
@@ -84,7 +88,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
         public DelegateCommand<AverageTimeEventArgs> AverageSelectedCommand { get; set; }
-        
+
 
 
         #endregion
@@ -102,7 +106,10 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             {
                 try
                 {
+                    IsPageLoading = true;
+                    CancelChartLoading();
                     await LoadChartData(AverageType.Day);
+                    IsPageLoading = false;
                 }
                 catch (Exception e)
                 {
@@ -111,19 +118,37 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             }
         }
 
-        private async Task LoadChartData(AverageType averageType)
+        private void CancelChartLoading()
         {
-            //return Task.Run(() =>
-            //{
-            //    Device.BeginInvokeOnMainThread(async() => {
+            if (_tokenSource != null)
+                _tokenSource.Cancel();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="averageType"></param>
+        /// <returns></returns>
+        /// <exception cref="OperationCanceledException"></exception>
+        private Task LoadChartData(AverageType averageType)
+        {
+            _tokenSource = new CancellationTokenSource();
+            var localTokenSource = _tokenSource;
+
+            return Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     LineChart.ClearData();
 
-                    int count = 1;
                     List<DataPoint> filterSeriesForDailyPrice = new List<DataPoint>();
                     foreach (var series in ProductInfo.SeriesInfoCollection)
                     {
                         var indexList = await ProductService.ListProductIndexTaskAsync(series.QueryKey, averageType);
-                        if (count++ == 1) // primary series
+                        // if task had cancel
+                        if (localTokenSource.Token.IsCancellationRequested)
+                            return;
+                        if (series.IsPrimary) // primary series
                         {
                             filterSeriesForDailyPrice = indexList;
                             AddSeries(series.Name, indexList, true, series.Visible);
@@ -133,12 +158,12 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
                     }
 
                     var filterBdi = filterSeriesForDailyPrice.OrderByDescending(x => x.Time).Take(60);
-                    
+
                     PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
 
                     _isLoaded = true;
-            //    });
-            //});
+                });
+            }, localTokenSource.Token);
         }
 
         private void AddSeries(string title, List<DataPoint> dataList, bool isPrimary = true, bool isVisible = true)
@@ -155,7 +180,17 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         /// </summary>
         private async void AverageSelectedEventHandler(AverageTimeEventArgs args)
         {
-            await LoadChartData(args.Type);
+            try
+            {
+                IsPageLoading = true;
+                CancelChartLoading();
+                await LoadChartData(args.Type);
+                IsPageLoading = false;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(AppResources.Exception_LoadDataError, e.Message));
+            }
         }
     }
 }

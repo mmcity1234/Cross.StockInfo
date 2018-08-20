@@ -22,7 +22,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex.Config
         {
             return new List<SeriesInfo>
             {
-                new SeriesInfo { QueryKey = "Product.BdiIndex", Name = AppResources.BDIIndex_Label, Visible = true },
+                new SeriesInfo { QueryKey = "Product.BdiIndex", Name = AppResources.BDIIndex_Label, Visible = true, IsPrimary = true },
                 new SeriesInfo { QueryKey = "Product.BpiIndex", Name = AppResources.BPIIndex_Label, Visible = false },
             };
         }

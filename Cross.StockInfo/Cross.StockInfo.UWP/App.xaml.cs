@@ -62,6 +62,7 @@ namespace Cross.StockInfo.UWP
                 assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.Buttons.SfSegmentedControlRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.SfNumericUpDown.XForms.UWP.SfNumericUpDownRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.ComboBox.SfComboBoxRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Syncfusion.SfBusyIndicator.XForms.UWP.SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
 
 
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);

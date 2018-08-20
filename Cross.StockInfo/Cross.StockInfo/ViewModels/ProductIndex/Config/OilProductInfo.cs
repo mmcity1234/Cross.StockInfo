@@ -21,7 +21,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex.Config
         {
             return new List<SeriesInfo>
             {
-                new SeriesInfo { QueryKey = "Product.BrentCrudeOilIndex", Name = AppResources.BrentCrudeOilIndex_Label, Visible = true },
+                new SeriesInfo { QueryKey = "Product.BrentCrudeOilIndex", Name = AppResources.BrentCrudeOilIndex_Label, Visible = true, IsPrimary = true },
                 new SeriesInfo { QueryKey = "Product.NewYorkOilIndex", Name = AppResources.NewYorkOilIndex_Label, Visible = false },
                 new SeriesInfo { QueryKey = "Product.DubaiOilIndex", Name = AppResources.DubaiOilIndex_Label, Visible = false }
             };

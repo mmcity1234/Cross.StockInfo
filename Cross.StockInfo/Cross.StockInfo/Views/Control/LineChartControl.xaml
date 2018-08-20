@@ -2,6 +2,7 @@
 <views:UserControlView xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"         
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -38,8 +39,8 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout>
 
+        <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -56,9 +57,12 @@
                 <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" FontSize="14" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
 
-            <buttons:SfSegmentedControl x:Name="timePeriodGroupButton" VisibleSegmentsCount="2" HorizontalOptions="End"  WidthRequest="120" BorderThickness="0" 
-                                         FontColor="{StaticResource LabelColor}" SelectionTextColor="#02A0AE" BorderColor="#3F3F3F" Color="White"
-                                         SelectionChanged="TimePeriodButton_SelectionChanged" Margin="0,0,10,0">
+            <busyindicator:SfBusyIndicator x:Name="busyindicator" IsBusy="{Binding IsLoading}" AnimationType="Ball" Title="{lang:Translate Page_Loading}" TextColor="DarkGray" />
+
+
+            <buttons:SfSegmentedControl  x:Name="timePeriodGroupButton" VisibleSegmentsCount="2" HorizontalOptions="End"  WidthRequest="120" HeightRequest="50" BorderThickness="0" 
+                                         FontColor="{StaticResource LabelColor}" SelectionTextColor="#02A0AE" Color="Transparent"
+                                         SelectionChanged="TimePeriodButton_SelectionChanged" Margin="0,0,5,0">
                 <buttons:SfSegmentedControl.SelectionIndicatorSettings>
                     <buttons:SelectionIndicatorSettings Position="Bottom">
                     </buttons:SelectionIndicatorSettings>
@@ -66,8 +70,7 @@
             </buttons:SfSegmentedControl>
 
 
-
-            <chart:SfChart  HeightRequest="320" Margin="0,0,0,0" Series="{Binding SeriesData}" x:Name="chartLine" >
+            <chart:SfChart HeightRequest="320" Series="{Binding SeriesData}" x:Name="chartLine" Margin="5,-15,5,0" >
                 <chart:SfChart.Title>
                     <chart:ChartTitle Text="{Binding Title}" TextAlignment="Center" />
                 </chart:SfChart.Title>

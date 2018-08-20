@@ -10,5 +10,9 @@ namespace Cross.StockInfo.ViewModels.ProductIndex.Config
         public string Name { get; set; }
 
         public bool Visible { get; set; }
+        /// <summary>
+        /// 是否為主要顯示的線圖
+        /// </summary>
+        public bool IsPrimary { get; set; }
     }
 }
