@@ -294,4 +294,10 @@
   <data name="Page_Loading" xml:space="preserve">
     <value>讀取中...</value>
   </data>
+  <data name="RevenueSummaryView_MonthLabel" xml:space="preserve">
+    <value>月份</value>
+  </data>
+  <data name="RevenueSummaryView_YearLabel" xml:space="preserve">
+    <value>年份</value>
+  </data>
 </root>

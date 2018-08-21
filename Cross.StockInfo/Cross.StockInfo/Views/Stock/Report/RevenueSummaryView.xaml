@@ -6,6 +6,7 @@
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
              xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
              xmlns:sliderPanel="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
@@ -20,7 +21,7 @@
 
     <ContentPage.Content>
 
-        <Grid>
+        <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -90,14 +91,19 @@
                     <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="Auto"  TextWrapping="WordWrap"  TextAlignment="Start"/>
                 </datagrid:SfDataGrid.Columns>
             </datagrid:SfDataGrid>
-        </Grid>
+        </Grid>-->
 
 
         <!-- NavigationDrewer 包含datagrid會導致無啟動 出錯-->
-        <!--<sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" EnableSwipeGesture="True">
-            --><!-- Main Content --><!--
+        <sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" EnableSwipeGesture="True">
+            <!-- Main Content -->
             <sliderPanel:SfNavigationDrawer.ContentView>
-                <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
                     <StackLayout Orientation="Horizontal" >
                         <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
                                    Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
@@ -105,10 +111,18 @@
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="FilterButton_Clicked" />
                             </Image.GestureRecognizers>
-                        </Image>                      
+                        </Image>
                     </StackLayout>
 
-                    <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" 
+                    <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
+                               Color="#2499CE" HeightRequest="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                        <ActivityIndicator.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
+                        </ActivityIndicator.WidthRequest>
+                    </ActivityIndicator>
+
+
+                    <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" Grid.Row="1"
                                  FrozenColumnsCount="1"
                                  VerticalOverScrollMode="None"
                                  ItemsSource="{Binding StockRevenueList}"                                  
@@ -151,53 +165,66 @@
                                     </Style>
                                 </datagrid:GridTextColumn.CellStyle>
                             </datagrid:GridTextColumn>
-                            <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="LastColumnFill" TextAlignment="Start"/>
+                            <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="Auto"  TextWrapping="WordWrap"  TextAlignment="Start"/>
                         </datagrid:SfDataGrid.Columns>
                     </datagrid:SfDataGrid>
-                </StackLayout>
+                </Grid>
             </sliderPanel:SfNavigationDrawer.ContentView>
 
-            --><!-- Slider Panel Header--><!--
+            <!-- Slider Panel Header-->
             <sliderPanel:SfNavigationDrawer.DrawerContentView>
-                <Grid BackgroundColor="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="50"/>                   
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>                       
-                    </Grid.RowDefinitions>
-                    --><!-- MoM --><!--                    
-                    <Label Text="{lang:Translate MonthOverMonthPercentage_Label}"/>
-                    <Switch IsToggled="{Binding FilterData.IsEnableMonthOverMonthFilter}" Grid.Column="1"/>
-                    <StackLayout Grid.Row="1" Orientation="Horizontal">
-                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedMonthOverMonthOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
-                        <numeric:SfNumericUpDown Value="{Binding FilterData.MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
-                    </StackLayout>
+                <StackLayout BackgroundColor="White">
+                    <StackLayout>
+                        <Label Text="{lang:Translate RevenueSummaryView_YearLabel}" Margin="5,0,5,0"/>
+                        <buttons:SfSegmentedControl HorizontalOptions="Start" BorderColor="#2C7BBC" CornerRadius="5" SelectionTextColor="White" Color="White" 
+                                                 SegmentCornerRadius="15" SegmentHeight="30" SegmentPadding="10" SegmentWidth="30" ItemsSource="{Binding YearCollection}" FontColor="{StaticResource LabelColor}" Margin="5,0,5,0"/>
 
-                    --><!-- YoY --><!--
-                    <Label Text="{lang:Translate YearOnYearPercentage_Label}" Grid.Row="2"/>
-                    <Switch IsToggled="{Binding FilterData.IsEnableYearOnYearFilter}" Grid.Row="2" Grid.Column="1" />
-                    <StackLayout Grid.Row="3" Orientation="Horizontal">
-                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedYearOnYearOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
-                        <numeric:SfNumericUpDown Value="{Binding FilterData.YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                        <Label Text="{lang:Translate RevenueSummaryView_MonthLabel}" Margin="5,0,5,0"/>
+                        <buttons:SfSegmentedControl HorizontalOptions="Start"  BorderColor="#2C7BBC" SelectionTextColor="White" Color="White" 
+                                                 SegmentCornerRadius="15" SegmentHeight="30" SegmentPadding="10" SegmentWidth="30" ItemsSource="{Binding MonthCollection}" FontColor="{StaticResource LabelColor}" Margin="5,0,5,0"/>
                     </StackLayout>
+                    
+                    <!-- Revenue Filter -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--  MoM    -->
+                        <Label Text="{lang:Translate MonthOverMonthPercentage_Label}"/>
+                        <Switch IsToggled="{Binding FilterData.IsEnableMonthOverMonthFilter}" Grid.Column="1"/>
+                        <StackLayout Grid.Row="1" Orientation="Horizontal">
+                            <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedMonthOverMonthOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                            <numeric:SfNumericUpDown Value="{Binding FilterData.MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                        </StackLayout>
 
-                    --><!-- 累計營收增減百分比 --><!--
-                    <Label Text="{lang:Translate AccumulatedRevenueComparePercentage_Label}" Grid.Row="4"/>
-                    <Switch IsToggled="{Binding FilterData.IsEnableAccumulatedRevenueFilter}" Grid.Row="4" Grid.Column="1" />
-                    <StackLayout Grid.Row="5" Orientation="Horizontal">
-                        <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedAccumulatedRevenueCompareOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
-                        <numeric:SfNumericUpDown Value="{Binding FilterData.AccumulatedRevenueComparePercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
-                    </StackLayout>
+                        <!-- YoY -->
+                        <Label Text="{lang:Translate YearOnYearPercentage_Label}" Grid.Row="2"/>
+                        <Switch IsToggled="{Binding FilterData.IsEnableYearOnYearFilter}" Grid.Row="2" Grid.Column="1" />
+                        <StackLayout Grid.Row="3" Orientation="Horizontal">
+                            <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedYearOnYearOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                            <numeric:SfNumericUpDown Value="{Binding FilterData.YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                        </StackLayout>
 
-                </Grid>
+                        <!--累計營收增減百分比 -->
+                        <Label Text="{lang:Translate AccumulatedRevenueComparePercentage_Label}" Grid.Row="4"/>
+                        <Switch IsToggled="{Binding FilterData.IsEnableAccumulatedRevenueFilter}" Grid.Row="4" Grid.Column="1" />
+                        <StackLayout Grid.Row="5" Orientation="Horizontal">
+                            <combobox:SfComboBox SelectedItem="{Binding FilterData.SelectedAccumulatedRevenueCompareOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                            <numeric:SfNumericUpDown Value="{Binding FilterData.AccumulatedRevenueComparePercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
             </sliderPanel:SfNavigationDrawer.DrawerContentView>
-        </sliderPanel:SfNavigationDrawer>-->
+        </sliderPanel:SfNavigationDrawer>
     </ContentPage.Content>
 </views:ViewPage>

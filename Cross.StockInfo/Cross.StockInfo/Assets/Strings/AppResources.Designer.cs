@@ -520,6 +520,24 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 月份 的當地語系化字串。
+        /// </summary>
+        public static string RevenueSummaryView_MonthLabel {
+            get {
+                return ResourceManager.GetString("RevenueSummaryView_MonthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 年份 的當地語系化字串。
+        /// </summary>
+        public static string RevenueSummaryView_YearLabel {
+            get {
+                return ResourceManager.GetString("RevenueSummaryView_YearLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 名稱或代號 的當地語系化字串。
         /// </summary>
         public static string SearchBoxPlaceHolder_StockName {

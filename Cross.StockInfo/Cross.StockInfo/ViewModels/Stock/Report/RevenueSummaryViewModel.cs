@@ -19,6 +19,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
     public class RevenueSummaryViewModel : BaseViewModel, IMenuItemData
     {
         private string _searchText;
+        private string _selectedMonth;
+        private string _selectedYear;
         private List<StockRevenue> _stockRevenueList;
 
 
@@ -27,11 +29,39 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         #region ViewModel
 
+
+
         public RevenueSummaryFilterData FilterData { get; set; }
         /// <summary>
         /// 取得或設定運算子名稱清單
         /// </summary>
         public List<OperatorModel> ComboBoxStringList { get; set; }
+
+        /// <summary>
+        /// 選擇查詢營收的月份
+        /// </summary>
+        public string SelectedMonth
+        {
+            get => _selectedMonth;
+            set
+            {
+                _selectedMonth = value;
+                OnPropertyChanged();
+            }
+        }
+        /// <summary>
+        /// 選擇查詢營收的年份
+        /// </summary>
+        public string SelectedYear
+        {
+            get => _selectedYear;
+            set
+            {
+                _selectedYear = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string SearchText
         {
             get { return _searchText; }
@@ -39,6 +69,28 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             {
                 _searchText = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public List<string> MonthCollection
+        {
+            get
+            {
+                return new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+            }
+        }
+
+        public List<string> YearCollection
+        {
+            get
+            {
+                List<string> yearCollection = new List<string>();
+                int currentYear = DateTime.Now.Year;
+                for(int i= 0; i < 5; i++)
+                {
+                    yearCollection.Add(Convert.ToString(currentYear--));
+                }
+                return yearCollection;
             }
         }
 
@@ -97,7 +149,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                 return false;
             if (FilterData.IsEnableMonthOverMonthFilter)
                 isMonValid = ChechFilterValue(stockInfo.MonthOverMonthPercentage, FilterData.MonthOverMonthPercentageFilter, FilterData.SelectedMonthOverMonthOperator.Value);
-            if(FilterData.IsEnableYearOnYearFilter)
+            if (FilterData.IsEnableYearOnYearFilter)
                 isYearValid = ChechFilterValue(stockInfo.YearOnYearPercentage, FilterData.YearOnYearPercentageFilter, FilterData.SelectedYearOnYearOperator.Value);
             if (FilterData.IsEnableAccumulatedRevenueFilter)
                 isAccumulatedValid = ChechFilterValue(stockInfo.AccumulatedRevenueComparePercentage, FilterData.AccumulatedRevenueComparePercentageFilter, FilterData.SelectedAccumulatedRevenueCompareOperator.Value);

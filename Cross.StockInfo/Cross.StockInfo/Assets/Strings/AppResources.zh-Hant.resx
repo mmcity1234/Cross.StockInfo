@@ -270,6 +270,12 @@
   <data name="Quarter" xml:space="preserve">
     <value>季</value>
   </data>
+  <data name="RevenueSummaryView_MonthLabel" xml:space="preserve">
+    <value>月份</value>
+  </data>
+  <data name="RevenueSummaryView_YearLabel" xml:space="preserve">
+    <value>年份</value>
+  </data>
   <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
     <value>名稱或代號</value>
   </data>
