@@ -18,7 +18,7 @@ namespace Cross.StockInfo.Model.Stock
 
         public string DisplayLabel
         {
-            get => Code + " " + Name;
+            get => Code + "\n" + Name;
         }
     }
 }

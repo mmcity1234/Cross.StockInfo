@@ -6,6 +6,7 @@ namespace Cross.StockInfo.Model.Stock
 {
     public class StockRevenue : StockBase
     {
+        private string _comment;
         /// <summary>
         /// 當月營收
         /// </summary>
@@ -34,7 +35,7 @@ namespace Cross.StockInfo.Model.Stock
         /// <summary>
         /// 今年累計營收
         /// </summary>
-        public string CurrentAccumulatedRevenue{ get; set; }
+        public string CurrentAccumulatedRevenue { get; set; }
 
         /// <summary>
         /// 去年同期累計營收
@@ -49,6 +50,16 @@ namespace Cross.StockInfo.Model.Stock
         /// <summary>
         /// 備註
         /// </summary>
-        public string Comment { get; set; }
+        public string Comment
+        {
+            get => _comment;
+            set
+            {
+                if (value.StartsWith("-"))
+                    _comment = value.Replace("-", string.Empty);
+                else
+                    _comment = value;
+            }
+        }
     }
 }

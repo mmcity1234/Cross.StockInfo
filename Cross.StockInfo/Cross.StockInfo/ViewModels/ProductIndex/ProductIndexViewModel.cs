@@ -20,7 +20,10 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
     public class ProductIndexViewModel : BaseViewModel, IMenuItemData
     {
         private LineChartModel _lineChart;
-        private bool _isLoaded = false;
+        /// <summary>
+        /// 是否第一次載入頁面
+        /// </summary>
+        private bool _isFirstLoad = true;
         private DailyPriceControlModel _priceContorlModel;
         private string _chartTitle;
         private ProductInfo _productItemInfo;
@@ -97,19 +100,20 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         {
             LineChart = new LineChartModel();
             AverageSelectedCommand = new DelegateCommand<AverageTimeEventArgs>(AverageSelectedEventHandler);
-
+            IsPageLoading = true;
 
         }
         public override async void OnPageLoading()
         {
-            if (!_isLoaded)
+            if (_isFirstLoad)
             {
                 try
                 {
                     IsPageLoading = true;
-                    CancelChartLoading();
-                    await LoadChartData(AverageType.Day);
+                    CancelChartLoading();                
+                    await LoadChartData(AverageType.Day);                    
                     IsPageLoading = false;
+                    _isFirstLoad = false;
                 }
                 catch (Exception e)
                 {
@@ -161,7 +165,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
                     PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
 
-                    _isLoaded = true;
+                  
                 });
             }, localTokenSource.Token);
         }
@@ -180,8 +184,11 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         /// </summary>
         private async void AverageSelectedEventHandler(AverageTimeEventArgs args)
         {
+            if (_isFirstLoad)
+                return;
             try
             {
+                
                 IsPageLoading = true;
                 CancelChartLoading();
                 await LoadChartData(args.Type);
