@@ -55,7 +55,7 @@
                 <Label Text="{Binding ChangedPrice}" x:Name="changedPriceLabel" FontSize="14" Grid.Row="0" Grid.Column="1" Margin="5,10,0,0" HorizontalTextAlignment="Start" VerticalTextAlignment="End" />
                 <Label Text="{Binding ChangedPricePercentage}" x:Name="changedPricePercentageLabel" FontSize="14" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" />
             </Grid>
-            <buttons:SfSegmentedControl  x:Name="timePeriodGroupButton" VisibleSegmentsCount="2" HorizontalOptions="End"  WidthRequest="120" HeightRequest="50" BorderThickness="0" 
+            <buttons:SfSegmentedControl  x:Name="timePeriodGroupButton" VisibleSegmentsCount="2" HorizontalOptions="End"  WidthRequest="100" HeightRequest="60" BorderThickness="0" 
                                          FontColor="{StaticResource LabelColor}" SelectionTextColor="#02A0AE" Color="Transparent"
                                          SelectionChanged="TimePeriodButton_SelectionChanged" Margin="0,0,5,0">
                 <buttons:SfSegmentedControl.SelectionIndicatorSettings>
