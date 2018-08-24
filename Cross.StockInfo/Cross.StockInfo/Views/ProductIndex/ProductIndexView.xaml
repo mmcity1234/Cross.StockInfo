@@ -15,8 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-       
-        <Grid>         
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -33,21 +32,22 @@
                 <!-- Product Overview-->
                 <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabOverview}">
                     <tabView:SfTabItem.Content>
-                        <Grid>
-                           
-                            <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}"                                                 
+                        <ScrollView Orientation="Vertical">
+                            <Grid>
+                                <control:LineChartControl SeriesData = "{Binding LineChart.SeriesData}"                                                 
                                                   LatestPrice="{Binding LineChart.LatestPrice}" 
                                                   ChangedPrice="{Binding LineChart.ChangedPrice}"
                                                   ChangedPricePercentage="{Binding LineChart.ChangedPricePercentage}" 
                                                   Performance="{Binding LineChart.IndexPerformance}"
                                                   Title="{Binding ChartTitle}">
-                                <control:LineChartControl.Behaviors>
-                                    <b:EventHandlerBehavior EventName="AverageTimeSelected">
-                                        <b:InvokeCommandAction Command="{Binding AverageSelectedCommand}" />
-                                    </b:EventHandlerBehavior>
-                                </control:LineChartControl.Behaviors>
-                            </control:LineChartControl>
-                        </Grid>
+                                    <control:LineChartControl.Behaviors>
+                                        <b:EventHandlerBehavior EventName="AverageTimeSelected">
+                                            <b:InvokeCommandAction Command="{Binding AverageSelectedCommand}" />
+                                        </b:EventHandlerBehavior>
+                                    </control:LineChartControl.Behaviors>
+                                </control:LineChartControl>
+                            </Grid>
+                        </ScrollView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Price History-->

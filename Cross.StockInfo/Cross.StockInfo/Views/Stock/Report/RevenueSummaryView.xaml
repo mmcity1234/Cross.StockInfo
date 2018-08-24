@@ -21,12 +21,12 @@
 
     <ContentPage.Content>
 
-        <!--<Grid>
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>           
-            
+            </Grid.RowDefinitions>
+
             <StackLayout Orientation="Horizontal" >
                 <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
                                    Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
@@ -36,14 +36,6 @@
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
-
-            <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
-                               Color="#2499CE" HeightRequest="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
-                <ActivityIndicator.WidthRequest>
-                    <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
-                </ActivityIndicator.WidthRequest>
-            </ActivityIndicator>
-
 
             <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" Grid.Row="1"
                                  FrozenColumnsCount="1"
@@ -61,7 +53,7 @@
                 </datagrid:SfDataGrid.Resources>
 
                 <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                    <datagrid:GridTextColumn MappingName="DisplayLabel" HeaderText="{lang:Translate Name}" ColumnSizer="Auto" TextAlignment="End"/>
+                    <datagrid:GridTextColumn MappingName="Name" HeaderText="{lang:Translate Name}" ColumnSizer="Auto"  TextAlignment="End"/>
                     <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
                     <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
                     <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
@@ -88,15 +80,22 @@
                             </Style>
                         </datagrid:GridTextColumn.CellStyle>
                     </datagrid:GridTextColumn>
-                    <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="Auto"  TextWrapping="WordWrap"  TextAlignment="Start"/>
+                    <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="Auto"  TextWrapping="WordWrap"  HeaderTextAlignment="Start" TextAlignment="Start"/>
                 </datagrid:SfDataGrid.Columns>
             </datagrid:SfDataGrid>
-        </Grid>-->
+
+            <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
+                               Color="#2499CE" HeightRequest="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                <ActivityIndicator.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
+                </ActivityIndicator.WidthRequest>
+            </ActivityIndicator>
+        </Grid>
 
 
         <!-- NavigationDrewer 包含datagrid會導致無啟動 出錯-->
-        <sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" EnableSwipeGesture="True">
-            <!-- Main Content -->
+        <!--<sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" EnableSwipeGesture="True">
+            --><!-- Main Content --><!--
             <sliderPanel:SfNavigationDrawer.ContentView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -171,7 +170,7 @@
                 </Grid>
             </sliderPanel:SfNavigationDrawer.ContentView>
 
-            <!-- Slider Panel Header-->
+            --><!-- Slider Panel Header--><!--
             <sliderPanel:SfNavigationDrawer.DrawerContentView>
                 <StackLayout BackgroundColor="White">
                     <StackLayout>
@@ -184,7 +183,7 @@
                                                  SegmentCornerRadius="15" SegmentHeight="30" SegmentPadding="10" SegmentWidth="30" ItemsSource="{Binding MonthCollection}" FontColor="{StaticResource LabelColor}" Margin="5,0,5,0"/>
                     </StackLayout>
                     
-                    <!-- Revenue Filter -->
+                    --><!-- Revenue Filter --><!--
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -198,7 +197,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <!--  MoM    -->
+                        --><!--  MoM    --><!--
                         <Label Text="{lang:Translate MonthOverMonthPercentage_Label}"/>
                         <Switch IsToggled="{Binding FilterData.IsEnableMonthOverMonthFilter}" Grid.Column="1"/>
                         <StackLayout Grid.Row="1" Orientation="Horizontal">
@@ -206,7 +205,7 @@
                             <numeric:SfNumericUpDown Value="{Binding FilterData.MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
                         </StackLayout>
 
-                        <!-- YoY -->
+                        --><!-- YoY --><!--
                         <Label Text="{lang:Translate YearOnYearPercentage_Label}" Grid.Row="2"/>
                         <Switch IsToggled="{Binding FilterData.IsEnableYearOnYearFilter}" Grid.Row="2" Grid.Column="1" />
                         <StackLayout Grid.Row="3" Orientation="Horizontal">
@@ -214,7 +213,7 @@
                             <numeric:SfNumericUpDown Value="{Binding FilterData.YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
                         </StackLayout>
 
-                        <!--累計營收增減百分比 -->
+                        --><!--累計營收增減百分比 --><!--
                         <Label Text="{lang:Translate AccumulatedRevenueComparePercentage_Label}" Grid.Row="4"/>
                         <Switch IsToggled="{Binding FilterData.IsEnableAccumulatedRevenueFilter}" Grid.Row="4" Grid.Column="1" />
                         <StackLayout Grid.Row="5" Orientation="Horizontal">
@@ -225,6 +224,6 @@
                     </Grid>
                 </StackLayout>
             </sliderPanel:SfNavigationDrawer.DrawerContentView>
-        </sliderPanel:SfNavigationDrawer>
+        </sliderPanel:SfNavigationDrawer>-->
     </ContentPage.Content>
 </views:ViewPage>
