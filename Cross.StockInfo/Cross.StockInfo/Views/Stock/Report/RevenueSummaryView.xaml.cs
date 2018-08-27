@@ -10,17 +10,17 @@ using Xamarin.Forms.Xaml;
 
 namespace Cross.StockInfo.Views.Stock.Report
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RevenueSummaryView : ViewPage
-	{
-		public RevenueSummaryView ()
-		{
-			InitializeComponent ();
-            DataBinding<RevenueSummaryViewModel>();           
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RevenueSummaryView : ViewPage
+    {
+        public RevenueSummaryView()
+        {
+            InitializeComponent();
+            DataBinding<RevenueSummaryViewModel>();
 
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchBar_TextChanged(object sender, EventArgs e)
         {
             OnFilterChanged();
         }
@@ -35,7 +35,12 @@ namespace Cross.StockInfo.Views.Stock.Report
 
         private void FilterButton_Clicked(object sender, EventArgs e)
         {
-           // filterSliderPanel.ToggleDrawer();
+           
+        }
+
+        private void FilterValueChangedHandler(object sender, EventArgs e)
+        {
+            OnFilterChanged();
         }
     }
 }

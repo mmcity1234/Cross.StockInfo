@@ -7,7 +7,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
     /// <summary>
     /// 上市櫃公司營收過濾篩選設定參數
     /// </summary>
-    public class RevenueSummaryFilterData : BaseViewModel
+    public class RevenueSummaryFilterViewModel : BaseViewModel
     {     
 
         public bool IsEnableMonthOverMonthFilter { get; set; }

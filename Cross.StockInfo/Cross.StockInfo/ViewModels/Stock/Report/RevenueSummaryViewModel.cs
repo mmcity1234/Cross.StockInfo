@@ -29,9 +29,6 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         #region ViewModel
 
-
-
-        public RevenueSummaryFilterData FilterData { get; set; }
         /// <summary>
         /// 取得或設定運算子名稱清單
         /// </summary>
@@ -107,6 +104,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
         }
 
+        public DelegateCommand<EventArgs> NewsTabChangedCommand { get; set; }
+
         #endregion
 
 
@@ -116,8 +115,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             {
                 new OperatorModel { Name = AppResources.MoreThan, Value = OperatorType.MoreThan },
                 new OperatorModel { Name = AppResources.LessThan, Value = OperatorType.LessThan }
-            };
-            FilterData = new RevenueSummaryFilterData();
+            };          
+            NewsTabChangedCommand = new DelegateCommand<EventArgs>(FilterImage_EventHandler);
         }
 
         public override async void OnPageLoading()
@@ -145,19 +144,19 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             if (stockInfo == null)
                 return false;
 
-            if (!stockInfo.DisplayLabel.Contains(SearchText))
+            if (SearchText != null && !stockInfo.DisplayLabel.Contains(SearchText))
                 return false;
             if (FilterData.IsEnableMonthOverMonthFilter)
-                isMonValid = ChechFilterValue(stockInfo.MonthOverMonthPercentage, FilterData.MonthOverMonthPercentageFilter, FilterData.SelectedMonthOverMonthOperator.Value);
+                isMonValid = CheckFilterValue(stockInfo.MonthOverMonthPercentage, FilterData.MonthOverMonthPercentageFilter, FilterData.SelectedMonthOverMonthOperator.Value);
             if (FilterData.IsEnableYearOnYearFilter)
-                isYearValid = ChechFilterValue(stockInfo.YearOnYearPercentage, FilterData.YearOnYearPercentageFilter, FilterData.SelectedYearOnYearOperator.Value);
+                isYearValid = CheckFilterValue(stockInfo.YearOnYearPercentage, FilterData.YearOnYearPercentageFilter, FilterData.SelectedYearOnYearOperator.Value);
             if (FilterData.IsEnableAccumulatedRevenueFilter)
-                isAccumulatedValid = ChechFilterValue(stockInfo.AccumulatedRevenueComparePercentage, FilterData.AccumulatedRevenueComparePercentageFilter, FilterData.SelectedAccumulatedRevenueCompareOperator.Value);
+                isAccumulatedValid = CheckFilterValue(stockInfo.AccumulatedRevenueComparePercentage, FilterData.AccumulatedRevenueComparePercentageFilter, FilterData.SelectedAccumulatedRevenueCompareOperator.Value);
 
             return isMonValid & isYearValid & isAccumulatedValid;
         }
 
-        private bool ChechFilterValue(string value, int filterValue, OperatorType operatorType)
+        private bool CheckFilterValue(string value, int filterValue, OperatorType operatorType)
         {
             double checkedValue;
             bool isSuccess = double.TryParse(value, out checkedValue);
@@ -170,6 +169,11 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                 return checkedValue < filterValue;
             else
                 return false;
+        }
+
+        private void FilterImage_EventHandler(EventArgs args)
+        {
+         //   Navigation.Navigate()
         }
     }
 }
