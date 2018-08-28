@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cross.StockInfo.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
     /// 上市櫃公司營收過濾篩選設定參數
     /// </summary>
     public class RevenueSummaryFilterViewModel : BaseViewModel
-    {     
+    {
+        public event Action<RevenueSummaryFilterViewModel> FilterValueChangedFinish;
 
         public bool IsEnableMonthOverMonthFilter { get; set; }
         public bool IsEnableYearOnYearFilter { get; set; }
@@ -43,5 +45,19 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// </summary>
         public int AccumulatedRevenueComparePercentageFilter { get; set; }
 
+        public DelegateCommand<EventArgs> ConfirmCommand { get; set; }
+
+        public RevenueSummaryFilterViewModel()
+        {
+            ConfirmCommand = new DelegateCommand<EventArgs>(OkButton_EventHandler);
+        }
+
+        private void OkButton_EventHandler(EventArgs args)
+        {
+            if(FilterValueChangedFinish != null)
+            {
+                FilterValueChangedFinish(this);
+            }
+        }
     }
 }

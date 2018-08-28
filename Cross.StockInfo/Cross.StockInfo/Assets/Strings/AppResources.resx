@@ -300,4 +300,7 @@
   <data name="RevenueSummaryView_YearLabel" xml:space="preserve">
     <value>年份</value>
   </data>
+  <data name="OK_Label" xml:space="preserve">
+    <value>確認</value>
+  </data>
 </root>

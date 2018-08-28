@@ -300,4 +300,7 @@
   <data name="YearOnYearPercentage_Label" xml:space="preserve">
     <value>去年同期增減百分比</value>
   </data>
+  <data name="OK_Label" xml:space="preserve">
+    <value>確認</value>
+  </data>
 </root>

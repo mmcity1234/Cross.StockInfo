@@ -31,16 +31,6 @@ namespace Cross.StockInfo.Views.Stock.Report
                 this.revenueDataGrid.View.Filter = ((RevenueSummaryViewModel)ViewModel).FilterRecordCondition;
                 this.revenueDataGrid.View.RefreshFilter();
             }
-        }
-
-        private void FilterButton_Clicked(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void FilterValueChangedHandler(object sender, EventArgs e)
-        {
-            OnFilterChanged();
-        }
+        }     
     }
 }

@@ -28,9 +28,15 @@
             <StackLayout Orientation="Horizontal" >
                 <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
                                    Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
-                <Image Source="filter_48x48.png" WidthRequest="40" HeightRequest="40" IsVisible="True">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="FilterButton_Clicked" />
+                <Image WidthRequest="40" HeightRequest="40" IsVisible="True">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="Android, iOS" Value="filter_48x48.png"/>
+                            <On Platform="UWP" Value="Assets/filter_48x48.png"/>
+                        </OnPlatform>
+                    </Image.Source>
+                    <Image.GestureRecognizers>                     
+                            <TapGestureRecognizer Command="{Binding FilterImageButtonCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>

@@ -475,6 +475,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 確認 的當地語系化字串。
+        /// </summary>
+        public static string OK_Label {
+            get {
+                return ResourceManager.GetString("OK_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 上櫃公司營收統計表 的當地語系化字串。
         /// </summary>
         public static string OtcRevenueReport_MenuItemLabel {

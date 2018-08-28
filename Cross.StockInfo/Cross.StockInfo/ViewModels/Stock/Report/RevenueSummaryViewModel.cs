@@ -22,6 +22,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         private string _selectedMonth;
         private string _selectedYear;
         private List<StockRevenue> _stockRevenueList;
+        private RevenueSummaryFilterViewModel _filterModel;
 
 
         public IStockReportService StockReportService { get; set; }
@@ -83,7 +84,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             {
                 List<string> yearCollection = new List<string>();
                 int currentYear = DateTime.Now.Year;
-                for(int i= 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     yearCollection.Add(Convert.ToString(currentYear--));
                 }
@@ -104,7 +105,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
         }
 
-        public DelegateCommand<EventArgs> NewsTabChangedCommand { get; set; }
+        public DelegateCommand<EventArgs> FilterImageButtonCommand { get; set; }
 
         #endregion
 
@@ -115,8 +116,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             {
                 new OperatorModel { Name = AppResources.MoreThan, Value = OperatorType.MoreThan },
                 new OperatorModel { Name = AppResources.LessThan, Value = OperatorType.LessThan }
-            };          
-            NewsTabChangedCommand = new DelegateCommand<EventArgs>(FilterImage_EventHandler);
+            };
+            FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
         }
 
         public override async void OnPageLoading()
@@ -146,34 +147,44 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
             if (SearchText != null && !stockInfo.DisplayLabel.Contains(SearchText))
                 return false;
-            if (FilterData.IsEnableMonthOverMonthFilter)
-                isMonValid = CheckFilterValue(stockInfo.MonthOverMonthPercentage, FilterData.MonthOverMonthPercentageFilter, FilterData.SelectedMonthOverMonthOperator.Value);
-            if (FilterData.IsEnableYearOnYearFilter)
-                isYearValid = CheckFilterValue(stockInfo.YearOnYearPercentage, FilterData.YearOnYearPercentageFilter, FilterData.SelectedYearOnYearOperator.Value);
-            if (FilterData.IsEnableAccumulatedRevenueFilter)
-                isAccumulatedValid = CheckFilterValue(stockInfo.AccumulatedRevenueComparePercentage, FilterData.AccumulatedRevenueComparePercentageFilter, FilterData.SelectedAccumulatedRevenueCompareOperator.Value);
-
+            if (_filterModel != null)
+            {
+                if (_filterModel.IsEnableMonthOverMonthFilter)
+                    isMonValid = CheckFilterValue(stockInfo.MonthOverMonthPercentage, _filterModel.MonthOverMonthPercentageFilter, _filterModel.SelectedMonthOverMonthOperator.Value);
+                if (_filterModel.IsEnableYearOnYearFilter)
+                    isYearValid = CheckFilterValue(stockInfo.YearOnYearPercentage, _filterModel.YearOnYearPercentageFilter, _filterModel.SelectedYearOnYearOperator.Value);
+                if (_filterModel.IsEnableAccumulatedRevenueFilter)
+                    isAccumulatedValid = CheckFilterValue(stockInfo.AccumulatedRevenueComparePercentage, _filterModel.AccumulatedRevenueComparePercentageFilter, _filterModel.SelectedAccumulatedRevenueCompareOperator.Value);
+            } 
             return isMonValid & isYearValid & isAccumulatedValid;
         }
 
-        private bool CheckFilterValue(string value, int filterValue, OperatorType operatorType)
-        {
-            double checkedValue;
-            bool isSuccess = double.TryParse(value, out checkedValue);
+    private bool CheckFilterValue(string value, int filterValue, OperatorType operatorType)
+    {
+        double checkedValue;
+        bool isSuccess = double.TryParse(value, out checkedValue);
 
-            if (isSuccess == false)
-                return false;
-            if (operatorType == OperatorType.MoreThan)
-                return checkedValue > filterValue;
-            else if (operatorType == OperatorType.LessThan)
-                return checkedValue < filterValue;
-            else
-                return false;
-        }
-
-        private void FilterImage_EventHandler(EventArgs args)
-        {
-         //   Navigation.Navigate()
-        }
+        if (isSuccess == false)
+            return false;
+        if (operatorType == OperatorType.MoreThan)
+            return checkedValue > filterValue;
+        else if (operatorType == OperatorType.LessThan)
+            return checkedValue < filterValue;
+        else
+            return false;
     }
+
+    private void FilterImageClick_EventHandler(EventArgs args)
+    {
+        RevenueSummaryFilterViewModel filterViewModel = new RevenueSummaryFilterViewModel();
+        filterViewModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
+        Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView));
+    }
+
+    private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)
+    {
+        _filterModel = model;
+
+    }
+}
 }

@@ -20,30 +20,36 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!--  MoM -->
             <Label Text="{lang:Translate MonthOverMonthPercentage_Label}" IsEnabled="{Binding Source={x:Reference momFilterSwitch}, Path=IsToggled}"/>
             <Switch x:Name="momFilterSwitch" IsToggled="{Binding IsEnableMonthOverMonthFilter}" Grid.Column="1"/>
             <StackLayout Grid.Row="1" Orientation="Horizontal" IsEnabled="{Binding Source={x:Reference momFilterSwitch}, Path=IsToggled}">
-                <combobox:SfComboBox SelectedItem="{Binding SelectedMonthOverMonthOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}" SelectionChanged="FilterValueChangedHandler"/>
-                <numeric:SfNumericUpDown Value="{Binding MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both" ValueChanged="FilterValueChangedHandler"/>
+                <combobox:SfComboBox SelectedItem="{Binding SelectedMonthOverMonthOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}" />
+                <numeric:SfNumericUpDown Value="{Binding MonthOverMonthPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
             </StackLayout>
 
             <!--YoY-->
             <Label Text="{lang:Translate YearOnYearPercentage_Label}" Grid.Row="2" IsEnabled="{Binding Source={x:Reference yoyFilterSwitch}, Path=IsToggled}"/>
             <Switch x:Name="yoyFilterSwitch" IsToggled="{Binding IsEnableYearOnYearFilter}" Grid.Row="2" Grid.Column="1" />
             <StackLayout Grid.Row="3" Orientation="Horizontal" IsEnabled="{Binding Source={x:Reference yoyFilterSwitch}, Path=IsToggled}">
-                <combobox:SfComboBox SelectedItem="{Binding SelectedYearOnYearOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}" SelectionChanged="FilterValueChangedHandler"/>
-                <numeric:SfNumericUpDown Value="{Binding YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both" ValueChanged="FilterValueChangedHandler"/>
+                <combobox:SfComboBox SelectedItem="{Binding SelectedYearOnYearOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                <numeric:SfNumericUpDown Value="{Binding YearOnYearPercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
             </StackLayout>
 
             <!--累計營收增減百分比-->
             <Label Text="{lang:Translate AccumulatedRevenueComparePercentage_Label}" Grid.Row="4" IsEnabled="{Binding Source={x:Reference accumulatedFilterSwitch}, Path=IsToggled}"/>
             <Switch x:Name="accumulatedFilterSwitch" IsToggled="{Binding IsEnableAccumulatedRevenueFilter}" Grid.Row="4" Grid.Column="1" />
             <StackLayout Grid.Row="5" Orientation="Horizontal" IsEnabled="{Binding Source={x:Reference accumulatedFilterSwitch}, Path=IsToggled}">
-                <combobox:SfComboBox SelectedItem="{Binding SelectedAccumulatedRevenueCompareOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}" SelectionChanged="FilterValueChangedHandler"/>
-                <numeric:SfNumericUpDown Value="{Binding AccumulatedRevenueComparePercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both" ValueChanged="FilterValueChangedHandler"/>
+                <combobox:SfComboBox SelectedItem="{Binding SelectedAccumulatedRevenueCompareOperator, Mode=TwoWay}" WidthRequest="120" DisplayMemberPath="Name" DataSource="{Binding ComboBoxStringList}"/>
+                <numeric:SfNumericUpDown Value="{Binding AccumulatedRevenueComparePercentageFilter, Mode=TwoWay}" WidthRequest="120" PercentDisplayMode="Compute" StepValue="5" SpinButtonAlignment="Both"/>
             </StackLayout>
+            
+            <!-- Fill Empty-->
+
+            <Button Text="{lang:Translate OK_Label}" Command="{Binding ConfirmCommand}" HorizontalOptions="FillAndExpand" Grid.Row="7"/>
         </Grid>
     </ContentPage.Content>
 </views:ViewPage>
