@@ -25,7 +25,7 @@
                 <RowDefinition Height="*"/>             
             </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Horizontal" >
+            <StackLayout Orientation="Horizontal" IsEnabled="{Binding IsControlEnable}">
                 <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
                                    Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
                 <Image WidthRequest="40" HeightRequest="40" IsVisible="True">
@@ -86,24 +86,7 @@
                     </datagrid:GridTextColumn>
                     <datagrid:GridTextColumn MappingName="Comment" HeaderText="{lang:Translate Comment}" ColumnSizer="Auto"  TextWrapping="WordWrap"  HeaderTextAlignment="Start" TextAlignment="Start"/>
                 </datagrid:SfDataGrid.Columns>
-            </datagrid:SfDataGrid>
-
-
-            <!--<sliderPanel:SfNavigationDrawer x:Name="filterSliderPanel" Position="Bottom" EnableSwipeGesture="True" Grid.Row="2">
-                <sliderPanel:SfNavigationDrawer.DrawerHeaderView>
-                    <StackLayout>
-                        <StackLayout BackgroundColor="White">
-                            <Label Text="{lang:Translate RevenueSummaryView_YearLabel}" Margin="5,0,5,0"/>
-                            <buttons:SfSegmentedControl HorizontalOptions="Start" BorderColor="#2C7BBC" CornerRadius="5" SelectionTextColor="White" Color="White" 
-                                                 SegmentCornerRadius="15" SegmentHeight="30" SegmentPadding="10" SegmentWidth="30" ItemsSource="{Binding YearCollection}" FontColor="{StaticResource LabelColor}" Margin="5,0,5,0"/>
-
-                            <Label Text="{lang:Translate RevenueSummaryView_MonthLabel}" Margin="5,0,5,0"/>
-                            <buttons:SfSegmentedControl HorizontalOptions="Start"  BorderColor="#2C7BBC" SelectionTextColor="White" Color="White" 
-                                                 SegmentCornerRadius="15" SegmentHeight="30" SegmentPadding="10" SegmentWidth="30" ItemsSource="{Binding MonthCollection}" FontColor="{StaticResource LabelColor}" Margin="5,0,5,0"/>
-                        </StackLayout>                    
-                    </StackLayout>
-                </sliderPanel:SfNavigationDrawer.DrawerHeaderView>
-            </sliderPanel:SfNavigationDrawer>-->
+            </datagrid:SfDataGrid>         
             
             <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
                                Color="#2499CE" HeightRequest="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">

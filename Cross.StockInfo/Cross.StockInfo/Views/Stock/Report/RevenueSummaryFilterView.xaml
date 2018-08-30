@@ -49,7 +49,7 @@
             
             <!-- Fill Empty-->
 
-            <Button Text="{lang:Translate OK_Label}" Command="{Binding ConfirmCommand}" HorizontalOptions="FillAndExpand" Grid.Row="7"/>
+            <Button Text="{lang:Translate OK_Label}" Command="{Binding ConfirmCommand}" HorizontalOptions="FillAndExpand" Grid.Row="7" Grid.ColumnSpan="2"/>
         </Grid>
     </ContentPage.Content>
 </views:ViewPage>

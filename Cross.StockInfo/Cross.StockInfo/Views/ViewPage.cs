@@ -37,7 +37,7 @@ namespace Cross.StockInfo.Views
 
                 // Binding event
                 Appearing += ViewPageAppearing;
-                Disappearing += ViewPageDisappearing;
+                Disappearing += ViewPageDisappearing;              
             }
             catch (Exception e)
             {
@@ -45,14 +45,25 @@ namespace Cross.StockInfo.Views
             }
         }
 
+
+        /// <summary>
+        /// Hardware back button
+        /// </summary>
+        /// <returns></returns>
+        public void OnBackButtonTab()
+        {
+            ViewModel?.OnBackButtonTab();
+        }
+
         private void ViewPageDisappearing(object sender, EventArgs e)
         {
-            ViewModel.OnPageDisappearing();
+
+            ViewModel?.OnPageDisappearing();
         }
 
         private void ViewPageAppearing(object sender, EventArgs e)
         {
-            ViewModel.OnPageLoading();
+            ViewModel?.OnPageLoading();
         }
     }
 }

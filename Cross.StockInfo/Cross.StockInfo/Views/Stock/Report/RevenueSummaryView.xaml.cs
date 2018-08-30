@@ -17,7 +17,16 @@ namespace Cross.StockInfo.Views.Stock.Report
         {
             InitializeComponent();
             DataBinding<RevenueSummaryViewModel>();
+            RevenueSummaryViewModel viewModel = base.ViewModel as RevenueSummaryViewModel;
+            if(viewModel != null)
+            {
+                viewModel.FilterChanged += ViewModel_FilterChanged;
+            }
+        }
 
+        private void ViewModel_FilterChanged(RevenueSummaryFilterViewModel obj)
+        {
+            OnFilterChanged();
         }
 
         private void SearchBar_TextChanged(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using Cross.StockInfo.Common;
+﻿using Cross.StockInfo.Assets.Strings;
+using Cross.StockInfo.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,15 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
     /// </summary>
     public class RevenueSummaryFilterViewModel : BaseViewModel
     {
+        private OperatorModel _selectedMonthOverMonthOperator;
+        private OperatorModel _selectedYearOnYearOperator;
+        private OperatorModel _selectedAccumulatedRevenueCompareOperator;
+
+        /// <summary>
+        /// 取得或設定運算子名稱清單
+        /// </summary>
+        public List<OperatorModel> ComboBoxStringList { get; set; }
+
         public event Action<RevenueSummaryFilterViewModel> FilterValueChangedFinish;
 
         public bool IsEnableMonthOverMonthFilter { get; set; }
@@ -19,16 +29,37 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// <summary>
         /// 取得或設定上月營收增減百分比運算子
         /// </summary>
-        public OperatorModel SelectedMonthOverMonthOperator { get; set; }
-       
+        public OperatorModel SelectedMonthOverMonthOperator
+        {
+            get => _selectedMonthOverMonthOperator;
+            set
+            {
+                _selectedMonthOverMonthOperator = value; OnPropertyChanged();
+            }
+        }
+
         /// <summary>
         /// 取得或設定去年同期營收增減百分比運算子
         /// </summary>
-        public OperatorModel SelectedYearOnYearOperator { get; set; }
+        public OperatorModel SelectedYearOnYearOperator
+        {
+            get => _selectedYearOnYearOperator;
+            set
+            {
+                _selectedYearOnYearOperator = value; OnPropertyChanged();
+            }
+        }
         /// <summary>
         /// 取得或設定當年營收累計增減百分比運算子
         /// </summary>
-        public OperatorModel SelectedAccumulatedRevenueCompareOperator { get; set; }
+        public OperatorModel SelectedAccumulatedRevenueCompareOperator
+        {
+            get => _selectedAccumulatedRevenueCompareOperator;
+            set
+            {
+                _selectedAccumulatedRevenueCompareOperator = value; OnPropertyChanged();
+            }
+        }
 
 
         /// <summary>
@@ -49,15 +80,22 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         public RevenueSummaryFilterViewModel()
         {
+            OperatorModel moreThan = new OperatorModel { Name = AppResources.MoreThan, Value = OperatorType.MoreThan };
+            ComboBoxStringList = new List<OperatorModel>
+            {
+                moreThan,
+                new OperatorModel { Name = AppResources.LessThan, Value = OperatorType.LessThan }
+            };
             ConfirmCommand = new DelegateCommand<EventArgs>(OkButton_EventHandler);
+
+            SelectedMonthOverMonthOperator = moreThan;
+            SelectedYearOnYearOperator = moreThan;
+            SelectedAccumulatedRevenueCompareOperator = moreThan;
         }
 
         private void OkButton_EventHandler(EventArgs args)
         {
-            if(FilterValueChangedFinish != null)
-            {
-                FilterValueChangedFinish(this);
-            }
+            FilterValueChangedFinish?.Invoke(this);
         }
     }
 }

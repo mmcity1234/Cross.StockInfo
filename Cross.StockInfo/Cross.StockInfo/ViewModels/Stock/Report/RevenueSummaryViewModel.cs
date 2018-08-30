@@ -21,9 +21,11 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         private string _searchText;
         private string _selectedMonth;
         private string _selectedYear;
+        private bool _isControlEnable;
         private List<StockRevenue> _stockRevenueList;
         private RevenueSummaryFilterViewModel _filterModel;
 
+        public event Action<RevenueSummaryFilterViewModel> FilterChanged;
 
         public IStockReportService StockReportService { get; set; }
         public Type ConfigParameter { get; set; }
@@ -31,9 +33,17 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         #region ViewModel
 
         /// <summary>
-        /// 取得或設定運算子名稱清單
+        /// 控制項目前的啟用狀況
         /// </summary>
-        public List<OperatorModel> ComboBoxStringList { get; set; }
+        public bool IsControlEnable
+        {
+            get => _isControlEnable;
+            set
+            {
+                _isControlEnable = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// 選擇查詢營收的月份
@@ -111,24 +121,19 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
 
         public RevenueSummaryViewModel()
-        {
-            ComboBoxStringList = new List<OperatorModel>
-            {
-                new OperatorModel { Name = AppResources.MoreThan, Value = OperatorType.MoreThan },
-                new OperatorModel { Name = AppResources.LessThan, Value = OperatorType.LessThan }
-            };
+        {           
             FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
         }
 
         public override async void OnPageLoading()
         {
-            IsPageLoading = true;
+            SetViewStatus(true);
             base.OnPageLoading();
             if (ConfigParameter == typeof(OtcRevenueType))
                 StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(107, 7);
             else if (ConfigParameter == typeof(CompanyRevenueType))
                 StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(107, 7);
-            IsPageLoading = false;
+            SetViewStatus(false);
 
         }
 
@@ -155,36 +160,46 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                     isYearValid = CheckFilterValue(stockInfo.YearOnYearPercentage, _filterModel.YearOnYearPercentageFilter, _filterModel.SelectedYearOnYearOperator.Value);
                 if (_filterModel.IsEnableAccumulatedRevenueFilter)
                     isAccumulatedValid = CheckFilterValue(stockInfo.AccumulatedRevenueComparePercentage, _filterModel.AccumulatedRevenueComparePercentageFilter, _filterModel.SelectedAccumulatedRevenueCompareOperator.Value);
-            } 
+            }
             return isMonValid & isYearValid & isAccumulatedValid;
         }
 
-    private bool CheckFilterValue(string value, int filterValue, OperatorType operatorType)
-    {
-        double checkedValue;
-        bool isSuccess = double.TryParse(value, out checkedValue);
+        private bool CheckFilterValue(string value, int filterValue, OperatorType operatorType)
+        {
+            double checkedValue;
+            bool isSuccess = double.TryParse(value, out checkedValue);
 
-        if (isSuccess == false)
-            return false;
-        if (operatorType == OperatorType.MoreThan)
-            return checkedValue > filterValue;
-        else if (operatorType == OperatorType.LessThan)
-            return checkedValue < filterValue;
-        else
-            return false;
+            if (isSuccess == false)
+                return false;
+            if (operatorType == OperatorType.MoreThan)
+                return checkedValue > filterValue;
+            else if (operatorType == OperatorType.LessThan)
+                return checkedValue < filterValue;
+            else
+                return false;
+        }
+
+        private void FilterImageClick_EventHandler(EventArgs args)
+        {
+            RevenueSummaryFilterViewModel filterViewModel = new RevenueSummaryFilterViewModel();
+            filterViewModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
+            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView), filterViewModel);
+        }
+
+        private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)
+        {
+            _filterModel = model;
+
+            // triggle the data grid filter 
+            FilterChanged?.Invoke(model);          
+        }
+
+        private void SetViewStatus(bool isPageLoading)
+        {
+            IsPageLoading = isPageLoading;
+            // Disable the control when page is loading
+            IsControlEnable = !isPageLoading;
+        }
+
     }
-
-    private void FilterImageClick_EventHandler(EventArgs args)
-    {
-        RevenueSummaryFilterViewModel filterViewModel = new RevenueSummaryFilterViewModel();
-        filterViewModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
-        Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView));
-    }
-
-    private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)
-    {
-        _filterModel = model;
-
-    }
-}
 }

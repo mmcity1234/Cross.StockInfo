@@ -51,5 +51,14 @@ namespace Cross.StockInfo.ViewModels
         {
            
         }
+
+
+        /// <summary>
+        /// Handle the both of hardware back button and navigation bar back button
+        /// </summary>
+        public virtual void OnBackButtonTab()
+        {
+
+        }
     }
 }
