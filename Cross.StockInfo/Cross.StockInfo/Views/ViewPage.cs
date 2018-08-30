@@ -37,7 +37,7 @@ namespace Cross.StockInfo.Views
 
                 // Binding event
                 Appearing += ViewPageAppearing;
-                Disappearing += ViewPageDisappearing;              
+                Disappearing += ViewPageDisappearing;
             }
             catch (Exception e)
             {
@@ -46,24 +46,40 @@ namespace Cross.StockInfo.Views
         }
 
 
-        /// <summary>
-        /// Hardware back button
-        /// </summary>
-        /// <returns></returns>
-        public void OnBackButtonTab()
-        {
-            ViewModel?.OnBackButtonTab();
-        }
+      
 
         private void ViewPageDisappearing(object sender, EventArgs e)
         {
-
+            base.OnDisappearing();
             ViewModel?.OnPageDisappearing();
         }
 
         private void ViewPageAppearing(object sender, EventArgs e)
         {
+            base.OnAppearing();
             ViewModel?.OnPageLoading();
+        }
+
+        /// <summary>
+        /// Only for UWP back button
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed()
+        {
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                ViewModel?.OnBackButtonTab();
+            }
+            return base.OnBackButtonPressed();
+        }
+
+        /// <summary>
+        /// For android  of the hardware back button and navigation bar back button tab
+        /// </summary>
+        /// <returns></returns>
+        public void OnBackButtonTab()
+        {
+            ViewModel?.OnBackButtonTab();
         }
     }
 }

@@ -21,7 +21,14 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         private string _searchText;
         private string _selectedMonth;
         private string _selectedYear;
+        /// <summary>
+        /// 設定目前UI控制向的啟用狀態，確保頁面載入過程不可操作此UI控制向
+        /// </summary>
         private bool _isControlEnable;
+        /// <summary>
+        /// Check if the first time to load the page
+        /// </summary>
+        private bool _isPageFirstLoad = true;
         private List<StockRevenue> _stockRevenueList;
         private RevenueSummaryFilterViewModel _filterModel;
 
@@ -127,6 +134,10 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         public override async void OnPageLoading()
         {
+            
+            if (!_isPageFirstLoad) 
+                return;
+            
             SetViewStatus(true);
             base.OnPageLoading();
             if (ConfigParameter == typeof(OtcRevenueType))
@@ -134,7 +145,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             else if (ConfigParameter == typeof(CompanyRevenueType))
                 StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(107, 7);
             SetViewStatus(false);
-
+            _isPageFirstLoad = false;
         }
 
 
@@ -181,9 +192,13 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         private void FilterImageClick_EventHandler(EventArgs args)
         {
-            RevenueSummaryFilterViewModel filterViewModel = new RevenueSummaryFilterViewModel();
-            filterViewModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
-            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView), filterViewModel);
+            if (_filterModel == null)
+            {
+                _filterModel = new RevenueSummaryFilterViewModel();
+                _filterModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
+            }
+
+            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView), _filterModel);
         }
 
         private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)

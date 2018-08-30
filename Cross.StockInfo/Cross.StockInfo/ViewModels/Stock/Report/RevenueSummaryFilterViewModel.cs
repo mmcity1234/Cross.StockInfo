@@ -97,5 +97,9 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         {
             FilterValueChangedFinish?.Invoke(this);
         }
+        public override void OnBackButtonTab()
+        {
+            FilterValueChangedFinish?.Invoke(this);
+        }
     }
 }
