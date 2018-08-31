@@ -20,10 +20,6 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
     public class ProductIndexViewModel : BaseViewModel, IMenuItemData
     {
         private LineChartModel _lineChart;
-        /// <summary>
-        /// 是否第一次載入頁面
-        /// </summary>
-        private bool _isFirstLoad = true;
         private DailyPriceControlModel _priceContorlModel;
         private string _chartTitle;
         private ProductInfo _productItemInfo;
@@ -103,22 +99,20 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
             IsPageLoading = true;
 
         }
-        public override async void OnPageLoading()
-        {
-            if (_isFirstLoad)
+        protected override async void OnPageFirstLoad()
+        {           
+            try
             {
-                try
-                {
-                    IsPageLoading = true;
-                    CancelChartLoading();                
-                    await LoadChartData(AverageType.Day);                    
-                    IsPageLoading = false;
-                    _isFirstLoad = false;
-                }
-                catch (Exception e)
-                {
-                    throw new Exception(string.Format(AppResources.Exception_LoadDataError, e.Message));
-                }
+                IsPageLoading = true;
+                base.OnPageFirstLoad();
+                CancelChartLoading();
+                await LoadChartData(AverageType.Day);
+                IsPageLoading = false;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(string.Format(AppResources.Exception_LoadDataError, e.Message));
             }
         }
 
@@ -165,7 +159,7 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
 
                     PriceContorlModel = new DailyPriceControlModel { Title = ProductInfo.DailyPriceTitle, DataPoints = new ObservableCollection<DataPoint>(filterBdi) };
 
-                  
+
                 });
             }, localTokenSource.Token);
         }
@@ -184,11 +178,10 @@ namespace Cross.StockInfo.ViewModels.ProductIndex
         /// </summary>
         private async void AverageSelectedEventHandler(AverageTimeEventArgs args)
         {
-            if (_isFirstLoad)
+            if (IsPageFirstLoad)
                 return;
             try
             {
-                
                 IsPageLoading = true;
                 CancelChartLoading();
                 await LoadChartData(args.Type);

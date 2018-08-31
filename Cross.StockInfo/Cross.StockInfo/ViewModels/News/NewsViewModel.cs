@@ -66,6 +66,8 @@ namespace Cross.StockInfo.ViewModels.News
 
         public NewsViewModel()
         {
+
+
             TabItemSources = new NewsTabCollection()
             {
                 new NewsTabItem{ Title = AppResources.News_All_TabTile, NewsType = EnumHelper.ParseToString(MoneyDJNewsType.All), PageIndex = 1 },
@@ -146,10 +148,10 @@ namespace Cross.StockInfo.ViewModels.News
 
         }
 
-        public override async void OnPageLoading()
-        {
+        protected override async void OnPageFirstLoad()
+        {            
             IsPageLoading = true;
-            base.OnPageLoading();
+            base.OnPageFirstLoad();           
             await LoadNewsData(1, EnumHelper.ParseToString(MoneyDJNewsType.All));
             IsPageLoading = false;
         }

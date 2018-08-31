@@ -10,12 +10,13 @@ namespace Cross.StockInfo.Services
     public interface INavigationService
     {
         Task Navigate(Type targetPage);
-      
+
         Task Navigate(Type targetPage, object bindingContext);
 
         Task Navigate(Type targetPage, IViewModel bindingContext);
 
+        Task GoBack();
 
-        void GoBack();
+        Task GoBackToRootPage();
     }
 }

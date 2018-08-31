@@ -59,11 +59,11 @@ namespace Cross.StockInfo.ViewModels
         #endregion
 
 
-        public override async void OnPageLoading()
+        protected override async void OnPageFirstLoad()
         {
             try
             {
-                base.OnPageLoading();
+                base.OnPageFirstLoad();
                 if (HtmlLoadingSourceEvent != null)
                 {
                     IsPageLoading = true;

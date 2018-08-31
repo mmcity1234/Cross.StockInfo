@@ -1,5 +1,6 @@
 ﻿using Cross.StockInfo.Assets.Strings;
 using Cross.StockInfo.Common;
+using Cross.StockInfo.Common.IoC;
 using Cross.StockInfo.Model.Stock;
 using Cross.StockInfo.Services;
 using Cross.StockInfo.ViewModels.Stock.Report.Config;
@@ -25,10 +26,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// 設定目前UI控制向的啟用狀態，確保頁面載入過程不可操作此UI控制向
         /// </summary>
         private bool _isControlEnable;
-        /// <summary>
-        /// Check if the first time to load the page
-        /// </summary>
-        private bool _isPageFirstLoad = true;
+      
         private List<StockRevenue> _stockRevenueList;
         private RevenueSummaryFilterViewModel _filterModel;
 
@@ -132,20 +130,15 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
         }
 
-        public override async void OnPageLoading()
-        {
-            
-            if (!_isPageFirstLoad) 
-                return;
-            
+        protected override async void OnPageFirstLoad()
+        {  
             SetViewStatus(true);
-            base.OnPageLoading();
+            base.OnPageFirstLoad();
             if (ConfigParameter == typeof(OtcRevenueType))
                 StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(107, 7);
             else if (ConfigParameter == typeof(CompanyRevenueType))
                 StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(107, 7);
-            SetViewStatus(false);
-            _isPageFirstLoad = false;
+            SetViewStatus(false);          
         }
 
 
@@ -194,7 +187,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         {
             if (_filterModel == null)
             {
-                _filterModel = new RevenueSummaryFilterViewModel();
+                _filterModel = IocProvider.Instance.Container.Resolve<RevenueSummaryFilterViewModel>();               
                 _filterModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
             }
 

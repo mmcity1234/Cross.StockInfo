@@ -96,10 +96,11 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         private void OkButton_EventHandler(EventArgs args)
         {
             FilterValueChangedFinish?.Invoke(this);
+            Navigation.GoBack();
         }
         public override void OnBackButtonTab()
         {
-            FilterValueChangedFinish?.Invoke(this);
+            FilterValueChangedFinish?.Invoke(this);            
         }
     }
 }

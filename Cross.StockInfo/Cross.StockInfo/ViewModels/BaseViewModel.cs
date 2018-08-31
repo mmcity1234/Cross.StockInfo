@@ -15,6 +15,11 @@ namespace Cross.StockInfo.ViewModels
         private bool _isPageLoading;
 
         /// <summary>
+        ///  Check if the page is first time to load
+        /// </summary>
+        protected bool IsPageFirstLoad { get; private set; }
+
+        /// <summary>
         /// For the news item list loading
         /// </summary>
         public bool IsPageLoading
@@ -34,6 +39,11 @@ namespace Cross.StockInfo.ViewModels
         public INavigationService Navigation { get; set; }
         #endregion
 
+        public BaseViewModel()
+        {
+            IsPageFirstLoad = true;
+        }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -42,9 +52,30 @@ namespace Cross.StockInfo.ViewModels
         /// <summary>
         /// When page is start show and triger the method
         /// </summary>
-        public virtual void OnPageLoading()
+        public  void OnPageLoading()
         {
-            
+            if (IsPageFirstLoad)
+            {
+                OnPageFirstLoad();
+                IsPageFirstLoad = false;
+            }
+            OnPageLoaded();
+        }
+
+        /// <summary>
+        /// 只有第一次頁面載入才會觸發執行
+        /// </summary>
+        protected virtual void OnPageFirstLoad()
+        {
+
+        }
+
+        /// <summary>
+        /// 頁面每次載入皆會觸發執行
+        /// </summary>
+        protected virtual void OnPageLoaded()
+        {
+
         }
 
         public virtual void OnPageDisappearing()

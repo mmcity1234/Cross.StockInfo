@@ -10,10 +10,20 @@ namespace Cross.StockInfo.Services
 {
     public class NavigationService : INavigationService
     {
-        public void GoBack()
+        /// <summary>
+        /// 回到上一頁
+        /// </summary>
+        /// <returns></returns>
+        public async Task GoBack()
         {
-            throw new NotImplementedException();
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
+
+        public async Task GoBackToRootPage()
+        {
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+        }
+
 
         public async Task Navigate(Type targetPage)
         {
@@ -32,6 +42,6 @@ namespace Cross.StockInfo.Services
             Page page = (Page)Activator.CreateInstance(targetPage);
             page.BindingContext = bindingContext;
             await Application.Current.MainPage.Navigation.PushAsync(page, true);
-        }
+        }      
     }
 }
