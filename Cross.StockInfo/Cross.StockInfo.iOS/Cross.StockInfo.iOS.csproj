@@ -181,6 +181,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
       <Version>16.2.0.42</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker">
+      <Version>16.2.0.50</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>16.2.0.42</Version>
     </PackageReference>

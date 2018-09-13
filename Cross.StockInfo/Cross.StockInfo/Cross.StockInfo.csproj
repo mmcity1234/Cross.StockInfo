@@ -21,6 +21,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="16.2.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="16.2.0.46" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="16.2.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.2.0.42" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
@@ -79,6 +80,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductIndex\ProductIndexView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Stock\Report\RevenueSummaryDateView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Stock\Report\RevenueSummaryFilterView.xaml">

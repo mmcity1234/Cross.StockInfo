@@ -529,6 +529,24 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 營收月份選擇 的當地語系化字串。
+        /// </summary>
+        public static string RevenueSummaryDate_SelectedHeader {
+            get {
+                return ResourceManager.GetString("RevenueSummaryDate_SelectedHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 變更 的當地語系化字串。
+        /// </summary>
+        public static string RevenueSummaryFilter_ChangeLabel {
+            get {
+                return ResourceManager.GetString("RevenueSummaryFilter_ChangeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 月份 的當地語系化字串。
         /// </summary>
         public static string RevenueSummaryView_MonthLabel {

@@ -103,6 +103,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Assets\calendar_64x64.png" />
     <Content Include="Assets\filter_48x48.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -173,6 +174,9 @@
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
       <Version>16.2.0.42</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker">
+      <Version>16.2.0.50</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>16.2.0.42</Version>

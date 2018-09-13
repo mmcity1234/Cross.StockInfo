@@ -121,6 +121,9 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         }
 
         public DelegateCommand<EventArgs> FilterImageButtonCommand { get; set; }
+        public DelegateCommand<EventArgs> DateSelectCommand { get; set; }
+
+         
 
         #endregion
 
@@ -128,7 +131,9 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         public RevenueSummaryViewModel()
         {           
             FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
+            DateSelectCommand = new DelegateCommand<EventArgs>(DateSelect_EventHandler);
         }
+     
 
         protected override async void OnPageFirstLoad()
         {  
@@ -192,6 +197,11 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
 
             Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView), _filterModel);
+        }
+
+        private void DateSelect_EventHandler(EventArgs obj)
+        {
+            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView));
         }
 
         private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)

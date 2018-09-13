@@ -303,4 +303,10 @@
   <data name="OK_Label" xml:space="preserve">
     <value>確認</value>
   </data>
+  <data name="RevenueSummaryDate_SelectedHeader" xml:space="preserve">
+    <value>營收月份選擇</value>
+  </data>
+  <data name="RevenueSummaryFilter_ChangeLabel" xml:space="preserve">
+    <value>變更</value>
+  </data>
 </root>

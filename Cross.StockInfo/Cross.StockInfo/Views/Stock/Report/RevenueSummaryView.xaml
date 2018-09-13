@@ -5,7 +5,7 @@
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"        
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
-             xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"
+             xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"            
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"         
              xmlns:sliderPanel="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
@@ -21,11 +21,28 @@
 
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>             
             </Grid.RowDefinitions>
+            <StackLayout>
+                <Image WidthRequest="40" HeightRequest="40" IsVisible="True">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="Android, iOS" Value="calendar_64x64.png"/>
+                            <On Platform="UWP" Value="Assets/calendar_64x64.png"/>
+                        </OnPlatform>
+                    </Image.Source>                   
+                </Image>
+                
+                <Label />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command=""
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            
 
-            <StackLayout Orientation="Horizontal" IsEnabled="{Binding IsControlEnable}">
+            <StackLayout Orientation="Horizontal" IsEnabled="{Binding IsControlEnable}" Grid.Row="1">
                 <SearchBar Text="{Binding SearchText, Mode=TwoWay}"  HorizontalOptions="FillAndExpand"
                                    Placeholder="{lang:Translate SearchBoxPlaceHolder_StockName}" TextChanged="SearchBar_TextChanged"/>
                 <Image WidthRequest="40" HeightRequest="40" IsVisible="True">
@@ -39,15 +56,18 @@
                             <TapGestureRecognizer Command="{Binding FilterImageButtonCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
+                
+                <Label Text="{lang:Translate RevenueSummaryFilter_ChangeLabel}" Style="{StaticResource HyperLinkLabelStyle}" HorizontalOptions="End"/>
+
             </StackLayout>
 
-            <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" Grid.Row="1"
+            <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" Grid.Row="2"
                                  FrozenColumnsCount="1"
                                  VerticalOverScrollMode="None"
                                  ItemsSource="{Binding StockRevenueList}"                                  
                                  ScrollingMode="Pixel"
                                  GridStyle="{StaticResource flatGridStyle}" >
-                <datagrid:SfDataGrid.Resources>
+                <datagrid:SfDataGrid.Resources> 
                     <Style TargetType="Label">
                         <Setter Property="FontAttributes" Value="Bold"/>
                         <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
