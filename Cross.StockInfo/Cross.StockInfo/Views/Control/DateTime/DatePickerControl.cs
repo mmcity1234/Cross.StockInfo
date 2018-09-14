@@ -52,11 +52,8 @@ namespace Cross.StockInfo.Views.Control.DateTime
         {
             //populate months
             for (int i = 1; i < 13; i++)
-            {
-                if (!Months.ContainsKey(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3)))
-                    Months.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3), CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i));
-                Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
-
+            {                
+                Month.Add(i + AppResources.Month);
             }
             //populate year
             int currentYear = System.DateTime.Now.Year;

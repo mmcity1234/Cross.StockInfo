@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:ViewPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:date="clr-namespace:Cross.StockInfo.Views.Control.DateTime" 
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.Views.Stock.Report.RevenueSummaryDateView">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="ssss"/>
             <date:DatePickerControl x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" 
                                     PickerHeight="400"                
                                     HeaderText="{lang:Translate RevenueSummaryDate_SelectedHeader}"               
@@ -15,4 +17,4 @@
                                     VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:ViewPage>

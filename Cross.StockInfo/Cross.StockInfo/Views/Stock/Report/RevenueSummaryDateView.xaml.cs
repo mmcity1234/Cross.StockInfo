@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.Stock.Report
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RevenueSummaryDateView : ContentPage
+	public partial class RevenueSummaryDateView : ViewPage
 	{
 		public RevenueSummaryDateView ()
 		{
