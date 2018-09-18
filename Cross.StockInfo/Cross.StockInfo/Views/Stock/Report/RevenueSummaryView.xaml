@@ -113,6 +113,8 @@
                     <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
                 </ActivityIndicator.WidthRequest>
             </ActivityIndicator>
+            
+            
         </Grid>
     </ContentPage.Content>
 </views:ViewPage>

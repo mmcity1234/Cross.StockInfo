@@ -3,10 +3,12 @@ using Cross.StockInfo.Common;
 using Cross.StockInfo.Common.IoC;
 using Cross.StockInfo.Model.Stock;
 using Cross.StockInfo.Services;
+using Cross.StockInfo.ViewModels.Control;
 using Cross.StockInfo.ViewModels.Stock.Report.Config;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Cross.StockInfo.ViewModels.Stock.Report
@@ -29,6 +31,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
       
         private List<StockRevenue> _stockRevenueList;
         private RevenueSummaryFilterViewModel _filterModel;
+        private DatePickerViewModel _dateModel;
 
         public event Action<RevenueSummaryFilterViewModel> FilterChanged;
 
@@ -136,14 +139,16 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
      
 
         protected override async void OnPageFirstLoad()
-        {  
-            SetViewStatus(true);
-            base.OnPageFirstLoad();
-            if (ConfigParameter == typeof(OtcRevenueType))
-                StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(107, 7);
-            else if (ConfigParameter == typeof(CompanyRevenueType))
-                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(107, 7);
-            SetViewStatus(false);          
+        {
+            try
+            {
+                base.OnPageFirstLoad();
+                await LoadRevenue(DateTime.Now.Year, DateTime.Now.Month -1);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(AppResources.Exception_RevenueNotFound, ex);
+            }
         }
 
 
@@ -187,7 +192,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             else
                 return false;
         }
-
+        #region Event Handler
         private void FilterImageClick_EventHandler(EventArgs args)
         {
             if (_filterModel == null)
@@ -201,7 +206,35 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
         private void DateSelect_EventHandler(EventArgs obj)
         {
-            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView));
+            if(_dateModel == null)
+            {
+                _dateModel = IocProvider.Instance.Container.Resolve<DatePickerViewModel>();
+                _dateModel.SelectedFinish += DateModel_SelectedFinish;
+            }
+            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView), _dateModel);
+        }
+        #endregion
+
+        #region Callback Event
+        /// <summary>
+        /// 營收日期選擇完成的事件處理
+        /// </summary>
+        /// <param name="obj"></param>
+        private async void DateModel_SelectedFinish(DatePickerViewModel model)
+        {
+            if (string.IsNullOrEmpty(model.SelectedYear) || string.IsNullOrEmpty(model.SelectedMonth))
+                return;
+            int selectedYear = Convert.ToInt32(model.SelectedYear);
+            int selectedMonth = Convert.ToInt32(model.SelectedMonth);
+
+            try
+            {
+                await LoadRevenue(selectedYear, selectedMonth);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(AppResources.Exception_RevenueNotFound, ex);
+            }
         }
 
         private void FilterViewModel_FilterValueChangedFinish(RevenueSummaryFilterViewModel model)
@@ -211,12 +244,31 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             // triggle the data grid filter 
             FilterChanged?.Invoke(model);          
         }
+        #endregion
 
         private void SetViewStatus(bool isPageLoading)
         {
             IsPageLoading = isPageLoading;
             // Disable the control when page is loading
             IsControlEnable = !isPageLoading;
+        }
+
+        /// <summary>
+        /// 載入股市營收資料
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        private async Task LoadRevenue(int year, int month)
+        {
+            SetViewStatus(true);
+            if (year > 1911)
+                year = year - 1911;
+
+            if (ConfigParameter == typeof(OtcRevenueType))
+                StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(year, month);
+            else if (ConfigParameter == typeof(CompanyRevenueType))
+                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(year, month);
+            SetViewStatus(false);
         }
 
     }

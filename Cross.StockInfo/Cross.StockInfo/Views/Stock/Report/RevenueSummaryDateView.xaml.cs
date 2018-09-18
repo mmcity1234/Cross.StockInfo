@@ -16,5 +16,15 @@ namespace Cross.StockInfo.Views.Stock.Report
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void date_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void date_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

@@ -53,7 +53,7 @@ namespace Core.Utility.Network
            
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                const string message = "Error retrieving response.  Check inner details for more info.";
+                string message = String.Format("Error retrieving response with status code {0}. Check inner details for more info.", response.StatusCode);
                 var exception = new ApplicationException(message, response.ErrorException);
                 throw exception;
             }

@@ -309,4 +309,7 @@
   <data name="RevenueSummaryFilter_ChangeLabel" xml:space="preserve">
     <value>變更</value>
   </data>
+  <data name="Exception_RevenueNotFound" xml:space="preserve">
+    <value>查無營收資料</value>
+  </data>
 </root>

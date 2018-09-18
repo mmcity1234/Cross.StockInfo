@@ -29,8 +29,6 @@ namespace Cross.StockInfo.Views.Control.DateTime
         /// </summary>
         internal ObservableCollection<string> Month { get; set; }
 
-
-
         internal ObservableCollection<string> Year { get; set; }
 
         public DatePickerControl()
@@ -41,86 +39,52 @@ namespace Cross.StockInfo.Views.Control.DateTime
             Year = new ObservableCollection<string>();
             Headers = new ObservableCollection<string>();
             Headers.Add(AppResources.Year);
-            Headers.Add(AppResources.Month);            
+            Headers.Add(AppResources.Month);
 
             PopulateDateCollection();
             this.ItemsSource = Date;
-            this.SelectionChanged += CustomDatePicker_SelectionChanged;
+           // this.SelectionChanged += CustomDatePicker_SelectionChanged;
         }
 
         private void PopulateDateCollection()
         {
             //populate months
             for (int i = 1; i < 13; i++)
-            {                
+            {
                 Month.Add(i + AppResources.Month);
             }
             //populate year
             int currentYear = System.DateTime.Now.Year;
-            for (int i = currentYear - 5; i <= currentYear; i++)
+            for (int i = currentYear ; i >= currentYear - 5; i--)
             {
                 Year.Add(i.ToString());
             }
 
             //populate Days
-            Date.Add(Month);
             Date.Add(Year);
+            Date.Add(Month);
         }
-        private void CustomDatePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateDays(Date, e);
-        }
+        //private void CustomDatePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
 
-        //Update days method is used to alter the Date collection as per selection change in Month column(if Feb is Selected day collection has value from 1 to 28)
+        //    try
+        //    {
+        //        bool update = false;
+        //        if (e.OldValue != null && e.NewValue != null && (e.OldValue as IList<object>).Count > 0 && (e.NewValue as IList<object>).Count > 0)
+        //        {
+        //            // selected year or month
+        //            string originalYear = (e.OldValue as IList<object>)[0] as string;
+        //            string originalMonth = (e.OldValue as IList<object>)[1] as string;
+        //            string selectedYear = (e.NewValue as IList<object>)[0] as string;
+        //            string selectedMonth = (e.NewValue as IList<object>)[1] as string;
 
-        public void UpdateDays(ObservableCollection<object> Date, SelectionChangedEventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                try
-                {
-                    bool update = false;
-                    if (e.OldValue != null && e.NewValue != null && (e.OldValue as IList<string>).Count > 0 && (e.NewValue as IList<string>).Count > 0)
-                    {
-                        if ((e.OldValue as IList<string>)[0] != (e.NewValue as IList<string>)[0])
-                        {
-                            update = true;
-                        }
-                        if ((e.OldValue as IList<object>)[2] != (e.NewValue as IList<string>)[2])
-                        {
-                            update = true;
-                        }
-                    }
-                    if (update)
-                    {
-                        ObservableCollection<object> days = new ObservableCollection<object>();
+        //        }
+        //    }
 
-                        int month = System.DateTime.ParseExact(Months[(e.NewValue as IList<string>)[0]], "MMMM", CultureInfo.InvariantCulture).Month;
-
-                        int year = int.Parse((e.NewValue as IList<string>)[2].ToString());
-
-                        for (int j = 1; j <= System.DateTime.DaysInMonth(year, month); j++)
-                        {
-                            if (j < 10)
-                            {
-                                days.Add("0" + j);
-                            }
-                            else
-                                days.Add(j.ToString());
-                        }
-                        if (days.Count > 0)
-                        {
-                            Date.RemoveAt(1);
-                            Date.Insert(1, days);
-                        }
-                    }
-                }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
-            });
-        }
-
+        //    catch (Exception ex)
+        //    {
+        //        // throw ex;
+        //    }
+        //}
     }
 }

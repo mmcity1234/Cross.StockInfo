@@ -250,6 +250,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 查無營收資料 的當地語系化字串。
+        /// </summary>
+        public static string Exception_RevenueNotFound {
+            get {
+                return ResourceManager.GetString("Exception_RevenueNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 漲跌 的當地語系化字串。
         /// </summary>
         public static string Global_ChangePrice {
