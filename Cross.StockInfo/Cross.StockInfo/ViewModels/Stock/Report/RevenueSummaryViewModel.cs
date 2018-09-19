@@ -203,7 +203,10 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
             Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryFilterView), _filterModel);
         }
-
+        /// <summary>
+        /// 營收日期選擇事件處理
+        /// </summary>
+        /// <param name="obj"></param>
         private void DateSelect_EventHandler(EventArgs obj)
         {
             if(_dateModel == null)

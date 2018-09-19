@@ -45,7 +45,7 @@ namespace Cross.StockInfo.Views.Control.DateTime
             this.ItemsSource = Date;
            // this.SelectionChanged += CustomDatePicker_SelectionChanged;
         }
-
+       
         private void PopulateDateCollection()
         {
             //populate months

@@ -7,8 +7,7 @@
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.Views.Stock.Report.RevenueSummaryDateView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="ssss"/>
+        <StackLayout>          
             <date:DatePickerControl x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" 
                                     PickerHeight="400"                
                                     HeaderText="{lang:Translate RevenueSummaryDate_SelectedHeader}"               
@@ -16,18 +15,19 @@
                                     PickerWidth="300"
                                     SelectedItem="{Binding SelectedDate}"          
                                     ShowFooter="True"
-                                    ShowColumnHeader ="True"
+                                    ShowColumnHeader ="True"                                  
                                     VerticalOptions="Center">
-
-                <date:DatePickerControl.Behaviors>
+                <!--<date:DatePickerControl.Behaviors>
                     <b:EventHandlerBehavior EventName="OkButtonClicked">
                         <b:InvokeCommandAction Command="{Binding OkButtonClickedCommand}" />
                     </b:EventHandlerBehavior>
                     <b:EventHandlerBehavior EventName="CancelButtonClicked">
                         <b:InvokeCommandAction Command="{Binding CancelButtonClickedCommand}" />
                     </b:EventHandlerBehavior>
-                </date:DatePickerControl.Behaviors>
+                </date:DatePickerControl.Behaviors>-->
             </date:DatePickerControl>
+
+            <Button Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
         </StackLayout>
     </ContentPage.Content>
 </views:ViewPage>

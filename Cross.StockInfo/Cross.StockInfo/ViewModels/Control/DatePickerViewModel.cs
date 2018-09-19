@@ -50,30 +50,32 @@ namespace Cross.StockInfo.ViewModels.Control
                 }
             }
         }
+        
 
         public DatePickerViewModel()
         {
-            OkButtonClickedCommand = new DelegateCommand<EventArgs>(OkButton_EventHandler);
-            CancelButtonClickedCommand = new DelegateCommand<EventArgs>(CancelButton_EventHandler);
+            OkButtonClickedCommand = new DelegateCommand<EventArgs>(OkButton_EventHandler);           
         }
 
         public override void OnBackButtonTab()
         {
-            base.OnBackButtonTab();
-           // SelectedFinish?.Invoke(this);
+            base.OnBackButtonTab();          
         }
 
         /// <summary>
         /// 日期選擇完成
         /// </summary>
         private void OkButton_EventHandler(EventArgs args)
-        {
-       //     SelectedFinish?.Invoke(this);
-       //     Navigation.GoBack();
-        }
-        private void CancelButton_EventHandler(EventArgs args)
-        {
-            Navigation.GoBack();
-        }
+        {                
+            try
+            {
+                SelectedFinish?.Invoke(this);
+                Navigation.GoBack();
+            }
+            catch(Exception e)
+            {
+
+            }
+        }    
     }
 }
