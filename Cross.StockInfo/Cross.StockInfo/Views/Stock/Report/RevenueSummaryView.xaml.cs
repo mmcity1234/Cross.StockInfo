@@ -39,7 +39,7 @@ namespace Cross.StockInfo.Views.Stock.Report
             {
                 this.revenueDataGrid.View.Filter = ((RevenueSummaryViewModel)ViewModel).FilterRecordCondition;
                 this.revenueDataGrid.View.RefreshFilter();
-            }
+            }            
         }     
     }
 }

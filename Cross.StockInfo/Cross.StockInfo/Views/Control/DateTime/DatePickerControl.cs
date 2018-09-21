@@ -16,7 +16,7 @@ namespace Cross.StockInfo.Views.Control.DateTime
 
         // Months API is used to modify the Day collection as per change in Month
 
-        internal Dictionary<string, string> Months { get; set; }
+       // internal Dictionary<string, string> Months { get; set; }
 
         /// <summary>
         /// Date is the actual DataSource for SfPicker control which will holds the collection of Day ,Month and Year
@@ -33,7 +33,7 @@ namespace Cross.StockInfo.Views.Control.DateTime
 
         public DatePickerControl()
         {
-            Months = new Dictionary<string, string>();
+          //  Months = new Dictionary<string, string>();
             Date = new ObservableCollection<object>();
             Month = new ObservableCollection<string>();
             Year = new ObservableCollection<string>();
@@ -43,13 +43,14 @@ namespace Cross.StockInfo.Views.Control.DateTime
 
             PopulateDateCollection();
             this.ItemsSource = Date;
+            this.ColumnHeaderText = Headers;
            // this.SelectionChanged += CustomDatePicker_SelectionChanged;
         }
        
         private void PopulateDateCollection()
         {
             //populate months
-            for (int i = 1; i < 13; i++)
+            for (int i = 1; i <= 12; i++)
             {
                 Month.Add(i + AppResources.Month);
             }

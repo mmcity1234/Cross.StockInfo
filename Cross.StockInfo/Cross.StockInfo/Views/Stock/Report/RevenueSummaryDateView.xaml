@@ -5,29 +5,27 @@
              xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"       
              xmlns:date="clr-namespace:Cross.StockInfo.Views.Control.DateTime" 
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              x:Class="Cross.StockInfo.Views.Stock.Report.RevenueSummaryDateView">
     <ContentPage.Content>
-        <StackLayout>          
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>               
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <date:DatePickerControl x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" 
-                                    PickerHeight="400"                
+                                    PickerHeight="420"                
                                     HeaderText="{lang:Translate RevenueSummaryDate_SelectedHeader}"               
                                     PickerMode="Default"                                      
-                                    PickerWidth="300"
-                                    SelectedItem="{Binding SelectedDate}"          
-                                    ShowFooter="True"
-                                    ShowColumnHeader ="True"                                  
-                                    VerticalOptions="Center">
-                <!--<date:DatePickerControl.Behaviors>
-                    <b:EventHandlerBehavior EventName="OkButtonClicked">
-                        <b:InvokeCommandAction Command="{Binding OkButtonClickedCommand}" />
-                    </b:EventHandlerBehavior>
-                    <b:EventHandlerBehavior EventName="CancelButtonClicked">
-                        <b:InvokeCommandAction Command="{Binding CancelButtonClickedCommand}" />
-                    </b:EventHandlerBehavior>
-                </date:DatePickerControl.Behaviors>-->
+                                    PickerWidth="330"                                   
+                                    ShowColumnHeader ="True"   
+                                    ShowHeader="True"
+                                    VerticalOptions="Center"
+                                    SelectedItem="{Binding SelectedDate}">          
             </date:DatePickerControl>
 
-            <Button Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
-        </StackLayout>
+            <Button Grid.Row="2" Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+        </Grid>
     </ContentPage.Content>
 </views:ViewPage>

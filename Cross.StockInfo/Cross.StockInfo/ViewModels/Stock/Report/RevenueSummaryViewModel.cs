@@ -7,6 +7,7 @@ using Cross.StockInfo.ViewModels.Control;
 using Cross.StockInfo.ViewModels.Stock.Report.Config;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -29,7 +30,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// </summary>
         private bool _isControlEnable;
       
-        private List<StockRevenue> _stockRevenueList;
+        private List<StockRevenue> _stockRevenueList = new List<StockRevenue>();
         private RevenueSummaryFilterViewModel _filterModel;
         private DatePickerViewModel _dateModel;
 
@@ -212,6 +213,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             if(_dateModel == null)
             {
                 _dateModel = IocProvider.Instance.Container.Resolve<DatePickerViewModel>();
+                _dateModel.SelectedDate // 必須設定
                 _dateModel.SelectedFinish += DateModel_SelectedFinish;
             }
             Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView), _dateModel);
@@ -263,14 +265,17 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// <param name="month"></param>
         private async Task LoadRevenue(int year, int month)
         {
+            StockRevenueList = null;
             SetViewStatus(true);
             if (year > 1911)
                 year = year - 1911;
 
+            List<StockRevenue> resultList = new List<StockRevenue>();
             if (ConfigParameter == typeof(OtcRevenueType))
                 StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(year, month);
             else if (ConfigParameter == typeof(CompanyRevenueType))
-                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(year, month);
+                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(year, month);           
+
             SetViewStatus(false);
         }
 
