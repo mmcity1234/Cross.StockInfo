@@ -10,20 +10,26 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>               
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <date:DatePickerControl x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" 
-                                    PickerHeight="420"                
+            <picker:SfPicker x:Name="datePicker" ColumnHeaderHeight="40" HorizontalOptions="Center"   
+                                    PickerHeight="400" PickerWidth="300"
                                     HeaderText="{lang:Translate RevenueSummaryDate_SelectedHeader}"               
-                                    PickerMode="Default"                                      
-                                    PickerWidth="330"                                   
+                                    PickerMode="Default"           
                                     ShowColumnHeader ="True"   
                                     ShowHeader="True"
-                                    VerticalOptions="Center"
-                                    SelectedItem="{Binding SelectedDate}">          
-            </date:DatePickerControl>
+                                    ItemsSource="{Binding DateCollection}"
+                                    ColumnHeaderText="{Binding ColumnHeaders}"
+                                    VerticalOptions="Center"                     
+                                    SelectedItem="{Binding SelectedDate}">
+                <picker:SfPicker.Behaviors>
+                    <b:EventHandlerBehavior EventName="SelectionChanged">
+                        <b:InvokeCommandAction Command="{Binding DateSelectionChange}" />
+                    </b:EventHandlerBehavior>
+                </picker:SfPicker.Behaviors>
+            </picker:SfPicker>
 
             <Button Grid.Row="2" Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
         </Grid>

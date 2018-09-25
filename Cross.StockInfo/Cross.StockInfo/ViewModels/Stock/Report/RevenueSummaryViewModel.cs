@@ -32,7 +32,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
       
         private List<StockRevenue> _stockRevenueList = new List<StockRevenue>();
         private RevenueSummaryFilterViewModel _filterModel;
-        private DatePickerViewModel _dateModel;
+        private RevenueSummaryDateViewModel _revenueDateViewModel;
 
         public event Action<RevenueSummaryFilterViewModel> FilterChanged;
 
@@ -210,13 +210,12 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// <param name="obj"></param>
         private void DateSelect_EventHandler(EventArgs obj)
         {
-            if(_dateModel == null)
+            if(_revenueDateViewModel == null)
             {
-                _dateModel = IocProvider.Instance.Container.Resolve<DatePickerViewModel>();
-                _dateModel.SelectedDate // 必須設定
-                _dateModel.SelectedFinish += DateModel_SelectedFinish;
+                _revenueDateViewModel = IocProvider.Instance.Container.Resolve<RevenueSummaryDateViewModel>();
+                _revenueDateViewModel.SelectedFinish += DateModel_SelectedFinish;
             }
-            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView), _dateModel);
+            Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView), _revenueDateViewModel);
         }
         #endregion
 
@@ -225,7 +224,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// 營收日期選擇完成的事件處理
         /// </summary>
         /// <param name="obj"></param>
-        private async void DateModel_SelectedFinish(DatePickerViewModel model)
+        private async void DateModel_SelectedFinish(DatePickerModel model)
         {
             if (string.IsNullOrEmpty(model.SelectedYear) || string.IsNullOrEmpty(model.SelectedMonth))
                 return;
@@ -278,6 +277,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
             SetViewStatus(false);
         }
+
 
     }
 }
