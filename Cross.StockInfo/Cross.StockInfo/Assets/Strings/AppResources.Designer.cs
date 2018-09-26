@@ -565,6 +565,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 {0} / {1} 營收資料 的當地語系化字串。
+        /// </summary>
+        public static string RevenueSummaryView_SelectedDateLabel {
+            get {
+                return ResourceManager.GetString("RevenueSummaryView_SelectedDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 年份 的當地語系化字串。
         /// </summary>
         public static string RevenueSummaryView_YearLabel {

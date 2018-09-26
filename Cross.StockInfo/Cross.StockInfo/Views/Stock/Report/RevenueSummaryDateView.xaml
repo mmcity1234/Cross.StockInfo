@@ -14,15 +14,15 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <picker:SfPicker x:Name="datePicker" ColumnHeaderHeight="40" HorizontalOptions="Center"   
+           
+            <picker:SfPicker x:Name="datePicker" ColumnHeaderHeight="40" HeightRequest="400" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center"    
                                     PickerHeight="400" PickerWidth="300"
                                     HeaderText="{lang:Translate RevenueSummaryDate_SelectedHeader}"               
                                     PickerMode="Default"           
                                     ShowColumnHeader ="True"   
                                     ShowHeader="True"
                                     ItemsSource="{Binding DateCollection}"
-                                    ColumnHeaderText="{Binding ColumnHeaders}"
-                                    VerticalOptions="Center"                     
+                                    ColumnHeaderText="{Binding ColumnHeaders}"                                                       
                                     SelectedItem="{Binding SelectedDate}">
                 <picker:SfPicker.Behaviors>
                     <b:EventHandlerBehavior EventName="SelectionChanged">
@@ -31,7 +31,7 @@
                 </picker:SfPicker.Behaviors>
             </picker:SfPicker>
 
-            <Button Grid.Row="2" Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+            <Button Grid.Row="2" Text="{lang:Translate OK_Label}" Command="{Binding OkButtonClickedCommand}" HorizontalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </views:ViewPage>

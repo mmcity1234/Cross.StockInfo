@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
 
 namespace Cross.StockInfo.ViewModels.Stock.Report
 {
@@ -23,12 +24,32 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         {
             OkButtonClickedCommand = new DelegateCommand<EventArgs>(OkButton_EventHandler);
             DateSelectionChange = new DelegateCommand<SelectionChangedEventArgs>(CustomDatePicker_SelectionChanged);
-
-
-            SelectedDate = new ObservableCollection<object> { Convert.ToString(GetLatestRevenueYear()), Convert.ToString(GetLatestRevenueMonth()) };
             //populate Days
-            DateCollection.Add(CreateYearCollection());
-            DateCollection.Add(CreateMonthCollection());
+            var yearCollection = CreateYearCollection();
+            var monthCollection = CreateMonthCollection();
+
+            SelectedDate = new ObservableCollection<object>
+            {
+                yearCollection[0],
+                monthCollection[monthCollection.Count - 1]
+            };
+
+
+        }
+
+        protected override void OnPageLoaded()
+        {
+            base.OnPageLoaded();
+            ////populate Days
+            //var yearCollection = CreateYearCollection();
+            //var monthCollection = CreateMonthCollection();
+
+            //SelectedDate = new ObservableCollection<object>
+            //{
+            //    yearCollection[0],
+            //    monthCollection[monthCollection.Count - 1]
+            //};
+
         }
 
 
@@ -60,16 +81,19 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                 return;
             if (!object.Equals((args.OldValue as IList<object>)[0], (args.NewValue as IList<object>)[0]))
             {
-                CreateMonthCollection();
+                var monthCollection = CreateMonthCollection();
+            
+                string matchedMonthObj = monthCollection.FirstOrDefault(x => x.Contains(SelectedMonth));
+                SelectedDate[1] = matchedMonthObj ?? monthCollection[monthCollection.Count -1];
             }
         }
 
         private ObservableCollection<string> CreateMonthCollection()
         {
-            Month.Clear();
+            Month = new ObservableCollection<string>();
             int loopMonth = 12;
             int latestMonth = GetLatestRevenueMonth();
-            if(SelectedYear == Convert.ToString(System.DateTime.Now.Year) && latestMonth != 12)
+            if(SelectedYear == null || (SelectedYear == Convert.ToString(System.DateTime.Now.Year) && latestMonth != 12))
                 loopMonth = latestMonth;
             
             //populate months
@@ -77,18 +101,27 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             {
                 Month.Add(i + AppResources.Month);
             }
+            if (DateCollection.Count > 1)
+                DateCollection.RemoveAt(1);
+            DateCollection.Insert(1, Month);
+
             return Month;
         }
 
         private ObservableCollection<string> CreateYearCollection()
         {
-            Year.Clear();
+            Year = new ObservableCollection<string>();
             int currentYear = GetLatestRevenueYear();
             //populate year        
             for (int i = currentYear; i >= currentYear - 5; i--)
             {
                 Year.Add(i.ToString());
             }
+
+            if (DateCollection.Count > 0)
+                DateCollection.RemoveAt(0);
+            DateCollection.Insert(0, Year);
+
             return Year;
         }
 

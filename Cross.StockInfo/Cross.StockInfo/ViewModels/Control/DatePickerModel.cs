@@ -9,7 +9,10 @@ namespace Cross.StockInfo.ViewModels.Control
 {
     public class DatePickerModel : BaseViewModel
     {
-        private object _selectedDate = null;
+        private ObservableCollection<object> _selectedDate;
+        private ObservableCollection<object> _dataCollection;
+        private ObservableCollection<string> _month;
+        private ObservableCollection<string> _year;
 
         public ObservableCollection<string> ColumnHeaders { get; set; }
 
@@ -19,16 +22,37 @@ namespace Cross.StockInfo.ViewModels.Control
         /// Date is the actual DataSource for SfPicker control which will holds the collection of Day ,Month and Year
         /// </summary>
         /// <value>The date.</value>
-        public ObservableCollection<object> DateCollection { get; set; }
+        public ObservableCollection<object> DateCollection
+        {
+            get => _dataCollection; set
+            {
+                _dataCollection = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Day is the collection of day numbers Month is the collection of Month Names
         /// </summary>
-        public ObservableCollection<string> Month { get; set; }
+        public ObservableCollection<string> Month
+        {
+            get => _month; set
+            {
+                _month = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public ObservableCollection<string> Year { get; set; }
+        public ObservableCollection<string> Year
+        {
+            get => _year; set
+            {
+                _year = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public object SelectedDate
+        public ObservableCollection<object> SelectedDate
         {
             get => _selectedDate;
             set
@@ -44,7 +68,7 @@ namespace Cross.StockInfo.ViewModels.Control
             get
             {
                 IList<object> date = SelectedDate as IList<object>;
-                if (SelectedDate != null && date != null)
+                if (SelectedDate != null && SelectedDate.Count != 0 && date != null)
                 {
                     string year = ((string)date[0]).Replace(AppResources.Year, string.Empty);
                     return year;
@@ -53,8 +77,8 @@ namespace Cross.StockInfo.ViewModels.Control
                 {
                     return null;
                 }
-
             }
+
         }
 
         public string SelectedMonth
@@ -62,7 +86,7 @@ namespace Cross.StockInfo.ViewModels.Control
             get
             {
                 IList<object> date = SelectedDate as IList<object>;
-                if (SelectedDate != null && date != null)
+                if (SelectedDate != null && SelectedDate.Count != 0 && date != null)
                 {
                     string month = ((string)date[1]).Replace(AppResources.Month, string.Empty);
                     return month;

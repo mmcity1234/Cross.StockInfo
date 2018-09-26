@@ -312,4 +312,7 @@
   <data name="Exception_RevenueNotFound" xml:space="preserve">
     <value>查無營收資料</value>
   </data>
+  <data name="RevenueSummaryView_SelectedDateLabel" xml:space="preserve">
+    <value>{0} / {1} 營收資料</value>
+  </data>
 </root>

@@ -25,11 +25,13 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         private string _searchText;
         private string _selectedMonth;
         private string _selectedYear;
+        private string _revenueDateString;
+
         /// <summary>
         /// 設定目前UI控制向的啟用狀態，確保頁面載入過程不可操作此UI控制向
         /// </summary>
         private bool _isControlEnable;
-      
+
         private List<StockRevenue> _stockRevenueList = new List<StockRevenue>();
         private RevenueSummaryFilterViewModel _filterModel;
         private RevenueSummaryDateViewModel _revenueDateViewModel;
@@ -124,27 +126,40 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
         }
 
+        public string RevenueDateString
+        {
+            get => _revenueDateString;
+            set
+            {
+                _revenueDateString = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DelegateCommand<EventArgs> FilterImageButtonCommand { get; set; }
         public DelegateCommand<EventArgs> DateSelectCommand { get; set; }
 
-         
+
 
         #endregion
 
 
         public RevenueSummaryViewModel()
-        {           
+        {
             FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
             DateSelectCommand = new DelegateCommand<EventArgs>(DateSelect_EventHandler);
         }
-     
+
 
         protected override async void OnPageFirstLoad()
         {
             try
             {
                 base.OnPageFirstLoad();
-                await LoadRevenue(DateTime.Now.Year, DateTime.Now.Month -1);
+                int latestYear = DateTime.Now.Year;
+                int latestMonth = DateTime.Now.Month - 1;
+                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, latestYear, latestMonth);
+                await LoadRevenue(latestYear, latestMonth);
             }
             catch (Exception ex)
             {
@@ -198,7 +213,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         {
             if (_filterModel == null)
             {
-                _filterModel = IocProvider.Instance.Container.Resolve<RevenueSummaryFilterViewModel>();               
+                _filterModel = IocProvider.Instance.Container.Resolve<RevenueSummaryFilterViewModel>();
                 _filterModel.FilterValueChangedFinish += FilterViewModel_FilterValueChangedFinish;
             }
 
@@ -210,7 +225,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// <param name="obj"></param>
         private void DateSelect_EventHandler(EventArgs obj)
         {
-            if(_revenueDateViewModel == null)
+            if (_revenueDateViewModel == null)
             {
                 _revenueDateViewModel = IocProvider.Instance.Container.Resolve<RevenueSummaryDateViewModel>();
                 _revenueDateViewModel.SelectedFinish += DateModel_SelectedFinish;
@@ -233,6 +248,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
             try
             {
+                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, selectedYear, selectedMonth);
                 await LoadRevenue(selectedYear, selectedMonth);
             }
             catch (Exception ex)
@@ -246,7 +262,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             _filterModel = model;
 
             // triggle the data grid filter 
-            FilterChanged?.Invoke(model);          
+            FilterChanged?.Invoke(model);
         }
         #endregion
 
@@ -273,7 +289,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             if (ConfigParameter == typeof(OtcRevenueType))
                 StockRevenueList = await StockReportService.ListOtcRevenueTaskAsync(year, month);
             else if (ConfigParameter == typeof(CompanyRevenueType))
-                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(year, month);           
+                StockRevenueList = await StockReportService.ListCompaynRevenueTaskAsync(year, month);
 
             SetViewStatus(false);
         }
