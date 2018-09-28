@@ -36,7 +36,8 @@ namespace Cross.StockInfo.ViewModels.Control
         /// </summary>
         public ObservableCollection<string> Month
         {
-            get => _month; set
+            get => _month;
+            set
             {
                 _month = value;
                 OnPropertyChanged();

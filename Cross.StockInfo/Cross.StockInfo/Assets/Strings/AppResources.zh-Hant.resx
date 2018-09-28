@@ -312,6 +312,15 @@
   <data name="Exception_RevenueNotFound" xml:space="preserve">
     <value>查無營收資料</value>
   </data>
+  <data name="DealerInvestor" xml:space="preserve">
+    <value>自營商</value>
+  </data>
+  <data name="ForeignInvestor" xml:space="preserve">
+    <value>外資</value>
+  </data>
+  <data name="Investor" xml:space="preserve">
+    <value>投信</value>
+  </data>
   <data name="RevenueSummaryView_SelectedDateLabel" xml:space="preserve">
     <value>{0} / {1} 營收資料</value>
   </data>

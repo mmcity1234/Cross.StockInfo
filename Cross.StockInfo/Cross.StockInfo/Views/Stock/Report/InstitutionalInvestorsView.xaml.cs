@@ -11,12 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace Cross.StockInfo.Views.Stock.Report
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RevenueSummaryDateView : ViewPage
+	public partial class InstitutionalInvestorsView : ViewPage
 	{
-		public RevenueSummaryDateView ()
+		public InstitutionalInvestorsView ()
 		{
 			InitializeComponent ();
-            DataBinding<RevenueSummaryDateViewModel>();
+            DataBinding<InstitutionalInvestorsViewModel>();
+
         }
-    }
+	}
 }

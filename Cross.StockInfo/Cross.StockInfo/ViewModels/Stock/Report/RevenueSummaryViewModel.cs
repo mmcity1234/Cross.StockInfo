@@ -158,7 +158,9 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                 base.OnPageFirstLoad();
                 int latestYear = DateTime.Now.Year;
                 int latestMonth = DateTime.Now.Month - 1;
-                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, latestYear, latestMonth);
+                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, 
+                    latestYear, 
+                    latestMonth < 10 ? "0" + latestMonth : Convert.ToString(latestMonth));
                 await LoadRevenue(latestYear, latestMonth);
             }
             catch (Exception ex)
@@ -225,11 +227,11 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         /// <param name="obj"></param>
         private void DateSelect_EventHandler(EventArgs obj)
         {
-            if (_revenueDateViewModel == null)
-            {
+            //if (_revenueDateViewModel == null)
+            //{
                 _revenueDateViewModel = IocProvider.Instance.Container.Resolve<RevenueSummaryDateViewModel>();
                 _revenueDateViewModel.SelectedFinish += DateModel_SelectedFinish;
-            }
+            //}
             Navigation.Navigate(typeof(Views.Stock.Report.RevenueSummaryDateView), _revenueDateViewModel);
         }
         #endregion
@@ -243,13 +245,10 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
         {
             if (string.IsNullOrEmpty(model.SelectedYear) || string.IsNullOrEmpty(model.SelectedMonth))
                 return;
-            int selectedYear = Convert.ToInt32(model.SelectedYear);
-            int selectedMonth = Convert.ToInt32(model.SelectedMonth);
-
             try
             {
-                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, selectedYear, selectedMonth);
-                await LoadRevenue(selectedYear, selectedMonth);
+                RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, model.SelectedYear, model.SelectedMonth);               
+                await LoadRevenue(Convert.ToInt32(model.SelectedYear), Convert.ToInt32(model.SelectedMonth));
             }
             catch (Exception ex)
             {

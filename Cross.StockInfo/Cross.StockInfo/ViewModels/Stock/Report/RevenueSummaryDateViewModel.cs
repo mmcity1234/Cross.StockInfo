@@ -33,8 +33,6 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
                 yearCollection[0],
                 monthCollection[monthCollection.Count - 1]
             };
-
-
         }
 
         protected override void OnPageLoaded()
@@ -98,8 +96,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             
             //populate months
             for (int i = 1; i <= loopMonth; i++)
-            {
-                Month.Add(i + AppResources.Month);
+            {               
+                Month.Add((i < 10 ? "0" + i : Convert.ToString(i)) + AppResources.Month);
             }
             if (DateCollection.Count > 1)
                 DateCollection.RemoveAt(1);

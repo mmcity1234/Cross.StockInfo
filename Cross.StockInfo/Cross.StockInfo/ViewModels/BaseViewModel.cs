@@ -52,7 +52,7 @@ namespace Cross.StockInfo.ViewModels
         /// <summary>
         /// When page is start show and triger the method
         /// </summary>
-        public  void OnPageLoading()
+        public void OnPageLoading()
         {
             if (IsPageFirstLoad)
             {

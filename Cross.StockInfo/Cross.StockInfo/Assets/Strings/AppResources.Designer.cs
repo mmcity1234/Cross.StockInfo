@@ -187,6 +187,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 自營商 的當地語系化字串。
+        /// </summary>
+        public static string DealerInvestor {
+            get {
+                return ResourceManager.GetString("DealerInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 杜拜輕原油 的當地語系化字串。
         /// </summary>
         public static string DubaiOilIndex_Label {
@@ -259,6 +268,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 外資 的當地語系化字串。
+        /// </summary>
+        public static string ForeignInvestor {
+            get {
+                return ResourceManager.GetString("ForeignInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 漲跌 的當地語系化字串。
         /// </summary>
         public static string Global_ChangePrice {
@@ -300,6 +318,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string HalfYear {
             get {
                 return ResourceManager.GetString("HalfYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 投信 的當地語系化字串。
+        /// </summary>
+        public static string Investor {
+            get {
+                return ResourceManager.GetString("Investor", resourceCulture);
             }
         }
         
