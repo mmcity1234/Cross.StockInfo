@@ -28,5 +28,14 @@ namespace Cross.StockInfo.Services
         /// <param name="month"></param>
         /// <returns></returns>
         Task<List<StockRevenue>> ListCompaynRevenueTaskAsync(int year, int month);
+
+        /// <summary>
+        /// 法人買賣紀錄
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        Task<List<BuySellPriceItem>> ListInvestorBuySellTaskAsync(int year, int month, int day);
     }
 }

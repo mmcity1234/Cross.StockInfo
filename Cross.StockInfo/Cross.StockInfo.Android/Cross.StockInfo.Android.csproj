@@ -55,37 +55,37 @@
       <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.8.5</Version>
+      <Version>1.8.9</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.3.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Annotations">
       <Version>27.0.2.1</Version>
@@ -96,7 +96,7 @@
     <PackageReference Include="Xamarin.Android.Support.CustomTabs">
       <Version>27.0.2.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />

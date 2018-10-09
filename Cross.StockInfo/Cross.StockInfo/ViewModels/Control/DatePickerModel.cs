@@ -9,7 +9,7 @@ namespace Cross.StockInfo.ViewModels.Control
 {
     public class DatePickerModel : BaseViewModel
     {
-        private ObservableCollection<object> _selectedDate;
+        private ObservableCollection<object> _selectedDate = new ObservableCollection<object>();
         private ObservableCollection<object> _dataCollection;
         private ObservableCollection<string> _month;
         private ObservableCollection<string> _year;
@@ -24,7 +24,8 @@ namespace Cross.StockInfo.ViewModels.Control
         /// <value>The date.</value>
         public ObservableCollection<object> DateCollection
         {
-            get => _dataCollection; set
+            get => _dataCollection;
+            set
             {
                 _dataCollection = value;
                 OnPropertyChanged();

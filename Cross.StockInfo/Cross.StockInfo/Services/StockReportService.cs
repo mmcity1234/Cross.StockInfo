@@ -10,10 +10,21 @@ namespace Cross.StockInfo.Services
 {
     public class StockReportService : IStockReportService
     {
+        /// <summary>
+        /// 上櫃公司營收列表
+        /// </summary>
         private const string OtcRevenueUrl = "http://mops.twse.com.tw/nas/t21/otc/t21sc03_{0}_{1}_0.html";
+        /// <summary>
+        /// 上市公司營收列表
+        /// </summary>
         private const string ListStockRevenueUrl = "http://mops.twse.com.tw/nas/t21/sii/t21sc03_{0}_{1}_0.html";
-        
-        
+        /// <summary>
+        /// 三大法人買賣超
+        /// </summary>
+        private const string ListInvestorBuySellUrl = "https://stock.wearn.com/fundthree.asp?mode=search";
+
+        #region Query Revenue
+
         public Task<List<StockRevenue>> ListOtcRevenueTaskAsync(int year, int month)
         {
             string url = string.Format(OtcRevenueUrl, year, month);
@@ -37,7 +48,7 @@ namespace Cross.StockInfo.Services
         private Task<List<StockRevenue>> ListStockRevenueTaskAsync(string url)
         {
             return Task.Run(async () =>
-            {                
+            {
                 string html = await RestApi.GetHtmlTaskAsync(url, Encoding.GetEncoding(950));
                 var stockRevenueList = HtmlHelper.DescendantsPath(html, "//td/table/tr",
                     node =>
@@ -68,8 +79,37 @@ namespace Cross.StockInfo.Services
                     });
                 return stockRevenueList;
             });
+        }
+        #endregion
 
-
+        public Task<List<BuySellPriceItem>> ListInvestorBuySellTaskAsync(int year, int month, int day)
+        {
+            return Task.Run(async () =>
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "yearE", Convert.ToString(year > 1911 ? year - 1911 : year) },
+                    { "monthE", Convert.ToString(month) },
+                    { "dayE", Convert.ToString(day)}
+                };
+                string html = await RestApi.PostContentTaskAsync(ListInvestorBuySellUrl, parameters, Encoding.GetEncoding(950));
+                var results = HtmlHelper.DescendantsPath(html, "//table//tr",
+                    node =>
+                    {
+                        string classValue = node.Attributes["class"]?.Value;
+                        return classValue == "stockalllistbg6" || classValue == "stockalllistbg5";
+                    },
+                    node =>
+                    {
+                        string subHtml = node.InnerHtml.Replace("&nbsp;", string.Empty);
+                        string date = HtmlHelper.ReadDocumentValue(subHtml, "//td[0]")?.Trim();
+                        string foreign = HtmlHelper.ReadDocumentValue(subHtml, "//td[1]//span")?.Trim();
+                        string investor = HtmlHelper.ReadDocumentValue(subHtml, "//td[2]//span")?.Trim();
+                        string dealer = HtmlHelper.ReadDocumentValue(subHtml, "//td[3]//span")?.Trim();
+                        return new BuySellPriceItem { Date = date, ForeignBuySell = foreign, InvestmentBuySell = investor, DealerBuySell = dealer };
+                    });
+                return results;
+            });
         }
     }
 }

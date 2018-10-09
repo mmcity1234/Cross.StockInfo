@@ -14,16 +14,16 @@ namespace Cross.StockInfo.Model.Stock
         /// <summary>
         /// 外資買賣超
         /// </summary>
-        public int ForeignBuySell { get; set; }
+        public string ForeignBuySell { get; set; }
 
         /// <summary>
         /// 投信買賣超
         /// </summary>
-        public int InvestmentBuySell { get; set; }
+        public string InvestmentBuySell { get; set; }
 
         /// <summary>
         /// 自營商買賣超
         /// </summary>
-        public int DealerBuySell { get; set; }
+        public string DealerBuySell { get; set; }
     }
 }

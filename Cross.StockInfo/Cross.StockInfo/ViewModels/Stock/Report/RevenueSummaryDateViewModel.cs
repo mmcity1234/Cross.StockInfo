@@ -77,7 +77,14 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             // if year has changed
             if (args.OldValue == null || args.NewValue == null)
                 return;
-            if (!object.Equals((args.OldValue as IList<object>)[0], (args.NewValue as IList<object>)[0]))
+            var tt = args.OldValue as IList<object>;
+
+            var oldValue = args.OldValue as IList<object>;
+            var newValue = args.NewValue as IList<object>;
+           
+            if (oldValue != null && oldValue.Count != 0 && 
+                newValue != null && newValue.Count != 0 && 
+                !object.Equals(oldValue[0], newValue[0]))
             {
                 var monthCollection = CreateMonthCollection();
             

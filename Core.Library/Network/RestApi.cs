@@ -46,20 +46,8 @@ namespace Core.Utility.Network
                     request.AddHeader(header.Key, header.Value);
                 }
             }
-            
-            var client = new RestClient(url);
 
-            var response = await client.ExecuteTaskAsync(request);
-           
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                string message = String.Format("Error retrieving response with status code {0}. Check inner details for more info.", response.StatusCode);
-                var exception = new ApplicationException(message, response.ErrorException);
-                throw exception;
-            }
-
-            return encoding.GetString(response.RawBytes);
-          //  return response.Content;
+            return await ExecuteStringTaskAsync(new Uri(url), request, encoding);         
         }
 
         /// <summary>
@@ -101,5 +89,38 @@ namespace Core.Utility.Network
             }
             return response.Data;
         }
+
+        public static async Task<string> ExecuteStringTaskAsync(Uri uri, RestRequest request, Encoding encoding)
+        {
+            var client = new RestClient(uri);        
+            // account info
+            //if (account != null && password != null)
+            //    client.Authenticator = new HttpBasicAuthenticator(account, password);
+            
+            var response = await client.ExecuteTaskAsync(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                string message = String.Format("Error retrieving response with status code {0}. Check inner details for more info.", response.StatusCode);
+                var exception = new ApplicationException(message, response.ErrorException);
+                throw exception;
+            }
+
+            return encoding.GetString(response.RawBytes);         
+        }
+
+
+        public static async Task<string> PostContentTaskAsync(string url, Dictionary<string, string> parameters, Encoding encoding)
+        {
+            var request = new RestRequest(Method.POST);
+            foreach (var param in parameters)
+            {
+                request.AddParameter(param.Key, param.Value);
+            }
+
+            return await ExecuteStringTaskAsync(new Uri(url), request, encoding);
+            
+        }
+           
     }
 }
