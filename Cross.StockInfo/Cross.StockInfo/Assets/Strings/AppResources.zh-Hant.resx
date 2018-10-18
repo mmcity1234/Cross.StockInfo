@@ -324,4 +324,7 @@
   <data name="RevenueSummaryView_SelectedDateLabel" xml:space="preserve">
     <value>{0} / {1} 營收資料</value>
   </data>
+  <data name="InstitutionalBuySell_MenuItemLabel" xml:space="preserve">
+    <value>法人買法</value>
+  </data>
 </root>

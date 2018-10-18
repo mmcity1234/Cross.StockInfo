@@ -322,6 +322,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 法人買法 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 投信 的當地語系化字串。
         /// </summary>
         public static string Investor {

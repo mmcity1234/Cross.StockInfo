@@ -324,4 +324,7 @@
   <data name="Investor" xml:space="preserve">
     <value>投信</value>
   </data>
+  <data name="InstitutionalBuySell_MenuItemLabel" xml:space="preserve">
+    <value>法人買法</value>
+  </data>
 </root>
