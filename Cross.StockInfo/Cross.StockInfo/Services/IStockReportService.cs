@@ -37,5 +37,13 @@ namespace Cross.StockInfo.Services
         /// <param name="day"></param>
         /// <returns></returns>
         Task<List<BuySellPriceItem>> ListInvestorBuySellTaskAsync(int year, int month, int day);
+
+        /// <summary>
+        /// 列出外資買賣超個股的排名資訊
+        /// </summary>
+        /// <param name="top">指定取得的名次數量</param>
+        /// <returns></returns>
+        Task<List<StockBuySellItem>> ListForeignBuySellTaskAsync(int top);
+    
     }
 }

@@ -6,7 +6,9 @@
                 xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
                 xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
                 xmlns:converter="clr-namespace:Cross.StockInfo.Common.Converter"
-                xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"            
+                xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"         
+                xmlns:style="clr-namespace:Cross.StockInfo.Views.Control.DataGrid"    
+                xmlns:control="clr-namespace:Cross.StockInfo.Views.Control"
                 x:Class="Cross.StockInfo.Views.Stock.Report.InstitutionalInvestorsView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,62 +18,80 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <tabView:SfTabView DisplayMode="ImageWithText" TabHeaderPosition="Bottom" >
+           
+            <tabView:SfTabView DisplayMode="ImageWithText" TabHeaderPosition="Bottom" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <tabView:SfTabView.Behaviors>
+                    <b:EventHandlerBehavior EventName="SelectionChanged">
+                        <b:InvokeCommandAction Command="{Binding BottomTabChangedCommand}" />
+                    </b:EventHandlerBehavior>
+                </tabView:SfTabView.Behaviors>
                 <tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SelectionIndicatorSettings Position="Fill" Color="Blue"/>
+                    <tabView:SelectionIndicatorSettings Position="Fill" Color="LightBlue"/>
                 </tabView:SfTabView.SelectionIndicatorSettings>
                 <!-- 三大法人買賣超 -->
-                <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabOverview}">
+                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_Money}">
                     <tabView:SfTabItem.Content>
                         <ScrollView Orientation="Vertical">
-                            <datagrid:SfDataGrid AutoGenerateColumns="false" ScrollingMode="Pixel"
-                                 FrozenColumnsCount="1" VerticalOverScrollMode="None"
-                                 ItemsSource="{Binding BuySellInfoCollection}"   
-                                 GridStyle="{StaticResource flatGridStyle}" >
-                                <datagrid:SfDataGrid.Resources>
-                                    <Style TargetType="Label">
-                                        <Setter Property="FontAttributes" Value="Bold"/>
-                                        <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
-                                        <Setter Property="VerticalTextAlignment" Value="Center"/>
-                                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                                    </Style>
-                                </datagrid:SfDataGrid.Resources>
+                            <Grid>
+                                <Grid.RowDefinitions>                                                            
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <datagrid:SfDataGrid AutoGenerateColumns="false" ScrollingMode="Pixel"
+                                     FrozenColumnsCount="1" VerticalOverScrollMode="None"
+                                     ItemsSource="{Binding BuySellInfoCollection}"   
+                                     GridStyle="{StaticResource flatGridStyle}" >
+                                    <datagrid:SfDataGrid.Resources>
+                                        <Style TargetType="Label">
+                                            <Setter Property="FontAttributes" Value="Bold"/>
+                                            <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
+                                            <Setter Property="VerticalTextAlignment" Value="Center"/>
+                                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                                        </Style>
+                                    </datagrid:SfDataGrid.Resources>
 
-                                <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                                    <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Auto"  TextAlignment="End"/>
+                                    <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                                        <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Star"  TextAlignment="End"/>
 
-                                    <datagrid:GridTextColumn MappingName="ForeignBuySell" HeaderText="{lang:Translate ForeignInvestor}" ColumnSizer="Auto" TextAlignment="End">
-                                        <datagrid:GridTextColumn.CellStyle>
-                                            <Style TargetType="datagrid:GridCell">
-                                                <Setter Property="Foreground" Value="{Binding ForeignBuySell, Converter={StaticResource priceColorConverter}}" />
-                                            </Style>
-                                        </datagrid:GridTextColumn.CellStyle>
-                                    </datagrid:GridTextColumn>
-                                    <datagrid:GridTextColumn MappingName="InvestmentBuySell" HeaderText="{lang:Translate Investor}" ColumnSizer="Auto" TextAlignment="End">
-                                        <datagrid:GridTextColumn.CellStyle>
-                                            <Style TargetType="datagrid:GridCell">
-                                                <Setter Property="Foreground" Value="{Binding InvestmentBuySell, Converter={StaticResource priceColorConverter}}" />
-                                            </Style>
-                                        </datagrid:GridTextColumn.CellStyle>
-                                    </datagrid:GridTextColumn>
-                                    <datagrid:GridTextColumn MappingName="DealerBuySell" HeaderText="{lang:Translate DealerInvestor}" ColumnSizer="Auto" TextAlignment="End">
-                                        <datagrid:GridTextColumn.CellStyle>
-                                            <Style TargetType="datagrid:GridCell">
-                                                <Setter Property="Foreground" Value="{Binding DealerBuySell, Converter={StaticResource priceColorConverter}}" />
-                                            </Style>
-                                        </datagrid:GridTextColumn.CellStyle>
-                                    </datagrid:GridTextColumn>
-                                </datagrid:SfDataGrid.Columns>
-                            </datagrid:SfDataGrid>
+                                        <datagrid:GridTextColumn MappingName="ForeignBuySell" HeaderText="{lang:Translate ForeignInvestor}" ColumnSizer="Star" TextAlignment="End">
+                                            <datagrid:GridTextColumn.CellStyle>
+                                                <Style TargetType="datagrid:GridCell">
+                                                    <Setter Property="Foreground" Value="{Binding ForeignBuySell, Converter={StaticResource priceColorConverter}}" />
+                                                </Style>
+                                            </datagrid:GridTextColumn.CellStyle>
+                                        </datagrid:GridTextColumn>
+                                        <datagrid:GridTextColumn MappingName="InvestmentBuySell" HeaderText="{lang:Translate Investor}" ColumnSizer="Star" TextAlignment="End">
+                                            <datagrid:GridTextColumn.CellStyle>
+                                                <Style TargetType="datagrid:GridCell">
+                                                    <Setter Property="Foreground" Value="{Binding InvestmentBuySell, Converter={StaticResource priceColorConverter}}" />
+                                                </Style>
+                                            </datagrid:GridTextColumn.CellStyle>
+                                        </datagrid:GridTextColumn>
+                                        <datagrid:GridTextColumn MappingName="DealerBuySell" HeaderText="{lang:Translate DealerInvestor}" ColumnSizer="Star" TextAlignment="End">
+                                            <datagrid:GridTextColumn.CellStyle>
+                                                <Style TargetType="datagrid:GridCell">
+                                                    <Setter Property="Foreground" Value="{Binding DealerBuySell, Converter={StaticResource priceColorConverter}}" />
+                                                </Style>
+                                            </datagrid:GridTextColumn.CellStyle>
+                                        </datagrid:GridTextColumn>
+                                    </datagrid:SfDataGrid.Columns>
+                                </datagrid:SfDataGrid>
 
+                                <ActivityIndicator IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
+                                    Color="#2499CE" HeightRequest="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                                    <ActivityIndicator.WidthRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" iOS="100" Android="100" WinPhone="400" />
+                                    </ActivityIndicator.WidthRequest>
+                                </ActivityIndicator>
+                            </Grid>
                         </ScrollView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--Price History-->
-                <tabView:SfTabItem Title="{lang:Translate ProdcutIndex_TabHistoricalReport}">
+                <!--外資買賣超股-->
+                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_ForeignOverBuy}">
                     <tabView:SfTabItem.Content>
                         <Grid>
-                           
+                            <control:BuySellListView BindingContext="{Binding StockBuySellModel}"/>
                         </Grid>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>

@@ -1,10 +1,12 @@
 ﻿using Core.Utility.Network;
 using Cross.StockInfo.Common.Helper;
 using Cross.StockInfo.Model.Stock;
+using Cross.StockInfo.ViewModels.Control;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Cross.StockInfo.Services
 {
@@ -23,6 +25,10 @@ namespace Cross.StockInfo.Services
         /// </summary>
         private const string ListInvestorBuySellUrl = "https://stock.wearn.com/fundthree.asp?mode=search";
 
+        /// <summary>
+        /// 法人買賣超個股
+        /// </summary>
+        private const string ListForeignBuySellUrl = "https://stock.wearn.com/a50.asp";
         #region Query Revenue
 
         public Task<List<StockRevenue>> ListOtcRevenueTaskAsync(int year, int month)
@@ -102,13 +108,49 @@ namespace Cross.StockInfo.Services
                     node =>
                     {
                         string subHtml = node.InnerHtml.Replace("&nbsp;", string.Empty);
-                        string date = HtmlHelper.ReadDocumentValue(subHtml, "//td[0]")?.Trim();
-                        string foreign = HtmlHelper.ReadDocumentValue(subHtml, "//td[1]//span")?.Trim();
-                        string investor = HtmlHelper.ReadDocumentValue(subHtml, "//td[2]//span")?.Trim();
-                        string dealer = HtmlHelper.ReadDocumentValue(subHtml, "//td[3]//span")?.Trim();
+                        string date = HtmlHelper.ReadDocumentValue(subHtml, "//td[1]")?.Trim();
+                        string foreign = HtmlHelper.ReadDocumentValue(subHtml, "//td[2]//span")?.Replace(" ", string.Empty).Replace("+", string.Empty);
+                        string investor = HtmlHelper.ReadDocumentValue(subHtml, "//td[3]//span")?.Replace(" ", string.Empty).Replace("+", string.Empty);
+                        string dealer = HtmlHelper.ReadDocumentValue(subHtml, "//td[4]//span")?.Replace(" ", string.Empty).Replace("+", string.Empty);
                         return new BuySellPriceItem { Date = date, ForeignBuySell = foreign, InvestmentBuySell = investor, DealerBuySell = dealer };
                     });
                 return results;
+            });
+        }
+
+        /// <summary>
+        /// 列出外資買賣超個股的排名資訊
+        /// </summary>
+        /// <param name="top">指定取得的名次數量</param>
+        /// <returns></returns>
+        public Task<StockBuySellListModel> ListForeignBuySellTaskAsync(int top)
+        {
+            return Task.Run(async() =>
+            {
+
+                string html = await RestApi.GetHtmlTaskAsync(ListForeignBuySellUrl, Encoding.GetEncoding(950));
+
+                var rankResults = HtmlHelper.DescendantsPath(html, "//div//div//table//tr",
+                  node =>
+                  {
+                      string classValue = node.Attributes["class"]?.Value;
+                      return classValue == "stockalllistbg1" || classValue == "stockalllistbg2";
+                  },
+                  node =>
+                  {
+                      int rank = Convert.ToInt32(node.ChildNodes[1]?.InnerText.Trim());
+                      string code = node.ChildNodes[3]?.InnerText.Trim();
+                      string name = node.ChildNodes[5]?.InnerText.Trim();
+                      int buyValue = Convert.ToInt32(node.ChildNodes[7]?.InnerText.Trim());
+                      int sellValue = Convert.ToInt32(node.ChildNodes[9]?.InnerText.Trim());
+
+                      StockBuySellItem item = new StockBuySellItem { Rank = rank, Code = code, Name = name, BuyVaule = buyValue, SellValue = sellValue };
+                      return item;
+                  });
+
+                List<StockBuySellItem> buyOverResult = rankResults.Where
+                StockBuySellListModel result
+                return results;              
             });
         }
     }

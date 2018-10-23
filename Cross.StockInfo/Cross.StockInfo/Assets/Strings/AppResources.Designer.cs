@@ -196,6 +196,33 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 發生未知錯誤：{0} 的當地語系化字串。
+        /// </summary>
+        public static string Dialog_ErrorMessage {
+            get {
+                return ResourceManager.GetString("Dialog_ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 錯誤通知 的當地語系化字串。
+        /// </summary>
+        public static string Dialog_ErrorTitle {
+            get {
+                return ResourceManager.GetString("Dialog_ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 確認 的當地語系化字串。
+        /// </summary>
+        public static string Dialog_OKButton {
+            get {
+                return ResourceManager.GetString("Dialog_OKButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 杜拜輕原油 的當地語系化字串。
         /// </summary>
         public static string DubaiOilIndex_Label {
@@ -322,11 +349,29 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 法人買賣 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_ForeignOverBuy {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_ForeignOverBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 法人買法 的當地語系化字串。
         /// </summary>
         public static string InstitutionalBuySell_MenuItemLabel {
             get {
                 return ResourceManager.GetString("InstitutionalBuySell_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 買賣金額 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_Money {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_Money", resourceCulture);
             }
         }
         

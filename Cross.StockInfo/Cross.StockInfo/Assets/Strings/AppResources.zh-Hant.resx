@@ -327,4 +327,19 @@
   <data name="InstitutionalBuySell_MenuItemLabel" xml:space="preserve">
     <value>法人買法</value>
   </data>
+  <data name="Dialog_ErrorMessage" xml:space="preserve">
+    <value>發生未知錯誤：{0}</value>
+  </data>
+  <data name="Dialog_ErrorTitle" xml:space="preserve">
+    <value>錯誤通知</value>
+  </data>
+  <data name="Dialog_OKButton" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="InstitutionalBuySell_ForeignOverBuy" xml:space="preserve">
+    <value>法人買賣</value>
+  </data>
+  <data name="InstitutionalBuySell_Money" xml:space="preserve">
+    <value>買賣金額</value>
+  </data>
 </root>

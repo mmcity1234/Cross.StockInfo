@@ -3,6 +3,7 @@ using Cross.StockInfo.Common.Localization;
 using System;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,10 +21,34 @@ namespace Cross.StockInfo
             // 多語系初始設定
             InitializeLocalization();
 
-            InitializeComponent();            
-        
+            InitializeComponent();           
+
             MainPage = new NavigationPage(new MainPage());
+
+            // exception handler
+            ExceptionHandler();
         }
+
+        private void ExceptionHandler()
+        {
+            AppDomain.CurrentDomain.UnhandledException += async(sender, e) =>
+            {
+                Exception exception = (Exception)e.ExceptionObject;
+
+                await App.Current.MainPage.DisplayAlert(
+                    AppResources.Dialog_ErrorTitle, 
+                    string.Format(AppResources.Dialog_ErrorMessage, exception.Message), 
+                    AppResources.Dialog_OKButton);
+            };
+            TaskScheduler.UnobservedTaskException += async (sender, e) =>
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    AppResources.Dialog_ErrorTitle,
+                    string.Format(AppResources.Dialog_ErrorMessage, e.Exception.Message),
+                    AppResources.Dialog_OKButton);
+            };
+        }
+ 
 
         private void InitializeLocalization()
         {
