@@ -12,8 +12,13 @@ namespace Cross.StockInfo.Common.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             double cellValue;
-            bool isValid = double.TryParse(value as string, out cellValue);
-           
+            bool isValid = true;
+            if (value is string)
+                isValid = double.TryParse(value as string, out cellValue);
+            else
+                cellValue = System.Convert.ToDouble(value);
+
+
             if (cellValue > 0 && isValid)
                 return ResourceDictionaryHelper.GetResource<Color>("PriceUpColor");
             else if (cellValue < 0 && isValid)

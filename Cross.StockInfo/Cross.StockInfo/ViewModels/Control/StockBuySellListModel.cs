@@ -1,4 +1,6 @@
-﻿using Cross.StockInfo.Model.Stock;
+﻿using Cross.StockInfo.Common;
+using Cross.StockInfo.Model.Stock;
+using Syncfusion.XForms.Buttons;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,28 +12,10 @@ namespace Cross.StockInfo.ViewModels.Control
     /// </summary>
     public class StockBuySellListModel : BaseViewModel
     {
-        private List<StockBuySellItem> _overBuyList;
-        private List<StockBuySellItem> _overSellList;
+     
 
-        public List<StockBuySellItem> OverBuyList
-        {
-            get => _overBuyList;
-            set
-            {
-                _overBuyList = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public List<StockBuySellItem> OverSellList
-        {
-            get => _overSellList;
-            set
-            {
-                _overSellList = value;
-                OnPropertyChanged();
-            }
-        }
+        public List<StockBuySellItem> OverBuyList { get; set; }
+        public List<StockBuySellItem> OverSellList { get; set; }
 
 
     }

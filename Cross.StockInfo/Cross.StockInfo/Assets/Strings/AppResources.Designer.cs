@@ -349,16 +349,34 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 法人買賣 的當地語系化字串。
+        ///   查詢類似 買進 的當地語系化字串。
         /// </summary>
-        public static string InstitutionalBuySell_ForeignOverBuy {
+        public static string InstitutionalBuySell_BuyColumnHeader {
             get {
-                return ResourceManager.GetString("InstitutionalBuySell_ForeignOverBuy", resourceCulture);
+                return ResourceManager.GetString("InstitutionalBuySell_BuyColumnHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查詢類似 法人買法 的當地語系化字串。
+        ///   查詢類似 自營買賣排名 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_DealerStockRankLabel {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_DealerStockRankLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 法人買賣排名 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_ForeignStockRankLabel {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_ForeignStockRankLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 法人買賣 的當地語系化字串。
         /// </summary>
         public static string InstitutionalBuySell_MenuItemLabel {
             get {
@@ -372,6 +390,24 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string InstitutionalBuySell_Money {
             get {
                 return ResourceManager.GetString("InstitutionalBuySell_Money", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 買賣超 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_OverButSellColumnHeader {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_OverButSellColumnHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 賣出 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_SellColumnHeader {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_SellColumnHeader", resourceCulture);
             }
         }
         
@@ -583,6 +619,24 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 買超 的當地語系化字串。
+        /// </summary>
+        public static string OverBuy {
+            get {
+                return ResourceManager.GetString("OverBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 賣超 的當地語系化字串。
+        /// </summary>
+        public static string OverSell {
+            get {
+                return ResourceManager.GetString("OverSell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 讀取中... 的當地語系化字串。
         /// </summary>
         public static string Page_Loading {
@@ -615,6 +669,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string Quarter {
             get {
                 return ResourceManager.GetString("Quarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 名次 的當地語系化字串。
+        /// </summary>
+        public static string RankLabel {
+            get {
+                return ResourceManager.GetString("RankLabel", resourceCulture);
             }
         }
         
@@ -678,6 +741,15 @@ namespace Cross.StockInfo.Assets.Strings {
         public static string SoyIndex_Label {
             get {
                 return ResourceManager.GetString("SoyIndex_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 InstitutionalBuySell_ForeignOverBuy 的當地語系化字串。
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         

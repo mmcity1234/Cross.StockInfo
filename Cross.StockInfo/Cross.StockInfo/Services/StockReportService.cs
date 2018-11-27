@@ -21,14 +21,18 @@ namespace Cross.StockInfo.Services
         /// </summary>
         private const string ListStockRevenueUrl = "http://mops.twse.com.tw/nas/t21/sii/t21sc03_{0}_{1}_0.html";
         /// <summary>
-        /// 三大法人買賣超
+        /// 三大法人買賣超金額
         /// </summary>
-        private const string ListInvestorBuySellUrl = "https://stock.wearn.com/fundthree.asp?mode=search";
+        private const string ListBuySellUrl = "https://stock.wearn.com/fundthree.asp?mode=search";
 
         /// <summary>
-        /// 法人買賣超個股
+        /// 外資買賣超個股
         /// </summary>
-        private const string ListForeignBuySellUrl = "https://stock.wearn.com/a50.asp";
+        private const string ListForeignStockRankUrl = "https://stock.wearn.com/a50.asp";
+        /// <summary>
+        /// 自營商買賣超個股
+        /// </summary>
+        private const string ListInvesorStockRankUrl = "https://stock.wearn.com/c50.asp";
         #region Query Revenue
 
         public Task<List<StockRevenue>> ListOtcRevenueTaskAsync(int year, int month)
@@ -88,7 +92,7 @@ namespace Cross.StockInfo.Services
         }
         #endregion
 
-        public Task<List<BuySellPriceItem>> ListInvestorBuySellTaskAsync(int year, int month, int day)
+        public Task<List<BuySellPriceItem>> ListBuySellTaskAsync(int year, int month, int day)
         {
             return Task.Run(async () =>
             {
@@ -98,7 +102,7 @@ namespace Cross.StockInfo.Services
                     { "monthE", Convert.ToString(month) },
                     { "dayE", Convert.ToString(day)}
                 };
-                string html = await RestApi.PostContentTaskAsync(ListInvestorBuySellUrl, parameters, Encoding.GetEncoding(950));
+                string html = await RestApi.PostContentTaskAsync(ListBuySellUrl, parameters, Encoding.GetEncoding(950));
                 var results = HtmlHelper.DescendantsPath(html, "//table//tr",
                     node =>
                     {
@@ -118,17 +122,26 @@ namespace Cross.StockInfo.Services
             });
         }
 
+        public Task<StockBuySellListModel> ListDealerStockRankTaskAsync(int top)
+        {
+            return ListStockRankTaskAsync(top, ListInvesorStockRankUrl);
+        }
+
         /// <summary>
         /// 列出外資買賣超個股的排名資訊
         /// </summary>
         /// <param name="top">指定取得的名次數量</param>
         /// <returns></returns>
-        public Task<StockBuySellListModel> ListForeignBuySellTaskAsync(int top)
+        public Task<StockBuySellListModel> ListForeignStockRankTaskAsync(int top)
         {
-            return Task.Run(async() =>
-            {
+            return ListStockRankTaskAsync(top, ListForeignStockRankUrl);
+        }
 
-                string html = await RestApi.GetHtmlTaskAsync(ListForeignBuySellUrl, Encoding.GetEncoding(950));
+        private Task<StockBuySellListModel> ListStockRankTaskAsync(int top, string url)
+        {
+            return Task.Run(async () =>
+            {
+                string html = await RestApi.GetHtmlTaskAsync(url, Encoding.GetEncoding(950));
 
                 var rankResults = HtmlHelper.DescendantsPath(html, "//div//div//table//tr",
                   node =>
@@ -148,9 +161,10 @@ namespace Cross.StockInfo.Services
                       return item;
                   });
 
-                List<StockBuySellItem> buyOverResult = rankResults.Where
-                StockBuySellListModel result
-                return results;              
+                List<StockBuySellItem> buyResult = rankResults.Where(x => x.Value > 0 && x.Rank <= top).OrderBy(x => x.Rank).ToList();
+                List<StockBuySellItem> sellResult = rankResults.Where(x => x.Value < 0 && x.Rank <= top).OrderBy(x => x.Rank).ToList();
+                StockBuySellListModel model = new StockBuySellListModel { OverBuyList = buyResult, OverSellList = sellResult };
+                return model;
             });
         }
     }

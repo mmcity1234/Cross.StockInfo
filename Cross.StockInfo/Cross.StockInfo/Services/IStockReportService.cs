@@ -1,4 +1,5 @@
 ﻿using Cross.StockInfo.Model.Stock;
+using Cross.StockInfo.ViewModels.Control;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,20 +31,27 @@ namespace Cross.StockInfo.Services
         Task<List<StockRevenue>> ListCompaynRevenueTaskAsync(int year, int month);
 
         /// <summary>
-        /// 法人買賣紀錄
+        /// 法人買賣超金額資訊
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <param name="day"></param>
         /// <returns></returns>
-        Task<List<BuySellPriceItem>> ListInvestorBuySellTaskAsync(int year, int month, int day);
+        Task<List<BuySellPriceItem>> ListBuySellTaskAsync(int year, int month, int day);
 
         /// <summary>
         /// 列出外資買賣超個股的排名資訊
         /// </summary>
         /// <param name="top">指定取得的名次數量</param>
         /// <returns></returns>
-        Task<List<StockBuySellItem>> ListForeignBuySellTaskAsync(int top);
-    
+        Task<StockBuySellListModel> ListForeignStockRankTaskAsync(int top);
+        
+        /// <summary>
+        /// 列出自營商買賣超個股的排名資訊
+        /// </summary>
+        /// <param name="top">指定取得的名次數量</param>
+        /// <returns></returns>
+        Task<StockBuySellListModel> ListDealerStockRankTaskAsync(int top);
+
     }
 }

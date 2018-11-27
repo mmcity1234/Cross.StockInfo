@@ -45,6 +45,9 @@
     <Compile Update="ViewModels\Control\MasterDetail\MasterPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Control\BuySellListControl.xaml.cs">
+      <DependentUpon>BuySellListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Control\LineChartControl.xaml.cs">
       <DependentUpon>LineChartControl.xaml</DependentUpon>
     </Compile>
@@ -67,7 +70,7 @@
     <EmbeddedResource Update="Assets\Styles\SyncfusionStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Control\BuySellListView.xaml">
+    <EmbeddedResource Update="Views\Control\BuySellListControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Control\DailyPriceControl.xaml">

@@ -41,14 +41,6 @@
                                      FrozenColumnsCount="1" VerticalOverScrollMode="None"
                                      ItemsSource="{Binding BuySellInfoCollection}"   
                                      GridStyle="{StaticResource flatGridStyle}" >
-                                    <datagrid:SfDataGrid.Resources>
-                                        <Style TargetType="Label">
-                                            <Setter Property="FontAttributes" Value="Bold"/>
-                                            <Setter Property="TextColor" Value="{StaticResource DarkGrayColor_ColumnHeader}"/>
-                                            <Setter Property="VerticalTextAlignment" Value="Center"/>
-                                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                                        </Style>
-                                    </datagrid:SfDataGrid.Resources>
 
                                     <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
                                         <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Star"  TextAlignment="End"/>
@@ -88,10 +80,31 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--外資買賣超股-->
-                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_ForeignOverBuy}">
+                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_ForeignStockRankLabel}">
                     <tabView:SfTabItem.Content>
                         <Grid>
-                            <control:BuySellListView BindingContext="{Binding StockBuySellModel}"/>
+                            <control:BuySellListControl StockListData="{Binding ForeignCurrentSelectList}">
+                                <control:BuySellListControl.Behaviors>
+                                    <b:EventHandlerBehavior EventName="ButtonSwitched">
+                                        <b:InvokeCommandAction Command="{Binding ForignStockRankSwitchCommand}" />
+                                    </b:EventHandlerBehavior>
+                                </control:BuySellListControl.Behaviors>
+                            </control:BuySellListControl>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+
+                <!--自營商買賣超股-->
+                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_DealerStockRankLabel}">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <control:BuySellListControl StockListData="{Binding DealerCurrentSelectList}">
+                                <control:BuySellListControl.Behaviors>
+                                    <b:EventHandlerBehavior EventName="ButtonSwitched">
+                                        <b:InvokeCommandAction Command="{Binding DealerStockRankSwitchCommand}" />
+                                    </b:EventHandlerBehavior>
+                                </control:BuySellListControl.Behaviors>
+                            </control:BuySellListControl>
                         </Grid>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
