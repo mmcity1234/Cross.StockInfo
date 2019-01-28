@@ -34,7 +34,7 @@
                                      GridStyle="{StaticResource flatGridStyle}" >
 
                     <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                        <datagrid:GridTextColumn MappingName="Rank" HeaderText="{lang:Translate RankLabel}" ColumnSizer="40"  TextAlignment="Center"/>
+                        <datagrid:GridTextColumn MappingName="Rank" HeaderText="{lang:Translate RankLabel}" ColumnSizer="Star" TextAlignment="Center"/>
                         <datagrid:GridTextColumn MappingName="Name" HeaderText="{lang:Translate Name}" ColumnSizer="Star"  TextAlignment="Center"/>
                         <datagrid:GridTextColumn MappingName="BuyVaule" HeaderText="{lang:Translate InstitutionalBuySell_BuyColumnHeader}" ColumnSizer="Star"  TextAlignment="Center"/>
                         <datagrid:GridTextColumn MappingName="SellValue" HeaderText="{lang:Translate InstitutionalBuySell_SellColumnHeader}" ColumnSizer="Star"  TextAlignment="Center"/>

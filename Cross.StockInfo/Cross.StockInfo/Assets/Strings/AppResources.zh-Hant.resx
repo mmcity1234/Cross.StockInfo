@@ -366,4 +366,7 @@
   <data name="YearOnYearPercentage_Label" xml:space="preserve">
     <value>去年同期增減百分比</value>
   </data>
+  <data name="InstitutionalBuySell_PrimaryStockRankLabel" xml:space="preserve">
+    <value>主力五日買賣排名</value>
+  </data>
 </root>

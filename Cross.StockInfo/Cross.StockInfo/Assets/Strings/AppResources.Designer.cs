@@ -403,6 +403,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 主力五日買賣排名 的當地語系化字串。
+        /// </summary>
+        public static string InstitutionalBuySell_PrimaryStockRankLabel {
+            get {
+                return ResourceManager.GetString("InstitutionalBuySell_PrimaryStockRankLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 賣出 的當地語系化字串。
         /// </summary>
         public static string InstitutionalBuySell_SellColumnHeader {

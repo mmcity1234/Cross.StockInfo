@@ -156,8 +156,10 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             try
             {
                 base.OnPageFirstLoad();
-                int latestYear = DateTime.Now.Year;
-                int latestMonth = DateTime.Now.Month - 1;
+                DateTime latestTime = DateTime.Now.AddMonths(-1);
+                int latestYear = latestTime.Year;
+                int latestMonth = latestTime.Month;
+               
                 RevenueDateString = string.Format(AppResources.RevenueSummaryView_SelectedDateLabel, 
                     latestYear, 
                     latestMonth < 10 ? "0" + latestMonth : Convert.ToString(latestMonth));

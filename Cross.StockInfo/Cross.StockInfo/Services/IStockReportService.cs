@@ -45,7 +45,7 @@ namespace Cross.StockInfo.Services
         /// <param name="top">指定取得的名次數量</param>
         /// <returns></returns>
         Task<StockBuySellListModel> ListForeignStockRankTaskAsync(int top);
-        
+
         /// <summary>
         /// 列出自營商買賣超個股的排名資訊
         /// </summary>
@@ -53,5 +53,11 @@ namespace Cross.StockInfo.Services
         /// <returns></returns>
         Task<StockBuySellListModel> ListDealerStockRankTaskAsync(int top);
 
+        /// <summary>
+        /// 列出主力五日買賣超個股排名資訊
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        Task<StockBuySellListModel> ListPrimaryStockRankTaskAsync(int top);
     }
 }

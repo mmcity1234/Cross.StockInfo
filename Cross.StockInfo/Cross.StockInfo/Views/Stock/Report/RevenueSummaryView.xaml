@@ -81,8 +81,8 @@
                 <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
                     <datagrid:GridTextColumn MappingName="Name" HeaderText="{lang:Translate Name}" ColumnSizer="Auto"  TextAlignment="End"/>
                     <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                    <!--datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
+                    <!--<datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
                     <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
                         <datagrid:GridTextColumn.CellStyle>
                             <Style TargetType="datagrid:GridCell">
@@ -97,8 +97,8 @@
                             </Style>
                         </datagrid:GridTextColumn.CellStyle>
                     </datagrid:GridTextColumn>
-                    <datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
-                    <datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>
+                    <!--<datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
+                    <!--<datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
                     <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}" ColumnSizer="Auto" TextAlignment="End">
                         <datagrid:GridTextColumn.CellStyle>
                             <Style TargetType="datagrid:GridCell">

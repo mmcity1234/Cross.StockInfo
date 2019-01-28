@@ -108,6 +108,21 @@
                         </Grid>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+
+                <!--主力買賣超股-->
+                <tabView:SfTabItem Title="{lang:Translate InstitutionalBuySell_PrimaryStockRankLabel}">
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <control:BuySellListControl StockListData="{Binding PrimaryCurrentSelectList}">
+                                <control:BuySellListControl.Behaviors>
+                                    <b:EventHandlerBehavior EventName="ButtonSwitched">
+                                        <b:InvokeCommandAction Command="{Binding PrimaryTabChangedCommand}" />
+                                    </b:EventHandlerBehavior>
+                                </control:BuySellListControl.Behaviors>
+                            </control:BuySellListControl>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
             </tabView:SfTabView>
         </Grid>
     </ContentPage.Content>
