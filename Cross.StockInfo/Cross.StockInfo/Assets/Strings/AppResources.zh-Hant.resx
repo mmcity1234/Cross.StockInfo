@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccumulatedRevenueComparePercentage_Label" xml:space="preserve">
-    <value>累計營收百分比</value>
+    <value>累計營收(%)</value>
   </data>
   <data name="AgriculturalProducts_ChartTitle" xml:space="preserve">
     <value>農產品指數</value>
@@ -231,6 +231,9 @@
   <data name="InstitutionalBuySell_OverButSellColumnHeader" xml:space="preserve">
     <value>買賣超</value>
   </data>
+  <data name="InstitutionalBuySell_PrimaryStockRankLabel" xml:space="preserve">
+    <value>主力五日買賣排名</value>
+  </data>
   <data name="InstitutionalBuySell_SellColumnHeader" xml:space="preserve">
     <value>賣出</value>
   </data>
@@ -256,7 +259,7 @@
     <value>月</value>
   </data>
   <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
-    <value>上月增減百分比</value>
+    <value>月增率</value>
   </data>
   <data name="MoreThan" xml:space="preserve">
     <value>大於</value>
@@ -364,9 +367,6 @@
     <value>年</value>
   </data>
   <data name="YearOnYearPercentage_Label" xml:space="preserve">
-    <value>去年同期增減百分比</value>
-  </data>
-  <data name="InstitutionalBuySell_PrimaryStockRankLabel" xml:space="preserve">
-    <value>主力五日買賣排名</value>
+    <value>年增率</value>
   </data>
 </root>

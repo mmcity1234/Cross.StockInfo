@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccumulatedRevenueComparePercentage_Label" xml:space="preserve">
+    <value>累計營收(%)</value>
+  </data>
   <data name="AgriculturalProducts_ChartTitle" xml:space="preserve">
     <value>農產品指數</value>
   </data>
@@ -141,14 +144,41 @@
   <data name="BrentCrudeOilIndex_Label" xml:space="preserve">
     <value>布蘭特原油</value>
   </data>
+  <data name="Comment" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="CompanyRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上市公司營收統計表</value>
+  </data>
+  <data name="CurrentAccumulatedRevenue_Label" xml:space="preserve">
+    <value>今年累計營收</value>
+  </data>
+  <data name="CurrentRevenue_Label" xml:space="preserve">
+    <value>當月營收</value>
+  </data>
   <data name="Day" xml:space="preserve">
     <value>日</value>
+  </data>
+  <data name="DealerInvestor" xml:space="preserve">
+    <value>自營商</value>
+  </data>
+  <data name="Dialog_ErrorMessage" xml:space="preserve">
+    <value>發生未知錯誤：{0}</value>
+  </data>
+  <data name="Dialog_ErrorTitle" xml:space="preserve">
+    <value>錯誤通知</value>
+  </data>
+  <data name="Dialog_OKButton" xml:space="preserve">
+    <value>確認</value>
   </data>
   <data name="DubaiOilIndex_Label" xml:space="preserve">
     <value>杜拜輕原油</value>
   </data>
   <data name="Exception_Internal_ConfigTypeNotAssigned" xml:space="preserve">
     <value>內部錯誤：資並未設定ConfigType參數。</value>
+  </data>
+  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
+    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
   </data>
   <data name="Exception_LoadDataError" xml:space="preserve">
     <value>資料載入錯誤，請在下滑嘗試：{0}</value>
@@ -162,6 +192,12 @@
   <data name="Exception_ResourceDictionaryKeyNotFound" xml:space="preserve">
     <value>無法在資源字典(ResourceDicionary)找到此資源 [{0}]</value>
   </data>
+  <data name="Exception_RevenueNotFound" xml:space="preserve">
+    <value>查無營收資料</value>
+  </data>
+  <data name="ForeignInvestor" xml:space="preserve">
+    <value>外資</value>
+  </data>
   <data name="Global_ChangePrice" xml:space="preserve">
     <value>漲跌</value>
   </data>
@@ -173,6 +209,63 @@
   </data>
   <data name="Global_Price" xml:space="preserve">
     <value>價格</value>
+  </data>
+  <data name="HalfYear" xml:space="preserve">
+    <value>半年</value>
+  </data>
+  <data name="InstitutionalBuySell_BuyColumnHeader" xml:space="preserve">
+    <value>買進</value>
+  </data>
+  <data name="InstitutionalBuySell_DealerStockRankLabel" xml:space="preserve">
+    <value>自營買賣排名</value>
+  </data>
+  <data name="InstitutionalBuySell_ForeignStockRankLabel" xml:space="preserve">
+    <value>法人買賣排名</value>
+  </data>
+  <data name="InstitutionalBuySell_MenuItemLabel" xml:space="preserve">
+    <value>法人買賣</value>
+  </data>
+  <data name="InstitutionalBuySell_Money" xml:space="preserve">
+    <value>買賣金額</value>
+  </data>
+  <data name="InstitutionalBuySell_OverButSellColumnHeader" xml:space="preserve">
+    <value>買賣超</value>
+  </data>
+  <data name="InstitutionalBuySell_PrimaryStockRankLabel" xml:space="preserve">
+    <value>主力五日買賣排名</value>
+  </data>
+  <data name="InstitutionalBuySell_SellColumnHeader" xml:space="preserve">
+    <value>賣出</value>
+  </data>
+  <data name="Investor" xml:space="preserve">
+    <value>投信</value>
+  </data>
+  <data name="LastMonthRevenue_Label" xml:space="preserve">
+    <value>上月營收</value>
+  </data>
+  <data name="LastYearAccumulatedRevenue_Label" xml:space="preserve">
+    <value>去年同期累計營收</value>
+  </data>
+  <data name="LastYearRevenue_Label" xml:space="preserve">
+    <value>去年同期</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>小於</value>
+  </data>
+  <data name="Main_NewsMenuItem" xml:space="preserve">
+    <value>新聞</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
+    <value>月增率</value>
+  </data>
+  <data name="MoreThan" xml:space="preserve">
+    <value>大於</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名稱</value>
   </data>
   <data name="News_All_TabTile" xml:space="preserve">
     <value>全部</value>
@@ -207,152 +300,11 @@
   <data name="OilIndex_MenuItemLabel" xml:space="preserve">
     <value>原油</value>
   </data>
-  <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
-    <value>歷史資料</value>
-  </data>
-  <data name="ProdcutIndex_TabOverview" xml:space="preserve">
-    <value>總覽</value>
-  </data>
-  <data name="SoyIndex_Label" xml:space="preserve">
-    <value>黃豆近期期貨</value>
-  </data>
-  <data name="SupermaxIndex_Label" xml:space="preserve">
-    <value>輕便型(Supramax)</value>
-  </data>
-  <data name="Week" xml:space="preserve">
-    <value>週</value>
-  </data>
-  <data name="WheatIndex_Label" xml:space="preserve">
-    <value>小麥近期期貨</value>
-  </data>
-  <data name="Main_NewsMenuItem" xml:space="preserve">
-    <value>新聞</value>
-  </data>
-  <data name="HalfYear" xml:space="preserve">
-    <value>半年</value>
-  </data>
-  <data name="Month" xml:space="preserve">
-    <value>月</value>
-  </data>
-  <data name="Quarter" xml:space="preserve">
-    <value>季</value>
-  </data>
-  <data name="ThisYear" xml:space="preserve">
-    <value>今年</value>
-  </data>
-  <data name="Year" xml:space="preserve">
-    <value>年</value>
-  </data>
-  <data name="AccumulatedRevenueComparePercentage_Label" xml:space="preserve">
-    <value>累計營收百分比</value>
-  </data>
-  <data name="CurrentAccumulatedRevenue_Label" xml:space="preserve">
-    <value>今年累計營收</value>
-  </data>
-  <data name="CurrentRevenue_Label" xml:space="preserve">
-    <value>當月營收</value>
-  </data>
-  <data name="LastMonthRevenue_Label" xml:space="preserve">
-    <value>上月營收</value>
-  </data>
-  <data name="LastYearAccumulatedRevenue_Label" xml:space="preserve">
-    <value>去年同期累計營收</value>
-  </data>
-  <data name="LastYearRevenue_Label" xml:space="preserve">
-    <value>去年同期</value>
-  </data>
-  <data name="MonthOverMonthPercentage_Label" xml:space="preserve">
-    <value>上月增減百分比</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>名稱</value>
-  </data>
-  <data name="CompanyRevenueReport_MenuItemLabel" xml:space="preserve">
-    <value>上市公司營收統計表</value>
-  </data>
-  <data name="YearOnYearPercentage_Label" xml:space="preserve">
-    <value>去年同期增減百分比</value>
-  </data>
-  <data name="Exception_Internal_ProductInfoNotAssigned" xml:space="preserve">
-    <value>內部錯誤：商品資訊頁面並未設定ProductInfo型別。</value>
-  </data>
-  <data name="OtcRevenueReport_MenuItemLabel" xml:space="preserve">
-    <value>上櫃公司營收統計表</value>
-  </data>
-  <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
-    <value>名稱或代號</value>
-  </data>
-  <data name="LessThan" xml:space="preserve">
-    <value>小於</value>
-  </data>
-  <data name="MoreThan" xml:space="preserve">
-    <value>大於</value>
-  </data>
-  <data name="Comment" xml:space="preserve">
-    <value>備註</value>
-  </data>
-  <data name="Page_Loading" xml:space="preserve">
-    <value>讀取中...</value>
-  </data>
-  <data name="RevenueSummaryView_MonthLabel" xml:space="preserve">
-    <value>月份</value>
-  </data>
-  <data name="RevenueSummaryView_YearLabel" xml:space="preserve">
-    <value>年份</value>
-  </data>
   <data name="OK_Label" xml:space="preserve">
     <value>確認</value>
   </data>
-  <data name="RevenueSummaryDate_SelectedHeader" xml:space="preserve">
-    <value>營收月份選擇</value>
-  </data>
-  <data name="RevenueSummaryFilter_ChangeLabel" xml:space="preserve">
-    <value>變更</value>
-  </data>
-  <data name="Exception_RevenueNotFound" xml:space="preserve">
-    <value>查無營收資料</value>
-  </data>
-  <data name="RevenueSummaryView_SelectedDateLabel" xml:space="preserve">
-    <value>{0} / {1} 營收資料</value>
-  </data>
-  <data name="DealerInvestor" xml:space="preserve">
-    <value>自營商</value>
-  </data>
-  <data name="ForeignInvestor" xml:space="preserve">
-    <value>外資</value>
-  </data>
-  <data name="Investor" xml:space="preserve">
-    <value>投信</value>
-  </data>
-  <data name="InstitutionalBuySell_MenuItemLabel" xml:space="preserve">
-    <value>法人買賣</value>
-  </data>
-  <data name="Dialog_ErrorMessage" xml:space="preserve">
-    <value>發生未知錯誤：{0}</value>
-  </data>
-  <data name="Dialog_ErrorTitle" xml:space="preserve">
-    <value>錯誤通知</value>
-  </data>
-  <data name="Dialog_OKButton" xml:space="preserve">
-    <value>確認</value>
-  </data>
-  <data name="InstitutionalBuySell_ForeignStockRankLabel" xml:space="preserve">
-    <value>法人買賣排名</value>
-  </data>
-  <data name="InstitutionalBuySell_Money" xml:space="preserve">
-    <value>買賣金額</value>
-  </data>
-  <data name="InstitutionalBuySell_BuyColumnHeader" xml:space="preserve">
-    <value>買進</value>
-  </data>
-  <data name="InstitutionalBuySell_DealerStockRankLabel" xml:space="preserve">
-    <value>自營買賣排名</value>
-  </data>
-  <data name="InstitutionalBuySell_OverButSellColumnHeader" xml:space="preserve">
-    <value>買賣超</value>
-  </data>
-  <data name="InstitutionalBuySell_SellColumnHeader" xml:space="preserve">
-    <value>賣出</value>
+  <data name="OtcRevenueReport_MenuItemLabel" xml:space="preserve">
+    <value>上櫃公司營收統計表</value>
   </data>
   <data name="OverBuy" xml:space="preserve">
     <value>買超</value>
@@ -360,13 +312,61 @@
   <data name="OverSell" xml:space="preserve">
     <value>賣超</value>
   </data>
+  <data name="Page_Loading" xml:space="preserve">
+    <value>讀取中...</value>
+  </data>
+  <data name="ProdcutIndex_TabHistoricalReport" xml:space="preserve">
+    <value>歷史資料</value>
+  </data>
+  <data name="ProdcutIndex_TabOverview" xml:space="preserve">
+    <value>總覽</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>季</value>
+  </data>
   <data name="RankLabel" xml:space="preserve">
     <value>名次</value>
+  </data>
+  <data name="RevenueSummaryDate_SelectedHeader" xml:space="preserve">
+    <value>營收月份選擇</value>
+  </data>
+  <data name="RevenueSummaryFilter_ChangeLabel" xml:space="preserve">
+    <value>變更</value>
+  </data>
+  <data name="RevenueSummaryView_MonthLabel" xml:space="preserve">
+    <value>月份</value>
+  </data>
+  <data name="RevenueSummaryView_SelectedDateLabel" xml:space="preserve">
+    <value>{0} / {1} 營收資料</value>
+  </data>
+  <data name="RevenueSummaryView_YearLabel" xml:space="preserve">
+    <value>年份</value>
+  </data>
+  <data name="SearchBoxPlaceHolder_StockName" xml:space="preserve">
+    <value>名稱或代號</value>
+  </data>
+  <data name="SoyIndex_Label" xml:space="preserve">
+    <value>黃豆近期期貨</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>InstitutionalBuySell_ForeignOverBuy</value>
   </data>
-  <data name="InstitutionalBuySell_PrimaryStockRankLabel" xml:space="preserve">
-    <value>主力五日買賣排名</value>
+  <data name="SupermaxIndex_Label" xml:space="preserve">
+    <value>輕便型(Supramax)</value>
+  </data>
+  <data name="ThisYear" xml:space="preserve">
+    <value>今年</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="WheatIndex_Label" xml:space="preserve">
+    <value>小麥近期期貨</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="YearOnYearPercentage_Label" xml:space="preserve">
+    <value>年增率</value>
   </data>
 </root>

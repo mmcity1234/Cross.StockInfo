@@ -61,7 +61,7 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 累計營收百分比 的當地語系化字串。
+        ///   查詢類似 累計營收(%) 的當地語系化字串。
         /// </summary>
         public static string AccumulatedRevenueComparePercentage_Label {
             get {
@@ -484,7 +484,7 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 上月增減百分比 的當地語系化字串。
+        ///   查詢類似 月增率 的當地語系化字串。
         /// </summary>
         public static string MonthOverMonthPercentage_Label {
             get {
@@ -808,7 +808,7 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
-        ///   查詢類似 去年同期增減百分比 的當地語系化字串。
+        ///   查詢類似 年增率 的當地語系化字串。
         /// </summary>
         public static string YearOnYearPercentage_Label {
             get {
