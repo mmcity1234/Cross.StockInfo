@@ -43,23 +43,23 @@
                                      GridStyle="{StaticResource flatGridStyle}" >
 
                                     <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                                        <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Star"  TextAlignment="End"/>
+                                        <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Star"  TextAlignment="Center"/>
 
-                                        <datagrid:GridTextColumn MappingName="ForeignBuySell" HeaderText="{lang:Translate ForeignInvestor}" ColumnSizer="Star" TextAlignment="End">
+                                        <datagrid:GridTextColumn MappingName="ForeignBuySell" HeaderText="{lang:Translate ForeignInvestor}" ColumnSizer="Star" TextAlignment="Center">
                                             <datagrid:GridTextColumn.CellStyle>
                                                 <Style TargetType="datagrid:GridCell">
                                                     <Setter Property="Foreground" Value="{Binding ForeignBuySell, Converter={StaticResource priceColorConverter}}" />
                                                 </Style>
                                             </datagrid:GridTextColumn.CellStyle>
                                         </datagrid:GridTextColumn>
-                                        <datagrid:GridTextColumn MappingName="InvestmentBuySell" HeaderText="{lang:Translate Investor}" ColumnSizer="Star" TextAlignment="End">
+                                        <datagrid:GridTextColumn MappingName="InvestmentBuySell" HeaderText="{lang:Translate Investor}" ColumnSizer="Star" TextAlignment="Center">
                                             <datagrid:GridTextColumn.CellStyle>
                                                 <Style TargetType="datagrid:GridCell">
                                                     <Setter Property="Foreground" Value="{Binding InvestmentBuySell, Converter={StaticResource priceColorConverter}}" />
                                                 </Style>
                                             </datagrid:GridTextColumn.CellStyle>
                                         </datagrid:GridTextColumn>
-                                        <datagrid:GridTextColumn MappingName="DealerBuySell" HeaderText="{lang:Translate DealerInvestor}" ColumnSizer="Star" TextAlignment="End">
+                                        <datagrid:GridTextColumn MappingName="DealerBuySell" HeaderText="{lang:Translate DealerInvestor}" ColumnSizer="Star" TextAlignment="Center">
                                             <datagrid:GridTextColumn.CellStyle>
                                                 <Style TargetType="datagrid:GridCell">
                                                     <Setter Property="Foreground" Value="{Binding DealerBuySell, Converter={StaticResource priceColorConverter}}" />

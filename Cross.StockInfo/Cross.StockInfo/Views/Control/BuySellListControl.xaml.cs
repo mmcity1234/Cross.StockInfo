@@ -45,7 +45,7 @@ namespace Cross.StockInfo.Views.Control
             BindablePropertyChanged<BuySellListControl>(bindable, x => x.ListViewControl.ItemsSource = newValue as List<StockBuySellItem>);
         }
 
-        private void buySellsegmentButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void buySellsegmentButton_SelectionChanged(object sender, Syncfusion.XForms.Buttons.SelectionChangedEventArgs e)
         {
             if (e.Index == 0)
                 ButtonSwitched?.Invoke(sender, new RankTypeEventArgs(RankType.OverBuy));

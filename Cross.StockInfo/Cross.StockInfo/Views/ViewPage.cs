@@ -46,8 +46,6 @@ namespace Cross.StockInfo.Views
         }
 
 
-      
-
         private void ViewPageDisappearing(object sender, EventArgs e)
         {
             base.OnDisappearing();
