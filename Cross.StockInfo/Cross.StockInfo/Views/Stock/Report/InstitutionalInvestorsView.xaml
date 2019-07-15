@@ -38,9 +38,10 @@
                                 </Grid.RowDefinitions>
                                 
                                 <datagrid:SfDataGrid AutoGenerateColumns="false" ScrollingMode="Pixel"
-                                     FrozenColumnsCount="1" VerticalOverScrollMode="None"
-                                     ItemsSource="{Binding BuySellInfoCollection}"   
-                                     GridStyle="{StaticResource flatGridStyle}" >
+                                                     AllowSorting="True"
+                                                     FrozenColumnsCount="1" VerticalOverScrollMode="None"
+                                                     ItemsSource="{Binding BuySellInfoCollection}"   
+                                                     GridStyle="{StaticResource flatGridStyle}" >
 
                                     <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
                                         <datagrid:GridTextColumn MappingName="Date" HeaderText="{lang:Translate Global_Date}" ColumnSizer="Star"  TextAlignment="Center"/>

@@ -124,6 +124,8 @@ namespace Cross.StockInfo.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_Out = global::Cross.StockInfo.Droid.Resource.Animation.SfChart_Fade_Out;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_In = global::Cross.StockInfo.Droid.Resource.Animation.SfChart_Scale_In;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_Out = global::Cross.StockInfo.Droid.Resource.Animation.SfChart_Scale_Out;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Drawable.inputlayout_togglecollapseicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Drawable.inputlayout_togglevisibleicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.annotationLayout = global::Cross.StockInfo.Droid.Resource.Id.annotationLayout;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.axisLayout = global::Cross.StockInfo.Droid.Resource.Id.axisLayout;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.bottom_labels = global::Cross.StockInfo.Droid.Resource.Id.bottom_labels;

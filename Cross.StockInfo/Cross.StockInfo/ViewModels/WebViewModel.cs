@@ -71,6 +71,7 @@ namespace Cross.StockInfo.ViewModels
                     IsPageLoading = false;
                 }
             }
+
             catch (Exception e)
             {
 

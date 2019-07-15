@@ -9,6 +9,6 @@ namespace Cross.StockInfo.Services
     /// </summary>
     public interface IStockQueryService
     {
-        Task<List<StockBase>> GetStockQueryList(string stock);
+        
     }
 }

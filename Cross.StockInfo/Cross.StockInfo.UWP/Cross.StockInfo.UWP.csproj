@@ -11,8 +11,8 @@
     <AssemblyName>Cross.StockInfo.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -146,43 +146,45 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Behaviors.XamarinForms">
-      <Version>3.6.0</Version>
+      <Version>4.0.2</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.8.9</Version>
+      <Version>1.11.9</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
-      <Version>106.3.1</Version>
+      <Version>106.6.10</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>17.1.0.38</Version>
+      <Version>17.2.0.34</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.1.0.581479</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cross.StockInfo\Cross.StockInfo.csproj">
@@ -192,6 +194,32 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
 </Project>

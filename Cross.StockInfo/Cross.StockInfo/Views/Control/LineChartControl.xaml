@@ -81,7 +81,7 @@
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis />
                 </chart:SfChart.SecondaryAxis>
-                <!-- Legend -->3
+                <!-- Legend -->
                 <chart:SfChart.Legend>
                     <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom"/>
                 </chart:SfChart.Legend>
