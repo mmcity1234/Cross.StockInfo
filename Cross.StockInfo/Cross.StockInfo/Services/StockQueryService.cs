@@ -55,6 +55,5 @@ namespace Cross.StockInfo.Services
                 return categoryResults;
             });
         }
-
     }
 }

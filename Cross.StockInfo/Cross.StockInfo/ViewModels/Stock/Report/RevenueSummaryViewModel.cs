@@ -167,7 +167,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
             catch (Exception ex)
             {
-                throw new Exception(AppResources.Exception_RevenueNotFound, ex);
+                //throw new Exception(AppResources.Exception_RevenueNotFound, ex);
             }
         }
 

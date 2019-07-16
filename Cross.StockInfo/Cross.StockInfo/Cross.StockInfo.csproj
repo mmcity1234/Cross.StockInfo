@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.2" />
-    <PackageReference Include="Behaviors.XamarinForms" Version="4.0.2" />
+    <PackageReference Include="Behaviors.XamarinForms" Version="3.6.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.9" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.34" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.2.0.34" />
