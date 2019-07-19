@@ -20,7 +20,7 @@ namespace Cross.StockInfo.ViewModels
         protected bool IsPageFirstLoad { get; private set; }
 
         /// <summary>
-        /// For the news item list loading
+        /// Get or set the page loading bar status
         /// </summary>
         public bool IsPageLoading
         {

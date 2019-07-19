@@ -34,7 +34,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             get => _selectedMonthOverMonthOperator;
             set
             {
-                _selectedMonthOverMonthOperator = value; OnPropertyChanged();
+                _selectedMonthOverMonthOperator = value;
+                OnPropertyChanged();
             }
         }
 
@@ -46,7 +47,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             get => _selectedYearOnYearOperator;
             set
             {
-                _selectedYearOnYearOperator = value; OnPropertyChanged();
+                _selectedYearOnYearOperator = value;
+                OnPropertyChanged();
             }
         }
         /// <summary>
@@ -57,7 +59,8 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             get => _selectedAccumulatedRevenueCompareOperator;
             set
             {
-                _selectedAccumulatedRevenueCompareOperator = value; OnPropertyChanged();
+                _selectedAccumulatedRevenueCompareOperator = value;
+                OnPropertyChanged();
             }
         }
 

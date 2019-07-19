@@ -25,12 +25,15 @@ namespace Cross.StockInfo.Services
             return Task.Run(async () =>
             {
                 string html = await RestApi.GetHtmlTaskAsync(StockCategoryUrl, Encoding.GetEncoding(950));
+                html = html.Replace("\r\n", string.Empty);
 
                 var categoryResults = HtmlHelper.DescendantsPath(html, "//table//tr",
                     node =>
                     {
+                        string tableClassValue = node.ParentNode.Attributes["class"]?.Value;
                         string classValue = node.FirstChild.Attributes["class"]?.Value;
-                        return classValue == "t3t1";
+                        
+                        return classValue.StartsWith("t3t1") && !tableClassValue.StartsWith("t3t1");
                     },
                     node =>
                     {

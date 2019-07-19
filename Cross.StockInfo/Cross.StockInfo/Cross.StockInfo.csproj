@@ -19,15 +19,16 @@
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Behaviors.XamarinForms" Version="3.6.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.9" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="17.2.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.2.0.34" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="17.2.0.35" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.2.0.35" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
     <PackageReference Include="System.Text.Encoding.Extensions" Version="4.3.0" />
@@ -103,6 +104,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Stock\Report\RevenueSummaryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Stock\StockCategoryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WebView.xaml">

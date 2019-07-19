@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Globalization;
 
 namespace Cross.StockInfo.Services
 {
@@ -15,11 +16,11 @@ namespace Cross.StockInfo.Services
         /// <summary>
         /// 上櫃公司營收列表
         /// </summary>
-        private const string OtcRevenueUrl = "http://mops.twse.com.tw/nas/t21/otc/t21sc03_{0}_{1}_0.html";
+        private const string OtcRevenueUrl = "https://mops.twse.com.tw/nas/t21/otc/t21sc03_{0}_{1}_0.html";
         /// <summary>
         /// 上市公司營收列表
         /// </summary>
-        private const string StockRevenueUrl = "http://mops.twse.com.tw/nas/t21/sii/t21sc03_{0}_{1}_0.html";
+        private const string StockRevenueUrl = "https://mops.twse.com.tw/nas/t21/sii/t21sc03_{0}_{1}_0.html";
         /// <summary>
         /// 三大法人買賣超金額
         /// </summary>
@@ -64,7 +65,17 @@ namespace Cross.StockInfo.Services
         {
             return Task.Run(async () =>
             {
-                string html = await RestApi.GetHtmlTaskAsync(url, Encoding.GetEncoding(950));
+                Dictionary<string, string> headers = new Dictionary<string, string>
+                {
+                    { "Content-Type", "text/html; charset=utf-8"},
+                    { "Connection", "Keep-Alive"},
+                    { "Cache-Control", "max-age=0"},
+                    // 避免使用http cache資料，所以指定目前的暫存為前一天資訊
+                    // GMT time ToString("r") : "ddd, dd MMM yyy HH:mm:ss GMT"
+                    { "If-Modified-Since", DateTime.Now.AddDays(-1).ToString("r", CultureInfo.GetCultureInfo("en-US"))}             
+                };
+               
+                string html = await RestApi.GetContentTaskAsync(url, headers, Encoding.GetEncoding(950));
                 var stockRevenueList = HtmlHelper.DescendantsPath(html, "//td/table/tr",
                     node =>
                     {

@@ -10,6 +10,7 @@
              xmlns:revenueConfig="clr-namespace:Cross.StockInfo.ViewModels.Stock.Report.Config"
              xmlns:news="clr-namespace:Cross.StockInfo.Views.News"
              xmlns:stockReport="clr-namespace:Cross.StockInfo.Views.Stock.Report"
+             xmlns:stock="clr-namespace:Cross.StockInfo.Views.Stock"
              xmlns:lang ="clr-namespace:Cross.StockInfo.Common.Localization"
              x:Class="Cross.StockInfo.MainPage"
              IsPresented="{Binding IsShowMasterDetail, Mode=TwoWay}"
@@ -45,6 +46,7 @@
                         <model:MasterPageMenuItem Title="{lang:Translate CompanyRevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" ConfigsType="{x:Type revenueConfig:CompanyRevenueType}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate OtcRevenueReport_MenuItemLabel}" TargetType="{x:Type stockReport:RevenueSummaryView}" ConfigsType="{x:Type revenueConfig:OtcRevenueType}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate InstitutionalBuySell_MenuItemLabel}" TargetType="{x:Type stockReport:InstitutionalInvestorsView}"/>
+                        <model:MasterPageMenuItem Title="{lang:Translate StockCategory_MenuItemLabel}" TargetType="{x:Type stock:StockCategoryView}"/>
                         <!-- 歷史報表-->
                         <model:MasterPageMenuItem Title="{lang:Translate AgriculturalProducts_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexConfig:AgriculturalProductInfo}"/>
                         <model:MasterPageMenuItem Title="{lang:Translate BDIIndex_MenuItemLabel}" TargetType="{x:Type productIndex:ProductIndexView}" ConfigsType="{x:Type productIndexConfig:BdiProductInfo}" />

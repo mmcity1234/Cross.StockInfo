@@ -142,8 +142,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
 
 
         #endregion
-
-
+        
         public RevenueSummaryViewModel()
         {
             FilterImageButtonCommand = new DelegateCommand<EventArgs>(FilterImageClick_EventHandler);
@@ -167,7 +166,7 @@ namespace Cross.StockInfo.ViewModels.Stock.Report
             }
             catch (Exception ex)
             {
-                //throw new Exception(AppResources.Exception_RevenueNotFound, ex);
+                throw new Exception(AppResources.Exception_RevenueNotFound, ex);
             }
         }
 

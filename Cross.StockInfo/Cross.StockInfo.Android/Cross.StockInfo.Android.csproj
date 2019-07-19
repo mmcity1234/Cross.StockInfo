@@ -58,34 +58,37 @@
       <Version>1.11.9</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
-      <Version>106.6.9</Version>
+      <Version>106.6.3</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Expander">
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>17.2.0.34</Version>
+      <Version>17.2.0.35</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Annotations">
       <Version>28.0.0.1</Version>

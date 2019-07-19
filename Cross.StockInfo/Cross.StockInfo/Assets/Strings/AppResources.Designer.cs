@@ -754,6 +754,15 @@ namespace Cross.StockInfo.Assets.Strings {
         }
         
         /// <summary>
+        ///   查詢類似 產業分類 的當地語系化字串。
+        /// </summary>
+        public static string StockCategory_MenuItemLabel {
+            get {
+                return ResourceManager.GetString("StockCategory_MenuItemLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 InstitutionalBuySell_ForeignOverBuy 的當地語系化字串。
         /// </summary>
         public static string String {

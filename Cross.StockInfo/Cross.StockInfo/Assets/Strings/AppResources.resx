@@ -369,4 +369,7 @@
   <data name="YearOnYearPercentage_Label" xml:space="preserve">
     <value>年增率</value>
   </data>
+  <data name="StockCategory_MenuItemLabel" xml:space="preserve">
+    <value>產業分類</value>
+  </data>
 </root>

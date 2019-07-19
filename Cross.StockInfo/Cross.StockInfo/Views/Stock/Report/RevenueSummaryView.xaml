@@ -21,8 +21,8 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="45"/>
                 <RowDefinition Height="*"/>             
             </Grid.RowDefinitions>
             <StackLayout Orientation="Horizontal" IsEnabled="{Binding IsControlEnable}" Margin="10,0,10,0">
@@ -66,8 +66,7 @@
             <datagrid:SfDataGrid x:Name="revenueDataGrid" AutoGenerateColumns="false" Grid.Row="2"
                                  FrozenColumnsCount="1"
                                  VerticalOverScrollMode="None"
-                                 ItemsSource="{Binding StockRevenueList}"                                  
-                                 ScrollingMode="Pixel"
+                                 ItemsSource="{Binding StockRevenueList}"  
                                  GridStyle="{StaticResource flatGridStyle}" >
                 <datagrid:SfDataGrid.Resources> 
                     <Style TargetType="Label">
@@ -78,11 +77,10 @@
                     </Style>
                 </datagrid:SfDataGrid.Resources>
 
-                <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                <datagrid:SfDataGrid.Columns>
                     <datagrid:GridTextColumn MappingName="Name" HeaderText="{lang:Translate Name}" ColumnSizer="Auto"  Width="90" HeaderTextAlignment="End"  TextAlignment="End"/>
                     <datagrid:GridTextColumn MappingName="CurrentRevenue" HeaderText="{lang:Translate CurrentRevenue_Label}" ColumnSizer="Auto" HeaderTextAlignment="End"  TextAlignment="End"/>
-                    <!--datagrid:GridTextColumn MappingName="LastMonthRevenue" HeaderText="{lang:Translate LastMonthRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
-                    <!--<datagrid:GridTextColumn MappingName="LastYearRevenue" HeaderText="{lang:Translate LastYearRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
+              
                     <datagrid:GridTextColumn MappingName="MonthOverMonthPercentage" HeaderText="{lang:Translate MonthOverMonthPercentage_Label}"  Width="90" HeaderTextAlignment="End"  TextAlignment="End">
                         <datagrid:GridTextColumn.CellStyle>
                             <Style TargetType="datagrid:GridCell">
@@ -96,9 +94,7 @@
                                 <Setter Property="Foreground" Value="{Binding YearOnYearPercentage, Converter={StaticResource priceColorConverter}}" />
                             </Style>
                         </datagrid:GridTextColumn.CellStyle>
-                    </datagrid:GridTextColumn>
-                    <!--<datagrid:GridTextColumn MappingName="CurrentAccumulatedRevenue" HeaderText="{lang:Translate CurrentAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
-                    <!--<datagrid:GridTextColumn MappingName="LastYearAccumulatedRevenue" HeaderText="{lang:Translate LastYearAccumulatedRevenue_Label}" ColumnSizer="Auto" TextAlignment="End"/>-->
+                    </datagrid:GridTextColumn>                  
                     <datagrid:GridTextColumn MappingName="AccumulatedRevenueComparePercentage" HeaderText="{lang:Translate AccumulatedRevenueComparePercentage_Label}"  Width="80" HeaderTextAlignment="End"  TextAlignment="End">
                         <datagrid:GridTextColumn.CellStyle>
                             <Style TargetType="datagrid:GridCell">
