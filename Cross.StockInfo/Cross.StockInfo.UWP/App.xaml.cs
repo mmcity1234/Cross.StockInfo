@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.ListView.XForms.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -64,7 +65,7 @@ namespace Cross.StockInfo.UWP
                 assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.ComboBox.SfComboBoxRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.SfBusyIndicator.XForms.UWP.SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.SfPicker.XForms.UWP.SfPickerRenderer).GetTypeInfo().Assembly);
-
+                assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 
               //  Xamarin.Forms.Forms.Init(e);

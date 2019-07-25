@@ -83,6 +83,9 @@ namespace Cross.StockInfo.Droid
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.input_layout_drop_down_icon = global::Cross.StockInfo.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.input_layout_drop_down_icon = global::Cross.StockInfo.Droid.Resource.Drawable.input_layout_drop_down_icon;
+			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglecollapseicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.XForms.Android.Expander.Resource.Drawable.inputlayout_togglevisibleicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
 			global::Com.Syncfusion.Sfbusyindicator.Resource.Attribute.busyIndicatorAnimationTypes = global::Cross.StockInfo.Droid.Resource.Attribute.busyIndicatorAnimationTypes;
 			global::Com.Syncfusion.Sfbusyindicator.Resource.Attribute.busyIndicatorIsBusy = global::Cross.StockInfo.Droid.Resource.Attribute.busyIndicatorIsBusy;
 			global::Com.Syncfusion.Sfbusyindicator.Resource.Attribute.busyIndicatorSecondaryColor = global::Cross.StockInfo.Droid.Resource.Attribute.busyIndicatorSecondaryColor;
@@ -241,6 +244,27 @@ namespace Cross.StockInfo.Droid
 			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.Styleable.SfNumericTextBox_valueChangeMode = global::Cross.StockInfo.Droid.Resource.Styleable.SfNumericTextBox_valueChangeMode;
 			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.Styleable.SfNumericTextBox_watermark = global::Cross.StockInfo.Droid.Resource.Styleable.SfNumericTextBox_watermark;
 			global::Syncfusion.SfDataGrid.XForms.Droid.Resource.Styleable.SfNumericTextBox_watermarkColor = global::Cross.StockInfo.Droid.Resource.Styleable.SfNumericTextBox_watermarkColor;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layoutManager = global::Cross.StockInfo.Droid.Resource.Attribute.layoutManager;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.reverseLayout = global::Cross.StockInfo.Droid.Resource.Attribute.reverseLayout;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spanCount = global::Cross.StockInfo.Droid.Resource.Attribute.spanCount;
+			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.stackFromEnd = global::Cross.StockInfo.Droid.Resource.Attribute.stackFromEnd;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Cross.StockInfo.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Cross.StockInfo.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Cross.StockInfo.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.input_layout_drop_down_icon = global::Cross.StockInfo.Droid.Resource.Drawable.input_layout_drop_down_icon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglecollapseicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.inputlayout_togglevisibleicon = global::Cross.StockInfo.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.ListView.XForms.Android.Resource.Id.item_touch_helper_previous_elevation = global::Cross.StockInfo.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::Cross.StockInfo.Droid.Resource.String.ApplicationName;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::Cross.StockInfo.Droid.Resource.String.Hello;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::Cross.StockInfo.Droid.Resource.String.Load_More;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_android_descendantFocusability = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_android_orientation = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_layoutManager = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_reverseLayout = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_spanCount = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::Cross.StockInfo.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
 			global::Com.Syncfusion.Navigationdrawer.Resource.Attribute.navDrawerFooterHeight = global::Cross.StockInfo.Droid.Resource.Attribute.navDrawerFooterHeight;
 			global::Com.Syncfusion.Navigationdrawer.Resource.Attribute.navDrawerHeaderHeight = global::Cross.StockInfo.Droid.Resource.Attribute.navDrawerHeaderHeight;
 			global::Com.Syncfusion.Navigationdrawer.Resource.Attribute.navDrawerHeight = global::Cross.StockInfo.Droid.Resource.Attribute.navDrawerHeight;
@@ -8351,6 +8375,15 @@ namespace Cross.StockInfo.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a0052
+			public const int ApplicationName = 2131361874;
+			
+			// aapt resource value: 0x7f0a0051
+			public const int Hello = 2131361873;
+			
+			// aapt resource value: 0x7f0a0053
+			public const int Load_More = 2131361875;
+			
 			// aapt resource value: 0x7f0a0018
 			public const int abc_action_bar_home_description = 2131361816;
 			
@@ -8474,8 +8507,8 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a0041
 			public const int bottom_sheet_behavior = 2131361857;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int cancel_drop = 2131361874;
+			// aapt resource value: 0x7f0a0055
+			public const int cancel_drop = 2131361877;
 			
 			// aapt resource value: 0x7f0a0042
 			public const int character_counter_content_description = 2131361858;
@@ -8483,11 +8516,11 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a0043
 			public const int character_counter_pattern = 2131361859;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int drop_above = 2131361875;
+			// aapt resource value: 0x7f0a0056
+			public const int drop_above = 2131361878;
 			
-			// aapt resource value: 0x7f0a0054
-			public const int drop_below = 2131361876;
+			// aapt resource value: 0x7f0a0057
+			public const int drop_below = 2131361879;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int fab_transformation_scrim_behavior = 2131361860;
@@ -8501,8 +8534,8 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a004e
 			public const int library_name = 2131361870;
 			
-			// aapt resource value: 0x7f0a0051
-			public const int load_more_items = 2131361873;
+			// aapt resource value: 0x7f0a0054
+			public const int load_more_items = 2131361876;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
@@ -8594,38 +8627,38 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a004c
 			public const int path_password_strike_through = 2131361868;
 			
-			// aapt resource value: 0x7f0a0056
-			public const int q = 2131361878;
+			// aapt resource value: 0x7f0a0059
+			public const int q = 2131361881;
 			
-			// aapt resource value: 0x7f0a0055
-			public const int quarter = 2131361877;
+			// aapt resource value: 0x7f0a0058
+			public const int quarter = 2131361880;
 			
 			// aapt resource value: 0x7f0a0033
 			public const int search_menu_title = 2131361843;
 			
-			// aapt resource value: 0x7f0a005c
-			public const int sfchart_close_label = 2131361884;
-			
 			// aapt resource value: 0x7f0a005f
-			public const int sfchart_decrease_label = 2131361887;
+			public const int sfchart_close_label = 2131361887;
 			
-			// aapt resource value: 0x7f0a0059
-			public const int sfchart_high_label = 2131361881;
+			// aapt resource value: 0x7f0a0062
+			public const int sfchart_decrease_label = 2131361890;
 			
-			// aapt resource value: 0x7f0a005e
-			public const int sfchart_increase_label = 2131361886;
+			// aapt resource value: 0x7f0a005c
+			public const int sfchart_high_label = 2131361884;
 			
-			// aapt resource value: 0x7f0a005a
-			public const int sfchart_low_label = 2131361882;
-			
-			// aapt resource value: 0x7f0a005b
-			public const int sfchart_open_label = 2131361883;
+			// aapt resource value: 0x7f0a0061
+			public const int sfchart_increase_label = 2131361889;
 			
 			// aapt resource value: 0x7f0a005d
-			public const int sfchart_others_label = 2131361885;
+			public const int sfchart_low_label = 2131361885;
+			
+			// aapt resource value: 0x7f0a005e
+			public const int sfchart_open_label = 2131361886;
 			
 			// aapt resource value: 0x7f0a0060
-			public const int sfchart_total_label = 2131361888;
+			public const int sfchart_others_label = 2131361888;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int sfchart_total_label = 2131361891;
 			
 			// aapt resource value: 0x7f0a004f
 			public const int sfnumericupdown_decrement_button_accessibility_label = 2131361871;
@@ -8636,11 +8669,11 @@ namespace Cross.StockInfo.Droid
 			// aapt resource value: 0x7f0a004d
 			public const int status_bar_notification_info_overflow = 2131361869;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int w = 2131361880;
+			// aapt resource value: 0x7f0a005b
+			public const int w = 2131361883;
 			
-			// aapt resource value: 0x7f0a0057
-			public const int week = 2131361879;
+			// aapt resource value: 0x7f0a005a
+			public const int week = 2131361882;
 			
 			static String()
 			{

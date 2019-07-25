@@ -3,58 +3,48 @@
              xmlns:views="clr-namespace:Cross.StockInfo.Views"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cross.StockInfo.Views.Stock.StockCategoryView"
+             xmlns:sflistview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms">
     <ContentPage.Resources>
         <DataTemplate x:Key="expanderListViewItemTemplate">
             <ViewCell>
                 <ViewCell.View>
-                    <Grid Padding="2" Margin="1" BackgroundColor="White">
-                        <!--<Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>-->
-                        <expander:SfExpander HeaderIconPosition="End" BackgroundColor="#FFFFFF" HeaderBackgroundColor="#FFFFFF" AnimationDuration="200" IsExpanded="false">
-                            <expander:SfExpander.Header>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="50"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="35"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="InvoiceCalendar.png" Margin="3" Aspect="AspectFit"/>
-                                    <Label TextColor="#495F6E" Text="{Binding Name}" FontSize="16" Grid.Column="1" VerticalOptions="CenterAndExpand"/>
-                                </Grid>
-                            </expander:SfExpander.Header>
-
-                            <expander:SfExpander.Content>
-                                <Grid BackgroundColor="#FFFFFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1"/>
-                                        <RowDefinition Height="50"/>
-                                    </Grid.RowDefinitions>
-                                    <BoxView Color="#D1DBE1"/>
-                                    <Grid Padding="15,0,0,0" Grid.Row="1">
-                                        <Label TextColor="#303030" Text="11.03 AM, 15 January 2019" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                    <Frame x:Name="frame" CornerRadius="2" Padding="{OnPlatform Android=1, iOS=1,  UWP=0}" Margin="{OnPlatform Android=1, iOS=1,  UWP=0}" OutlineColor="White" HasShadow="{OnPlatform Android=true, iOS=false, UWP=true}">
+                        <Grid Padding="2" Margin="1" BackgroundColor="White">                         
+                            <expander:SfExpander HeaderIconPosition="End" BackgroundColor="#FFFFFF" HeaderBackgroundColor="#FFFFFF" AnimationDuration="200" IsExpanded="false">
+                                <expander:SfExpander.Header>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="35"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="InvoiceCalendar.png" Margin="3" Aspect="AspectFit"/>
+                                        <Label TextColor="#495F6E" Text="{Binding Name}" FontSize="16" Grid.Column="1" VerticalOptions="CenterAndExpand"/>
                                     </Grid>
-                                </Grid>
-                            </expander:SfExpander.Content>
-                        </expander:SfExpander>
-                    </Grid>
+                                </expander:SfExpander.Header>
+
+                                <expander:SfExpander.Content>
+                                    <BoxView></BoxView>
+                                </expander:SfExpander.Content>
+                            </expander:SfExpander>
+                        </Grid>
+                    </Frame>
                 </ViewCell.View>
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <Grid BackgroundColor="#F0F0F0" Padding="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-          
-            <ListView ItemsSource="{Binding StockCategoryList}" HasUnevenRows="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
-                          ItemTemplate="{StaticResource expanderListViewItemTemplate}">
+
+            <sflistview:SfListView FocusBorderThickness="0" IsScrollBarVisible="False" ItemSpacing="0" SelectionMode="None" AutoFitMode="DynamicHeight"
+                ItemsSource="{Binding StockCategoryList}" ItemTemplate="{StaticResource expanderListViewItemTemplate}">
                 <!--<ListView.Behaviors>
                     <b:EventHandlerBehavior EventName="ItemSelected">
                         <b:InvokeCommandAction Command="{Binding BindingContext.NewsItemSelectedCommand, Source={x:Reference newsViewPage}}" />
@@ -63,7 +53,7 @@
                         <b:InvokeCommandAction Command="{Binding BindingContext.NewsItemAppreaingCommand, Source={x:Reference newsViewPage}}" />
                     </b:EventHandlerBehavior>
                 </ListView.Behaviors>-->
-            </ListView>
+            </sflistview:SfListView>
 
             <!-- loading bar -->
             <ActivityIndicator IsRunning="{Binding IsPageLoading}" IsVisible="{Binding IsPageLoading}" 
